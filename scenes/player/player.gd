@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		#animated_sprite_2d.animation = "jump"
 		velocity += get_gravity() * delta
 	#else:
-		#animated_sprite_2d.animation = "default"
+		#C
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -38,9 +38,12 @@ func _physics_process(delta: float) -> void:
 	if abs(velocity.x) > 100:
 		_handle_turning(velocity.x < 0)
 	
-	animated_sprite_2d.speed_scale = abs(velocity.x / SPEED)
+	
 	
 	move_and_slide()
+	
+	
+	_handle_animation()
 
 
 func _process(_delta: float) -> void:
@@ -66,3 +69,13 @@ func _handle_turning(turn_left: bool) -> void:
 	_tween_turning.tween_property(animated_sprite_2d, "scale:x", -1 if turn_left else 1, 0.3)
 	
 	_is_left = turn_left
+
+
+func _handle_animation() -> void:
+	
+	#animated_sprite_2d.speed_scale = abs(velocity.x / SPEED)
+	
+	if (velocity.x == 0):
+		animated_sprite_2d.animation = "default"
+	else:
+		animated_sprite_2d.animation = "run"
