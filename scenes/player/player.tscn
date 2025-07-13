@@ -1,21 +1,122 @@
-[gd_scene load_steps=16 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=32 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Texture2D" uid="uid://dto78rs1uqts3" path="res://assets/graphics/player/C-001-0001_0001.png" id="2_gx1jg"]
-[ext_resource type="Texture2D" uid="uid://blc735yql8hid" path="res://assets/graphics/player/C-001-0001_0002.png" id="3_ugbui"]
-[ext_resource type="Texture2D" uid="uid://bviuu4dmqknfa" path="res://assets/graphics/player/C-001-0001_0003.png" id="4_fcs02"]
-[ext_resource type="Texture2D" uid="uid://t8dp4muqfp42" path="res://assets/graphics/player/C-001-0001_0004.png" id="5_myrg7"]
-[ext_resource type="Texture2D" uid="uid://c3kpgnc8rmuxa" path="res://assets/graphics/player/C-001-0001_0005.png" id="6_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://c014imtvs4pco" path="res://assets/graphics/player/C-001-0001_0006.png" id="7_uf5tr"]
-[ext_resource type="Texture2D" uid="uid://bwlhgwsdbjhc2" path="res://assets/graphics/player/C-001-0001_0007.png" id="8_lgqa7"]
-[ext_resource type="Texture2D" uid="uid://c43v760xw1adw" path="res://assets/graphics/player/C-001-0001_0008.png" id="9_8ydkj"]
-[ext_resource type="Texture2D" uid="uid://vt4gso7y7fee" path="res://assets/graphics/player/C-001-0001_0009.png" id="10_3j4b4"]
-[ext_resource type="Texture2D" uid="uid://cpdsdmr4tnkb6" path="res://assets/graphics/player/C-001-0001_0010.png" id="11_yj68g"]
-[ext_resource type="Texture2D" uid="uid://c3fljnlexeocf" path="res://assets/graphics/player/C-001-0001_0011.png" id="12_ioxgp"]
-[ext_resource type="Texture2D" uid="uid://ctfpmhjddl7u8" path="res://assets/graphics/player/C-001-0001_0012.png" id="13_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://xlursq804ag0" path="res://assets/graphics/player/run/the_cursed_one_run_0001.png" id="2_gx1jg"]
+[ext_resource type="Texture2D" uid="uid://bpiv32rbvufa5" path="res://assets/graphics/player/run/the_cursed_one_run_0002.png" id="3_ugbui"]
+[ext_resource type="Texture2D" uid="uid://c8stt6kah285c" path="res://assets/graphics/player/run/the_cursed_one_run_0003.png" id="4_fcs02"]
+[ext_resource type="Texture2D" uid="uid://g5i411ihix72" path="res://assets/graphics/player/run/the_cursed_one_run_0004.png" id="5_myrg7"]
+[ext_resource type="Texture2D" uid="uid://doarfsud4cpiq" path="res://assets/graphics/player/run/the_cursed_one_run_0005.png" id="6_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://dnl2l64k1m7hp" path="res://assets/graphics/player/run/the_cursed_one_run_0006.png" id="7_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://bvb6bj1nsjpkj" path="res://assets/graphics/player/run/the_cursed_one_run_0007.png" id="8_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://bro0xi36mtlhh" path="res://assets/graphics/player/run/the_cursed_one_run_0008.png" id="9_8ydkj"]
+[ext_resource type="Texture2D" uid="uid://bjhaiv6r356vy" path="res://assets/graphics/player/run/the_cursed_one_run_0009.png" id="10_3j4b4"]
+[ext_resource type="Texture2D" uid="uid://c0mid8k0ax7rd" path="res://assets/graphics/player/run/the_cursed_one_run_0010.png" id="11_yj68g"]
+[ext_resource type="Texture2D" uid="uid://gtnfytidd517" path="res://assets/graphics/player/run/the_cursed_one_run_0011.png" id="12_ioxgp"]
+[ext_resource type="Texture2D" uid="uid://dikcv8p5ykrka" path="res://assets/graphics/player/run/the_cursed_one_run_0012.png" id="13_cnsyf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gx1jg"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0001.png-436f198e8b34f872d04fbc3aa3ec00a9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugbui"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0002.png-a7d71e3de2e4681211235f8eaeb10717.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fcs02"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0003.png-32fd84e525931e33c375c23d7bff482b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_myrg7"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0004.png-2d696cb534ceb253303552246edc9798.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvlxm"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0005.png-973c79fa1520484e578aff9109e622d9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uf5tr"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0006.png-d579d13d99c9355b14b9dde9ded10c99.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lgqa7"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0007.png-2932b5e09f4af58ad74ea1ab5d261a10.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ydkj"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0008.png-db0b83eed6780def9798718e50a7efca.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3j4b4"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0009.png-8b43eb33d7a9b7738767c92bc93a2114.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yj68g"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0010.png-2b3e57f0ffc8f3289c5b68c41e9a23bf.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ioxgp"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0011.png-9a2046165060fcfa17184c77960bc182.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cnsyf"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0012.png-238766f55effcccae4872ee1eb8b8d3d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_007i1"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0013.png-ae759a73d9c5f70f4724be2c957fb04a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6cv16"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0014.png-879ebb30fe3598e82f4bbf7744f9a484.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j4nxn"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0015.png-b0a194788c77c2c0840daa08250cef21.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28m0y"]
+load_path = "res://.godot/imported/the_cursed_one_idle_0016.png-b9ba355d05a6d452938af3825642d81e.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_007i1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_fcs02")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_myrg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_kvlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_uf5tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_lgqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_8ydkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_3j4b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_yj68g")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ioxgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_cnsyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_007i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_6cv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_j4nxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_28m0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_gx1jg")
@@ -54,8 +155,8 @@ animations = [{
 "texture": ExtResource("13_cnsyf")
 }],
 "loop": true,
-"name": &"default",
-"speed": 16.0
+"name": &"run",
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cv16"]
@@ -68,7 +169,6 @@ script = ExtResource("1_8afob")
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
 autoplay = "default"
-frame_progress = 0.838108
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6cv16")
