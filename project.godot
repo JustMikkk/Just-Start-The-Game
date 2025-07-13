@@ -10,11 +10,30 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="Just Start The Game"
+run/main_scene="uid://kpplv6w3th0s"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scenes/globals/game_manager.gd"
+Config="*res://scenes/globals/config.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=640
+window/size/window_width_override=1340
+window/size/window_height_override=960
+window/stretch/mode="viewport"
+
+[global_group]
+
+Player=""
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

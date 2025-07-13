@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://kpplv6w3th0s"]
+
+[ext_resource type="Script" uid="uid://dm2ef0jpfealc" path="res://scenes/desktops/desktop.gd" id="1_lefbf"]
+[ext_resource type="Texture2D" uid="uid://b0iiw0a3h7ojt" path="res://assets/graphics/placeholder/bg.png" id="2_advyw"]
+[ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="3_4owec"]
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="4_u6osu"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="5_rcjc2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_advyw"]
+b = Vector2(0, 640)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4owec"]
+a = Vector2(0, 640)
+b = Vector2(960, 640)
+
+[node name="Desktop" type="Node2D"]
+script = ExtResource("1_lefbf")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(480, 320)
+texture = ExtResource("2_advyw")
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="WallLeft" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("SegmentShape2D_advyw")
+
+[node name="WallRight" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(960, 0)
+shape = SubResource("SegmentShape2D_advyw")
+
+[node name="Floor" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("SegmentShape2D_4owec")
+
+[node name="Player" parent="." instance=ExtResource("3_4owec")]
+position = Vector2(536, 552)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-536, -552)
+limit_left = 0
+limit_top = 0
+limit_right = 960
+limit_bottom = 640
+
+[node name="Bindows" type="Node2D" parent="."]
+
+[node name="Bindow" parent="Bindows" instance=ExtResource("4_u6osu")]
+position = Vector2(824, 480)
+
+[node name="Apps" type="Node2D" parent="."]
+
+[node name="App" parent="Apps" instance=ExtResource("5_rcjc2")]
+position = Vector2(32, 560)

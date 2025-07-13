@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dslrycch57s88"]
+
+[ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
+[ext_resource type="Texture2D" uid="uid://diqfoa5e7ubdc" path="res://assets/graphics/apps/notes.png" id="1_t5ymm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhgt"]
+size = Vector2(32, 32)
+
+[node name="App" type="Area2D"]
+script = ExtResource("1_oyhgt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oyhgt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t5ymm")
+
+[node name="DoubleClickTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
