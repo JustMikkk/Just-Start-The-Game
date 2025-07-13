@@ -13,7 +13,7 @@ b = Vector2(0, 640)
 a = Vector2(0, 640)
 b = Vector2(960, 640)
 
-[node name="Desktop" type="Node2D"]
+[node name="Desktop" type="Node2D" groups=["Desktop"]]
 script = ExtResource("1_lefbf")
 
 [node name="BG" type="Sprite2D" parent="."]
@@ -46,8 +46,27 @@ limit_bottom = 640
 
 [node name="Bindow" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(824, 480)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Bindow2" parent="Bindows" instance=ExtResource("4_u6osu")]
+position = Vector2(528, 192)
+
+[node name="Bindow3" parent="Bindows" instance=ExtResource("4_u6osu")]
+position = Vector2(208, 304)
 
 [node name="Apps" type="Node2D" parent="."]
 
-[node name="App" parent="Apps" instance=ExtResource("5_rcjc2")]
+[node name="App" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(32, 560)
+bindow = NodePath("../../Bindows/Bindow")
+bindow_pos = Vector2(824, 480)
+
+[node name="App2" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
+position = Vector2(96, 560)
+bindow = NodePath("../../Bindows/Bindow2")
+bindow_pos = Vector2(528, 192)
+
+[node name="App3" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
+position = Vector2(160, 560)
+bindow = NodePath("../../Bindows/Bindow3")
+bindow_pos = Vector2(208, 304)
