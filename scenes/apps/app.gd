@@ -1,10 +1,15 @@
 class_name App
 extends Area2D
 
+signal app_opened_signal(icon: App)
+signal app_closed_signal(icon: App)
 
-@export var is_fullcreen: bool = false
+
+@export var _is_fullcreen: bool = false
 @export var bindow: Bindow
-@export var bindow_pos: Vector2
+@export var _bindow_pos: Vector2
+@export var taskbar_icon: Texture
+@export var icon: Texture
 
 var is_open: bool = false
 var is_minimised: bool = false
@@ -16,8 +21,19 @@ var _tween_scale: Tween
 @onready var _double_click_timer: Timer = $DoubleClickTimer
 
 
+func _ready() -> void:
+	bindow.setup(global_position, _bindow_pos)
+	bindow.bindow_close_signal.connect(_on_bindow_close)
+	_icon.texture = icon
+
+
+func _on_bindow_close() -> void:
+	app_closed_signal.emit(self)
+
+
 func _start_bindow() -> void:
-	bindow.open_bindow(global_position, bindow_pos)
+	bindow.open_bindow()
+	app_opened_signal.emit(self)
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

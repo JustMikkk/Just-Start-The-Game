@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 	position = Vector2(int(position.x), int(position.y))
 
 
-func set_enabled(val: bool):
+func set_enabled(val: bool) -> void:
 	self.visible = val
 	call_deferred("_disable_collision")
 
