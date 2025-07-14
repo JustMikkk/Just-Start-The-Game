@@ -114,7 +114,7 @@ animations = [{
 "texture": SubResource("CompressedTexture2D_28m0y")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 24.0
 }, {
 "frames": [{
@@ -159,16 +159,20 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cv16"]
-size = Vector2(20, 35)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gx1jg"]
+height = 40.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_8afob")
+SPEED = 15000
+JUMP_VELOCITY = -40000
+JUMP_CUT_MULTIPLIER = 0.8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
-autoplay = "default"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6cv16")
+shape = SubResource("CapsuleShape2D_gx1jg")
