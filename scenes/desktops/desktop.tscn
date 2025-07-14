@@ -26,6 +26,7 @@ b = Vector2(960, 640)
 script = ExtResource("1_lefbf")
 
 [node name="BG" type="Sprite2D" parent="."]
+z_index = -10
 position = Vector2(480, 320)
 texture = ExtResource("2_advyw")
 
@@ -42,7 +43,7 @@ shape = SubResource("SegmentShape2D_advyw")
 shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Player" parent="." instance=ExtResource("3_4owec")]
-position = Vector2(536, 552)
+position = Vector2(288, 560)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-536, -552)
@@ -70,28 +71,24 @@ position = Vector2(496, 448)
 [node name="App" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(32, 560)
 bindow = NodePath("../../Bindows/Bindow")
-_bindow_pos = Vector2(824, 480)
 taskbar_icon = ExtResource("6_svt62")
 icon = ExtResource("7_jmt5o")
 
 [node name="App2" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(96, 560)
 bindow = NodePath("../../Bindows/Bindow2")
-_bindow_pos = Vector2(528, 192)
 taskbar_icon = ExtResource("8_ciuw6")
 icon = ExtResource("9_iwn6e")
 
 [node name="App3" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(160, 560)
 bindow = NodePath("../../Bindows/Bindow3")
-_bindow_pos = Vector2(208, 304)
 taskbar_icon = ExtResource("10_81wqp")
 icon = ExtResource("11_8i485")
 
 [node name="App4" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(32, 496)
 bindow = NodePath("../../Bindows/Bindow4")
-_bindow_pos = Vector2(496, 448)
 taskbar_icon = ExtResource("12_g6r2l")
 icon = ExtResource("13_gl3ut")
 

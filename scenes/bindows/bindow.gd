@@ -1,7 +1,9 @@
 class_name Bindow
 extends Node2D
 
+signal bindow_open_signal
 signal bindow_close_signal
+signal bindow_minimise_signal
 
 enum BindowState {
 	CLOSED,
@@ -24,6 +26,7 @@ var _tween_size: Tween
 
 
 func _ready() -> void:
+	_previouis_pos = global_position
 	if current_state == BindowState.CLOSED: 
 		scale = Vector2.ZERO
 
@@ -34,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	var goal_pos: Vector2 = get_global_mouse_position() + _drag_offset
 	
 	var pos_x: int = floor(clamp(goal_pos.x, _size.x / 2.0, Config.GAME_WIDTH - (_size.x / 2.0)))
-	var pos_y: int = floor(clamp(goal_pos.y, _size.y /2.0, Config.GAME_HEIGHT - (_size.y / 2.0)))
+	var pos_y: int = floor(clamp(goal_pos.y, _size.y /2.0, Config.GAME_HEIGHT - (_size.y / 2.0) - 48))
 	
 	global_position = Vector2(int(pos_x), int(pos_y))
 	#global_position = Vector2(int(pos_x) - int(pos_x) % 16, int(pos_y) - int(pos_y) % 16)
@@ -52,42 +55,41 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func setup(starting_pos: Vector2, goal_pos: Vector2):
+func setup(starting_pos: Vector2) -> void:
 	_origin_pos = starting_pos
-	_previouis_pos = goal_pos
 
 
-func open_bindow():
+func open_bindow() -> void:
 	_change_state(BindowState.OPENED)
 
 
-func minimise_bindow():
+func minimise_bindow() -> void:
 	_change_state(BindowState.MINIMISED)
 
 
-func close_bindow():
+func close_bindow() -> void:
 	_change_state(BindowState.CLOSED)
+
+
+func is_open() -> bool:
+	return current_state == BindowState.OPENED
 
 
 func _change_state(new_state: BindowState) -> void:
 	if current_state == new_state: return
 	
-	match current_state:
-		BindowState.CLOSED:
-			if new_state == BindowState.OPENED:
-				_open_bindow()
-		
+	if current_state == BindowState.OPENED:
+		_close_bindow()
+	
+	match new_state:
 		BindowState.OPENED:
-			_close_bindow()
-			if new_state == BindowState.CLOSED:
-				bindow_close_signal.emit()
-		
+			_open_bindow()
+			bindow_open_signal.emit()
+		BindowState.CLOSED:
+			bindow_close_signal.emit()
 		BindowState.MINIMISED:
-			if new_state == BindowState.OPENED:
-				_open_bindow()
-			elif new_state == BindowState.CLOSED:
-				bindow_close_signal.emit()
-		
+			bindow_minimise_signal.emit()
+	
 	current_state = new_state
 
 

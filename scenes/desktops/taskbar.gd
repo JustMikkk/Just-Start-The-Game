@@ -30,6 +30,8 @@ func create_app(app: App) -> void:
 
 func remove_app(app: App) -> void:
 	if app not in _apps: return
+	await get_tree().create_timer(Config.APP_CLOSE_TIME).timeout
+	
 	_apps.erase(app)
 	
 	## removing the app

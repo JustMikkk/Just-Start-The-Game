@@ -14,11 +14,13 @@ script = ExtResource("1_oyhgt")
 shape = SubResource("RectangleShape2D_oyhgt")
 
 [node name="Icon" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("2_r061u")
 
 [node name="ClickIndicator" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.278431, 1, 1, 0.196078)
+z_index = -2
 scale = Vector2(54, 54)
 texture = ExtResource("3_r061u")
 

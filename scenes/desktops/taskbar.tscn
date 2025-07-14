@@ -26,6 +26,7 @@ texture = ExtResource("1_mklgl")
 position = Vector2(24, 24)
 
 [node name="Sprite2D" type="Sprite2D" parent="BindowsLogo"]
+z_index = 1
 texture = ExtResource("2_4e5aq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BindowsLogo"]

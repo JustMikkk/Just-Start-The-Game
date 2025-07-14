@@ -7,7 +7,6 @@ signal app_closed_signal(icon: App)
 
 @export var _is_fullcreen: bool = false
 @export var bindow: Bindow
-@export var _bindow_pos: Vector2
 @export var taskbar_icon: Texture
 @export var icon: Texture
 
@@ -22,7 +21,7 @@ var _tween_scale: Tween
 
 
 func _ready() -> void:
-	bindow.setup(global_position, _bindow_pos)
+	bindow.setup(global_position)
 	bindow.bindow_close_signal.connect(_on_bindow_close)
 	_icon.texture = icon
 
@@ -49,6 +48,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func _on_mouse_entered() -> void:
+	Config.set_cursor_type(CursorType.CURIOUS)
+	
 	if _tween_scale:
 		_tween_scale.kill()
 	
@@ -57,6 +58,7 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	Config.set_cursor_type(CursorType.DEFAULT)
 	if _tween_scale:
 		_tween_scale.kill()
 	
