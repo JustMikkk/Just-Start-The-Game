@@ -1,18 +1,28 @@
-[gd_scene load_steps=32 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=42 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Texture2D" uid="uid://xlursq804ag0" path="res://assets/graphics/player/run/the_cursed_one_run_0001.png" id="2_gx1jg"]
-[ext_resource type="Texture2D" uid="uid://bpiv32rbvufa5" path="res://assets/graphics/player/run/the_cursed_one_run_0002.png" id="3_ugbui"]
-[ext_resource type="Texture2D" uid="uid://c8stt6kah285c" path="res://assets/graphics/player/run/the_cursed_one_run_0003.png" id="4_fcs02"]
-[ext_resource type="Texture2D" uid="uid://g5i411ihix72" path="res://assets/graphics/player/run/the_cursed_one_run_0004.png" id="5_myrg7"]
-[ext_resource type="Texture2D" uid="uid://doarfsud4cpiq" path="res://assets/graphics/player/run/the_cursed_one_run_0005.png" id="6_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://dnl2l64k1m7hp" path="res://assets/graphics/player/run/the_cursed_one_run_0006.png" id="7_uf5tr"]
-[ext_resource type="Texture2D" uid="uid://bvb6bj1nsjpkj" path="res://assets/graphics/player/run/the_cursed_one_run_0007.png" id="8_lgqa7"]
-[ext_resource type="Texture2D" uid="uid://bro0xi36mtlhh" path="res://assets/graphics/player/run/the_cursed_one_run_0008.png" id="9_8ydkj"]
-[ext_resource type="Texture2D" uid="uid://bjhaiv6r356vy" path="res://assets/graphics/player/run/the_cursed_one_run_0009.png" id="10_3j4b4"]
-[ext_resource type="Texture2D" uid="uid://c0mid8k0ax7rd" path="res://assets/graphics/player/run/the_cursed_one_run_0010.png" id="11_yj68g"]
-[ext_resource type="Texture2D" uid="uid://gtnfytidd517" path="res://assets/graphics/player/run/the_cursed_one_run_0011.png" id="12_ioxgp"]
-[ext_resource type="Texture2D" uid="uid://dikcv8p5ykrka" path="res://assets/graphics/player/run/the_cursed_one_run_0012.png" id="13_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://cq27404sg60xr" path="res://assets/graphics/player/run/the_cursed_one_run_0001.png" id="2_gx1jg"]
+[ext_resource type="Texture2D" uid="uid://vceirk4go5e3" path="res://assets/graphics/player/jump/the_cursed_one_jump_0001.png" id="2_ioxgp"]
+[ext_resource type="Texture2D" uid="uid://yww62w1wy8t6" path="res://assets/graphics/player/jump/the_cursed_one_jump_0002.png" id="3_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://c20677juq58gf" path="res://assets/graphics/player/run/the_cursed_one_run_0002.png" id="3_ugbui"]
+[ext_resource type="Texture2D" uid="uid://bxag7snei7y1i" path="res://assets/graphics/player/jump/the_cursed_one_jump_0003.png" id="4_007i1"]
+[ext_resource type="Texture2D" uid="uid://bgwmskawuoaxu" path="res://assets/graphics/player/run/the_cursed_one_run_0003.png" id="4_fcs02"]
+[ext_resource type="Texture2D" uid="uid://cwacga15rtltk" path="res://assets/graphics/player/jump/the_cursed_one_jump_0004.png" id="5_6cv16"]
+[ext_resource type="Texture2D" uid="uid://deqtojbmyecgq" path="res://assets/graphics/player/run/the_cursed_one_run_0004.png" id="5_myrg7"]
+[ext_resource type="Texture2D" uid="uid://crmu0qd50gjoo" path="res://assets/graphics/player/jump/the_cursed_one_jump_0005.png" id="6_j4nxn"]
+[ext_resource type="Texture2D" uid="uid://200yuboseycr" path="res://assets/graphics/player/run/the_cursed_one_run_0005.png" id="6_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://cnvl1wj8l1nd7" path="res://assets/graphics/player/jump/the_cursed_one_jump_0006.png" id="7_28m0y"]
+[ext_resource type="Texture2D" uid="uid://cpn1v1qoqvmwp" path="res://assets/graphics/player/run/the_cursed_one_run_0006.png" id="7_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://cldmtvb3ikcto" path="res://assets/graphics/player/run/the_cursed_one_run_0007.png" id="8_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://dqbwwtb7m85yy" path="res://assets/graphics/player/jump/the_cursed_one_jump_0007.png" id="8_uniwh"]
+[ext_resource type="Texture2D" uid="uid://diiutkxpe0b13" path="res://assets/graphics/player/run/the_cursed_one_run_0008.png" id="9_8ydkj"]
+[ext_resource type="Texture2D" uid="uid://bystjlvm1bf7y" path="res://assets/graphics/player/jump/the_cursed_one_jump_0008.png" id="9_iqsei"]
+[ext_resource type="Texture2D" uid="uid://b0g0rsits7n5w" path="res://assets/graphics/player/run/the_cursed_one_run_0009.png" id="10_3j4b4"]
+[ext_resource type="Texture2D" uid="uid://dtpd8ilwln02w" path="res://assets/graphics/player/jump/the_cursed_one_jump_0009.png" id="10_tffgl"]
+[ext_resource type="Texture2D" uid="uid://b6g24dopjbmd" path="res://assets/graphics/player/jump/the_cursed_one_jump_0010.png" id="11_pk8ii"]
+[ext_resource type="Texture2D" uid="uid://c18n2laukbwss" path="res://assets/graphics/player/run/the_cursed_one_run_0010.png" id="11_yj68g"]
+[ext_resource type="Texture2D" uid="uid://bg721lsfaoer0" path="res://assets/graphics/player/run/the_cursed_one_run_0011.png" id="12_ioxgp"]
+[ext_resource type="Texture2D" uid="uid://o5gthkm8xfmc" path="res://assets/graphics/player/run/the_cursed_one_run_0012.png" id="13_cnsyf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gx1jg"]
 load_path = "res://.godot/imported/the_cursed_one_idle_0001.png-436f198e8b34f872d04fbc3aa3ec00a9.ctex"
@@ -119,6 +129,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_ioxgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cnsyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_007i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6cv16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j4nxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_28m0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uniwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iqsei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tffgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pk8ii")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_gx1jg")
 }, {
 "duration": 1.0,
@@ -168,6 +213,7 @@ script = ExtResource("1_8afob")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
+animation = &"jump"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

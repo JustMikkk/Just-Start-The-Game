@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor():
-		#animated_sprite_2d.animation = "jump"
 		velocity += get_gravity() * delta
 	#else:
 		#C
@@ -75,7 +74,9 @@ func _handle_animation() -> void:
 	
 	#animated_sprite_2d.speed_scale = abs(velocity.x / SPEED)
 	
-	if (velocity.x == 0):
+	if not is_on_floor():
+		animated_sprite_2d.animation = "jump"	
+	elif (velocity.x == 0):
 		animated_sprite_2d.animation = "default"
 	else:
 		animated_sprite_2d.animation = "run"
