@@ -24,14 +24,15 @@ Config="*res://scenes/globals/config.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=640
-window/size/window_width_override=1340
-window/size/window_height_override=960
+window/size/window_width_override=960
+window/size/window_height_override=640
 window/stretch/mode="viewport"
 
 [global_group]
 
 Player=""
 Desktop=""
+App=""
 
 [rendering]
 

@@ -1,24 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://dslrycch57s88"]
 
 [ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
-[ext_resource type="Texture2D" uid="uid://diqfoa5e7ubdc" path="res://assets/graphics/apps/notes.png" id="1_t5ymm"]
+[ext_resource type="Texture2D" uid="uid://crpwr4pkcw6e0" path="res://assets/graphics/apps/desktop/notes48.png" id="2_r061u"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="3_r061u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhgt"]
 size = Vector2(32, 32)
 
-[node name="App" type="Area2D"]
+[node name="App" type="Area2D" groups=["App"]]
 script = ExtResource("1_oyhgt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oyhgt")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_t5ymm")
+z_index = -2
+texture = ExtResource("2_r061u")
 
 [node name="ClickIndicator" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.278431, 1, 1, 0.196078)
+z_index = -2
 scale = Vector2(54, 54)
 texture = ExtResource("3_r061u")
 

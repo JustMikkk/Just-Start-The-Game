@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://kpplv6w3th0s"]
+[gd_scene load_steps=17 format=3 uid="uid://kpplv6w3th0s"]
 
 [ext_resource type="Script" uid="uid://dm2ef0jpfealc" path="res://scenes/desktops/desktop.gd" id="1_lefbf"]
 [ext_resource type="Texture2D" uid="uid://b0iiw0a3h7ojt" path="res://assets/graphics/placeholder/bg.png" id="2_advyw"]
 [ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="3_4owec"]
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="4_u6osu"]
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="5_rcjc2"]
+[ext_resource type="Texture2D" uid="uid://d17dr3wda8lkb" path="res://assets/graphics/apps/taskbar/notes32.png" id="6_svt62"]
+[ext_resource type="PackedScene" uid="uid://bx22tcip152ve" path="res://scenes/desktops/taskbar.tscn" id="6_ve4ha"]
+[ext_resource type="Texture2D" uid="uid://crpwr4pkcw6e0" path="res://assets/graphics/apps/desktop/notes48.png" id="7_jmt5o"]
+[ext_resource type="Texture2D" uid="uid://bmw8nbbx8y6ej" path="res://assets/graphics/apps/taskbar/word32.png" id="8_ciuw6"]
+[ext_resource type="Texture2D" uid="uid://c7832qnku4jsp" path="res://assets/graphics/apps/desktop/word48.png" id="9_iwn6e"]
+[ext_resource type="Texture2D" uid="uid://csqyhn0v6reu4" path="res://assets/graphics/apps/taskbar/krita32.png" id="10_81wqp"]
+[ext_resource type="Texture2D" uid="uid://c6bngjykfb70m" path="res://assets/graphics/apps/desktop/krita48.png" id="11_8i485"]
+[ext_resource type="Texture2D" uid="uid://c51qcl52d21o7" path="res://assets/graphics/apps/taskbar/spotify32.png" id="12_g6r2l"]
+[ext_resource type="Texture2D" uid="uid://bahnoaenbh07m" path="res://assets/graphics/apps/desktop/spotify48.png" id="13_gl3ut"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_advyw"]
 b = Vector2(0, 640)
@@ -17,6 +26,7 @@ b = Vector2(960, 640)
 script = ExtResource("1_lefbf")
 
 [node name="BG" type="Sprite2D" parent="."]
+z_index = -10
 position = Vector2(480, 320)
 texture = ExtResource("2_advyw")
 
@@ -33,7 +43,7 @@ shape = SubResource("SegmentShape2D_advyw")
 shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Player" parent="." instance=ExtResource("3_4owec")]
-position = Vector2(536, 552)
+position = Vector2(288, 560)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-536, -552)
@@ -46,7 +56,6 @@ limit_bottom = 640
 
 [node name="Bindow" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(824, 480)
-scale = Vector2(1e-05, 1e-05)
 
 [node name="Bindow2" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(528, 192)
@@ -54,19 +63,34 @@ position = Vector2(528, 192)
 [node name="Bindow3" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(208, 304)
 
+[node name="Bindow4" parent="Bindows" instance=ExtResource("4_u6osu")]
+position = Vector2(496, 448)
+
 [node name="Apps" type="Node2D" parent="."]
 
 [node name="App" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(32, 560)
 bindow = NodePath("../../Bindows/Bindow")
-bindow_pos = Vector2(824, 480)
+taskbar_icon = ExtResource("6_svt62")
+icon = ExtResource("7_jmt5o")
 
 [node name="App2" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(96, 560)
 bindow = NodePath("../../Bindows/Bindow2")
-bindow_pos = Vector2(528, 192)
+taskbar_icon = ExtResource("8_ciuw6")
+icon = ExtResource("9_iwn6e")
 
 [node name="App3" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
 position = Vector2(160, 560)
 bindow = NodePath("../../Bindows/Bindow3")
-bindow_pos = Vector2(208, 304)
+taskbar_icon = ExtResource("10_81wqp")
+icon = ExtResource("11_8i485")
+
+[node name="App4" parent="Apps" node_paths=PackedStringArray("bindow") instance=ExtResource("5_rcjc2")]
+position = Vector2(32, 496)
+bindow = NodePath("../../Bindows/Bindow4")
+taskbar_icon = ExtResource("12_g6r2l")
+icon = ExtResource("13_gl3ut")
+
+[node name="Taskbar" parent="." instance=ExtResource("6_ve4ha")]
+position = Vector2(0, 592)

@@ -1,27 +1,34 @@
 class_name Bindow
 extends Node2D
 
+signal bindow_open_signal
+signal bindow_close_signal
+signal bindow_minimise_signal
+
 enum BindowState {
 	CLOSED,
 	OPENED,
 	MINIMISED,
 }
 
+@export var _size: Vector2i = Vector2(192, 192)
 
-var _is_dragged: bool = false
-var _drag_offset: Vector2 = Vector2.ZERO
 
-var _width: float = 192
-var _height: float = 185
-
-var _tween_size: Tween
+var current_state: BindowState = BindowState.CLOSED
 
 var _origin_pos: Vector2
 var _previouis_pos: Vector2
 
+var _drag_offset: Vector2 = Vector2.ZERO
+var _is_dragged: bool = false
 
-func _init() -> void:
-	scale = Vector2.ZERO
+var _tween_size: Tween
+
+
+func _ready() -> void:
+	_previouis_pos = global_position
+	if current_state == BindowState.CLOSED: 
+		scale = Vector2.ZERO
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,8 +36,8 @@ func _physics_process(_delta: float) -> void:
 	
 	var goal_pos: Vector2 = get_global_mouse_position() + _drag_offset
 	
-	var pos_x: int = floor(clamp(goal_pos.x, _width / 2, Config.GAME_WIDTH - (_width / 2)))
-	var pos_y: int = floor(clamp(goal_pos.y, _height /2, Config.GAME_HEIGHT - (_height / 2)))
+	var pos_x: int = floor(clamp(goal_pos.x, _size.x / 2.0, Config.GAME_WIDTH - (_size.x / 2.0)))
+	var pos_y: int = floor(clamp(goal_pos.y, _size.y /2.0, Config.GAME_HEIGHT - (_size.y / 2.0) - 48))
 	
 	global_position = Vector2(int(pos_x), int(pos_y))
 	#global_position = Vector2(int(pos_x) - int(pos_x) % 16, int(pos_y) - int(pos_y) % 16)
@@ -48,8 +55,45 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func open_bindow(starting_pos: Vector2, goal_pos: Vector2):
+func setup(starting_pos: Vector2) -> void:
 	_origin_pos = starting_pos
+
+
+func open_bindow() -> void:
+	_change_state(BindowState.OPENED)
+
+
+func minimise_bindow() -> void:
+	_change_state(BindowState.MINIMISED)
+
+
+func close_bindow() -> void:
+	_change_state(BindowState.CLOSED)
+
+
+func is_open() -> bool:
+	return current_state == BindowState.OPENED
+
+
+func _change_state(new_state: BindowState) -> void:
+	if current_state == new_state: return
+	
+	if current_state == BindowState.OPENED:
+		_close_bindow()
+	
+	match new_state:
+		BindowState.OPENED:
+			_open_bindow()
+			bindow_open_signal.emit()
+		BindowState.CLOSED:
+			bindow_close_signal.emit()
+		BindowState.MINIMISED:
+			bindow_minimise_signal.emit()
+	
+	current_state = new_state
+
+
+func _open_bindow() -> void:
 	global_position = _origin_pos
 	scale = Vector2.ZERO
 	
@@ -60,18 +104,18 @@ func open_bindow(starting_pos: Vector2, goal_pos: Vector2):
 			.set_ease(Tween.EASE_OUT) \
 			.set_trans(Tween.TRANS_QUART) \
 			.set_parallel(true)
-	_tween_size.tween_property(self, "global_position", goal_pos if not _previouis_pos else _previouis_pos, 0.8)
+	_tween_size.tween_property(self, "global_position", _previouis_pos, 0.8)
 	_tween_size.tween_property(self, "scale", Vector2.ONE, 0.8)
 
 
-func close_bindow():
+func _close_bindow() -> void:
 	_previouis_pos = global_position
 	
 	if _tween_size:
 		_tween_size.kill()
 	
 	_tween_size = get_tree().create_tween() \
-			.set_ease(Tween.EASE_IN) \
+			.set_ease(Tween.EASE_OUT) \
 			.set_trans(Tween.TRANS_QUART) \
 			.set_parallel(true)
 	_tween_size.tween_property(self, "global_position", _origin_pos, 0.8)
@@ -93,5 +137,8 @@ func _on_close_button_input_event(_viewport: Node, event: InputEvent, _shape_idx
 		close_bindow()
 
 
-func _on_minimise_button_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
+func _on_minimise_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton \
+			and event.button_index == MOUSE_BUTTON_LEFT \
+			and event.is_pressed():
+		minimise_bindow()
