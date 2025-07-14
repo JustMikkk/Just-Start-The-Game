@@ -1,5 +1,5 @@
 class_name TaskbarApp
-extends Area2D
+extends AButton
 
 var app: App
 var _taskbar: Taskbar
@@ -16,8 +16,9 @@ var _tween_location: Tween
 func _ready() -> void:
 	_icon.scale = Vector2.ZERO
 	
-	mouse_entered.connect(_on_mouse_enter)
-	mouse_exited.connect(_on_mouse_exit)
+	mouse_click.connect(_on_mouse_click)
+	mouse_enter.connect(_on_mouse_enter)
+	mouse_exit.connect(_on_mouse_exit)
 	_taskbar_app_close_btn.x_button.mouse_click.connect(_on_close_btn_click)
 
 
@@ -61,15 +62,11 @@ func _close_bindow() -> void:
 	app.bindow.close_bindow()
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton \
-			and event.button_index == MOUSE_BUTTON_LEFT \
-			and event.is_pressed():
-		
-		if app.bindow.is_open():
-			_minimise_bindow()
-		else:
-			_open_bindow()
+func _on_mouse_click() -> void:
+	if app.bindow.is_open():
+		_minimise_bindow()
+	else:
+		_open_bindow()
 
 
 func _on_mouse_enter() -> void:

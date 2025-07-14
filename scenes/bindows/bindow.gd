@@ -24,8 +24,14 @@ var _is_dragged: bool = false
 
 var _tween_size: Tween
 
+@onready var _minimise_btn: AButton = $MinimiseBtn
+@onready var _exit_btn: AButton = $ExitBtn
+
 
 func _ready() -> void:
+	_minimise_btn.mouse_click.connect(_on_minimise_button_click)
+	_exit_btn.mouse_click.connect(_on_exit_button_click)
+	
 	_previouis_pos = global_position
 	if current_state == BindowState.CLOSED: 
 		scale = Vector2.ZERO
@@ -123,6 +129,8 @@ func _close_bindow() -> void:
 
 
 func _on_drag_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if CursorManager.is_cursor_hidden(): return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
@@ -130,15 +138,9 @@ func _on_drag_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: i
 				_is_dragged = true
 
 
-func _on_close_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton \
-			and event.button_index == MOUSE_BUTTON_LEFT \
-			and event.is_pressed():
-		close_bindow()
+func _on_minimise_button_click() -> void:
+	minimise_bindow()
 
 
-func _on_minimise_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton \
-			and event.button_index == MOUSE_BUTTON_LEFT \
-			and event.is_pressed():
-		minimise_bindow()
+func _on_exit_button_click() -> void:
+	close_bindow()

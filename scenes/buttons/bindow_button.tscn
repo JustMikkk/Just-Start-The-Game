@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://vh8pxlhanbcj"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_ncplg"]
+[ext_resource type="Script" uid="uid://bwx6ralclunco" path="res://scenes/buttons/bindow_button.gd" id="2_isplx"]
+[ext_resource type="Texture2D" uid="uid://bcc2bf4ws3xh8" path="res://assets/graphics/bindows/btn_close.png" id="3_i4sua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axgo4"]
+size = Vector2(16, 16)
+
+[node name="BindowButton" instance=ExtResource("1_ncplg")]
+script = ExtResource("2_isplx")
+_icon = null
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("3_i4sua")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_axgo4")

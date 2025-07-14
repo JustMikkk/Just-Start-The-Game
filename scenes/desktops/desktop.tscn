@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kpplv6w3th0s"]
+[gd_scene load_steps=18 format=3 uid="uid://kpplv6w3th0s"]
 
 [ext_resource type="Script" uid="uid://dm2ef0jpfealc" path="res://scenes/desktops/desktop.gd" id="1_lefbf"]
 [ext_resource type="Texture2D" uid="uid://b0iiw0a3h7ojt" path="res://assets/graphics/placeholder/bg.png" id="2_advyw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c6bngjykfb70m" path="res://assets/graphics/apps/desktop/krita48.png" id="11_8i485"]
 [ext_resource type="Texture2D" uid="uid://c51qcl52d21o7" path="res://assets/graphics/apps/taskbar/spotify32.png" id="12_g6r2l"]
 [ext_resource type="Texture2D" uid="uid://bahnoaenbh07m" path="res://assets/graphics/apps/desktop/spotify48.png" id="13_gl3ut"]
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="14_ciuw6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_advyw"]
 b = Vector2(0, 640)
@@ -43,14 +44,15 @@ shape = SubResource("SegmentShape2D_advyw")
 shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Player" parent="." instance=ExtResource("3_4owec")]
-position = Vector2(288, 560)
+position = Vector2(496, 336)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-536, -552)
 limit_left = 0
 limit_top = 0
 limit_right = 960
 limit_bottom = 640
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Bindows" type="Node2D" parent="."]
 
@@ -61,7 +63,7 @@ position = Vector2(824, 480)
 position = Vector2(528, 192)
 
 [node name="Bindow3" parent="Bindows" instance=ExtResource("4_u6osu")]
-position = Vector2(208, 304)
+position = Vector2(176, 352)
 
 [node name="Bindow4" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(496, 448)
@@ -91,6 +93,9 @@ position = Vector2(32, 496)
 bindow = NodePath("../../Bindows/Bindow4")
 taskbar_icon = ExtResource("12_g6r2l")
 icon = ExtResource("13_gl3ut")
+
+[node name="ConverterApp" parent="Apps" instance=ExtResource("14_ciuw6")]
+position = Vector2(224, 560)
 
 [node name="Taskbar" parent="." instance=ExtResource("6_ve4ha")]
 position = Vector2(0, 592)

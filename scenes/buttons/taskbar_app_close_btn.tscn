@@ -13,22 +13,21 @@ size = Vector2(30, 84)
 [node name="TaskbarAppCloseBtn" instance=ExtResource("1_1psdo")]
 script = ExtResource("2_4vde4")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Icon" parent="." index="0"]
 z_index = -1
 texture = ExtResource("2_d1b6o")
 
-[node name="XButton" parent="Sprite2D" index="0" instance=ExtResource("1_1psdo")]
+[node name="XButton" parent="Icon" index="0" instance=ExtResource("1_1psdo")]
 position = Vector2(0, -3)
 
-[node name="Sprite2D" parent="Sprite2D/XButton" index="0"]
-modulate = Color(1, 0, 0, 1)
+[node name="Icon" parent="Icon/XButton" index="0"]
 texture = ExtResource("4_sdpfy")
 
-[node name="CollisionShape2D" parent="Sprite2D/XButton" index="1"]
+[node name="CollisionShape2D" parent="Icon/XButton" index="1"]
 shape = SubResource("RectangleShape2D_sdpfy")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_4vde4")
 
-[editable path="Sprite2D/XButton"]
+[editable path="Icon/XButton"]

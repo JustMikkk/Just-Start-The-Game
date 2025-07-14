@@ -9,15 +9,16 @@ var _tween_scale: Tween
 var _is_mouse_hovering: bool = false
 var _is_up: bool = false
 
-@onready var x_button: AButton = $Sprite2D/XButton
-@onready var _btn_bg: Sprite2D = $Sprite2D
-@onready var _x_sprite: Sprite2D = $Sprite2D/XButton/Sprite2D
+@onready var x_button: AButton = $Icon/XButton
+@onready var _btn_bg: Sprite2D = $Icon
+@onready var _x_sprite: Sprite2D = $Icon/XButton/Icon
 
 
 func _ready() -> void:
 	is_enabled = true
 	
 	mouse_enter.connect(_on_mouse_enter)
+	
 	mouse_exit.connect(_on_mouse_exit)
 	
 	x_button.mouse_click.connect(_on_x_btn_click)
@@ -26,11 +27,13 @@ func _ready() -> void:
 
 
 func slide_up() -> void:
+	if _is_up: return
+	
 	if _tween_pos:
 		_tween_pos.kill()
 	
 	_tween_pos = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	_tween_pos.tween_property(_btn_bg, "position:y", -36, 0.8)
+	_tween_pos.tween_property(_btn_bg, "position:y", -32, 0.8)
 	_tween_pos.tween_callback(func():
 			_is_up = true
 	)

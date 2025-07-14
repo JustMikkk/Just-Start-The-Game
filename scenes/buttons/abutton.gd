@@ -10,21 +10,22 @@ signal mouse_exit
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if not is_enabled: return
+	if not is_enabled or CursorManager.is_cursor_hidden(): return
 	
 	if event is InputEventMouseButton \
 			and event.button_index == MOUSE_BUTTON_LEFT \
 			and event.is_pressed():
+		
 		mouse_click.emit()
 
 
 func _on_mouse_entered() -> void:
-	if not is_enabled: return
+	if not is_enabled or CursorManager.is_cursor_hidden(): return
 	
 	mouse_enter.emit()
 
 
 func _on_mouse_exited() -> void:
-	if not is_enabled: return
+	if not is_enabled or CursorManager.is_cursor_hidden(): return
 	
 	mouse_exit.emit()

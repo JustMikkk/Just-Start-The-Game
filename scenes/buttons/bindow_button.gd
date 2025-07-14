@@ -1,20 +1,20 @@
-extends Area2D
+extends AButton
 
-
-@export var is_disabled: bool = false
-@export var icon: Texture
+@export var _icon: Texture
 
 var _tween_scale: Tween
 
-@onready var _sprite_2d: Sprite2D = $Sprite2D
+@onready var _sprite_2d: Sprite2D = $Icon
 
 
 func _ready() -> void:
-	_sprite_2d.texture = icon
+	mouse_enter.connect(_on_mouse_enter)
+	mouse_exit.connect(_on_mouse_exit)
+	
+	_sprite_2d.texture = _icon
 
 
-func _on_mouse_entered() -> void:
-	if is_disabled: return
+func _on_mouse_enter() -> void:
 	
 	if _tween_scale:
 		_tween_scale.kill()
@@ -23,8 +23,7 @@ func _on_mouse_entered() -> void:
 	_tween_scale.tween_property(_sprite_2d, "scale", Vector2(1.1, 1.1), 0.3)
 
 
-func _on_mouse_exited() -> void:
-	if is_disabled: return
+func _on_mouse_exit() -> void:
 	
 	if _tween_scale:
 		_tween_scale.kill()
