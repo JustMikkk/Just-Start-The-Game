@@ -9,12 +9,17 @@ const JUMP_VELOCITY = -400.0
 
 var _is_left: bool = false
 var _tween_turning: Tween
+var _is_enabled: bool = false
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+
+func _ready() -> void:
+	_animated_sprite_2d.visible = not _is_enabled
 
 
 func _physics_process(delta: float) -> void:
-	if not self.visible: return 
+	if not _is_enabled: return 
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -38,10 +43,7 @@ func _physics_process(delta: float) -> void:
 	if abs(velocity.x) > 100:
 		_handle_turning(velocity.x < 0)
 	
-	
-	
 	move_and_slide()
-	
 	
 	_handle_animation()
 
@@ -51,6 +53,7 @@ func _process(_delta: float) -> void:
 
 
 func set_enabled(val: bool) -> void:
+	_is_enabled = true
 	self.visible = val
 	call_deferred("_disable_collision")
 
@@ -66,7 +69,7 @@ func _handle_turning(turn_left: bool) -> void:
 		_tween_turning.kill()
 	
 	_tween_turning = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	_tween_turning.tween_property(animated_sprite_2d, "scale:x", -1 if turn_left else 1, 0.3)
+	_tween_turning.tween_property(_animated_sprite_2d, "scale:x", -1 if turn_left else 1, 0.3)
 	
 	_is_left = turn_left
 
@@ -76,6 +79,6 @@ func _handle_animation() -> void:
 	#animated_sprite_2d.speed_scale = abs(velocity.x / SPEED)
 	
 	if (velocity.x == 0):
-		animated_sprite_2d.animation = "default"
+		_animated_sprite_2d.animation = "default"
 	else:
-		animated_sprite_2d.animation = "run"
+		_animated_sprite_2d.animation = "run"

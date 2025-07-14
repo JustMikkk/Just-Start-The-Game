@@ -1,33 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://dslrycch57s88"]
 
 [ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
-[ext_resource type="Texture2D" uid="uid://crpwr4pkcw6e0" path="res://assets/graphics/apps/desktop/notes48.png" id="2_r061u"]
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_r061u"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="3_r061u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyhgt"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r061u"]
+size = Vector2(48, 48)
 
-[node name="App" type="Area2D" groups=["App"]]
+[node name="AButton" groups=["App"] instance=ExtResource("1_r061u")]
 script = ExtResource("1_oyhgt")
+_is_fullcreen = false
+taskbar_icon = null
+icon = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_oyhgt")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_r061u")
 
-[node name="Icon" type="Sprite2D" parent="."]
-z_index = -2
-texture = ExtResource("2_r061u")
-
-[node name="ClickIndicator" type="Sprite2D" parent="."]
+[node name="ClickIndicator" type="Sprite2D" parent="." index="2"]
 visible = false
 modulate = Color(0.278431, 1, 1, 0.196078)
 z_index = -2
 scale = Vector2(54, 54)
 texture = ExtResource("3_r061u")
 
-[node name="DoubleClickTimer" type="Timer" parent="."]
+[node name="DoubleClickTimer" type="Timer" parent="." index="3"]
 one_shot = true
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="DoubleClickTimer" to="." method="_on_double_click_timer_timeout"]

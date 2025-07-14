@@ -46,11 +46,13 @@ shape = SubResource("SegmentShape2D_4owec")
 position = Vector2(288, 560)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-536, -552)
+zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
 limit_right = 960
 limit_bottom = 640
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Bindows" type="Node2D" parent="."]
 
@@ -61,7 +63,7 @@ position = Vector2(824, 480)
 position = Vector2(528, 192)
 
 [node name="Bindow3" parent="Bindows" instance=ExtResource("4_u6osu")]
-position = Vector2(208, 304)
+position = Vector2(176, 352)
 
 [node name="Bindow4" parent="Bindows" instance=ExtResource("4_u6osu")]
 position = Vector2(496, 448)
