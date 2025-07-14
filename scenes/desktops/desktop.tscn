@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="4_u6osu"]
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="5_rcjc2"]
 [ext_resource type="Texture2D" uid="uid://d17dr3wda8lkb" path="res://assets/graphics/apps/taskbar/notes32.png" id="6_svt62"]
-[ext_resource type="PackedScene" uid="uid://bx22tcip152ve" path="res://scenes/desktops/taskbar.tscn" id="6_ve4ha"]
+[ext_resource type="PackedScene" path="res://scenes/desktops/taskbar.tscn" id="6_ve4ha"]
 [ext_resource type="Texture2D" uid="uid://crpwr4pkcw6e0" path="res://assets/graphics/apps/desktop/notes48.png" id="7_jmt5o"]
 [ext_resource type="Texture2D" uid="uid://bmw8nbbx8y6ej" path="res://assets/graphics/apps/taskbar/word32.png" id="8_ciuw6"]
 [ext_resource type="Texture2D" uid="uid://c7832qnku4jsp" path="res://assets/graphics/apps/desktop/word48.png" id="9_iwn6e"]

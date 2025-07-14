@@ -128,8 +128,13 @@ func die():
 	_animated_sprite_2d.play("dead")
 
 
-func _handle_animation() -> void:
-	if (velocity.x == 0):
-		_animated_sprite_2d.animation = "idle"
+func _handle_animation() -> void:	
+	#animated_sprite_2d.speed_scale = abs(velocity.x / SPEED)
+	
+	if not is_on_floor():
+		animated_sprite_2d.animation = "jump"	
+	elif (velocity.x == 0):
+		animated_sprite_2d.animation = "default"
+
 	else:
 		_animated_sprite_2d.animation = "run"
