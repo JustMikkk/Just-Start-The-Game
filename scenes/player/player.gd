@@ -53,6 +53,7 @@ func _process(_delta: float) -> void:
 
 
 func set_enabled(val: bool) -> void:
+	velocity = Vector2.ZERO
 	_is_enabled = true
 	self.visible = val
 	call_deferred("_disable_collision")

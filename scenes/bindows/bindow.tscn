@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4w8nrc1ewyl"]
+[gd_scene load_steps=9 format=3 uid="uid://d4w8nrc1ewyl"]
 
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="1_bc0lj"]
 [ext_resource type="Script" uid="uid://d05pt5qcb7orf" path="res://scenes/bindows/bindow.gd" id="1_xo7cu"]
 [ext_resource type="Texture2D" uid="uid://byvv0dw12shs2" path="res://assets/graphics/bindows/frame_192_192.png" id="2_aidj8"]
+[ext_resource type="Texture2D" uid="uid://bcc2bf4ws3xh8" path="res://assets/graphics/bindows/btn_close.png" id="3_c4h8f"]
 [ext_resource type="PackedScene" uid="uid://vh8pxlhanbcj" path="res://scenes/buttons/bindow_button.tscn" id="4_c4h8f"]
+[ext_resource type="Texture2D" uid="uid://h10q3vngwped" path="res://assets/graphics/bindows/btn_minimise.png" id="4_xo7cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo7cu"]
 size = Vector2(152, 16)
@@ -32,9 +34,11 @@ shape = SubResource("RectangleShape2D_xo7cu")
 
 [node name="MinimiseBtn" parent="." instance=ExtResource("4_c4h8f")]
 position = Vector2(64, -88)
+_icon = ExtResource("4_xo7cu")
 
 [node name="ExitBtn" parent="." instance=ExtResource("4_c4h8f")]
 position = Vector2(80, -88)
+_icon = ExtResource("3_c4h8f")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 

@@ -129,6 +129,8 @@ func _close_bindow() -> void:
 
 
 func _on_drag_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if CursorManager.is_cursor_hidden(): return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
