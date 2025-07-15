@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://vh8pxlhanbcj" path="res://scenes/buttons/bindow_button.tscn" id="4_c4h8f"]
 [ext_resource type="Texture2D" uid="uid://h10q3vngwped" path="res://assets/graphics/bindows/btn_minimise.png" id="4_xo7cu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo7cu"]
-size = Vector2(108, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpefq"]
+size = Vector2(152, 16)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c4h8f"]
 resource_local_to_scene = true
@@ -30,7 +30,7 @@ texture = ExtResource("2_aidj8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragArea"]
 position = Vector2(-20, -88)
-shape = SubResource("RectangleShape2D_xo7cu")
+shape = SubResource("RectangleShape2D_hpefq")
 
 [node name="MinimiseBtn" parent="." instance=ExtResource("4_c4h8f")]
 position = Vector2(64, -88)
