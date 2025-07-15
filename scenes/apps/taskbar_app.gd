@@ -10,7 +10,6 @@ var _tween_location: Tween
 
 @onready var _icon: Sprite2D = $Icon
 @onready var _active_indicator: Sprite2D = $ActiveIndicator
-@onready var _taskbar_app_close_btn: TaskbarAppCloseBtn = $TaskbarAppCloseBtn
 
 
 func _ready() -> void:
@@ -19,7 +18,6 @@ func _ready() -> void:
 	mouse_click.connect(_on_mouse_click)
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
-	_taskbar_app_close_btn.x_button.mouse_click.connect(_on_close_btn_click)
 
 
 func setup(_app: App, taskbar: Taskbar) -> void:
@@ -70,12 +68,14 @@ func _on_mouse_click() -> void:
 
 
 func _on_mouse_enter() -> void:
-	_taskbar_app_close_btn.slide_up()
+	#_taskbar_app_close_btn.slide_up()
+	pass
 
 
 func _on_mouse_exit() -> void:
-	_taskbar_app_close_btn.slide_down()
-
+	#_taskbar_app_close_btn.slide_down()
+	pass
+	
 
 func _on_bindow_open() -> void:
 	if _tween_indicator:

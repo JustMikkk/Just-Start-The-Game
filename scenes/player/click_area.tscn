@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf58iclp3fedo"]
+
+[ext_resource type="Script" uid="uid://4gltw72b2b7p" path="res://scenes/player/click_area.gd" id="1_c5e3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq1ih"]
+size = Vector2(1, 1)
+
+[node name="ClickArea" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_c5e3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pq1ih")

@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _debug_commands():
-	if Input.is_action_just_released("ui_up"):
-		print("jaja")
-		player.set_enabled(true if player.state == 5 else false, Vector2(480, 320))
+	pass
+	#if Input.is_action_just_released("ui_up"):
+		#print("jaja")
+		#player.set_enabled(true if player.state == 5 else false, Vector2(480, 320))

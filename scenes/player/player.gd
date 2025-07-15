@@ -158,6 +158,7 @@ func _physics_process(delta):
 
 
 func set_enabled(enabled: bool, pos: Vector2) -> void:
+	if enabled == (state != State.CURSOR): return
 	velocity = Vector2.ZERO
 	
 	if enabled:
@@ -177,6 +178,10 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 		global_position = Vector2.ZERO
 		CursorManager.show_warp_cursor(pos)
 		#await CursorManager.cursor_transformed
+
+
+func is_enabled() -> bool:
+	return state != State.CURSOR
 
 
 func die():

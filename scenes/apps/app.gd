@@ -9,6 +9,7 @@ signal app_closed_signal(icon: App)
 @export var bindow: Bindow
 @export var taskbar_icon: Texture
 @export var icon: Texture
+@export var _label_text: String
 
 var is_open: bool = false
 var is_minimised: bool = false
@@ -18,6 +19,7 @@ var _tween_scale: Tween
 @onready var _icon: Sprite2D = $Icon
 @onready var _click_indicator: Sprite2D = $ClickIndicator
 @onready var _double_click_timer: Timer = $DoubleClickTimer
+@onready var _label: Label = $Control/Label
 
 
 func _ready() -> void:
@@ -28,6 +30,7 @@ func _ready() -> void:
 	bindow.setup(global_position)
 	bindow.bindow_close_signal.connect(_on_bindow_close)
 	_icon.texture = icon
+	_label.text = _label_text
 
 
 func _on_bindow_close() -> void:

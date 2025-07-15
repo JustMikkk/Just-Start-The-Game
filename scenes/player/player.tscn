@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=111 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://0rc2gd4g0gv7" path="res://assets/graphics/player/fall/the_cursed_one_fall_0001.png" id="2_4b1ex"]
@@ -91,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://djkw2icixm6t7" path="res://assets/graphics/player/up/the_cursed_one_up_0020.png" id="83_nssm8"]
 [ext_resource type="Texture2D" uid="uid://ynhi07r4wfjq" path="res://assets/graphics/player/up/the_cursed_one_up_0021.png" id="84_ei0bd"]
 [ext_resource type="Texture2D" uid="uid://bjqu7rd6oa6p8" path="res://assets/graphics/player/up/the_cursed_one_up_0022.png" id="85_wwa77"]
+[ext_resource type="PackedScene" uid="uid://cf58iclp3fedo" path="res://scenes/player/click_area.tscn" id="92_31ki0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gx1jg"]
 load_path = "res://.godot/imported/the_cursed_one_idle_0001.png-436f198e8b34f872d04fbc3aa3ec00a9.ctex"
@@ -603,5 +604,7 @@ one_shot = true
 [node name="CollisionDisabledTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="ClickArea" parent="." instance=ExtResource("92_31ki0")]
 
 [connection signal="timeout" from="CollisionDisabledTimer" to="." method="_on_collision_disabled_timer_timeout"]

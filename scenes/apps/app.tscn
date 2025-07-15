@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dslrycch57s88"]
+[gd_scene load_steps=7 format=3 uid="uid://dslrycch57s88"]
 
 [ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
 [ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_r061u"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="3_r061u"]
+[ext_resource type="FontFile" uid="uid://b5riairri341y" path="res://assets/fonts/PixeloidSansBold-PKnYd.ttf" id="4_rbnoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r061u"]
 size = Vector2(48, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5w8h"]
+font = ExtResource("4_rbnoo")
+font_size = 8
 
 [node name="DesktopApp" groups=["App"] instance=ExtResource("1_r061u")]
 script = ExtResource("1_oyhgt")
 _is_fullcreen = false
 taskbar_icon = null
 icon = null
+_label_text = ""
 
 [node name="Icon" parent="." index="0"]
 z_index = -2
@@ -28,5 +34,25 @@ texture = ExtResource("3_r061u")
 
 [node name="DoubleClickTimer" type="Timer" parent="." index="3"]
 one_shot = true
+
+[node name="Control" type="Control" parent="." index="4"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jajo.txt"
+label_settings = SubResource("LabelSettings_f5w8h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="DoubleClickTimer" to="." method="_on_double_click_timer_timeout"]

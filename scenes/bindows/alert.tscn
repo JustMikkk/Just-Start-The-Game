@@ -36,10 +36,14 @@ shape = SubResource("RectangleShape2D_lhn3d")
 [node name="MinimiseBtn" parent="." index="3"]
 visible = false
 position = Vector2(40, -32)
+collision_layer = 1
+collision_mask = 1
 
 [node name="ExitBtn" parent="." index="4"]
 modulate = Color(0.533333, 0.533333, 0.533333, 1)
 position = Vector2(64, 32)
+collision_layer = 1
+collision_mask = 1
 _icon = ExtResource("4_f8jjd")
 
 [node name="Icon" parent="ExitBtn" index="0"]

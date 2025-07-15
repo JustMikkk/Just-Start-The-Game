@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://3wy8civc77f5"]
+
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_5udyo"]
+[ext_resource type="Texture2D" uid="uid://c18lsplodwxi4" path="res://assets/graphics/bindows/cmd_inside_192_160.png" id="2_6f6gg"]
+[ext_resource type="Script" uid="uid://dipbkgqxt2sby" path="res://scenes/bindows/cmd_bindow.gd" id="2_i7t8c"]
+[ext_resource type="Texture2D" uid="uid://c47t3ifm38qjq" path="res://assets/graphics/bindows/cmd_frame_192_160.png" id="3_i7t8c"]
+[ext_resource type="FontFile" uid="uid://bspvrskfllfar" path="res://assets/fonts/editundo.ttf" id="5_hqa1j"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hqa1j"]
+resource_local_to_scene = true
+a = Vector2(-96, 2)
+b = Vector2(96, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qcfpq"]
+font = ExtResource("5_hqa1j")
+font_size = 32
+outline_size = 1
+
+[node name="CMDBindow" instance=ExtResource("1_5udyo")]
+script = ExtResource("2_i7t8c")
+text = "henlo"
+
+[node name="Inside" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_6f6gg")
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("3_i7t8c")
+
+[node name="DragArea" parent="." index="2"]
+position = Vector2(0, 16)
+
+[node name="MinimiseBtn" parent="." index="3"]
+position = Vector2(64, -72)
+
+[node name="ExitBtn" parent="." index="4"]
+position = Vector2(80, -72)
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+position = Vector2(0, 77)
+shape = SubResource("SegmentShape2D_hqa1j")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, -80)
+shape = SubResource("SegmentShape2D_hqa1j")
+
+[node name="Control" type="Control" parent="." index="6"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -92.0
+offset_top = -60.0
+offset_right = 92.0
+offset_bottom = 73.0
+
+[node name="Label" type="Label" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_qcfpq")
+autowrap_mode = 2
+clip_text = true
