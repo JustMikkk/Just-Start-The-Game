@@ -184,6 +184,17 @@ func die():
 	velocity.y = 0
 	_animated_sprite_2d.stop()
 	_animated_sprite_2d.play("dead")
+	
+func _input(event):
+	if event is InputEventMouseMotion:
+		if event.relative.x > 0:
+			global_position.x += 50 * get_process_delta_time()
+		if event.relative.x < 0:
+			global_position.x -= 50 * get_process_delta_time()
+		if event.relative.y > 0:
+			global_position.y += 50 * get_process_delta_time()
+		if event.relative.y < 0:
+			global_position.y -= 50 * get_process_delta_time()
 
 
 func _run(direction, delta):
