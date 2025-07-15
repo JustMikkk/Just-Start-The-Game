@@ -12,7 +12,8 @@ enum BindowState {
 }
 
 @export var _size: Vector2i = Vector2(192, 192)
-
+@export var _can_be_minimised: bool = true
+@export var _can_be_exited: bool = true
 
 var current_state: BindowState = BindowState.CLOSED
 
@@ -26,6 +27,10 @@ var _tween_size: Tween
 
 @onready var _minimise_btn: AButton = $MinimiseBtn
 @onready var _exit_btn: AButton = $ExitBtn
+
+@onready var _collision_shape_2d: CollisionShape2D = $Bounds/CollisionShape2D
+@onready var _collision_shape_2d_2: CollisionShape2D = $Bounds/CollisionShape2D2
+
 
 
 func _ready() -> void:
@@ -54,11 +59,6 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_released():
 				_is_dragged = false
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.is_pressed():
-				#GameManager.enable_player(get_global_mouse_position(), false)
-				Input.warp_mouse(GameManager.player.global_position)
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func setup(starting_pos: Vector2) -> void:
@@ -70,10 +70,18 @@ func open_bindow() -> void:
 
 
 func minimise_bindow() -> void:
+	if not _can_be_minimised: return
+	
+	GameManager.player.set_enabled(true, _minimise_btn.global_position)
+	
 	_change_state(BindowState.MINIMISED)
 
 
 func close_bindow() -> void:
+	if not _can_be_exited: return
+	
+	GameManager.player.set_enabled(true, _exit_btn.global_position)
+	
 	_change_state(BindowState.CLOSED)
 
 
@@ -86,11 +94,17 @@ func _change_state(new_state: BindowState) -> void:
 	
 	if current_state == BindowState.OPENED:
 		_close_bindow()
+		_collision_shape_2d.disabled = true
+		_collision_shape_2d_2.disabled = true
+
 	
 	match new_state:
 		BindowState.OPENED:
 			_open_bindow()
 			bindow_open_signal.emit()
+			_collision_shape_2d.disabled = false
+			_collision_shape_2d_2.disabled = false
+		
 		BindowState.CLOSED:
 			bindow_close_signal.emit()
 		BindowState.MINIMISED:

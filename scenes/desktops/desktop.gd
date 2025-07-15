@@ -1,8 +1,7 @@
 class_name Desktop
 extends Node2D
 
-
-@onready var taskbar: Taskbar = $Taskbar
+@onready var _taskbar: Taskbar = $Taskbar
 
 
 func _ready() -> void:
@@ -13,8 +12,8 @@ func _ready() -> void:
 
 
 func _on_app_open(app: App) -> void:
-	taskbar.create_app(app)
+	_taskbar.create_app(app)
 
 
 func _on_app_close(app: App) -> void:
-	taskbar.remove_app(app)
+	_taskbar.remove_app(app)
