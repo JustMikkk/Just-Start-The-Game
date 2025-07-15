@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=110 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://0rc2gd4g0gv7" path="res://assets/graphics/player/fall/the_cursed_one_fall_0001.png" id="2_4b1ex"]
@@ -23,13 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://200yuboseycr" path="res://assets/graphics/player/run/the_cursed_one_run_0005.png" id="6_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://d2oor6yk7mafe" path="res://assets/graphics/player/fall/the_cursed_one_fall_0006.png" id="7_7u1tp"]
 [ext_resource type="Texture2D" uid="uid://cnvl1wj8l1nd7" path="res://assets/graphics/player/jump/the_cursed_one_jump_0006.png" id="7_28m0y"]
-[ext_resource type="Texture2D" uid="uid://p34no6kdyhfx" path="res://assets/graphics/player/crouch/crouch_5.png" id="7_88c1f"]
 [ext_resource type="Texture2D" uid="uid://cpn1v1qoqvmwp" path="res://assets/graphics/player/run/the_cursed_one_run_0006.png" id="7_uf5tr"]
-[ext_resource type="Texture2D" uid="uid://bufpnn7q0st8a" path="res://assets/graphics/player/crouch/crouch_6.png" id="8_hdu4s"]
 [ext_resource type="Texture2D" uid="uid://cldmtvb3ikcto" path="res://assets/graphics/player/run/the_cursed_one_run_0007.png" id="8_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://bdifiiu1wgqc3" path="res://assets/graphics/player/fall/the_cursed_one_fall_0007.png" id="8_pq1ih"]
 [ext_resource type="Texture2D" uid="uid://dqbwwtb7m85yy" path="res://assets/graphics/player/jump/the_cursed_one_jump_0007.png" id="8_uniwh"]
-[ext_resource type="Texture2D" uid="uid://4rqt4ai3tv1s" path="res://assets/graphics/player/crouch/crouch_7.png" id="9_0wr6q"]
 [ext_resource type="Texture2D" uid="uid://diiutkxpe0b13" path="res://assets/graphics/player/run/the_cursed_one_run_0008.png" id="9_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://c6oyx22ec517h" path="res://assets/graphics/player/fall/the_cursed_one_fall_0008.png" id="9_31ki0"]
 [ext_resource type="Texture2D" uid="uid://bystjlvm1bf7y" path="res://assets/graphics/player/jump/the_cursed_one_jump_0008.png" id="9_iqsei"]
@@ -162,21 +159,6 @@ animations = [{
 "texture": ExtResource("6_i6ap2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_88c1f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_hdu4s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_0wr6q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
 "texture": ExtResource("10_p0anf")
 }, {
 "duration": 1.0,
@@ -232,25 +214,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_0wr6q")
-}, {
-"duration": 1.0,
 "texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_p0anf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_hdu4s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_88c1f")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_i6ap2")
@@ -622,8 +586,9 @@ visible = false
 z_index = 10
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
-animation = &"crouch_reverse"
+animation = &"crouch"
 autoplay = "idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gx1jg")

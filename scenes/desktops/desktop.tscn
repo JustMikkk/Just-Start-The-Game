@@ -48,7 +48,7 @@ shape = SubResource("SegmentShape2D_advyw")
 shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Player" parent="." instance=ExtResource("3_4owec")]
-position = Vector2(496, 288)
+position = Vector2(352, 592)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0

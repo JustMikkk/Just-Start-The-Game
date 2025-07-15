@@ -36,7 +36,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _is_cursor_hidden: return
 	
-	scale.x = 1 if GameManager.player.is_looking_left() else -1
 	global_position = Vector2i(get_global_mouse_position())
 	
 	#

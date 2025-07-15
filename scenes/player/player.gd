@@ -26,11 +26,14 @@ enum State {
 @export var MAX_FALL_SPEED = 25000
 
 
-var _prevVelocity = Vector2.ZERO
-var _lastFloorMsec = 0
-var _wasOnFloor = false
+var _prevVelocity := Vector2.ZERO
+var _lastFloorMsec: float = 0
+var _wasOnFloor := false
 var _lastJumpQueueMsec: int
 var _gravity = START_GRAVITY
+
+var _fall_timer: float = 0.0
+var _fall_splash_treshold: float = 1.2
 
 @onready var state: State = State.CURSOR
 @onready var _animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
@@ -58,12 +61,15 @@ func _physics_process(delta):
 			
 			velocity.y = JUMP_VELOCITY * delta
 			state = State.AIR
+			_fall_timer = 0
 			
 		State.AIR:
+			_fall_timer += delta
 			_animated_sprite_2d.animation = "jump"
 			
+			
 			if is_on_floor():
-				state = State.IDLE
+				state = State.IDLE if _fall_timer < _fall_splash_treshold else State.CROUCH
 			
 			if Input.is_action_just_released("jump"):
 				velocity.y *= JUMP_CUT_MULTIPLIER
@@ -79,13 +85,11 @@ func _physics_process(delta):
 					
 			velocity.y += _gravity * delta
 			
-			if abs(velocity.y) < AIR_HANG_THRESHOLD:	
+			if abs(velocity.y) < AIR_HANG_THRESHOLD:
 				_gravity *= AIR_HANG_MULTIPLIER
 			else:
 				_gravity = START_GRAVITY
 			
-			if position.y > 650:
-				position.y = -32
 		
 		State.IDLE:
 			_animated_sprite_2d.animation = "idle"
@@ -117,15 +121,14 @@ func _physics_process(delta):
 		State.CROUCH:
 			
 			if not Input.is_action_pressed("down"):
-				if not _crouch_timer.time_left:
-					if _animated_sprite_2d.animation != "crouch_reverse":
-						_animated_sprite_2d.play("crouch_reverse")
-					
-					_animated_sprite_2d.animation = "crouch_reverse"
-					
-					if not _animated_sprite_2d.is_playing():
-						state = State.IDLE
-						_animated_sprite_2d.play("idle")
+				if _animated_sprite_2d.animation != "crouch_reverse":
+					_animated_sprite_2d.play("crouch_reverse")
+				
+				_animated_sprite_2d.animation = "crouch_reverse"
+				
+				if not _animated_sprite_2d.is_playing():
+					state = State.IDLE
+					_animated_sprite_2d.play("idle")
 			 
 			elif _crouch_timer.time_left:
 				if _animated_sprite_2d.animation != "crouch":
@@ -134,7 +137,7 @@ func _physics_process(delta):
 			else:
 				_animated_sprite_2d.animation = "crouch_loop"
 				
-				if not _floor_ray_cast_2d.is_colliding():
+				if not _floor_ray_cast_2d.is_colliding() and global_position.y < 592:
 					_collision_disabled_timer.start()
 					state = State.AIR
 					_animated_sprite_2d.play("jump")
@@ -158,6 +161,7 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 	velocity = Vector2.ZERO
 	
 	if enabled:
+		_animated_sprite_2d.flip_h = true
 		CursorManager.hide_cursor()
 		await CursorManager.cursor_transformed
 		state = State.IDLE
@@ -166,16 +170,13 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 		call_deferred("_enable_collisions")
 	
 	else:
+		_animated_sprite_2d.flip_h = true
 		state = State.CURSOR
 		_animated_sprite_2d.hide()
 		call_deferred("_disable_collisions")
 		global_position = Vector2.ZERO
 		CursorManager.show_warp_cursor(pos)
 		#await CursorManager.cursor_transformed
-
-
-func is_looking_left() -> bool:
-	return _animated_sprite_2d.flip_h
 
 
 func die():
@@ -189,7 +190,7 @@ func die():
 func _run(direction, delta):
 	velocity.x = SPEED * direction * delta
 	if not direction == 0:
-		_animated_sprite_2d.flip_h = direction < 0
+		_animated_sprite_2d.flip_h = direction <= 0
 
 
 func _enable_collisions() -> void:
