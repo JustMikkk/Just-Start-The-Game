@@ -57,6 +57,8 @@ func _on_mouse_enter() -> void:
 
 
 func _on_mouse_exit() -> void:
+	if not get_tree(): return
+	
 	_is_mouse_hovering = false
 	slide_down()
 

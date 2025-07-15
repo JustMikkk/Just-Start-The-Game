@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsl023t01ihkd"]
+[gd_scene load_steps=12 format=3 uid="uid://dsl023t01ihkd"]
 
 [ext_resource type="Script" uid="uid://d34xs3qbm3iol" path="res://scenes/globals/cursor_manager.gd" id="1_ndr1v"]
 [ext_resource type="Texture2D" uid="uid://cwpqshcnfocad" path="res://assets/graphics/player/transform/the_cursed_one_transform_0001.png" id="2_qxen4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://casch0rnw0ll4" path="res://assets/graphics/player/transform/the_cursed_one_transform_0006.png" id="7_b7gre"]
 [ext_resource type="Texture2D" uid="uid://drh455o78agix" path="res://assets/graphics/player/transform/the_cursed_one_transform_0007.png" id="8_dn4jf"]
 [ext_resource type="Texture2D" uid="uid://di4kqlgxanyfy" path="res://assets/graphics/player/transform/the_cursed_one_transform_0008.png" id="9_33eh4"]
+[ext_resource type="PackedScene" uid="uid://cf58iclp3fedo" path="res://scenes/player/click_area.tscn" id="10_wuutn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_74276"]
 animations = [{
@@ -87,3 +88,6 @@ z_index = 100
 position = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_74276")
 autoplay = "default"
+
+[node name="ClickArea" parent="AnimatedSprite2D" instance=ExtResource("10_wuutn")]
+position = Vector2(-7, -7)

@@ -2,28 +2,20 @@ extends Node2D
 
 signal cursor_transformed
 
+const MAX_SPEED = 400
+const ACCELERATION = 200
 
-const CURSOR = preload("res://assets/graphics/player/cursor/cursor.png")
-const CURSOR_CURIOUS = preload("res://assets/graphics/player/cursor/cursor_curious.png")
-
-const CURSORS = [
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0001.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0002.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0003.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0004.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0005.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0006.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0007.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0008.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0009.png"),
-		preload("res://assets/graphics/player/cursor/the_cursed_cursor_0010.png"),
-	]
 
 var _cursor_index: int = 0
 var _change_time: float = 1 / 24.0
 var _timer: float = 0.0
 
+var _speed: float = 0
+
+
 var _is_cursor_hidden: bool = false
+
+@onready var _previous_mouse_pos: Vector2 = get_global_mouse_position()
 
 @onready var _cursor_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -36,8 +28,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _is_cursor_hidden: return
 	
-	scale.x = 1 if GameManager.player.is_looking_left() else -1
-	global_position = Vector2i(get_global_mouse_position())
+	if get_global_mouse_position() != _previous_mouse_pos:
+		_cursor_sprite.position = Vector2.ZERO
+		global_position = get_global_mouse_position()
+	else:
+		var dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+		
+		if dir:
+			_speed = move_toward(_speed, MAX_SPEED, ACCELERATION * delta)
+		else:
+			_speed = move_toward(_speed, 0, ACCELERATION * delta)
+		
+		_cursor_sprite.position += dir.normalized() * _speed * delta
+	
+	_previous_mouse_pos = get_global_mouse_position()
 	
 	#
 	#_timer += delta
@@ -54,10 +58,7 @@ func is_cursor_hidden() -> bool:
 
 
 func show_warp_cursor(pos: Vector2) -> void:
-	Input.warp_mouse(Vector2(
-			pos.x * (get_window().size.x / float(Config.GAME_WIDTH)),
-			pos.y * (get_window().size.y / float(Config.GAME_HEIGHT))
-	))
+	_warp_cursor(pos)
 	_is_cursor_hidden = false
 	show_cursor() 
 
@@ -78,22 +79,17 @@ func hide_cursor() -> void:
 	cursor_transformed.emit()
 	_cursor_sprite.hide()
 	_is_cursor_hidden = true
-	
 
 
 func set_cursor_type(type: int) -> void:
-	return
-	if _is_cursor_hidden: return
-	
-	var img: CompressedTexture2D
-	
-	match type:
-		CursorType.DEFAULT:
-			img = CURSOR
-		CursorType.CURIOUS:
-			img = CURSOR_CURIOUS
-	
-	_set_cursor_sprite(img)
+	pass
+
+
+func _warp_cursor(pos: Vector2) -> void:
+	Input.warp_mouse(Vector2(
+				pos.x * (get_window().size.x / float(Config.GAME_WIDTH)),
+				pos.y * (get_window().size.y / float(Config.GAME_HEIGHT))
+		))
 
 
 func _set_cursor_sprite(img: CompressedTexture2D) -> void:
