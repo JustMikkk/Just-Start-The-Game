@@ -8,13 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://h10q3vngwped" path="res://assets/graphics/bindows/btn_minimise.png" id="4_xo7cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo7cu"]
-size = Vector2(152, 16)
+size = Vector2(108, 16)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c4h8f"]
-a = Vector2(-96, 0)
-b = Vector2(96, 0)
+resource_local_to_scene = true
+a = Vector2(-96, 2)
+b = Vector2(96, 2)
 
 [node name="Bindow" type="Node2D"]
+z_index = 2
 script = ExtResource("1_xo7cu")
 
 [node name="Inside" type="Sprite2D" parent="."]
@@ -22,8 +24,6 @@ scale = Vector2(184, 184)
 texture = ExtResource("1_bc0lj")
 
 [node name="Frame" type="Sprite2D" parent="."]
-modulate = Color(0.133333, 0.133333, 0.133333, 1)
-self_modulate = Color(0.129412, 0.129412, 0.129412, 1)
 texture = ExtResource("2_aidj8")
 
 [node name="DragArea" type="Area2D" parent="."]
@@ -41,15 +41,18 @@ position = Vector2(80, -88)
 _icon = ExtResource("3_c4h8f")
 
 [node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2(0, 94)
+position = Vector2(0, 93)
 shape = SubResource("SegmentShape2D_c4h8f")
+disabled = true
 one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
-position = Vector2(0, -94)
+position = Vector2(0, -96)
 shape = SubResource("SegmentShape2D_c4h8f")
+disabled = true
 one_way_collision = true
 
 [connection signal="input_event" from="DragArea" to="." method="_on_drag_area_input_event"]

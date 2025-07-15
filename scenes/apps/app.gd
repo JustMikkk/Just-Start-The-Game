@@ -47,11 +47,8 @@ func _on_mouse_click() -> void:
 		_click_indicator.hide()
 		_start_bindow()
 		
-		GameManager.player.global_position = get_global_mouse_position()
-		GameManager.player.set_enabled(true)
+		GameManager.player.set_enabled(true, global_position)
 		
-		CursorManager.hide_cursor()
-
 
 func _on_mouse_enter() -> void:
 	CursorManager.set_cursor_type(CursorType.CURIOUS)

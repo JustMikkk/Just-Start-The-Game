@@ -8,3 +8,13 @@ var current_desktop: Desktop
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	current_desktop = get_tree().get_first_node_in_group("Desktop")
+
+
+func _physics_process(delta: float) -> void:
+	_debug_commands()
+
+
+func _debug_commands():
+	if Input.is_action_just_released("ui_up"):
+		print("jaja")
+		player.set_enabled(true if player.state == 5 else false, Vector2(480, 320))
