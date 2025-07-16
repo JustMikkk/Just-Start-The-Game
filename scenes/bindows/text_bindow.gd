@@ -1,7 +1,7 @@
 class_name TextBindow
 extends Bindow
 
-@export var _text: String = "henlo"
+@export_multiline var _text: String = "henlo"
 
 @export var _autoplay: bool = true
 @export var _initial_delay: float = 1
@@ -20,8 +20,6 @@ func _ready() -> void:
 		bindow_open_signal.connect(_write_text)
 	else:
 		_label.text = _text
-	
-	
 
 
 func _write_text() -> void:
