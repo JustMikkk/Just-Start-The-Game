@@ -52,7 +52,6 @@ one_way_collision = true
 
 [node name="DragArea" parent="." node_paths=PackedStringArray("_parent") instance=ExtResource("7_33fol")]
 _parent = NodePath("..")
-_bindow_size = Vector2i(192, 192)
 
 [node name="CollisionShape2D" parent="DragArea" index="1"]
 position = Vector2(-20, -88)

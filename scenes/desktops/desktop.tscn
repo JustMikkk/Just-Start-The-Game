@@ -80,7 +80,10 @@ position = Vector2(800, 224)
 
 [node name="CMDBindow" parent="Bindows" instance=ExtResource("6_gl3ut")]
 position = Vector2(256, 144)
-text = "Nie jestes godzien zagrac w te gre grrr"
+_text = "henlo"
+_autoplay = true
+_initial_delay = 1.0
+_wait_interval = 0.06
 
 [node name="Apps" type="Node2D" parent="."]
 

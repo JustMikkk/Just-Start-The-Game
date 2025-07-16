@@ -6,10 +6,6 @@ const MAX_SPEED = 400
 const ACCELERATION = 200
 
 
-var _cursor_index: int = 0
-var _change_time: float = 1 / 24.0
-var _timer: float = 0.0
-
 var _speed: float = 0
 
 
@@ -86,7 +82,6 @@ func hide_cursor() -> void:
 
 
 func get_global_pos() -> Vector2:
-	print(_click_area.global_position)
 	return _click_area.global_position
 
 

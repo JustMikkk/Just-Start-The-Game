@@ -11,7 +11,6 @@ enum BindowState {
 	MINIMISED,
 }
 
-@export var _size: Vector2i = Vector2(192, 192)
 @export var _can_be_minimised: bool = true
 @export var _can_be_exited: bool = true
 
@@ -27,6 +26,7 @@ var _tween_size: Tween
 
 @onready var _collision_shape_2d: CollisionShape2D = $Bounds/CollisionShape2D
 @onready var _collision_shape_2d_2: CollisionShape2D = $Bounds/CollisionShape2D2
+@onready var _frame: Sprite2D = $Frame
 
 
 
@@ -65,6 +65,10 @@ func close_bindow() -> void:
 
 func is_open() -> bool:
 	return current_state == BindowState.OPENED
+
+
+func get_size() -> Vector2:
+	return _frame.texture.get_size()
 
 
 func _change_state(new_state: BindowState) -> void:

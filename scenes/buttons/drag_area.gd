@@ -1,7 +1,8 @@
 extends AButton
 
-@export var _parent: Node2D
-@export var _bindow_size: Vector2i
+@export var _parent: Bindow
+
+var _bindow_size: Vector2i
 
 var _drag_offset: Vector2 = Vector2.ZERO
 var _is_dragged: bool = false
@@ -9,10 +10,12 @@ var _is_mouse_in: bool = false
 
 
 func _ready() -> void:
+	await _parent.ready
+	_bindow_size = _parent.get_size()
+	
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
 	mouse_click.connect(_on_mouse_click)
-	
 
 
 func _physics_process(_delta: float) -> void:
