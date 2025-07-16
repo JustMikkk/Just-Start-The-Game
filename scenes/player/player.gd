@@ -41,6 +41,7 @@ var _fall_splash_treshold: float = 1.2
 @onready var _floor_ray_cast_2d: RayCast2D = $FloorRayCast2D
 @onready var _crouch_timer: Timer = $CrouchTimer
 @onready var _collision_disabled_timer: Timer = $CollisionDisabledTimer
+@onready var _click_area: ClickArea = $ClickArea
 
 
 func _physics_process(delta):
@@ -162,6 +163,7 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 	velocity = Vector2.ZERO
 	
 	if enabled:
+		_click_area.is_enabled = true
 		_animated_sprite_2d.flip_h = true
 		CursorManager.hide_cursor()
 		await CursorManager.cursor_transformed

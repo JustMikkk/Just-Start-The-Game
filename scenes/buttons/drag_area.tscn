@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dagv4cb0c0iub"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_xcv17"]
+[ext_resource type="Script" uid="uid://dfh1mmwb0f6ma" path="res://scenes/buttons/drag_area.gd" id="2_dtuc1"]
+
+[node name="DragArea" instance=ExtResource("1_xcv17")]
+script = ExtResource("2_dtuc1")
+_bindow_size = Vector2i(0, 0)
+
+[node name="Icon" parent="." index="0"]
+visible = false

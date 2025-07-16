@@ -18,9 +18,11 @@ var _is_cursor_hidden: bool = false
 @onready var _previous_mouse_pos: Vector2 = get_global_mouse_position()
 
 @onready var _cursor_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _click_area: ClickArea = $AnimatedSprite2D/ClickArea
 
 
 func _ready() -> void:
+	_click_area.is_enabled = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_cursor_type(CursorType.DEFAULT)
 
@@ -29,7 +31,7 @@ func _process(delta: float) -> void:
 	if _is_cursor_hidden: return
 	
 	if get_global_mouse_position() != _previous_mouse_pos:
-		_cursor_sprite.position = Vector2.ZERO
+		_cursor_sprite.position = Vector2(7, 7)
 		global_position = get_global_mouse_position()
 	else:
 		var dir: Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -59,6 +61,7 @@ func is_cursor_hidden() -> bool:
 
 func show_warp_cursor(pos: Vector2) -> void:
 	_warp_cursor(pos)
+	_cursor_sprite.position = Vector2(7, 7)
 	_is_cursor_hidden = false
 	show_cursor() 
 
@@ -68,17 +71,23 @@ func show_cursor() -> void:
 	_cursor_sprite.show()
 	_cursor_sprite.play("transform_into")
 	await _cursor_sprite.animation_finished
+	_click_area.is_enabled = true
 	cursor_transformed.emit()
 	_cursor_sprite.play("default")
 	
 
-
 func hide_cursor() -> void:
+	_click_area.is_enabled = false
 	_cursor_sprite.play("transform_from")
 	await _cursor_sprite.animation_finished
 	cursor_transformed.emit()
 	_cursor_sprite.hide()
 	_is_cursor_hidden = true
+
+
+func get_global_pos() -> Vector2:
+	print(_click_area.global_position)
+	return _click_area.global_position
 
 
 func set_cursor_type(type: int) -> void:
