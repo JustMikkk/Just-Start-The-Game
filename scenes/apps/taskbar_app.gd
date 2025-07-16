@@ -53,7 +53,7 @@ func _open_bindow() -> void:
 
 
 func _minimise_bindow() -> void:
-	app.bindow.minimise_bindow()
+	app.bindow.minimise_bindow_taskbar(global_position)
 
 
 func _close_bindow() -> void:

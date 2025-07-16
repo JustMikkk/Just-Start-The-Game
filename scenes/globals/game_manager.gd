@@ -10,7 +10,7 @@ func _ready() -> void:
 	current_desktop = get_tree().get_first_node_in_group("Desktop")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_debug_commands()
 
 

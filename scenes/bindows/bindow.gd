@@ -48,11 +48,11 @@ func open_bindow() -> void:
 
 
 func minimise_bindow() -> void:
-	if not _can_be_minimised: return
-	
-	GameManager.player.set_enabled(true, _minimise_btn.global_position)
-	
-	_change_state(BindowState.MINIMISED)
+	_minimise_bindow(_minimise_btn.global_position)
+
+
+func minimise_bindow_taskbar(pos: Vector2):
+	_minimise_bindow(pos)
 
 
 func close_bindow() -> void:
@@ -123,6 +123,14 @@ func _close_bindow() -> void:
 			.set_parallel(true)
 	_tween_size.tween_property(self, "global_position", _origin_pos, 0.8)
 	_tween_size.tween_property(self, "scale", Vector2.ZERO, 0.8)
+
+
+func _minimise_bindow(pos: Vector2) -> void:
+	if not _can_be_minimised: return
+	
+	GameManager.player.set_enabled(true, pos)
+	
+	_change_state(BindowState.MINIMISED)
 
 
 

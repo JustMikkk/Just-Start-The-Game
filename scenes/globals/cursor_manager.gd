@@ -38,17 +38,12 @@ func _process(delta: float) -> void:
 			_speed = move_toward(_speed, 0, ACCELERATION * delta)
 		
 		_cursor_sprite.position += dir.normalized() * _speed * delta
+		_cursor_sprite.global_position = Vector2(
+				clamp(_cursor_sprite.global_position.x, 7, Config.GAME_WIDTH - 7),
+				clamp(_cursor_sprite.global_position.y, 7, Config.GAME_HEIGHT - 7)
+		)
 	
 	_previous_mouse_pos = get_global_mouse_position()
-	
-	#
-	#_timer += delta
-	#
-	#if _timer >= _change_time:
-		#_timer = 0
-		#_set_cursor_sprite(CURSORS[_cursor_index])
-		#
-		#_cursor_index = (_cursor_index + 1) % CURSORS.size()
 
 
 func is_cursor_hidden() -> bool:
@@ -85,7 +80,7 @@ func get_global_pos() -> Vector2:
 	return _click_area.global_position
 
 
-func set_cursor_type(type: int) -> void:
+func set_cursor_type(_type: int) -> void:
 	pass
 
 
