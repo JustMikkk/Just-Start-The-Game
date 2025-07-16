@@ -15,7 +15,7 @@ var _is_dragged: bool = false:
 			_tween_alpha.kill()
 		
 		_tween_alpha = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-		_tween_alpha.tween_property(_parent, "modulate:a", 0.8 if _is_dragged else 1, 0.3)
+		_tween_alpha.tween_property(_parent, "modulate:a", 0.8 if _is_dragged else 1.0, 0.3)
 
 
 func _ready() -> void:

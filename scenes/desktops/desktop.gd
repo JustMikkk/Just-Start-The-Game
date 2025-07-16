@@ -1,6 +1,7 @@
 class_name Desktop
 extends Node2D
 
+@onready var bg: Sprite2D = $BG
 @onready var _taskbar: Taskbar = $Taskbar
 
 
