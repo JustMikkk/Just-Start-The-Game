@@ -2,12 +2,12 @@ class_name Game
 extends Node2D
 
 
-var _desktops: Array[Desktop]
+var _desktops: Array[DesktopHolder]
 
 
 func _ready() -> void:
-	for node in get_tree().get_nodes_in_group("Desktop"):
-		if node is Desktop:
+	for node in get_tree().get_nodes_in_group("DesktopHolder"):
+		if node is DesktopHolder:
 			_desktops.append(node)
 
 
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		_move(1)
 	elif Input.is_action_just_pressed("debug2"):
 		_move(-1)
-		
+
 
 func _move(dir: int) -> void:
 	for desktop in _desktops:

@@ -5,7 +5,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	for node in get_tree().get_nodes_in_group("App"):
+	for node in $Apps.get_children():
 		if node is App:
 			node.app_opened_signal.connect(_on_app_open)
 			node.app_closed_signal.connect(_on_app_close)
