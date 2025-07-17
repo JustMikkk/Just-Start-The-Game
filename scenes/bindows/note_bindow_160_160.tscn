@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://oxqyg7gt4meu" path="res://scenes/bindows/text_bindow.tscn" id="1_u85jr"]
 [ext_resource type="Texture2D" uid="uid://baavmx0nus5sr" path="res://assets/graphics/bindows/note_inside_160_160.png" id="2_vaent"]
 [ext_resource type="Texture2D" uid="uid://cvr222bi4w0t3" path="res://assets/graphics/bindows/note_frame_160_160.png" id="3_chrra"]
-[ext_resource type="FontFile" uid="uid://hoteada7eas6" path="res://assets/fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_vaent"]
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="4_vaent"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ug1pt"]
 resource_local_to_scene = true
@@ -19,10 +19,10 @@ b = Vector2(80, 2)
 size = Vector2(120, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_chrra"]
+line_spacing = 0.0
 font = ExtResource("4_vaent")
-font_size = 12
 font_color = Color(0.243137, 0.152941, 0.137255, 1)
-outline_size = 1
+shadow_color = Color(1, 1, 1, 0)
 
 [node name="NoteBindow_160_160" instance=ExtResource("1_u85jr")]
 
@@ -54,6 +54,9 @@ offset_left = -72.0
 offset_right = 72.0
 
 [node name="Label" parent="Control" index="0"]
+offset_left = 0.0
+offset_top = -4.0
+offset_right = 144.0
 label_settings = SubResource("LabelSettings_chrra")
 
 [editable path="DragArea"]

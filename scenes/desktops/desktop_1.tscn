@@ -13,10 +13,9 @@
 
 [node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
 position = Vector2(192, 128)
-_text = "Movement:
-WSAD / Arrow keys / Left stick
+_text = "Movement: WSAD / Arrow keys / Left stick
 
-Jump: Space / North BTN
+Jump: Space / South BTN
 
 Click: J / Z / Enter / West BTN"
 

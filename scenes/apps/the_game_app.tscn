@@ -1,23 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://duttugj4076jd"]
+[gd_scene load_steps=4 format=3 uid="uid://duttugj4076jd"]
 
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="1_2daua"]
 [ext_resource type="Script" uid="uid://1iynk8u3w2n8" path="res://scenes/apps/the_game_app.gd" id="2_6rm3q"]
-[ext_resource type="FontFile" uid="uid://hoteada7eas6" path="res://assets/fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_6qk2y"]
 [ext_resource type="Texture2D" uid="uid://dpeu1mkp1fqqx" path="res://assets/graphics/apps/desktop/the_game48.png" id="3_fmbhk"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fmbhk"]
-font = ExtResource("3_6qk2y")
-font_size = 10
 
 [node name="TheGameApp" instance=ExtResource("1_2daua")]
 script = ExtResource("2_6rm3q")
+_label_text = "The Game"
 
 [node name="Icon" parent="." index="0"]
 texture = ExtResource("3_fmbhk")
 
 [node name="Label" parent="Control" index="0"]
 text = "The Game"
-label_settings = SubResource("LabelSettings_fmbhk")
 
 [node name="ScaleTimer" type="Timer" parent="." index="5"]
 wait_time = 1.5

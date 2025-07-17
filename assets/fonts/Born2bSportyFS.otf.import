@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7s5v5cl25kck"
-path="res://.godot/imported/PixeloidMono-d94EV.ttf-491dd6f47c993717d8164684edcdaad1.fontdata"
+uid="uid://b2wpnfxceq6xc"
+path="res://.godot/imported/Born2bSportyFS.otf-78e0e2004b143d9e96b6493dff2d7eaf.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/PixeloidMono-d94EV.ttf"
-dest_files=["res://.godot/imported/PixeloidMono-d94EV.ttf-491dd6f47c993717d8164684edcdaad1.fontdata"]
+source_file="res://assets/fonts/Born2bSportyFS.otf"
+dest_files=["res://.godot/imported/Born2bSportyFS.otf-78e0e2004b143d9e96b6493dff2d7eaf.fontdata"]
 
 [params]
 

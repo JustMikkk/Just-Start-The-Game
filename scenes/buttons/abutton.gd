@@ -63,7 +63,6 @@ func _on_tree_exiting() -> void:
 
 func _on_click_area_click() -> void:
 	#if not is_enabled or not CursorManager.is_cursor_hidden(): return
-	print("Asd")
 	if not _click_area: return
 	
 	mouse_click.emit()
