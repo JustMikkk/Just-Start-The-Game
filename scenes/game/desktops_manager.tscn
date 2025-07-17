@@ -16,7 +16,6 @@ shader = ExtResource("1_cr7d5")
 
 [node name="DesktopsManager" type="Node2D" groups=["DesktopsManager"]]
 script = ExtResource("1_1ng7t")
-metadata/_edit_group_ = true
 
 [node name="BlurredBG_Back" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

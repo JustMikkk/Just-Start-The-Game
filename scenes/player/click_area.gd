@@ -4,7 +4,7 @@ extends Area2D
 
 signal click_area_click
 
-var is_enabled: bool = false
+@export var is_enabled: bool = false
 
 func _physics_process(_delta: float) -> void:
 	if not is_enabled: return

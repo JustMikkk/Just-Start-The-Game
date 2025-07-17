@@ -202,6 +202,7 @@ func freeze() -> void:
 
 func unfreeze() -> void:
 	state = State.IDLE
+	_click_area.is_enabled = true
 
 
 func _input(event) -> void:
@@ -236,6 +237,7 @@ func _update_click_are_pos() -> void:
 			_click_area.position = Vector2(6, -21)
 		_:
 			_click_area.is_enabled = false
+	
 
 
 func _enable_collisions() -> void:
