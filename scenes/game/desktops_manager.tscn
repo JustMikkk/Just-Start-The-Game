@@ -32,27 +32,32 @@ texture = ExtResource("3_e2jfa")
 desktop = NodePath("Desktop 1")
 
 [node name="Desktop 1" parent="DesktopHolder" instance=ExtResource("5_kf1ss")]
+visible = false
 
 [node name="DesktopHolder2" parent="." node_paths=PackedStringArray("desktop") instance=ExtResource("4_x7djc")]
 position = Vector2(960, 0)
 desktop = NodePath("Desktop2")
 
 [node name="Desktop2" parent="DesktopHolder2" instance=ExtResource("6_j3bd3")]
+visible = false
 
 [node name="DesktopHolder3" parent="." node_paths=PackedStringArray("desktop") instance=ExtResource("4_x7djc")]
 position = Vector2(1920, 0)
 desktop = NodePath("Desktop3")
 
 [node name="Desktop3" parent="DesktopHolder3" instance=ExtResource("7_isvl2")]
+visible = false
 
 [node name="DesktopHolder4" parent="." node_paths=PackedStringArray("desktop") instance=ExtResource("4_x7djc")]
 position = Vector2(2880, 0)
 desktop = NodePath("Desktop4")
 
 [node name="Desktop4" parent="DesktopHolder4" instance=ExtResource("8_gr547")]
+visible = false
 
 [node name="DesktopHolder5" parent="." node_paths=PackedStringArray("desktop") instance=ExtResource("4_x7djc")]
 position = Vector2(2880, 0)
 desktop = NodePath("Desktop5")
 
 [node name="Desktop5" parent="DesktopHolder5" instance=ExtResource("9_yya1h")]
+visible = false

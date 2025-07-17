@@ -20,7 +20,7 @@ func _ready() -> void:
 			_desktop_holders.append(node)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug1"):
 		_switch_desktop_with_app(desktop_index - 1)
 	elif Input.is_action_just_pressed("debug2"):
@@ -39,8 +39,9 @@ func go_to_desktop(index: int, with_app: bool) -> void:
 
 func _switch_desktop_normal(new_index: int) -> void:
 	if _is_moving: return
+	if new_index == desktop_index: return
 	
-	var dir = desktop_index - new_index
+	var dir = new_index - desktop_index 
 	
 	_is_moving = true
 	
@@ -59,17 +60,20 @@ func _switch_desktop_normal(new_index: int) -> void:
 		
 		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(true)
 		
+		GameManager.player.freeze()
 		tween.tween_property(desktop_holder, "position", Vector2(
 				i * 960 - desktop_index * 960,
 				0
 		), 0.5)
-		tween.tween_property(GameManager.player, "position", Vector2(
-				5 if dir < 0 else 955,
-				GameManager.player.position.y
+
+		tween.tween_property(GameManager.player, "global_position", Vector2(
+				5 if dir > 0 else 955,
+				GameManager.player.global_position.y
 		), 0.5)
 		
 		tween.tween_callback(func():
 			_is_moving = false
+			GameManager.player.unfreeze()
 		)
 
 

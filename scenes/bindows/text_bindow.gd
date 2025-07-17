@@ -1,13 +1,15 @@
 class_name TextBindow
 extends Bindow
 
+
+signal writing_finished
+
 @export_multiline var _text: String = "henlo"
 
 @export var _autoplay: bool = true
 @export var _initial_delay: float = 1
 @export var _wait_interval: float = 0.06
 
-var _letter_index: int = 0
 var _is_writing: bool = false
 
 @onready var _label: Label = $Control/Label
@@ -20,6 +22,7 @@ func _ready() -> void:
 		bindow_open_signal.connect(_write_text)
 	else:
 		_label.text = _text
+		writing_finished.emit()
 
 
 func _write_text() -> void:
@@ -40,4 +43,4 @@ func _write_text() -> void:
 		await get_tree().create_timer(wait_interval).timeout
 	
 	_is_writing = false
-	
+	writing_finished.emit()

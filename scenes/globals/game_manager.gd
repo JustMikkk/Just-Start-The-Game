@@ -5,6 +5,8 @@ var current_desktop: Desktop
 var game: Game
 var _desktops_manager: DesktopsManager
 
+var are_apps_transforming: bool = false
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	current_desktop = get_tree().get_first_node_in_group("Desktop")

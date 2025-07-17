@@ -5,7 +5,7 @@ signal app_opened_signal(icon: App)
 signal app_exitd_signal(icon: App)
 
 
-@export var _is_fullcreen: bool = false
+#@export var _is_fullcreen: bool = false
 @export var bindow: Bindow
 @export var taskbar_icon: Texture
 @export var icon: Texture
@@ -50,7 +50,8 @@ func _on_mouse_click() -> void:
 		_click_indicator.hide()
 		_open_bindow()
 		
-		GameManager.player.set_enabled(true, global_position)
+		if GameManager.are_apps_transforming: 
+			GameManager.player.set_enabled(true, global_position)
 		
 
 func _on_mouse_enter() -> void:

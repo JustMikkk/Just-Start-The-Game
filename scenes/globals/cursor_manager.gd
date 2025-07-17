@@ -5,10 +5,7 @@ signal cursor_transformed
 const MAX_SPEED = 400
 const ACCELERATION = 200
 
-
 var _speed: float = 0
-
-
 var _is_cursor_hidden: bool = false
 
 @onready var _previous_mouse_pos: Vector2 = get_global_mouse_position()
@@ -78,6 +75,14 @@ func hide_cursor() -> void:
 
 func get_global_pos() -> Vector2:
 	return _click_area.global_position
+
+
+func freeze() -> void:
+	_is_cursor_hidden = true
+
+
+func get_follow_node() -> Node2D:
+	return GameManager.player as Node2D if _is_cursor_hidden else _click_area as Node2D
 
 
 func set_cursor_type(_type: int) -> void:

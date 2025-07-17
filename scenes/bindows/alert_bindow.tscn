@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fvjlebevuqtj"]
+[gd_scene load_steps=14 format=3 uid="uid://fvjlebevuqtj"]
 
 [ext_resource type="PackedScene" uid="uid://oxqyg7gt4meu" path="res://scenes/bindows/text_bindow.tscn" id="1_8cb3c"]
 [ext_resource type="Texture2D" uid="uid://eem0lryech81" path="res://assets/graphics/bindows/bindows-alert_inside_160_96.png" id="2_504c8"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2jkld18fbhda" path="res://assets/graphics/bindows/bindows-alert_frame_160_96.png" id="3_ggl60"]
 [ext_resource type="Texture2D" uid="uid://i6lxv6vaahht" path="res://assets/graphics/ui/bindows_alert_btn_80_48.png" id="5_db276"]
 [ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="6_db276"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db276"]
+size = Vector2(80, 48)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdc78"]
 line_spacing = 0.0
@@ -39,6 +42,7 @@ shadow_color = Color(1, 1, 1, 0)
 script = ExtResource("2_ggl60")
 _transforms_player = true
 _btn_text = "OK"
+_wait_interval = 0.04
 
 [node name="Inside" parent="." index="0"]
 texture = ExtResource("2_504c8")
@@ -51,11 +55,15 @@ visible = false
 
 [node name="ExitBtn" parent="." index="3"]
 position = Vector2(56, 40)
+scale = Vector2(1e-05, 1e-05)
 _icon = ExtResource("5_db276")
 metadata/_edit_group_ = true
 
 [node name="Icon" parent="ExitBtn" index="0"]
 texture = ExtResource("5_db276")
+
+[node name="CollisionShape2D" parent="ExitBtn" index="1"]
+shape = SubResource("RectangleShape2D_db276")
 
 [node name="BtnLabel" type="Label" parent="ExitBtn" index="2"]
 offset_left = -32.0
@@ -91,8 +99,8 @@ offset_bottom = 40.0
 [node name="Label" parent="Control" index="0"]
 offset_left = 0.0
 offset_top = -4.0
-offset_right = 160.0
-offset_bottom = 76.0
+offset_right = 144.0
+offset_bottom = 68.0
 text = "You cant open this program"
 label_settings = SubResource("LabelSettings_en8rk")
 horizontal_alignment = 1
