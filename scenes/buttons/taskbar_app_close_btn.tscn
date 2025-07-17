@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb1xd500bwy26"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_1psdo"]
+[ext_resource type="Script" uid="uid://cb5syvshn173x" path="res://scenes/buttons/taskbar_app_close_btn.gd" id="2_4vde4"]
+[ext_resource type="Texture2D" uid="uid://dmi16bmrgucih" path="res://assets/graphics/ui/taskbar_app_close.png" id="2_d1b6o"]
+[ext_resource type="Texture2D" uid="uid://b5tnb4bqcr8rv" path="res://assets/graphics/ui/close_btn_x32.png" id="4_sdpfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdpfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vde4"]
+size = Vector2(30, 84)
+
+[node name="TaskbarAppCloseBtn" instance=ExtResource("1_1psdo")]
+script = ExtResource("2_4vde4")
+
+[node name="Icon" parent="." index="0"]
+z_index = -1
+texture = ExtResource("2_d1b6o")
+
+[node name="XButton" parent="Icon" index="0" instance=ExtResource("1_1psdo")]
+position = Vector2(0, -3)
+
+[node name="Icon" parent="Icon/XButton" index="0"]
+texture = ExtResource("4_sdpfy")
+
+[node name="CollisionShape2D" parent="Icon/XButton" index="1"]
+shape = SubResource("RectangleShape2D_sdpfy")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_4vde4")
+
+[editable path="Icon/XButton"]

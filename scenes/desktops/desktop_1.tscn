@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1dit03ngtyfr"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
+[ext_resource type="PackedScene" uid="uid://die33j062iu2t" path="res://scenes/bindows/note_bindow.tscn" id="2_rcr38"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="3_befw0"]
+[ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
+[ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
+
+[node name="Desktop 1" instance=ExtResource("1_5c2q5")]
+
+[node name="NoteBindow" parent="Bindows" index="0" instance=ExtResource("2_rcr38")]
+
+[node name="Note" parent="Apps" index="0" node_paths=PackedStringArray("bindow") instance=ExtResource("3_befw0")]
+position = Vector2(-384, 230)
+bindow = NodePath("../../Bindows/NoteBindow")
+taskbar_icon = ExtResource("4_btg26")
+icon = ExtResource("5_gn44y")
+_label_text = "note.txt"

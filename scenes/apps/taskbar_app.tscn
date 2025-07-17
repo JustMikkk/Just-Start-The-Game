@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6gfiwux5iujg"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_l0xa7"]
+[ext_resource type="Script" uid="uid://cueap7unt820g" path="res://scenes/apps/taskbar_app.gd" id="1_l16k6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l16k6"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_4e5aq"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ci7nb"]
+gradient = SubResource("Gradient_4e5aq")
+width = 40
+height = 40
+
+[node name="TaskbarApp" instance=ExtResource("1_l0xa7")]
+script = ExtResource("1_l16k6")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource("RectangleShape2D_l16k6")
+
+[node name="ActiveIndicator" type="Sprite2D" parent="." index="2"]
+modulate = Color(1, 1, 1, 0.196078)
+z_index = 1
+position = Vector2(0, 20)
+rotation = -1.5708
+scale = Vector2(0.1, 0.2)
+texture = SubResource("GradientTexture2D_ci7nb")
+centered = false
+offset = Vector2(0, -20)

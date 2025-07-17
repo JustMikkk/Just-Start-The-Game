@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://b07r3vli4kq01"]
+
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_ibcxr"]
+[ext_resource type="Texture2D" uid="uid://bbc71gklbh7ym" path="res://assets/graphics/bindows/alert_blue_144x80.png" id="2_xl5g7"]
+[ext_resource type="Texture2D" uid="uid://bssmnqs1cdbxg" path="res://assets/graphics/ui/alert_ok_blue_48_32.png" id="4_f8jjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl5g7"]
+size = Vector2(48, 32)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xl5g7"]
+resource_local_to_scene = true
+a = Vector2(-72, 2)
+b = Vector2(72, 2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lhn3d"]
+resource_local_to_scene = true
+a = Vector2(-72, -2)
+b = Vector2(72, -2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhn3d"]
+size = Vector2(144, 16)
+
+[node name="Alert" instance=ExtResource("1_ibcxr")]
+_can_be_minimised = false
+
+[node name="Inside" parent="." index="0"]
+visible = false
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("2_xl5g7")
+
+[node name="MinimiseBtn" parent="." index="2"]
+visible = false
+position = Vector2(40, -32)
+collision_layer = 1
+collision_mask = 1
+
+[node name="ExitBtn" parent="." index="3"]
+modulate = Color(0.533333, 0.533333, 0.533333, 1)
+position = Vector2(64, 32)
+_icon = ExtResource("4_f8jjd")
+
+[node name="Icon" parent="ExitBtn" index="0"]
+texture = ExtResource("4_f8jjd")
+
+[node name="CollisionShape2D" parent="ExitBtn" index="1"]
+shape = SubResource("RectangleShape2D_xl5g7")
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+position = Vector2(0, 36)
+shape = SubResource("SegmentShape2D_xl5g7")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, -36)
+shape = SubResource("SegmentShape2D_lhn3d")
+
+[node name="CollisionShape2D" parent="DragArea" index="1"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_lhn3d")
+
+[editable path="ExitBtn"]
+[editable path="DragArea"]

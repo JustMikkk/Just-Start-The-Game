@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://6d35rqg5c6yv"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_kw8ia"]
+[ext_resource type="Texture2D" uid="uid://cup1dk4oajnps" path="res://assets/graphics/bg/bg_dwa.png" id="2_0sq12"]
+
+[node name="Desktop2" instance=ExtResource("1_kw8ia")]
+
+[node name="BG" parent="." index="0"]
+texture = ExtResource("2_0sq12")
