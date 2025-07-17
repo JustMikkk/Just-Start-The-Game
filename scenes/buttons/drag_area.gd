@@ -26,6 +26,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if CursorManager.is_cursor_hidden(): return
+	
 	if Input.is_action_just_released("click"):
 		_is_dragged = false
 
@@ -40,5 +42,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_mouse_click() -> void:
+	if CursorManager.is_cursor_hidden(): return
+	
 	_is_dragged = true
 	_drag_offset = _parent.global_position - CursorManager.get_global_pos()

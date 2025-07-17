@@ -2,7 +2,7 @@ class_name App
 extends AButton
 
 signal app_opened_signal(icon: App)
-signal app_closed_signal(icon: App)
+signal app_exitd_signal(icon: App)
 
 
 @export var _is_fullcreen: bool = false
@@ -28,16 +28,16 @@ func _ready() -> void:
 	mouse_exit.connect(_on_mouse_exit)
 	
 	bindow.setup(global_position)
-	bindow.bindow_close_signal.connect(_on_bindow_close)
+	bindow.bindow_exit_signal.connect(_on_bindow_exit)
 	_icon.texture = icon
 	_label.text = _label_text
 
 
-func _on_bindow_close() -> void:
-	app_closed_signal.emit(self)
+func _on_bindow_exit() -> void:
+	app_exitd_signal.emit(self)
 
 
-func _start_bindow() -> void:
+func _open_bindow() -> void:
 	bindow.open_bindow()
 	app_opened_signal.emit(self)
 
@@ -48,7 +48,7 @@ func _on_mouse_click() -> void:
 		_click_indicator.show()
 	else:
 		_click_indicator.hide()
-		_start_bindow()
+		_open_bindow()
 		
 		GameManager.player.set_enabled(true, global_position)
 		

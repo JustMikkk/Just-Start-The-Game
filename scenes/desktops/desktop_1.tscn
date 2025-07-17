@@ -1,18 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=9 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
-[ext_resource type="PackedScene" uid="uid://die33j062iu2t" path="res://scenes/bindows/note_bindow.tscn" id="2_rcr38"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="3_befw0"]
+[ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
 [ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
 [ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
+[ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
+[ext_resource type="Texture2D" uid="uid://dpeu1mkp1fqqx" path="res://assets/graphics/apps/desktop/the_game48.png" id="8_yfe1b"]
 
 [node name="Desktop 1" instance=ExtResource("1_5c2q5")]
 
-[node name="NoteBindow" parent="Bindows" index="0" instance=ExtResource("2_rcr38")]
+[node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
+position = Vector2(192, 128)
+_text = "Movement:
+WSAD / Arrow keys / Left stick
 
-[node name="Note" parent="Apps" index="0" node_paths=PackedStringArray("bindow") instance=ExtResource("3_befw0")]
-position = Vector2(-384, 230)
-bindow = NodePath("../../Bindows/NoteBindow")
+Jump: Space / North BTN
+
+Click: J / Z / Enter / West BTN"
+
+[node name="Help-Bindow" parent="Bindows" index="1" instance=ExtResource("2_btg26")]
+position = Vector2(384, 56)
+_text = "You can jump in and on windows
+
+
+
+
+
+                     :3"
+
+[node name="AlertBindow" parent="Bindows" index="2" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+position = Vector2(-128, 96)
+_btn_text = "Open anyway"
+_next_bindow = NodePath("../AlertBindow2")
+_text = "You can't open this program"
+
+[node name="AlertBindow2" parent="Bindows" index="3" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+position = Vector2(32, -40)
+_next_bindow = NodePath("../AlertBindow3")
+
+[node name="AlertBindow3" parent="Bindows" index="4" instance=ExtResource("3_gn44y")]
+position = Vector2(-176, -80)
+
+[node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("bindow") instance=ExtResource("3_befw0")]
+position = Vector2(336, 232)
+bindow = NodePath("../../Bindows/Movement-Bindow")
 taskbar_icon = ExtResource("4_btg26")
 icon = ExtResource("5_gn44y")
-_label_text = "note.txt"
+_label_text = "movement.txt"
+
+[node name="Help-App" parent="Apps" index="1" node_paths=PackedStringArray("bindow") instance=ExtResource("3_befw0")]
+position = Vector2(408, 232)
+bindow = NodePath("../../Bindows/Help-Bindow")
+taskbar_icon = ExtResource("4_btg26")
+icon = ExtResource("5_gn44y")
+_label_text = "help.txt"
+
+[node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("bindow") instance=ExtResource("7_7okfk")]
+position = Vector2(-296, -8)
+bindow = NodePath("../../Bindows/AlertBindow")
+icon = ExtResource("8_yfe1b")

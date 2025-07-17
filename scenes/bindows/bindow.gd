@@ -2,7 +2,7 @@ class_name Bindow
 extends Node2D
 
 signal bindow_open_signal
-signal bindow_close_signal
+signal bindow_exit_signal
 signal bindow_minimise_signal
 
 enum BindowState {
@@ -55,7 +55,7 @@ func minimise_bindow_taskbar(pos: Vector2):
 	_minimise_bindow(pos)
 
 
-func close_bindow() -> void:
+func exit_bindow() -> void:
 	if not _can_be_exited: return
 	
 	GameManager.player.set_enabled(true, _exit_btn.global_position)
@@ -75,7 +75,7 @@ func _change_state(new_state: BindowState) -> void:
 	if current_state == new_state: return
 	
 	if current_state == BindowState.OPENED:
-		_close_bindow()
+		_exit_bindow()
 		_collision_shape_2d.disabled = true
 		_collision_shape_2d_2.disabled = true
 
@@ -88,7 +88,7 @@ func _change_state(new_state: BindowState) -> void:
 			_collision_shape_2d_2.disabled = false
 		
 		BindowState.CLOSED:
-			bindow_close_signal.emit()
+			bindow_exit_signal.emit()
 		BindowState.MINIMISED:
 			bindow_minimise_signal.emit()
 	
@@ -110,7 +110,7 @@ func _open_bindow() -> void:
 	_tween_size.tween_property(self, "scale", Vector2.ONE, 0.8)
 
 
-func _close_bindow() -> void:
+func _exit_bindow() -> void:
 	if scale == Vector2.ONE:
 		_previouis_pos = global_position
 	
@@ -139,4 +139,4 @@ func _on_minimise_button_click() -> void:
 
 
 func _on_exit_button_click() -> void:
-	close_bindow()
+	exit_bindow()

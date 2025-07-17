@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
 [ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_r061u"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="3_r061u"]
-[ext_resource type="FontFile" uid="uid://b5riairri341y" path="res://assets/fonts/PixeloidSansBold-PKnYd.ttf" id="4_rbnoo"]
+[ext_resource type="FontFile" uid="uid://hoteada7eas6" path="res://assets/fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_rbnoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r061u"]
 size = Vector2(48, 48)

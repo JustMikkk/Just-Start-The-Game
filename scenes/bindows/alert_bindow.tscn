@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://fvjlebevuqtj"]
+
+[ext_resource type="PackedScene" uid="uid://oxqyg7gt4meu" path="res://scenes/bindows/text_bindow.tscn" id="1_8cb3c"]
+[ext_resource type="Texture2D" uid="uid://eem0lryech81" path="res://assets/graphics/bindows/bindows-alert_inside_160_96.png" id="2_504c8"]
+[ext_resource type="Script" uid="uid://bblahju8coakp" path="res://scenes/bindows/alert_bindow.gd" id="2_ggl60"]
+[ext_resource type="Texture2D" uid="uid://b2jkld18fbhda" path="res://assets/graphics/bindows/bindows-alert_frame_160_96.png" id="3_ggl60"]
+[ext_resource type="FontFile" uid="uid://hoteada7eas6" path="res://assets/fonts/PixelatedEleganceRegular-ovyAA.ttf" id="4_504c8"]
+[ext_resource type="Texture2D" uid="uid://i6lxv6vaahht" path="res://assets/graphics/ui/bindows_alert_btn_80_48.png" id="5_db276"]
+[ext_resource type="FontFile" uid="uid://c7s5v5cl25kck" path="res://assets/fonts/PixeloidMono-d94EV.ttf" id="6_cdc78"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_en8rk"]
+font = ExtResource("6_cdc78")
+font_size = 12
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_db276"]
+resource_local_to_scene = true
+a = Vector2(-80, 46)
+b = Vector2(80, 46)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cdc78"]
+resource_local_to_scene = true
+a = Vector2(-80, -46)
+b = Vector2(80, -46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en8rk"]
+size = Vector2(160, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggl60"]
+font = ExtResource("4_504c8")
+font_size = 12
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_504c8"]
+font = ExtResource("4_504c8")
+font_size = 12
+
+[node name="AlertBindow" instance=ExtResource("1_8cb3c")]
+script = ExtResource("2_ggl60")
+_transforms_player = true
+_btn_text = "OK"
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_504c8")
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("3_ggl60")
+
+[node name="MinimiseBtn" parent="." index="2"]
+visible = false
+
+[node name="ExitBtn" parent="." index="3"]
+position = Vector2(0, 48)
+_icon = ExtResource("5_db276")
+metadata/_edit_group_ = true
+
+[node name="Icon" parent="ExitBtn" index="0"]
+texture = ExtResource("5_db276")
+
+[node name="BtnLabel" type="Label" parent="ExitBtn" index="2"]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+text = "Open 
+anyway"
+label_settings = SubResource("LabelSettings_en8rk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("SegmentShape2D_db276")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, 0)
+shape = SubResource("SegmentShape2D_cdc78")
+
+[node name="CollisionShape2D" parent="DragArea" index="1"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_en8rk")
+
+[node name="Control" parent="." index="6"]
+offset_left = -72.0
+offset_top = -28.0
+offset_right = 72.0
+offset_bottom = 40.0
+
+[node name="Label" parent="Control" index="0"]
+text = "You cant open this program"
+label_settings = SubResource("LabelSettings_ggl60")
+
+[node name="Title" type="Control" parent="." index="7"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = -48.0
+offset_right = 80.0
+offset_bottom = -32.0
+
+[node name="Label" type="Label" parent="Title" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BINDOWS DEFENDER"
+label_settings = SubResource("LabelSettings_504c8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="ExitBtn"]
+[editable path="DragArea"]

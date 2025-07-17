@@ -9,12 +9,12 @@ func _ready() -> void:
 	for node in $Apps.get_children():
 		if node is App:
 			node.app_opened_signal.connect(_on_app_open)
-			node.app_closed_signal.connect(_on_app_close)
+			node.app_exitd_signal.connect(_on_app_exit)
 
 
 func _on_app_open(app: App) -> void:
 	_taskbar.create_app(app)
 
 
-func _on_app_close(app: App) -> void:
+func _on_app_exit(app: App) -> void:
 	_taskbar.remove_app(app)
