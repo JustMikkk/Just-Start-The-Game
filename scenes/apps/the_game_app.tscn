@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="1_2daua"]
 [ext_resource type="Script" uid="uid://1iynk8u3w2n8" path="res://scenes/apps/the_game_app.gd" id="2_6rm3q"]
-[ext_resource type="Texture2D" uid="uid://dpeu1mkp1fqqx" path="res://assets/graphics/apps/desktop/the_game48.png" id="3_fmbhk"]
+[ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="3_fmbhk"]
 [ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="4_fmbhk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b4euj"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clytdko2adl73"]
+[gd_scene load_steps=13 format=3 uid="uid://clytdko2adl73"]
 
 [ext_resource type="Script" uid="uid://pb76k3yibqx6" path="res://scenes/game/desktops_manager.gd" id="1_1ng7t"]
 [ext_resource type="Shader" uid="uid://eh1631d1ufjf" path="res://assets/shaders/blur.gdshader" id="1_cr7d5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bras2p6rufw1e" path="res://scenes/desktops/desktop_3.tscn" id="7_isvl2"]
 [ext_resource type="PackedScene" uid="uid://cpuy36knlslh6" path="res://scenes/desktops/desktop_4.tscn" id="8_gr547"]
 [ext_resource type="PackedScene" uid="uid://bue5y3jastl4l" path="res://scenes/desktops/desktop_5.tscn" id="9_yya1h"]
+[ext_resource type="PackedScene" uid="uid://bat2tgvlk4cqu" path="res://scenes/desktops/desktop_6.tscn" id="11_e2jfa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kelw5"]
 shader = ExtResource("1_cr7d5")
@@ -60,4 +61,11 @@ position = Vector2(2880, 0)
 desktop = NodePath("Desktop5")
 
 [node name="Desktop5" parent="DesktopHolder5" instance=ExtResource("9_yya1h")]
+visible = false
+
+[node name="DesktopHolder6" parent="." node_paths=PackedStringArray("desktop") instance=ExtResource("4_x7djc")]
+position = Vector2(3840, 0)
+desktop = NodePath("Desktop6")
+
+[node name="Desktop6" parent="DesktopHolder6" instance=ExtResource("11_e2jfa")]
 visible = false
