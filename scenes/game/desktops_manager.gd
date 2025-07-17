@@ -1,9 +1,10 @@
-class_name Game
+class_name DesktopsManager
 extends Node2D
 
 
-var _desktopHolders: Array[DesktopHolder]
-var _desktop_index: int = 0
+var desktop_index: int = 0
+
+var _desktop_holders: Array[DesktopHolder]
 var _is_moving: bool = false
 
 var _tween_alpha: Tween
@@ -12,46 +13,57 @@ var _tween_alpha: Tween
 @onready var _blurred_bg_front: Sprite2D = $BlurredBG_Front
 
 
-
 func _ready() -> void:
-	for node in $Desktops.get_children():
+	for node in get_children():
 		if node is DesktopHolder:
-			_desktopHolders.append(node)
+			_desktop_holders.append(node)
 
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug1"):
-		_switch_desktop_scaling(1)
+		_switch_desktop_normal(1)
 	elif Input.is_action_just_pressed("debug2"):
-		_switch_desktop_scaling(-1)
+		_switch_desktop_normal(3)
 
 
-func _switch_desktop_normal(dir: int) -> void:
+func go_to_desktop(index: int, with_app: bool) -> void:
+	
+	GameManager.current_desktop = _desktop_holders[index].desktop
+	
+	if with_app:
+		_switch_desktop_with_app(index)
+	else:
+		_switch_desktop_normal(index)
+
+
+func _switch_desktop_normal(new_index: int) -> void:
 	if _is_moving: return
+	
+	var dir = desktop_index - new_index
 	
 	_is_moving = true
 	
-	for i in range(_desktopHolders.size()):
-		_desktopHolders[i].position = Vector2(
-				(i + _desktop_index) * 960,
+	for i in range(_desktop_holders.size()):
+		_desktop_holders[i].position = Vector2(
+				i * 960 - desktop_index * 960, # - because we're going left
 				0
 		)
 	
-	_desktop_index += dir
+	desktop_index = new_index
 	
-	for i in range(_desktopHolders.size()):
-		var desktop_holder = _desktopHolders[i]
+	for i in range(_desktop_holders.size()):
+		var desktop_holder = _desktop_holders[i]
 		
 		var tween: Tween = get_tree().create_tween()
 		
 		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(true)
 		
 		tween.tween_property(desktop_holder, "position", Vector2(
-				(i + _desktop_index) * 960,
+				i * 960 - desktop_index * 960,
 				0
 		), 0.5)
 		tween.tween_property(GameManager.player, "position", Vector2(
-				5 if dir == -1 else 955,
+				5 if dir < 0 else 955,
 				GameManager.player.position.y
 		), 0.5)
 		
@@ -60,25 +72,26 @@ func _switch_desktop_normal(dir: int) -> void:
 		)
 
 
-func _switch_desktop_scaling(dir: int) -> void:
+func _switch_desktop_with_app(new_index: int) -> void:
 	if _is_moving: return
 	
 	_is_moving = true
 	
-	for i in range(_desktopHolders.size()):
-		_desktopHolders[i].position = Vector2(
+	for i in range(_desktop_holders.size()):
+		_desktop_holders[i].position = Vector2(
 				0,
-				(i + _desktop_index) * 640
+				 i * 640 - desktop_index * 640
 			)
+			# i0  0, 640, 1280
+			# i1  0 - 640, 0,  
+		print(str(_desktop_holders[i].name, " pos ", _desktop_holders[i].position))
 	
 	_blurred_bg_front.modulate.a = 1
 	_blurred_bg_back.modulate.a = 0
 	
-	
-	_blurred_bg_front.texture = _desktopHolders[-_desktop_index].desktop.bg.texture
-	_desktop_index += dir
-	_blurred_bg_back.texture = _desktopHolders[-_desktop_index].desktop.bg.texture
-		
+	_blurred_bg_front.texture = _desktop_holders[desktop_index].desktop.bg.texture
+	desktop_index = new_index
+	_blurred_bg_back.texture = _desktop_holders[desktop_index].desktop.bg.texture
 	
 	_tween_alpha = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC).set_parallel(true)
 	
@@ -86,8 +99,8 @@ func _switch_desktop_scaling(dir: int) -> void:
 	_tween_alpha.tween_property(_blurred_bg_back, "modulate:a", 1, 2.4)
 	
 	
-	for i in range(_desktopHolders.size()):
-		var desktop_holder = _desktopHolders[i]
+	for i in range(_desktop_holders.size()):
+		var desktop_holder = _desktop_holders[i]
 		
 		var tween: Tween = get_tree().create_tween()
 		
@@ -97,7 +110,7 @@ func _switch_desktop_scaling(dir: int) -> void:
 		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(desktop_holder, "position", Vector2(
 				0,
-				(i + _desktop_index) * 640
+				i * 640 - desktop_index * 640
 		), 1)
 		
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
@@ -105,5 +118,9 @@ func _switch_desktop_scaling(dir: int) -> void:
 		
 		tween.tween_callback(func():
 			_is_moving = false
+			
+			for d in _desktop_holders:
+				print(str(d.name, " pos ", d.position))
+				
 		)
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://or8hvkftt66v" path="res://scenes/game/desktop_holder.gd" id="1_q48no"]
 
-[node name="DesktopHolder" type="Node2D" groups=["DesktopHolder"]]
+[node name="DesktopHolder" type="Node2D"]
 script = ExtResource("1_q48no")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
