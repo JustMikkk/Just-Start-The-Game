@@ -8,7 +8,7 @@ enum State {
 	JUMP,
 	AIR,
 	DEAD,
-	CURSOR,
+	DISABLED,
 	CROUCH,
 	TRANSFORMING,
 }
@@ -35,17 +35,21 @@ var _gravity = START_GRAVITY
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
 
-@onready var state: State = State.CURSOR
+@onready var state: State = State.DISABLED:
+	set(val):
+		state = val
+		_update_click_are_pos()
+
 @onready var _animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var _floor_ray_cast_2d: RayCast2D = $FloorRayCast2D
 @onready var _crouch_timer: Timer = $CrouchTimer
 @onready var _collision_disabled_timer: Timer = $CollisionDisabledTimer
-@onready var _click_area: ClickArea = $ClickArea
+@onready var _click_area: ClickArea = $AnimatedSprite2D/ClickArea
 
 
 func _physics_process(delta):
-	if state == State.CURSOR: return
+	if state == State.DISABLED: return
 	
 	var direction = Input.get_axis("left", "right")
 	
@@ -146,9 +150,7 @@ func _physics_process(delta):
 		
 		State.DEAD:
 			pass
-		
-		
-
+	
 	velocity.y = lerp(_prevVelocity.y, velocity.y, Y_SMOOTHING)
 	velocity.y = min(velocity.y, MAX_FALL_SPEED * delta)
 	
@@ -159,7 +161,7 @@ func _physics_process(delta):
 
 
 func set_enabled(enabled: bool, pos: Vector2) -> void:
-	if enabled == (state != State.CURSOR): return
+	if enabled == (state != State.DISABLED): return
 	velocity = Vector2.ZERO
 	
 	if enabled:
@@ -174,7 +176,7 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 	
 	else:
 		_animated_sprite_2d.flip_h = true
-		state = State.CURSOR
+		state = State.DISABLED
 		_animated_sprite_2d.hide()
 		call_deferred("_disable_collisions")
 		global_position = Vector2.ZERO
@@ -183,17 +185,26 @@ func set_enabled(enabled: bool, pos: Vector2) -> void:
 
 
 func is_enabled() -> bool:
-	return state != State.CURSOR
+	return state != State.DISABLED
 
 
-func die():
+func die() -> void:
 	state = State.DEAD
 	velocity.x = 0
 	velocity.y = 0
 	_animated_sprite_2d.stop()
 	_animated_sprite_2d.play("dead")
-	
-func _input(event):
+
+
+func freeze() -> void:
+	state = State.DISABLED
+
+
+func unfreeze() -> void:
+	state = State.IDLE
+
+
+func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		if event.relative.x > 0:
 			global_position.x += 50 * get_process_delta_time()
@@ -205,10 +216,26 @@ func _input(event):
 			global_position.y -= 50 * get_process_delta_time()
 
 
-func _run(direction, delta):
+func _run(direction, delta) -> void:
 	velocity.x = SPEED * direction * delta
 	if not direction == 0:
-		_animated_sprite_2d.flip_h = direction <= 0
+		_animated_sprite_2d.scale.x = -1 if direction >= 0 else 1
+
+
+func _update_click_are_pos() -> void:
+	match state:
+		State.IDLE:
+			_click_area.position = Vector2(5, -22)
+		State.JUMP:
+			_click_area.position = Vector2(-16, -20)
+		State.AIR:
+			_click_area.position = Vector2(-16, -20)
+		State.CROUCH:
+			_click_area.position = Vector2(8, 0)
+		State.RUN:
+			_click_area.position = Vector2(6, -21)
+		_:
+			_click_area.is_enabled = false
 
 
 func _enable_collisions() -> void:

@@ -1,17 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1pbmxd15535j"]
+[gd_scene load_steps=5 format=3 uid="uid://d1pbmxd15535j"]
 
 [ext_resource type="PackedScene" uid="uid://clytdko2adl73" path="res://scenes/game/desktops_manager.tscn" id="1_7h61r"]
+[ext_resource type="Script" uid="uid://clwbwtomfh1it" path="res://scenes/game/game.gd" id="1_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://yr61hbsrc2hi" path="res://assets/graphics/bg/bg_black.png" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="4_kelw5"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Game"]]
+script = ExtResource("1_lfrn8")
 
 [node name="DesktopsManager" parent="." instance=ExtResource("1_7h61r")]
 position = Vector2(480, 320)
 
-[node name="Player" parent="." instance=ExtResource("4_kelw5")]
+[node name="PlayerHolder" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(480, 320)
+texture = ExtResource("3_kelw5")
+
+[node name="Player" parent="PlayerHolder" instance=ExtResource("4_kelw5")]
 position = Vector2(480, 320)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="PlayerHolder/Player"]
 limit_left = 0
 limit_top = 0
 limit_right = 960

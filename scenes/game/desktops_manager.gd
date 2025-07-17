@@ -8,6 +8,7 @@ var _desktop_holders: Array[DesktopHolder]
 var _is_moving: bool = false
 
 var _tween_alpha: Tween
+var _tween_player_scale: Tween
 
 @onready var _blurred_bg_back: Sprite2D = $BlurredBG_Back
 @onready var _blurred_bg_front: Sprite2D = $BlurredBG_Front
@@ -21,9 +22,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug1"):
-		_switch_desktop_normal(1)
+		_switch_desktop_with_app(desktop_index - 1)
 	elif Input.is_action_just_pressed("debug2"):
-		_switch_desktop_normal(3)
+		_switch_desktop_with_app(desktop_index + 1)
 
 
 func go_to_desktop(index: int, with_app: bool) -> void:
@@ -82,9 +83,6 @@ func _switch_desktop_with_app(new_index: int) -> void:
 				0,
 				 i * 640 - desktop_index * 640
 			)
-			# i0  0, 640, 1280
-			# i1  0 - 640, 0,  
-		print(str(_desktop_holders[i].name, " pos ", _desktop_holders[i].position))
 	
 	_blurred_bg_front.modulate.a = 1
 	_blurred_bg_back.modulate.a = 0
@@ -97,6 +95,17 @@ func _switch_desktop_with_app(new_index: int) -> void:
 	
 	_tween_alpha.tween_property(_blurred_bg_front, "modulate:a", 0, 2.4)
 	_tween_alpha.tween_property(_blurred_bg_back, "modulate:a", 1, 2.4)
+	
+	GameManager.player.freeze()
+	_tween_player_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	
+	_tween_player_scale.tween_property(GameManager.game.player_holder, "scale", Vector2(0.75, 0.75), 0.7)
+	_tween_player_scale.tween_interval(1)
+	_tween_player_scale.tween_property(GameManager.game.player_holder, "scale", Vector2.ONE, 0.7)
+	
+	_tween_player_scale.tween_callback(
+		GameManager.player.unfreeze
+	)
 	
 	
 	for i in range(_desktop_holders.size()):
@@ -119,8 +128,5 @@ func _switch_desktop_with_app(new_index: int) -> void:
 		tween.tween_callback(func():
 			_is_moving = false
 			
-			for d in _desktop_holders:
-				print(str(d.name, " pos ", d.position))
-				
 		)
 	
