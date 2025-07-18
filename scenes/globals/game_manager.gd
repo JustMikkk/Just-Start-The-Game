@@ -3,7 +3,9 @@ extends Node2D
 var can_player_transform: bool = false
 
 var player: Player
-var current_desktop: Desktop
+var current_desktop: Desktop:
+	get():
+		return desktops_manager._current_desktop
 var game: Game
 
 var _cutscenes_played: Dictionary[String, bool] = {
@@ -38,5 +40,5 @@ func was_cutscene_played(key: String) -> bool:
 func reset() -> void:
 	game.transition_player.play_death_transition()
 	await game.transition_player.ready_for_change
-	 
-	current_desktop.reset()
+	player.reset()
+	desktops_manager.reload_desktop()

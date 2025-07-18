@@ -19,6 +19,7 @@ position = Vector2(480, 320)
 texture = ExtResource("3_kelw5")
 
 [node name="Player" parent="PlayerHolder" instance=ExtResource("4_kelw5")]
+z_index = 20
 position = Vector2(48, 32)
 
 [node name="Camera2D" type="Camera2D" parent="."]

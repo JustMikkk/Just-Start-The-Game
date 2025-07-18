@@ -55,6 +55,9 @@ var _tween_tint: Tween
 
 
 func _physics_process(delta):
+	#print("state:", state)
+	#print("global pos", global_position)
+	#print("velocity", velocity)
 	if state == State.DISABLED: return
 	
 	var direction = Input.get_axis("left", "right")
@@ -217,7 +220,14 @@ func take_damage(amount: int, dir_x: int) -> void:
 	)
 
 
+func reset() -> void:
+	state = State.IDLE
+	health = 3
+	_animated_sprite_2d.play("idle")
+
+
 func freeze() -> void:
+	velocity = Vector2.ZERO
 	state = State.DISABLED
 
 
@@ -253,6 +263,8 @@ func _update_click_are_pos() -> void:
 			_click_area.position = Vector2(-16, -20)
 		State.AIR:
 			_click_area.position = Vector2(-16, -20)
+		State.DAMAGED:
+			_click_area.position = Vector2(-16, -20)
 		State.CROUCH:
 			_click_area.position = Vector2(8, 0)
 		State.RUN:
@@ -267,6 +279,8 @@ func _die() -> void:
 	velocity.y = 0
 	_animated_sprite_2d.stop()
 	_animated_sprite_2d.play("die")
+	
+	GameManager.reset()
 
 
 func _enable_collisions() -> void:

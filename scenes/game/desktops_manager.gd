@@ -61,11 +61,11 @@ func _physics_process(delta: float) -> void:
 			_tween_scale.kill()
 		
 		_tween_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		_tween_scale.tween_property(_current_desktop, "scale", Vector2(0.3, 0.3), _reset_hold_threshold)
+		_tween_scale.tween_property(_current_desktop, "scale", Vector2(0.9, 0.9), _reset_hold_threshold)
 		_tween_scale.tween_callback(func():
 			GameManager.reset()
 			await GameManager.game.transition_player.ready_for_change
-			_current_desktop.scale = Vector2.ONE
+			reload_desktop()
 		)
 	
 	elif Input.is_action_just_released("reset"):
@@ -88,6 +88,13 @@ func move_in_direction(dir: Vector2i, with_scaling: bool) -> void:
 
 func can_move_in_direction(id: String, dir: Vector2i) -> bool:
 	return _get_desktop_id_at_cords(_get_desktop_cords(id) + dir) != ""
+
+
+func reload_desktop() -> void:
+	_current_desktop.queue_free()
+	var new_desktop: Desktop = _desktop_prefabs.get(current_desktop_id).instantiate()
+	_current_desktop = new_desktop
+	_desktops_holder.add_child(new_desktop)
 
 
 func _switch_desktop_normal(new_desktop_id: String) -> void:
@@ -172,7 +179,7 @@ func _move_to_desktop(new_desktop_id: String) -> void:
 		_tween_player_scale.tween_property(GameManager.game.player_holder, "scale", Vector2.ONE, 0.7)
 		_tween_player_scale.tween_callback(
 			GameManager.player.unfreeze
-		)
+ 		)
 	
 	_tween_desktop_to_pos(_current_desktop, initial_pos * -1)
 	_tween_desktop_to_pos(new_desktop, Vector2.ZERO)
