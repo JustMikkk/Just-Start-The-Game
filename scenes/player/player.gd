@@ -13,6 +13,7 @@ enum State {
 	CROUCH,
 	TRANSFORMING,
 	DAMAGED,
+	POGO_JUMP,
 }
 
 @export var SPEED = 10400
@@ -28,6 +29,8 @@ enum State {
 @export var MAX_FALL_SPEED = 25000
 
 var health: int = 3
+
+var _slash_damage: int = 1
 
 var _prevVelocity := Vector2.ZERO
 var _lastFloorMsec: float = 0
@@ -53,6 +56,10 @@ var _tween_tint: Tween
 @onready var _collision_disabled_timer: Timer = $CollisionDisabledTimer
 @onready var _click_area: ClickArea = $AnimatedSprite2D/ClickArea
 
+@onready var _slash: Area2D = $Slash
+@onready var _slash_sprite_2d: Sprite2D = $Slash/Sprite2D
+@onready var _slash_collision: CollisionShape2D = $Slash/CollisionShape2D
+
 
 func _physics_process(delta):
 	#print("state:", state)
@@ -66,7 +73,7 @@ func _physics_process(delta):
 		_lastFloorMsec = Time.get_ticks_msec()
 		
 		
-	elif state != State.JUMP and state != State.AIR and state != State.DEAD:
+	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD:
 		state = State.AIR
 	
 	match state:
@@ -76,7 +83,14 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY * delta
 			state = State.AIR
 			_fall_timer = 0
+		
+		State.POGO_JUMP:
+			_animated_sprite_2d.animation = "jump"
 			
+			velocity.y = JUMP_VELOCITY * delta
+			state = State.AIR
+			_fall_timer = 0
+		
 		State.AIR:
 			_fall_timer += delta
 			_animated_sprite_2d.animation = "jump"
@@ -164,6 +178,9 @@ func _physics_process(delta):
 		State.DEAD:
 			pass
 	
+	if Input.is_action_just_pressed("attack"):
+		_attack(Input.get_vector("right", "left", "down", "up"))
+	
 	velocity.y = lerp(_prevVelocity.y, velocity.y, Y_SMOOTHING)
 	velocity.y = min(velocity.y, MAX_FALL_SPEED * delta)
 	
@@ -248,6 +265,16 @@ func _input(event) -> void:
 			global_position.y -= 50 * get_process_delta_time()
 
 
+func _attack(dir: Vector2) -> void:
+	(func():
+		_slash.rotation = dir.angle()
+		_slash_sprite_2d.show()
+		_slash_collision.disabled = false
+		await get_tree().create_timer(0.2).timeout
+		_slash_collision.disabled = true
+		_slash_sprite_2d.hide()
+	).call_deferred()
+	
 
 func _run(direction, delta) -> void:
 	velocity.x = SPEED * direction * delta
@@ -260,6 +287,8 @@ func _update_click_are_pos() -> void:
 		State.IDLE:
 			_click_area.position = Vector2(5, -22)
 		State.JUMP:
+			_click_area.position = Vector2(-16, -20)
+		State.POGO_JUMP:
 			_click_area.position = Vector2(-16, -20)
 		State.AIR:
 			_click_area.position = Vector2(-16, -20)
@@ -293,3 +322,12 @@ func _disable_collisions() -> void:
 
 func _on_collision_disabled_timer_timeout() -> void:
 	call_deferred("_enable_collisions")
+
+
+func _on_slash_body_entered(body: Node2D) -> void:
+	if body is CardEnemy:
+		if body.global_position.y > global_position.y:
+			print("jump")
+			await get_tree().physics_frame
+			state = State.POGO_JUMP
+		body.take_damage(_slash_damage)

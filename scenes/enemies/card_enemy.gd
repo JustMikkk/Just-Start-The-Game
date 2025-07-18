@@ -1,11 +1,11 @@
+class_name CardEnemy
 extends CharacterBody2D
-
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
 @export var _damage: int = 1
-
+@export var _health: int = 1
 
 var _dir: int = 1
 
@@ -36,3 +36,13 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 
 func _on_jump_timer_timeout() -> void:
 	velocity.y = JUMP_VELOCITY
+
+
+func take_damage(amount: int) -> void:
+	_health -= amount
+	_animated_sprite_2d.modulate = Color.RED
+	if _health <= 0:
+		queue_free()
+	await get_tree().create_timer(0.1).timeout
+	_animated_sprite_2d.modulate = Color.WHITE
+	

@@ -47,7 +47,13 @@ func _on_player_damage_taken() -> void:
 	_tween_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	_tween_scale.tween_property(_icon, "scale", Vector2(1.3, 1.3), 0.15)
 	_tween_scale.tween_callback(func():
-		_icon.texture = _logo_2hp if GameManager.player.health == 2 else _logo_1hp
+		match GameManager.player.health:
+			2:
+				_icon.texture = _logo_2hp
+			1: 
+				_icon.texture = _logo_1hp
+			_: 
+				_icon.hide()
 	)
 	_tween_scale.tween_property(_icon, "scale", Vector2.ONE, 0.15)
 	

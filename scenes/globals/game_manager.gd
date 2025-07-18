@@ -42,3 +42,4 @@ func reset() -> void:
 	await game.transition_player.ready_for_change
 	player.reset()
 	desktops_manager.reload_desktop()
+	current_desktop.reset()

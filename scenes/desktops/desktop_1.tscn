@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=16 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
-[ext_resource type="PackedScene" uid="uid://rdqd5vw2hutf" path="res://scenes/enemies/card_enemy.tscn" id="11_4ehog"]
 [ext_resource type="Texture2D" uid="uid://c6decjydotwy4" path="res://assets/graphics/misc/light.png" id="11_pce8l"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
@@ -111,11 +110,6 @@ icon = ExtResource("9_kpwh1")
 [node name="GheTameApp" parent="Apps" index="3" instance=ExtResource("10_1c540")]
 position = Vector2(-336, -32)
 
-[node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("11_4ehog")]
-
-[node name="JumpTimer" parent="Enemies/CardEnemy" index="3"]
-autostart = true
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
 z_index = 10
@@ -149,5 +143,3 @@ shape = SubResource("RectangleShape2D_pce8l")
 position = Vector2(-312, 144)
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
-
-[editable path="Enemies/CardEnemy"]

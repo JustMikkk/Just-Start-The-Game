@@ -14,7 +14,7 @@ enum BindowState {
 @export var _can_be_minimised: bool = true
 @export var _can_be_exited: bool = true
 
-var current_state: BindowState = BindowState.CLOSED
+@export var current_state: BindowState = BindowState.CLOSED
 
 var _origin_pos: Vector2
 var _previouis_pos: Vector2
