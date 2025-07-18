@@ -20,7 +20,6 @@ func _ready() -> void:
 	for bindow in $Bindows.get_children():
 		if bindow is Bindow:
 			_bindows.append(bindow)
-	
 
 
 func _on_app_open(app: App) -> void:

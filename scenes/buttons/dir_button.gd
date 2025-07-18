@@ -21,11 +21,16 @@ func _ready() -> void:
 	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir):
 		hide()
 		(func():
-			$StaticBody2D/CollisionShape2D.disabled = true
-			$StaticBody2D/CollisionShape2D2.disabled = true
+			$EnterArea/CollisionShape2D.disabled = true
 		).call_deferred()
 
 
 func _on_mouse_click() -> void:
 	#if not CursorManager.is_cursor_hidden(): return
 	GameManager.desktops_manager.move_in_direction(_dir, false)
+
+
+func _on_enter_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		GameManager.desktops_manager.move_in_direction(_dir, false)
+	

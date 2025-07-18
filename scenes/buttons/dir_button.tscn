@@ -4,40 +4,45 @@
 [ext_resource type="Script" uid="uid://bpqtxfucnbhja" path="res://scenes/buttons/dir_button.gd" id="2_5usw7"]
 [ext_resource type="Texture2D" uid="uid://bgm33llu08nta" path="res://assets/graphics/pipes/pipe_top_bg.png" id="3_5or6u"]
 [ext_resource type="Texture2D" uid="uid://cgjsve0vbsvs8" path="res://assets/graphics/pipes/pipe_top_fg.png" id="4_eu1t1"]
+[ext_resource type="Texture2D" uid="uid://dspd28nfjm21" path="res://assets/graphics/light/light2.png" id="5_eu1t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5or6u"]
 size = Vector2(52, 48)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_5or6u"]
-a = Vector2(-30, -14)
-b = Vector2(-26, 32)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_eu1t1"]
-a = Vector2(30, -14)
-b = Vector2(26, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu1t1"]
+size = Vector2(98, 10)
 
 [node name="DirButton" instance=ExtResource("1_n1puj")]
 script = ExtResource("2_5usw7")
 _dir = Vector2i(0, 0)
 
 [node name="Icon" parent="." index="0"]
+visible = false
 z_index = 19
 z_as_relative = false
 texture = ExtResource("3_5or6u")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_5or6u")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+visible = false
 z_index = 21
 z_as_relative = false
 texture = ExtResource("4_eu1t1")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
-collision_layer = 2
+[node name="PointLight2D" type="PointLight2D" parent="." index="3"]
+position = Vector2(0, -96)
+rotation = 1.5708
+color = Color(0.407843, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("5_eu1t1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-shape = SubResource("SegmentShape2D_5or6u")
+[node name="EnterArea" type="Area2D" parent="." index="4"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" index="1"]
-shape = SubResource("SegmentShape2D_eu1t1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterArea" index="0"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_eu1t1")
+
+[connection signal="body_entered" from="EnterArea" to="." method="_on_enter_area_body_entered"]
