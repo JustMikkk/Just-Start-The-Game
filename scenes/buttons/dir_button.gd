@@ -24,4 +24,4 @@ func _ready() -> void:
 
 func _on_mouse_click() -> void:
 	#if not CursorManager.is_cursor_hidden(): return
-	GameManager.desktops_manager.move_in_direction(_dir)
+	GameManager.desktops_manager.move_in_direction(_dir, true)

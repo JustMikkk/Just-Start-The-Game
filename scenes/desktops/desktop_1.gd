@@ -31,7 +31,7 @@ func _on_exit_area_body_entered(body: Node2D) -> void:
 	_point_light_2d.hide()
 	_bindows_defender.hide()
 	
-	GameManager.desktops_manager.move_in_direction(Vector2i(1, 0))
+	GameManager.desktops_manager.move_in_direction(Vector2i(1, 0), false)
 
 
 func _appear() -> void:

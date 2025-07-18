@@ -177,10 +177,6 @@ func _move_to_desktop(new_desktop_id: String) -> void:
 	_tween_desktop_to_pos(_current_desktop, initial_pos * -1)
 	_tween_desktop_to_pos(new_desktop, Vector2.ZERO)
 	
-	#_tween_transition = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	#_tween_transition.tween_property(new_desktop, "position", Vector2.ZERO, 1)
-	#_tween_transition.tween_property(_current_desktop, "position", initial_pos * -1, 1)
-	
 	await _tween_alpha.finished
 	
 	#_current_desktop.queue_free()
@@ -198,10 +194,10 @@ func _tween_desktop_to_pos(desktop: Node2D, pos: Vector2) -> void:
 	tween.tween_property(desktop, "scale", Vector2(0.75, 0.75), 0.7)
 	
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(desktop, "position", pos + Vector2(480, 0), 1)
+	tween.tween_property(desktop, "position", pos, 1)
 	
-	#tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
-	#tween.tween_property(desktop, "scale", Vector2.ONE, 0.7)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+	tween.tween_property(desktop, "scale", Vector2.ONE, 0.7)
 
 
 func _get_desktop_id_at_cords(cords: Vector2i) -> String:
