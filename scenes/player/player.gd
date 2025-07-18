@@ -51,7 +51,6 @@ var _fall_splash_treshold: float = 1.2
 
 func _physics_process(delta):
 	if state == State.DISABLED: return
-	print("asds")
 	
 	var direction = Input.get_axis("left", "right")
 	

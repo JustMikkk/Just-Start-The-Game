@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://6unyipcemho8"]
+[gd_scene load_steps=2 format=3 uid="uid://b8c0vs86m37x1"]
 
-[ext_resource type="Script" uid="uid://or8hvkftt66v" path="res://scenes/game/desktop_holder.gd" id="1_q48no"]
+[sub_resource type="GDScript" id="GDScript_e32i5"]
+script/source = "class_name DesktopHolder
+extends Node2D
+
+@export var desktop: Desktop
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	desktop.show()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	desktop.hide()
+"
 
 [node name="DesktopHolder" type="Node2D"]
-script = ExtResource("1_q48no")
+script = SubResource("GDScript_e32i5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-479, -319, 958, 638)
