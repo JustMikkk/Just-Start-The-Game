@@ -12,16 +12,20 @@ func _ready() -> void:
 	
 	match _dir:
 		Vector2i(0, -1):
-			_icon.rotation_degrees = 180
+			rotation_degrees = 180
 		Vector2i(1, 0):
-			_icon.rotation_degrees = -90
+			rotation_degrees = -90
 		Vector2i(-1, 0):
-			_icon.rotation_degrees = 90
+			rotation_degrees = 90
 	
 	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir):
 		hide()
+		(func():
+			$StaticBody2D/CollisionShape2D.disabled = true
+			$StaticBody2D/CollisionShape2D2.disabled = true
+		).call_deferred()
 
 
 func _on_mouse_click() -> void:
 	#if not CursorManager.is_cursor_hidden(): return
-	GameManager.desktops_manager.move_in_direction(_dir, true)
+	GameManager.desktops_manager.move_in_direction(_dir, false)

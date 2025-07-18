@@ -13,9 +13,9 @@ const _desktop_prefabs: Dictionary[String, PackedScene] = {
 
 const _map: Array[Array] = [
 	["", 			"", 			"", 			""],
-	["", 			"desktop_3", 	"desktop_6", 	""],
-	["desktop_1", 	"desktop_2", 	"desktop_5", 	""],
-	["", 			"desktop_4", 	"", 			""],
+	["", 			"desktop_3", 	"",				""],
+	["desktop_1",	"desktop_2", 	"desktop_5", 	""],
+	["desktop_6",	"desktop_4", 	"", 			""],
 	["", 			"", 			"", 			""],
 ]
 
@@ -40,10 +40,6 @@ var _reset_hold_threshold: float = 1.5
 
 @onready var _current_desktop_cords: Vector2i = _get_desktop_cords(current_desktop_id)
 @onready var _current_desktop: Desktop = $"DesktopsHolder/Desktop 1"
-
-
-func _ready() -> void:
-	GameManager.current_desktop = _current_desktop
 
 
 func _physics_process(delta: float) -> void:
@@ -83,7 +79,7 @@ func move_in_direction(dir: Vector2i, with_scaling: bool) -> void:
 		if with_scaling:
 			_move_to_desktop(new_id)
 		else:
-			_switch_desktop_normal(new_id)
+			_move_to_desktop_hole(new_id)
 
 
 func can_move_in_direction(id: String, dir: Vector2i) -> bool:
@@ -97,7 +93,7 @@ func reload_desktop() -> void:
 	_desktops_holder.add_child(new_desktop)
 
 
-func _switch_desktop_normal(new_desktop_id: String) -> void:
+func _move_to_desktop_hole(new_desktop_id: String) -> void:
 	if _is_moving: return
 	if current_desktop_id == new_desktop_id: return
 	
@@ -113,6 +109,7 @@ func _switch_desktop_normal(new_desktop_id: String) -> void:
 	
 	(func():
 		_desktops_holder.add_child(new_desktop)
+		_blurred_bg_front.texture = new_desktop.bg.texture
 	).call_deferred()
 	
 	# player handling
@@ -133,8 +130,10 @@ func _switch_desktop_normal(new_desktop_id: String) -> void:
 	
 	await _tween_transition.finished
 	
+	
 	_current_desktop.queue_free()
 	_current_desktop = new_desktop
+
 	
 	current_desktop_id = new_desktop_id
 	_current_desktop_cords = _get_desktop_cords(current_desktop_id)
@@ -156,7 +155,9 @@ func _move_to_desktop(new_desktop_id: String) -> void:
 	var new_desktop: Desktop = _desktop_prefabs.get(new_desktop_id).instantiate()
 	new_desktop.position = initial_pos
 	
+	_tween_desktop_to_pos(_current_desktop, initial_pos * -1)
 	_desktops_holder.add_child(new_desktop)
+	_tween_desktop_to_pos(new_desktop, Vector2.ZERO)
 	
 	# prep for transition
 	_blurred_bg_front.modulate.a = 1
@@ -167,8 +168,8 @@ func _move_to_desktop(new_desktop_id: String) -> void:
 	
 	# bg change
 	_tween_alpha = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC).set_parallel(true)
-	_tween_alpha.tween_property(_blurred_bg_front, "modulate:a", 0, 2.4)
-	_tween_alpha.tween_property(_blurred_bg_back, "modulate:a", 1, 2.4)
+	_tween_alpha.tween_property(_blurred_bg_front, "modulate:a", 0.5, 2.4)
+	_tween_alpha.tween_property(_blurred_bg_back, "modulate:a", 0.5, 2.4)
 	
 	# player handling
 	if GameManager.player.is_enabled():
@@ -176,17 +177,38 @@ func _move_to_desktop(new_desktop_id: String) -> void:
 		_tween_player_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 		_tween_player_scale.tween_property(GameManager.game.player_holder, "scale", Vector2(0.75, 0.75), 0.7)
 		_tween_player_scale.tween_interval(1)
+		var new_player_pos: Vector2
+		var newer_player_pos: Vector2
+		match dir:
+			Vector2i(-1, 0):
+				new_player_pos = Vector2(360, GameManager.player.global_position.y)
+				newer_player_pos = Vector2(840, GameManager.player.global_position.y)
+			Vector2i(1, 0):
+				new_player_pos = Vector2(600, GameManager.player.global_position.y)
+				newer_player_pos = Vector2(120, GameManager.player.global_position.y)
+			Vector2i(0, 1):
+				new_player_pos = Vector2(GameManager.player.global_position.x, 400)
+				newer_player_pos = Vector2(GameManager.player.global_position.x, 80)
+			Vector2i(0, -1):
+				new_player_pos = Vector2(GameManager.player.global_position.x, 140)
+				newer_player_pos = Vector2(GameManager.player.global_position.x, 560)
+				
+		_tween_player_scale.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(true)
+		_tween_player_scale.tween_property(GameManager.player, "global_position", new_player_pos, 2)
+		_tween_player_scale.tween_property(GameManager.player, "rotation_degrees", 360, 2)
+		_tween_player_scale.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(false)
+		_tween_player_scale.tween_interval(1)
+		_tween_player_scale.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(true)
+		_tween_player_scale.tween_property(GameManager.player, "global_position", newer_player_pos, 1)
 		_tween_player_scale.tween_property(GameManager.game.player_holder, "scale", Vector2.ONE, 0.7)
+		_tween_player_scale.tween_interval(5)
 		_tween_player_scale.tween_callback(
 			GameManager.player.unfreeze
  		)
 	
-	_tween_desktop_to_pos(_current_desktop, initial_pos * -1)
-	_tween_desktop_to_pos(new_desktop, Vector2.ZERO)
-	
 	await _tween_alpha.finished
 	
-	#_current_desktop.queue_free()
+	_current_desktop.queue_free()
 	_current_desktop = new_desktop
 	
 	current_desktop_id = new_desktop_id
@@ -200,10 +222,11 @@ func _tween_desktop_to_pos(desktop: Node2D, pos: Vector2) -> void:
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	tween.tween_property(desktop, "scale", Vector2(0.75, 0.75), 0.7)
 	
-	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(desktop, "position", pos + Vector2(0, 320), 1)
+	await get_tree().create_timer(3).timeout
+	tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR).set_parallel(true)
 	tween.tween_property(desktop, "position", pos, 1)
-	
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	tween.tween_property(desktop, "scale", Vector2.ONE, 0.7)
 
 

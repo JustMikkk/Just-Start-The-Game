@@ -123,10 +123,10 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_pce8l")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="6"]
-position = Vector2(640, -168)
+position = Vector2(648, -144)
 rotation = -0.611476
 color = Color(0, 0.670588, 0.764706, 1)
-energy = 0.0
+energy = 1.5
 texture = ExtResource("11_pce8l")
 
 [node name="ExitArea" type="Area2D" parent="." index="7"]
@@ -141,5 +141,8 @@ shape = SubResource("RectangleShape2D_pce8l")
 
 [node name="SpawnPoint" parent="." index="10"]
 position = Vector2(-312, 144)
+
+[node name="Right" parent="MoveButtons" index="3"]
+position = Vector2(448, 224)
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]

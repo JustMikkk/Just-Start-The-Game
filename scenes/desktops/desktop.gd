@@ -20,6 +20,7 @@ func _ready() -> void:
 	for bindow in $Bindows.get_children():
 		if bindow is Bindow:
 			_bindows.append(bindow)
+	
 
 
 func _on_app_open(app: App) -> void:
@@ -38,4 +39,5 @@ func _on_app_exit(app: App) -> void:
 
 
 func reset() -> void:
+	scale = Vector2.ONE
 	GameManager.player.global_position = _spawn_point.global_position
