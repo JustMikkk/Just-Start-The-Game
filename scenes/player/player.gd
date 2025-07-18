@@ -35,6 +35,7 @@ var _gravity = START_GRAVITY
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
 
+
 @onready var state: State = State.DISABLED:
 	set(val):
 		state = val
@@ -50,6 +51,7 @@ var _fall_splash_treshold: float = 1.2
 
 func _physics_process(delta):
 	if state == State.DISABLED: return
+	print("asds")
 	
 	var direction = Input.get_axis("left", "right")
 	
@@ -162,6 +164,7 @@ func _physics_process(delta):
 
 func set_enabled(enabled: bool, pos: Vector2) -> void:
 	if enabled == (state != State.DISABLED): return
+	if not GameManager.can_player_transform: return
 	velocity = Vector2.ZERO
 	
 	if enabled:
@@ -215,6 +218,7 @@ func _input(event) -> void:
 			global_position.y += 50 * get_process_delta_time()
 		if event.relative.y < 0:
 			global_position.y -= 50 * get_process_delta_time()
+
 
 
 func _run(direction, delta) -> void:

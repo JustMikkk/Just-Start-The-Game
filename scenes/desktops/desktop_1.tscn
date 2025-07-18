@@ -28,8 +28,14 @@ scale_max = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pce8l"]
 size = Vector2(8, 256)
 
-[node name="Desktop 1" instance=ExtResource("1_5c2q5")]
+[node name="Desktop 1" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave") instance=ExtResource("1_5c2q5")]
 script = ExtResource("2_kpwh1")
+_alert_before_appear = NodePath("Bindows/AlertBindow")
+_alert_after_appear = NodePath("Bindows/AlertBindow2")
+_alert_before_leave = NodePath("Bindows/AlertBindow4")
+_alert_after_leave = NodePath("Bindows/AlertBindow5")
+id_name = "desktop_1"
+_cutscene_name = "desktop_1"
 
 [node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
 position = Vector2(192, 128)
@@ -50,12 +56,10 @@ _text = "You can jump in and on windows
                      :3"
 
 [node name="AlertBindow" parent="Bindows" index="2" instance=ExtResource("3_gn44y")]
-_transforms_player = false
 _btn_text = "Open anyway"
 _text = "You can't open this program"
 
 [node name="AlertBindow2" parent="Bindows" index="3" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
-_transforms_player = false
 _btn_text = "I'll be fine"
 _next_bindow = NodePath("../AlertBindow3")
 _text = "This program probably contains malware!"
@@ -63,7 +67,6 @@ _initial_delay = 0.8
 _wait_interval = 0.03
 
 [node name="AlertBindow3" parent="Bindows" index="4" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
-_transforms_player = false
 _btn_text = "Chill out"
 _next_bindow = NodePath("../AlertBindow4")
 _text = "IT'S TOO DANGEROUS!"
@@ -71,7 +74,6 @@ _initial_delay = 0.7
 _wait_interval = 0.02
 
 [node name="AlertBindow4" parent="Bindows" index="5" instance=ExtResource("3_gn44y")]
-_transforms_player = false
 _btn_text = "Play anyway"
 _text = "I WILL NOT LET YOU BREAK THIS PC!"
 _initial_delay = 0.6
@@ -104,13 +106,7 @@ position = Vector2(-336, -112)
 bindow = NodePath("../../Bindows/AlertBindow")
 icon = ExtResource("9_kpwh1")
 
-[node name="BindowsDefender" parent="." index="5" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave") instance=ExtResource("9_yfe1b")]
-_alert_before_appear = NodePath("../Bindows/AlertBindow")
-_alert_after_appear = NodePath("../Bindows/AlertBindow2")
-_alert_before_leave = NodePath("../Bindows/AlertBindow4")
-_alert_after_leave = NodePath("../Bindows/AlertBindow5")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="6"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
 z_index = 10
 position = Vector2(480, -216)
@@ -122,19 +118,24 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_pce8l")
 
-[node name="PointLight2D" type="PointLight2D" parent="." index="7"]
+[node name="PointLight2D" type="PointLight2D" parent="." index="6"]
 position = Vector2(640, -168)
 rotation = -0.611476
 color = Color(0, 0.670588, 0.764706, 1)
 energy = 0.0
 texture = ExtResource("11_pce8l")
 
-[node name="ExitArea" type="Area2D" parent="." index="8"]
+[node name="ExitArea" type="Area2D" parent="." index="7"]
 position = Vector2(476, -184)
 collision_layer = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea" index="0"]
 shape = SubResource("RectangleShape2D_pce8l")
+
+[node name="BindowsDefender" parent="." index="8" instance=ExtResource("9_yfe1b")]
+
+[node name="SpawnPoint" parent="." index="9"]
+position = Vector2(-312, 144)
 
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]

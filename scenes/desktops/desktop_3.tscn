@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
+id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")

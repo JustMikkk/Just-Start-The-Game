@@ -35,10 +35,11 @@ func _process(delta: float) -> void:
 			_speed = move_toward(_speed, 0, ACCELERATION * delta)
 		
 		_cursor_sprite.position += dir.normalized() * _speed * delta
-		_cursor_sprite.global_position = Vector2(
-				clamp(_cursor_sprite.global_position.x, 7, Config.GAME_WIDTH - 7),
-				clamp(_cursor_sprite.global_position.y, 7, Config.GAME_HEIGHT - 7)
-		)
+	
+	_cursor_sprite.global_position = Vector2(
+			clamp(_cursor_sprite.global_position.x, 7, Config.GAME_WIDTH - 7),
+			clamp(_cursor_sprite.global_position.y, 7, Config.GAME_HEIGHT - 7)
+	)
 	
 	_previous_mouse_pos = get_global_mouse_position()
 
@@ -62,7 +63,7 @@ func show_cursor() -> void:
 	_click_area.is_enabled = true
 	cursor_transformed.emit()
 	_cursor_sprite.play("default")
-	
+
 
 func hide_cursor() -> void:
 	_click_area.is_enabled = false

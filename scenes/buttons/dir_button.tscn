@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://8syplnipfwtd"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_n1puj"]
+[ext_resource type="Script" uid="uid://bpqtxfucnbhja" path="res://scenes/buttons/dir_button.gd" id="2_5usw7"]
+[ext_resource type="Texture2D" uid="uid://c4sdgcfxhwhwh" path="res://assets/graphics/ui/btn_dir.png" id="3_hycjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5or6u"]
+size = Vector2(42, 42)
+
+[node name="DirButton" instance=ExtResource("1_n1puj")]
+script = ExtResource("2_5usw7")
+_dir = Vector2i(0, 0)
+
+[node name="Icon" parent="." index="0"]
+z_index = 9
+texture = ExtResource("3_hycjn")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_5or6u")

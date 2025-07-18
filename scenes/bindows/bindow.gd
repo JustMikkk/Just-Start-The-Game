@@ -34,7 +34,7 @@ func _ready() -> void:
 	_minimise_btn.mouse_click.connect(_on_minimise_button_click)
 	_exit_btn.mouse_click.connect(_on_exit_button_click)
 	
-	_previouis_pos = global_position
+	_previouis_pos = position
 	if current_state == BindowState.CLOSED: 
 		scale = Vector2.ZERO
 
@@ -96,7 +96,7 @@ func _change_state(new_state: BindowState) -> void:
 
 
 func _open_bindow() -> void:
-	global_position = _origin_pos
+	position = _origin_pos
 	scale = Vector2.ZERO
 	
 	if _tween_size:
@@ -106,13 +106,13 @@ func _open_bindow() -> void:
 			.set_ease(Tween.EASE_OUT) \
 			.set_trans(Tween.TRANS_QUART) \
 			.set_parallel(true)
-	_tween_size.tween_property(self, "global_position", _previouis_pos, 0.8)
+	_tween_size.tween_property(self, "position", _previouis_pos, 0.8)
 	_tween_size.tween_property(self, "scale", Vector2.ONE, 0.8)
 
 
 func _exit_bindow() -> void:
 	if scale == Vector2.ONE:
-		_previouis_pos = global_position
+		_previouis_pos = position
 	
 	if _tween_size:
 		_tween_size.kill()
@@ -121,7 +121,7 @@ func _exit_bindow() -> void:
 			.set_ease(Tween.EASE_OUT) \
 			.set_trans(Tween.TRANS_QUART) \
 			.set_parallel(true)
-	_tween_size.tween_property(self, "global_position", _origin_pos, 0.8)
+	_tween_size.tween_property(self, "position", _origin_pos, 0.8)
 	_tween_size.tween_property(self, "scale", Vector2.ZERO, 0.8)
 
 

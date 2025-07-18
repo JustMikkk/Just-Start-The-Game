@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1pbmxd15535j"]
+[gd_scene load_steps=7 format=3 uid="uid://d1pbmxd15535j"]
 
 [ext_resource type="PackedScene" uid="uid://clytdko2adl73" path="res://scenes/game/desktops_manager.tscn" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://clwbwtomfh1it" path="res://scenes/game/game.gd" id="1_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://yr61hbsrc2hi" path="res://assets/graphics/bg/bg_black.png" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="4_kelw5"]
 [ext_resource type="Script" uid="uid://dy2d4dc2jqf76" path="res://scenes/game/camera_manager.gd" id="5_lfrn8"]
+[ext_resource type="Script" uid="uid://cfyp3snn2jnd" path="res://scenes/game/transition_player.gd" id="6_5i0tg"]
 
 [node name="Game" type="Node2D" groups=["Game"]]
 script = ExtResource("1_lfrn8")
@@ -26,3 +27,29 @@ limit_top = 0
 limit_right = 960
 limit_bottom = 640
 script = ExtResource("5_lfrn8")
+
+[node name="TransitionPlayer" type="Control" parent="."]
+modulate = Color(0.878431, 1, 1, 1)
+z_index = 100
+custom_minimum_size = Vector2(960, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 960.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("6_5i0tg")
+
+[node name="ColorRect" type="ColorRect" parent="TransitionPlayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1e-05)
+color = Color(0, 0, 0, 1)

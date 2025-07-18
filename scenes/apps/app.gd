@@ -27,7 +27,7 @@ func _ready() -> void:
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
 	
-	bindow.setup(global_position)
+	bindow.setup(position)
 	bindow.bindow_exit_signal.connect(_on_bindow_exit)
 	_icon.texture = icon
 	_label.text = _label_text
@@ -50,8 +50,7 @@ func _on_mouse_click() -> void:
 		_click_indicator.hide()
 		_open_bindow()
 		
-		if GameManager.are_apps_transforming: 
-			GameManager.player.set_enabled(true, global_position)
+		GameManager.player.set_enabled(true, global_position)
 		
 
 func _on_mouse_enter() -> void:

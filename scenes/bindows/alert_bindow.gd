@@ -4,7 +4,6 @@ extends TextBindow
 
 signal alert_exit_signal
 
-@export var _transforms_player: bool = true
 @export_multiline var _btn_text: String = "OK"
 @export var _next_bindow: AlertBindow
 
@@ -14,7 +13,7 @@ signal alert_exit_signal
 func _ready() -> void:
 	super()
 	
-	_origin_pos = global_position
+	_origin_pos = position
 	_previouis_pos = _origin_pos
 	bindow_exit_signal.connect(_on_bindow_exit)
 	
@@ -25,8 +24,7 @@ func _ready() -> void:
 func exit_bindow() -> void:
 	if not _can_be_exited: return
 	
-	if _transforms_player: 
-		GameManager.player.set_enabled(true, _exit_btn.global_position)
+	GameManager.player.set_enabled(true, _exit_btn.global_position)
 	
 	_change_state(BindowState.CLOSED)
 
