@@ -37,6 +37,8 @@ shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Apps" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="Taskbar" parent="." instance=ExtResource("6_ve4ha")]
 position = Vector2(-480, 272)
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcnk8f3skx73s"
-path="res://.godot/imported/bindows_logo.png-79f59fb2d3f5ab3643adadbbe4ee3c73.ctex"
+path="res://.godot/imported/bindows_logo_3hp.png-31b5c1aa88424eb52933d279c02d025a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/apps/bindows_logo.png"
-dest_files=["res://.godot/imported/bindows_logo.png-79f59fb2d3f5ab3643adadbbe4ee3c73.ctex"]
+source_file="res://assets/graphics/apps/bindows_logo_3hp.png"
+dest_files=["res://.godot/imported/bindows_logo_3hp.png-31b5c1aa88424eb52933d279c02d025a.ctex"]
 
 [params]
 

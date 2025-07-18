@@ -1,7 +1,5 @@
 extends App
 
-
-
 var _is_big: bool = false
 
 

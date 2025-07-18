@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+signal damage_taken
 
 enum State {
 	IDLE,
@@ -11,6 +12,7 @@ enum State {
 	DISABLED,
 	CROUCH,
 	TRANSFORMING,
+	DAMAGED,
 }
 
 @export var SPEED = 10400
@@ -25,6 +27,7 @@ enum State {
 @export var AIR_X_SMOOTHING = 0.10
 @export var MAX_FALL_SPEED = 25000
 
+var health: int = 3
 
 var _prevVelocity := Vector2.ZERO
 var _lastFloorMsec: float = 0
@@ -34,6 +37,8 @@ var _gravity = START_GRAVITY
 
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
+
+var _tween_tint: Tween
 
 
 @onready var state: State = State.DISABLED:
@@ -148,6 +153,10 @@ func _physics_process(delta):
 					state = State.AIR
 					_animated_sprite_2d.play("jump")
 					call_deferred("_disable_collisions")
+			
+		State.DAMAGED:
+			pass
+				
 		
 		State.DEAD:
 			pass
@@ -190,12 +199,22 @@ func is_enabled() -> bool:
 	return state != State.DISABLED
 
 
-func die() -> void:
-	state = State.DEAD
-	velocity.x = 0
-	velocity.y = 0
-	_animated_sprite_2d.stop()
-	_animated_sprite_2d.play("dead")
+func take_damage(amount: int, dir_x: int) -> void:
+	health -= amount
+	damage_taken.emit()
+	
+	state = State.DAMAGED
+	velocity.y = -50000 * get_process_delta_time()
+	velocity.x = dir_x * 50000 * get_process_delta_time()
+	
+	_tween_tint = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.RED, 0.1)
+	_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.WHITE, 0.1)
+	_tween_tint.tween_callback(func():
+		state = State.IDLE
+		if health <= 0:
+			_die()
+	)
 
 
 func freeze() -> void:
@@ -240,7 +259,14 @@ func _update_click_are_pos() -> void:
 			_click_area.position = Vector2(6, -21)
 		_:
 			_click_area.is_enabled = false
-	
+
+
+func _die() -> void:
+	state = State.DEAD
+	velocity.x = 0
+	velocity.y = 0
+	_animated_sprite_2d.stop()
+	_animated_sprite_2d.play("die")
 
 
 func _enable_collisions() -> void:

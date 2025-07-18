@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=112 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://0rc2gd4g0gv7" path="res://assets/graphics/player/fall/the_cursed_one_fall_0001.png" id="2_4b1ex"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://c18n2laukbwss" path="res://assets/graphics/player/run/the_cursed_one_run_0010.png" id="11_yj68g"]
 [ext_resource type="Texture2D" uid="uid://bg721lsfaoer0" path="res://assets/graphics/player/run/the_cursed_one_run_0011.png" id="12_ioxgp"]
 [ext_resource type="Texture2D" uid="uid://o5gthkm8xfmc" path="res://assets/graphics/player/run/the_cursed_one_run_0012.png" id="13_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="18_hf5gj"]
 [ext_resource type="Texture2D" uid="uid://vhjh6726flll" path="res://assets/graphics/player/land/the_cursed_one_land_0001.png" id="22_0ioy2"]
 [ext_resource type="Texture2D" uid="uid://opllabnhm3y7" path="res://assets/graphics/player/land/the_cursed_one_land_0002.png" id="23_vlhku"]
 [ext_resource type="Texture2D" uid="uid://bxfuspy0rmx1g" path="res://assets/graphics/player/land/the_cursed_one_land_0003.png" id="24_ws0t6"]
@@ -234,6 +235,38 @@ animations = [{
 }],
 "loop": false,
 "name": &"crouch_reverse",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("63_us45u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_rrrpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_gsldg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_2dxln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_q3ejk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_aq51r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_laqvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_i816j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hf5gj")
+}],
+"loop": false,
+"name": &"die",
 "speed": 24.0
 }, {
 "frames": [{
@@ -587,7 +620,7 @@ visible = false
 z_index = 20
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
-animation = &"idle"
+animation = &"fall"
 autoplay = "idle"
 flip_h = true
 metadata/_edit_lock_ = true

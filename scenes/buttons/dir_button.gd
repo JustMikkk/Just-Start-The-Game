@@ -19,7 +19,7 @@ func _ready() -> void:
 			_icon.rotation_degrees = 90
 	
 	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir):
-		_icon.modulate = Color("#333333")
+		hide()
 
 
 func _on_mouse_click() -> void:
