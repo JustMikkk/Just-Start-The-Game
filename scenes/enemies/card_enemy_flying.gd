@@ -18,7 +18,7 @@ func _ready() -> void:
 	_lock_in_timer.start()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not _is_locked_in: 
 		look_at(GameManager.get_player_global_pos())
 		return

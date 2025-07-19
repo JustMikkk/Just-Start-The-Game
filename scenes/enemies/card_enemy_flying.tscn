@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://db6j86hx0r22p" path="res://assets/graphics/cards/card_fly/card_fly_0006.png" id="6_2a5go"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8x4c"]
-size = Vector2(45, 32)
+size = Vector2(52, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_slvgp"]
 animations = [{

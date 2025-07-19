@@ -31,6 +31,7 @@ func _on_mouse_click() -> void:
 
 
 func _on_enter_area_body_entered(body: Node2D) -> void:
+	if not is_enabled: return
 	if body is Player:
 		GameManager.desktops_manager.move_in_direction(_dir, false)
 	

@@ -12,26 +12,22 @@ var _tween_pos: Tween
 @onready var _animated_sprite_2d: AnimatedSprite2D = $BindowsDefender/AnimatedSprite2D
 @onready var _gpu_particles_2d: GPUParticles2D = $"GPUParticles2D"
 
-@onready var _point_light_2d: PointLight2D = $PointLight2D
 @onready var _bindows_defender: BindowsDefender = $BindowsDefender
+@onready var _exit_right: Area2D = $MoveButtons/Right
+@onready var _exit_point_light_2d: PointLight2D = $MoveButtons/Right/PointLight2D
 
 
 
 func _ready() -> void:
 	super()
 	
-	if GameManager.was_cutscene_played(_cutscene_name): return
+	_exit_point_light_2d.energy = 0
+	if GameManager.was_cutscene_played(_cutscene_name): 
+		_exit_point_light_2d.energy = 2
+		return
+		
 	_alert_before_appear.alert_exit_signal.connect(_appear)
 	_alert_before_leave.alert_exit_signal.connect(_leave)
-
-
-func _on_exit_area_body_entered(body: Node2D) -> void:
-	if body is not Player: return
-	
-	_point_light_2d.hide()
-	_bindows_defender.hide()
-	
-	GameManager.desktops_manager.move_in_direction(Vector2i(1, 0), false)
 
 
 func _appear() -> void:
@@ -73,7 +69,7 @@ func _leave() -> void:
 		_gpu_particles_2d.restart()
 	)
 	_tween_pos.tween_property(_bindows_defender, "position", Vector2(584, -160), 0.2)
-	_tween_pos.tween_property(_point_light_2d, "energy", 2, 3)
+	_tween_pos.tween_property(_exit_point_light_2d, "energy", 2, 0.5)
 	_tween_pos.tween_callback(func():
 		_bindows_defender.hide()
 		GameManager.set_cutscene_played(_cutscene_name)

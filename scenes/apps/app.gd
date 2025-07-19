@@ -6,6 +6,7 @@ signal app_exitd_signal(icon: App)
 
 
 #@export var _is_fullcreen: bool = false
+@export var desktop: Desktop
 @export var bindow: Bindow
 @export var taskbar_icon: Texture
 @export var icon: Texture
@@ -31,6 +32,8 @@ func _ready() -> void:
 	bindow.bindow_exit_signal.connect(_on_bindow_exit)
 	_icon.texture = icon
 	_label.text = _label_text
+	
+	desktop.connect_app(self)
 
 
 func _on_bindow_exit() -> void:

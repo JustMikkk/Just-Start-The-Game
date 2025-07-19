@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://do284ggo44wsc"]
+
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_1jnot"]
+[ext_resource type="Texture2D" uid="uid://bmn2n7y5jxeph" path="res://assets/graphics/bindows/folder_inside_192_144.png" id="2_t2eiu"]
+[ext_resource type="Texture2D" uid="uid://cdlg7u1beyq7m" path="res://assets/graphics/bindows/folder_frame_192_144.png" id="3_w20j4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_87jer"]
+resource_local_to_scene = true
+a = Vector2(-96, 2)
+b = Vector2(96, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffj1q"]
+size = Vector2(152, 24)
+
+[node name="FolderBindow" instance=ExtResource("1_1jnot")]
+
+[node name="Inside" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_t2eiu")
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("3_w20j4")
+
+[node name="MinimiseBtn" parent="." index="2"]
+position = Vector2(64, -64)
+
+[node name="ExitBtn" parent="." index="3"]
+position = Vector2(80, -64)
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+position = Vector2(0, 70)
+shape = SubResource("SegmentShape2D_87jer")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, -72)
+shape = SubResource("SegmentShape2D_87jer")
+
+[node name="CollisionShape2D" parent="DragArea" index="1"]
+position = Vector2(-20, -60)
+shape = SubResource("RectangleShape2D_ffj1q")
+
+[node name="Apps" type="Node2D" parent="." index="6"]
+
+[editable path="DragArea"]

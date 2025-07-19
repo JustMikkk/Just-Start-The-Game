@@ -12,7 +12,7 @@ func _die() -> void:
 	entity_died.emit()
 
 
-func take_damage(amount: int, direction: Vector2) -> void:
+func take_damage(amount: int, _direction: Vector2) -> void:
 	_health -= amount
 	damage_taken.emit()
 	

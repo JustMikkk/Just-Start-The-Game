@@ -13,14 +13,15 @@ var _bindows: Array[Bindow]
 
 
 func _ready() -> void:
-	for node in $Apps.get_children():
-		if node is App:
-			node.app_opened_signal.connect(_on_app_open)
-			node.app_exitd_signal.connect(_on_app_exit)
 	
 	for bindow in $Bindows.get_children():
 		if bindow is Bindow:
 			_bindows.append(bindow)
+
+
+func connect_app(app: App) -> void:
+	app.app_opened_signal.connect(_on_app_open)
+	app.app_exitd_signal.connect(_on_app_exit)
 
 
 func _on_app_open(app: App) -> void:

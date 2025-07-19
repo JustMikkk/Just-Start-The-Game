@@ -44,26 +44,28 @@ disabled = false
 text = "Have fun!"
 
 [node name="NoteBindow_160_160" parent="Bindows" index="1" instance=ExtResource("4_relfi")]
-position = Vector2(144, -48)
+position = Vector2(176, -48)
 _text = "You might need more platforms"
 _wait_interval = 0.03
 
 [node name="NoteBindow_160_161" parent="Bindows" index="2" instance=ExtResource("4_relfi")]
-position = Vector2(-144, 48)
+position = Vector2(-128, 64)
 _text = "Taskbar is your safe space!
 
 Hold down action"
 _wait_interval = 0.03
 
-[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("bindow") instance=ExtResource("5_2pc3y")]
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
 position = Vector2(368, 224)
+desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_161")
 taskbar_icon = ExtResource("6_x36pm")
 icon = ExtResource("7_wx211")
 _label_text = "taskbar.txt"
 
-[node name="App2" parent="Apps" index="1" node_paths=PackedStringArray("bindow") instance=ExtResource("5_2pc3y")]
+[node name="App2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
 position = Vector2(-352, 32)
+desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_160")
 taskbar_icon = ExtResource("6_x36pm")
 icon = ExtResource("7_wx211")
@@ -71,39 +73,48 @@ _label_text = "help.txt"
 
 [node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
 position = Vector2(-128, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="JumpTimer" parent="Enemies/CardEnemy" index="3"]
 autostart = true
 
 [node name="CardEnemy4" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
 position = Vector2(112, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="JumpTimer" parent="Enemies/CardEnemy4" index="3"]
 autostart = true
 
 [node name="CardEnemy2" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
 position = Vector2(-384, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="CardEnemy5" parent="Enemies" index="3" instance=ExtResource("4_06vhp")]
 position = Vector2(-256, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="CardEnemy3" parent="Enemies" index="4" instance=ExtResource("4_06vhp")]
 position = Vector2(224, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="CardEnemy6" parent="Enemies" index="5" instance=ExtResource("4_06vhp")]
 position = Vector2(336, 240)
-_damage = 3
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
 
 [node name="SpawnPoint" parent="." index="6"]
 position = Vector2(-400, 0)
 
+[node name="Down" parent="MoveButtons" index="0"]
+is_enabled = false
+
 [node name="Left" parent="MoveButtons" index="1"]
-position = Vector2(-448, 224)
+position = Vector2(-448, -144)
 
 [editable path="Bindows/AlertBindow"]
 [editable path="Bindows/AlertBindow/ExitBtn"]

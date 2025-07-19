@@ -78,7 +78,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		_lastFloorMsec = Time.get_ticks_msec()
 		
-	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD and state !=State.ATTACK:
+	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD and state != State.ATTACK and state != State.POGO_AIR:
 		state = State.AIR
 	
 	match state:
@@ -240,6 +240,8 @@ func _physics_process(delta):
 
 
 func set_enabled(enabled: bool, pos: Vector2) -> void:
+	#print("enabled: ", enabled)
+	#print("state: ", state)
 	if enabled == (state != State.DISABLED): return
 	if not GameManager.can_player_transform: return
 	velocity = Vector2.ZERO
@@ -288,7 +290,8 @@ func take_damage(amount: int, dir: Vector2) -> void:
 		)
 	else:
 		if _health <= 0:
-				die()
+			die()
+
 
 func die() -> void:
 	state = State.DEAD
@@ -303,7 +306,7 @@ func die() -> void:
 func reset() -> void:
 	if is_enabled():
 		state = State.IDLE
-	health = 3
+	_health = 3
 	_animated_sprite_2d.play("idle")
 
 

@@ -1,6 +1,6 @@
 extends AButton
 
-@export var _logo_3hp: Texture
+#@export var _logo_3hp: Texture
 @export var _logo_2hp: Texture
 @export var _logo_1hp: Texture
 
