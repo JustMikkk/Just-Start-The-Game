@@ -14,6 +14,9 @@ enum State {
 	TRANSFORMING,
 	DAMAGED,
 	POGO_JUMP,
+	ATTACK,
+	ATTACK_UP,
+	ATTACK_DOWN,
 }
 
 @export var SPEED = 10400
@@ -73,7 +76,7 @@ func _physics_process(delta):
 		_lastFloorMsec = Time.get_ticks_msec()
 		
 		
-	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD:
+	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD and state !=State.ATTACK:
 		state = State.AIR
 	
 	match state:
@@ -170,6 +173,31 @@ func _physics_process(delta):
 					state = State.AIR
 					_animated_sprite_2d.play("jump")
 					call_deferred("_disable_collisions")
+					
+		State.ATTACK:
+			
+			
+			velocity.y += _gravity * delta
+			
+			if abs(velocity.y) < AIR_HANG_THRESHOLD:
+				_gravity *= AIR_HANG_MULTIPLIER
+			else:
+				_gravity = START_GRAVITY
+			
+				
+			_fall_timer += delta
+			
+			if Input.get_vector("left", "right", "up", "down").y > 0:
+				_animated_sprite_2d.animation = "pogo"
+			elif Input.get_vector("left", "right", "up", "down").y == 0:
+				_animated_sprite_2d.animation = "attack"
+			else:
+				_animated_sprite_2d.animation = "attack_up"
+			
+			_run(direction, delta)
+			
+			if direction == 0:
+				velocity.x = 0
 			
 		State.DAMAGED:
 			pass
@@ -178,7 +206,7 @@ func _physics_process(delta):
 		State.DEAD:
 			pass
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and state != State.ATTACK:
 		_attack(Input.get_vector("right", "left", "down", "up"))
 	
 	velocity.y = lerp(_prevVelocity.y, velocity.y, Y_SMOOTHING)
@@ -267,12 +295,14 @@ func _input(event) -> void:
 
 func _attack(dir: Vector2) -> void:
 	(func():
+		state = State.ATTACK
 		_slash.rotation = dir.angle()
 		_slash_sprite_2d.show()
 		_slash_collision.disabled = false
 		await get_tree().create_timer(0.2).timeout
 		_slash_collision.disabled = true
 		_slash_sprite_2d.hide()
+		state = State.RUN
 	).call_deferred()
 	
 

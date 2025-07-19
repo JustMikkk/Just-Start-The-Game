@@ -1,40 +1,50 @@
-[gd_scene load_steps=113 format=3 uid="uid://bakok3goh5mvh"]
+[gd_scene load_steps=128 format=3 uid="uid://bakok3goh5mvh"]
 
 [ext_resource type="Script" uid="uid://blhyoo6gyea77" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://cwclrdqpk3fhp" path="res://assets/graphics/player/attack/the_cursed_one_attack_0001.png" id="2_0wr6q"]
 [ext_resource type="Texture2D" uid="uid://0rc2gd4g0gv7" path="res://assets/graphics/player/fall/the_cursed_one_fall_0001.png" id="2_4b1ex"]
 [ext_resource type="Texture2D" uid="uid://dpw1mxg10pvbd" path="res://assets/graphics/player/crouch/crouch_0.png" id="2_avmva"]
 [ext_resource type="Texture2D" uid="uid://cq27404sg60xr" path="res://assets/graphics/player/run/the_cursed_one_run_0001.png" id="2_gx1jg"]
 [ext_resource type="Texture2D" uid="uid://vceirk4go5e3" path="res://assets/graphics/player/jump/the_cursed_one_jump_0001.png" id="2_ioxgp"]
 [ext_resource type="Texture2D" uid="uid://cndanrikn7yvk" path="res://assets/graphics/player/crouch/crouch_1.png" id="3_0ioy2"]
 [ext_resource type="Texture2D" uid="uid://yww62w1wy8t6" path="res://assets/graphics/player/jump/the_cursed_one_jump_0002.png" id="3_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://cicygep7y183e" path="res://assets/graphics/player/attack/the_cursed_one_attack_0002.png" id="3_p0anf"]
 [ext_resource type="Texture2D" uid="uid://c20677juq58gf" path="res://assets/graphics/player/run/the_cursed_one_run_0002.png" id="3_ugbui"]
 [ext_resource type="Texture2D" uid="uid://brwe1xj5wfkxc" path="res://assets/graphics/player/fall/the_cursed_one_fall_0002.png" id="3_v8cnd"]
 [ext_resource type="Texture2D" uid="uid://bxag7snei7y1i" path="res://assets/graphics/player/jump/the_cursed_one_jump_0003.png" id="4_007i1"]
 [ext_resource type="Texture2D" uid="uid://bgwmskawuoaxu" path="res://assets/graphics/player/run/the_cursed_one_run_0003.png" id="4_fcs02"]
+[ext_resource type="Texture2D" uid="uid://bopuy1bx40hgn" path="res://assets/graphics/player/attack/the_cursed_one_attack_0003.png" id="4_lhgc7"]
 [ext_resource type="Texture2D" uid="uid://dpehbsknw3btq" path="res://assets/graphics/player/crouch/crouch_2.png" id="4_vlhku"]
 [ext_resource type="Texture2D" uid="uid://bvme3fn8xlca1" path="res://assets/graphics/player/fall/the_cursed_one_fall_0003.png" id="4_wuxn4"]
 [ext_resource type="Texture2D" uid="uid://cwacga15rtltk" path="res://assets/graphics/player/jump/the_cursed_one_jump_0004.png" id="5_6cv16"]
 [ext_resource type="Texture2D" uid="uid://btiggcbnhorjh" path="res://assets/graphics/player/fall/the_cursed_one_fall_0004.png" id="5_46q5t"]
 [ext_resource type="Texture2D" uid="uid://deqtojbmyecgq" path="res://assets/graphics/player/run/the_cursed_one_run_0004.png" id="5_myrg7"]
+[ext_resource type="Texture2D" uid="uid://bcfoofasr64cw" path="res://assets/graphics/player/attack/the_cursed_one_attack_0004.png" id="5_vy876"]
 [ext_resource type="Texture2D" uid="uid://si1a6e7yu13g" path="res://assets/graphics/player/crouch/crouch_3.png" id="5_ws0t6"]
+[ext_resource type="Texture2D" uid="uid://dfl3on3wjl6un" path="res://assets/graphics/player/attack/the_cursed_one_attack_0005.png" id="6_0vtlm"]
 [ext_resource type="Texture2D" uid="uid://w6ldj4a0oudn" path="res://assets/graphics/player/fall/the_cursed_one_fall_0005.png" id="6_5miun"]
 [ext_resource type="Texture2D" uid="uid://bbrx83cs7y4lo" path="res://assets/graphics/player/crouch/crouch_4.png" id="6_i6ap2"]
 [ext_resource type="Texture2D" uid="uid://crmu0qd50gjoo" path="res://assets/graphics/player/jump/the_cursed_one_jump_0005.png" id="6_j4nxn"]
 [ext_resource type="Texture2D" uid="uid://200yuboseycr" path="res://assets/graphics/player/run/the_cursed_one_run_0005.png" id="6_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://cbabh8xctw6k8" path="res://assets/graphics/player/attack/the_cursed_one_attack_up_0001.png" id="7_2enr6"]
 [ext_resource type="Texture2D" uid="uid://d2oor6yk7mafe" path="res://assets/graphics/player/fall/the_cursed_one_fall_0006.png" id="7_7u1tp"]
 [ext_resource type="Texture2D" uid="uid://cnvl1wj8l1nd7" path="res://assets/graphics/player/jump/the_cursed_one_jump_0006.png" id="7_28m0y"]
 [ext_resource type="Texture2D" uid="uid://cpn1v1qoqvmwp" path="res://assets/graphics/player/run/the_cursed_one_run_0006.png" id="7_uf5tr"]
 [ext_resource type="Texture2D" uid="uid://cldmtvb3ikcto" path="res://assets/graphics/player/run/the_cursed_one_run_0007.png" id="8_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://bdifiiu1wgqc3" path="res://assets/graphics/player/fall/the_cursed_one_fall_0007.png" id="8_pq1ih"]
+[ext_resource type="Texture2D" uid="uid://dbw31m5q3o2gb" path="res://assets/graphics/player/attack/the_cursed_one_attack_up_0002.png" id="8_qxlpa"]
 [ext_resource type="Texture2D" uid="uid://dqbwwtb7m85yy" path="res://assets/graphics/player/jump/the_cursed_one_jump_0007.png" id="8_uniwh"]
 [ext_resource type="Texture2D" uid="uid://diiutkxpe0b13" path="res://assets/graphics/player/run/the_cursed_one_run_0008.png" id="9_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://c6oyx22ec517h" path="res://assets/graphics/player/fall/the_cursed_one_fall_0008.png" id="9_31ki0"]
 [ext_resource type="Texture2D" uid="uid://bystjlvm1bf7y" path="res://assets/graphics/player/jump/the_cursed_one_jump_0008.png" id="9_iqsei"]
+[ext_resource type="Texture2D" uid="uid://6num8fkqcq8o" path="res://assets/graphics/player/attack/the_cursed_one_attack_up_0003.png" id="9_iwd08"]
 [ext_resource type="Texture2D" uid="uid://b0g0rsits7n5w" path="res://assets/graphics/player/run/the_cursed_one_run_0009.png" id="10_3j4b4"]
+[ext_resource type="Texture2D" uid="uid://coe3wdsi040q6" path="res://assets/graphics/player/attack/the_cursed_one_attack_up_0004.png" id="10_5oeuk"]
 [ext_resource type="Texture2D" uid="uid://qxomggkvj36g" path="res://assets/graphics/player/fall/the_cursed_one_fall_0009.png" id="10_hf5gj"]
 [ext_resource type="Texture2D" uid="uid://bmv7qgjpkipiu" path="res://assets/graphics/player/crouch/crouch_8.png" id="10_p0anf"]
 [ext_resource type="Texture2D" uid="uid://dtpd8ilwln02w" path="res://assets/graphics/player/jump/the_cursed_one_jump_0009.png" id="10_tffgl"]
 [ext_resource type="Texture2D" uid="uid://dggvr1egnx6l7" path="res://assets/graphics/player/fall/the_cursed_one_fall_0010.png" id="11_avmva"]
+[ext_resource type="Texture2D" uid="uid://cted3bairbqq2" path="res://assets/graphics/player/attack/the_cursed_one_attack_up_0005.png" id="11_oq5hk"]
 [ext_resource type="Texture2D" uid="uid://b6g24dopjbmd" path="res://assets/graphics/player/jump/the_cursed_one_jump_0010.png" id="11_pk8ii"]
 [ext_resource type="Texture2D" uid="uid://c18n2laukbwss" path="res://assets/graphics/player/run/the_cursed_one_run_0010.png" id="11_yj68g"]
 [ext_resource type="Texture2D" uid="uid://bg721lsfaoer0" path="res://assets/graphics/player/run/the_cursed_one_run_0011.png" id="12_ioxgp"]
@@ -73,10 +83,15 @@
 [ext_resource type="Texture2D" uid="uid://dbnwealy2jlcv" path="res://assets/graphics/player/up/the_cursed_one_up_0001.png" id="64_wvv85"]
 [ext_resource type="Texture2D" uid="uid://lfvop0hey6ov" path="res://assets/graphics/player/up/the_cursed_one_up_0002.png" id="65_hxu4r"]
 [ext_resource type="Texture2D" uid="uid://6boor4rfkinu" path="res://assets/graphics/player/up/the_cursed_one_up_0003.png" id="66_i6dto"]
+[ext_resource type="Texture2D" uid="uid://ctugi8o2losrm" path="res://assets/graphics/player/attack/the_cursed_one_pogo_0001.png" id="66_lhgc7"]
 [ext_resource type="Texture2D" uid="uid://dd8q68p10y11o" path="res://assets/graphics/player/up/the_cursed_one_up_0004.png" id="67_4d8j4"]
+[ext_resource type="Texture2D" uid="uid://cj1i4fy04gpku" path="res://assets/graphics/player/attack/the_cursed_one_pogo_0002.png" id="67_vy876"]
+[ext_resource type="Texture2D" uid="uid://bfqyhc0i8gi3t" path="res://assets/graphics/player/attack/the_cursed_one_pogo_0003.png" id="68_0vtlm"]
 [ext_resource type="Texture2D" uid="uid://d1is38tkerkxl" path="res://assets/graphics/player/up/the_cursed_one_up_0005.png" id="68_s27sh"]
 [ext_resource type="Texture2D" uid="uid://cw8a8h5md2m7i" path="res://assets/graphics/player/up/the_cursed_one_up_0006.png" id="69_1vi86"]
+[ext_resource type="Texture2D" uid="uid://eryl5bx62rrf" path="res://assets/graphics/player/attack/the_cursed_one_pogo_0004.png" id="69_drv02"]
 [ext_resource type="Texture2D" uid="uid://cp22yj53bx52s" path="res://assets/graphics/player/up/the_cursed_one_up_0007.png" id="70_beayq"]
+[ext_resource type="Texture2D" uid="uid://cg76185xonvlj" path="res://assets/graphics/player/attack/the_cursed_one_pogo_0005.png" id="70_tmafg"]
 [ext_resource type="Texture2D" uid="uid://wfe87wu7ijol" path="res://assets/graphics/player/up/the_cursed_one_up_0008.png" id="71_12j61"]
 [ext_resource type="Texture2D" uid="uid://ca1oof5e2176v" path="res://assets/graphics/player/up/the_cursed_one_up_0009.png" id="72_kthys"]
 [ext_resource type="Texture2D" uid="uid://j4n6bg5balv2" path="res://assets/graphics/player/up/the_cursed_one_up_0010.png" id="73_48o5h"]
@@ -144,6 +159,46 @@ load_path = "res://.godot/imported/the_cursed_one_idle_0016.png-b9ba355d05a6d452
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_007i1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0wr6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p0anf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lhgc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vy876")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0vtlm")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2enr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qxlpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iwd08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5oeuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oq5hk")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 24.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_avmva")
@@ -465,6 +520,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("66_lhgc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_vy876")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_0vtlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_drv02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_tmafg")
+}],
+"loop": true,
+"name": &"pogo",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_gx1jg")
 }, {
 "duration": 1.0,
@@ -624,7 +699,7 @@ z_index = 20
 z_as_relative = false
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
-animation = &"fall"
+animation = &"attack_up"
 autoplay = "idle"
 flip_h = true
 metadata/_edit_lock_ = true
