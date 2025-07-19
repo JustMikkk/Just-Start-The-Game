@@ -1,11 +1,10 @@
 class_name CardEnemy
-extends CharacterBody2D
+extends Entity
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -400.0
+@export var _max_speed = 150.0
+@export var _jump_velocity = -400.0
 
-@export var _damage: int = 1
-@export var _health: int = 1
+@export var _knockback_multiplayers := Vector2(10000, 40000)
 
 var _dir: int = 1
 var _hit_velocity_x: float
@@ -17,7 +16,6 @@ var _is_hit: bool = false
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
-	
 	if _is_hit: 
 		velocity.x = _hit_velocity_x * delta
 		move_and_slide()
@@ -33,29 +31,28 @@ func _physics_process(delta: float) -> void:
 		_dir *= -1
 		_animated_sprite_2d.scale = Vector2(_dir, 1)
 		
-	velocity.x = move_toward(velocity.x, SPEED * _dir, _decelleration * delta)
+	velocity.x = move_toward(velocity.x, _max_speed * _dir, _decelleration * delta)
 
 	move_and_slide()
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.take_damage(_damage, 1 if body.global_position.x > global_position.x else -1)
+	if body is Entity:
+		body.take_damage(_damage, (body.global_position - global_position).normalized())
 
 
 func _on_jump_timer_timeout() -> void:
 	if is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = _jump_velocity
 
 
 func take_damage(amount: int, dir: Vector2) -> void:
-	_hit_velocity_x = dir.x * 10000
+	_hit_velocity_x = dir.x * _knockback_multiplayers.x
 	_is_hit = true
 	_health -= amount
 	_animated_sprite_2d.modulate = Color.RED
 	
-	velocity.y = dir.y * 40000 * get_process_delta_time()
-	print(dir.x)
+	velocity.y = dir.y * _knockback_multiplayers.y * get_process_delta_time()
 	
 	if _health <= 0:
 		queue_free()

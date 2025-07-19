@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bks78yqml4xs6"]
+
+[ext_resource type="Texture2D" uid="uid://bncrg834sudan" path="res://assets/graphics/cards/card_fly/card_fly_0001.png" id="1_r8x4c"]
+[ext_resource type="Script" uid="uid://bmt0je72h6kfa" path="res://scenes/enemies/card_enemy_flying.gd" id="1_xr4u5"]
+[ext_resource type="Texture2D" uid="uid://bwb7e5hy25ny" path="res://assets/graphics/cards/card_fly/card_fly_0002.png" id="2_xr4u5"]
+[ext_resource type="Texture2D" uid="uid://cksgxkofig3hl" path="res://assets/graphics/cards/card_fly/card_fly_0003.png" id="3_uwu5n"]
+[ext_resource type="Texture2D" uid="uid://bd8ohxw8ldwtx" path="res://assets/graphics/cards/card_fly/card_fly_0004.png" id="4_tt5lw"]
+[ext_resource type="Texture2D" uid="uid://bbd3kwnnh63by" path="res://assets/graphics/cards/card_fly/card_fly_0005.png" id="5_behh0"]
+[ext_resource type="Texture2D" uid="uid://db6j86hx0r22p" path="res://assets/graphics/cards/card_fly/card_fly_0006.png" id="6_2a5go"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8x4c"]
+size = Vector2(45, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slvgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r8x4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xr4u5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uwu5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tt5lw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_behh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2a5go")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr4u5"]
+size = Vector2(40, 26)
+
+[node name="CardEnemyFlying" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_xr4u5")
+_health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r8x4c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 19
+position = Vector2(-24, 1)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_slvgp")
+autoplay = "default"
+frame_progress = 0.510228
+centered = false
+offset = Vector2(-48, -24)
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_xr4u5")
+
+[node name="LockInTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="timeout" from="LockInTimer" to="." method="_on_lock_in_timer_timeout"]

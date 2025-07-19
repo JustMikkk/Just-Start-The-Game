@@ -3,6 +3,7 @@ extends Node2D
 
 @export var id_name: String
 @export var _cutscene_name: String
+@export var _starting_as_cursor: bool = false
 
 var _bindows: Array[Bindow]
 
@@ -38,5 +39,7 @@ func _on_app_exit(app: App) -> void:
 
 
 func reset() -> void:
+	GameManager.player.set_enabled(!_starting_as_cursor, _spawn_point.global_position)
+	
 	scale = Vector2.ONE
 	GameManager.player.global_position = _spawn_point.global_position

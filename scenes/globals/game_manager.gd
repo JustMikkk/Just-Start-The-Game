@@ -25,6 +25,10 @@ func _ready() -> void:
 	desktops_manager = get_tree().get_first_node_in_group("DesktopsManager")
 
 
+func get_player_global_pos() -> Vector2:
+	return player.global_position if player.is_enabled() else CursorManager.get_global_pos()
+
+
 func go_to_desktop(index: int, with_app: bool) -> void:
 	desktops_manager.go_to_desktop(index, with_app)
 

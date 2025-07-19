@@ -1,7 +1,5 @@
 class_name Player
-extends CharacterBody2D
-
-signal damage_taken
+extends Entity
 
 enum State {
 	IDLE,
@@ -17,10 +15,12 @@ enum State {
 	ATTACK,
 	ATTACK_UP,
 	ATTACK_DOWN,
+	POGO_AIR
 }
 
 @export var SPEED = 10400
 @export var JUMP_VELOCITY = -32000
+@export var POGO_JUMP_VELOCITY = -16000
 @export var START_GRAVITY = 1700
 @export var COYOTE_TIME = 140 # in ms
 @export var JUMP_BUFFER_TIME = 100 # in ms
@@ -31,9 +31,9 @@ enum State {
 @export var AIR_X_SMOOTHING = 0.10
 @export var MAX_FALL_SPEED = 25000
 
-var health: int = 3
-
-var _slash_damage: int = 1
+var health:
+	get():
+		return _health
 
 var _prevVelocity := Vector2.ZERO
 var _lastFloorMsec: float = 0
@@ -93,8 +93,25 @@ func _physics_process(delta):
 			_animated_sprite_2d.animation = "pogo"
 			
 			velocity.y = JUMP_VELOCITY * delta
-			state = State.AIR
+			state = State.POGO_AIR
 			_fall_timer = 0
+			
+		State.POGO_AIR:
+			_fall_timer += delta
+			_animated_sprite_2d.animation = "pogo"
+			
+			if not _animated_sprite_2d.is_playing():
+				state = State.AIR
+			
+			_run(direction, delta)
+			velocity.x = lerp(_prevVelocity.x, velocity.x, AIR_X_SMOOTHING)
+			
+			velocity.y += _gravity * delta
+			
+			if abs(velocity.y) < AIR_HANG_THRESHOLD:
+				_gravity *= AIR_HANG_MULTIPLIER
+			else:
+				_gravity = START_GRAVITY
 		
 		State.AIR:
 			_fall_timer += delta
@@ -199,6 +216,10 @@ func _physics_process(delta):
 			else:
 				_run(direction, delta)
 			
+			if Input.is_action_just_pressed("jump") and is_on_floor(): 
+				velocity.y = JUMP_VELOCITY * delta
+				
+			
 		State.DAMAGED:
 			pass
 				
@@ -247,27 +268,41 @@ func is_enabled() -> bool:
 	return state != State.DISABLED
 
 
-func take_damage(amount: int, dir_x: int) -> void:
-	if health <= 0: return
-	health -= amount
+func take_damage(amount: int, dir: Vector2) -> void:
+	if _health <= 0: return
+	_health -= amount
 	damage_taken.emit()
 	
-	state = State.DAMAGED
-	velocity.y = -50000 * get_process_delta_time()
-	velocity.x = dir_x * 50000 * get_process_delta_time()
+	if is_enabled():
+		state = State.DAMAGED
+		velocity.y = -50000 * get_process_delta_time()
+		velocity.x = dir.x * 50000 * get_process_delta_time()
+		
+		_tween_tint = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.RED, 0.1)
+		_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.WHITE, 0.1)
+		_tween_tint.tween_callback(func():
+			state = State.IDLE
+			if _health <= 0:
+				die()
+		)
+	else:
+		if _health <= 0:
+				die()
+
+func die() -> void:
+	state = State.DEAD
+	velocity.x = 0
+	velocity.y = 0
+	_animated_sprite_2d.stop()
+	_animated_sprite_2d.play("die")
 	
-	_tween_tint = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.RED, 0.1)
-	_tween_tint.tween_property(_animated_sprite_2d, "modulate", Color.WHITE, 0.1)
-	_tween_tint.tween_callback(func():
-		state = State.IDLE
-		if health <= 0:
-			_die()
-	)
+	GameManager.reset()
 
 
 func reset() -> void:
-	state = State.IDLE
+	if is_enabled():
+		state = State.IDLE
 	health = 3
 	_animated_sprite_2d.play("idle")
 
@@ -338,14 +373,6 @@ func _update_click_are_pos() -> void:
 			_click_area.position = Vector2(-16, -20)
 
 
-func _die() -> void:
-	state = State.DEAD
-	velocity.x = 0
-	velocity.y = 0
-	_animated_sprite_2d.stop()
-	_animated_sprite_2d.play("die")
-	
-	GameManager.reset()
 
 
 func _enable_collisions() -> void:
@@ -361,8 +388,8 @@ func _on_collision_disabled_timer_timeout() -> void:
 
 
 func _on_slash_body_entered(body: Node2D) -> void:
-	if body is CardEnemy:
+	if body is Entity:
 		if body.global_position.y > global_position.y:
 			await get_tree().physics_frame
 			state = State.POGO_JUMP
-		body.take_damage(_slash_damage, (body.global_position - global_position).normalized())
+		body.take_damage(_damage, (body.global_position - global_position).normalized())
