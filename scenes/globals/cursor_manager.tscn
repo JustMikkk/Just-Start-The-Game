@@ -109,3 +109,5 @@ metadata/_edit_group_ = true
 position = Vector2(0.488295, 1.32724)
 rotation = -0.180149
 shape = SubResource("CapsuleShape2D_wuutn")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

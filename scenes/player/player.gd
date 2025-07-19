@@ -18,6 +18,8 @@ enum State {
 	POGO_AIR
 }
 
+@export var _audio_clip: AudioStream
+
 @export var SPEED = 10400
 @export var JUMP_VELOCITY = -32000
 @export var POGO_JUMP_VELOCITY = -16000
@@ -333,6 +335,8 @@ func _input(event) -> void:
 
 
 func _attack(dir: Vector2) -> void:
+	AudioManager.play_audio_clip(_audio_clip, global_position)
+	
 	state = State.ATTACK
 	(func():
 		_attack_direction = dir
@@ -374,8 +378,6 @@ func _update_click_are_pos() -> void:
 			_click_area.is_enabled = false
 		_:
 			_click_area.position = Vector2(-16, -20)
-
-
 
 
 func _enable_collisions() -> void:

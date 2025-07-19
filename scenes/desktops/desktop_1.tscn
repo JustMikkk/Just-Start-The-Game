@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=16 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
-[ext_resource type="PackedScene" uid="uid://dahhrkxho03g3" path="res://scenes/enemies/world_eater.tscn" id="14_4ehog"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4owec"]
 a = Vector2(-480, 320)
@@ -156,7 +155,9 @@ is_enabled = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(448, -144)
 
-[node name="WorldEater" parent="." index="10" instance=ExtResource("14_4ehog")]
-position = Vector2(-480, 320)
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.1
+autostart = true
 
 [editable path="MoveButtons/Right"]
+[editable path="WorldEater"]
