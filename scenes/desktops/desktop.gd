@@ -8,6 +8,8 @@ extends Node2D
 var _bindows: Array[Bindow]
 
 @onready var bg: Sprite2D = $BG
+@onready var world_eater: WorldEater = $WorldEater
+
 @onready var _taskbar: Taskbar = $Taskbar
 @onready var _spawn_point: Marker2D = $SpawnPoint
 

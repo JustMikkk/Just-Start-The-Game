@@ -23,7 +23,6 @@ func play_death_transition() -> void:
 		ready_for_change.emit()
 		_color_rect.pivot_offset = Vector2(0, 960)
 	)
-	_tween_transition.tween_interval(1)
 	_tween_transition.tween_property(_color_rect, "scale:y", 0, 1)
 	_tween_transition.tween_callback(func():
 		GameManager.player.unfreeze()
