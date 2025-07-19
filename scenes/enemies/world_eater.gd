@@ -33,15 +33,18 @@ func _on_timer_timeout() -> void:
 		)
 	
 	node.position = new_pos
-	node.modulate = Color.BLACK if int(new_pos.x - 16) % 32 == 0 else Color.MAGENTA
+	if int((new_pos.x - 16) / 32) % 2 == 0:
+		node.modulate = Color.BLACK if int((_current_y + 16) / 32) % 2 == 0 else Color.MAGENTA
+	else:
+		node.modulate = Color.MAGENTA if int((_current_y + 16) / 32) % 2 == 0 else Color.BLACK
 	
 	_taken_positions.append(new_pos)
 	
 	if _taken_positions.size() % 30 == 0:
 		_current_y -= 32
 	
-	#if GameManager.get_player_global_pos().y > Config.GAME_HEIGHT + (_current_pos.y + _tile_size.y / 2) - 20: # 20 for the player feet ofset
-		#GameManager.player.take_damage(999, Vector2.ZERO)
+	if GameManager.get_player_global_pos().y > Config.GAME_HEIGHT + _current_y: # 20 for the player feet ofset
+		GameManager.player.take_damage(999, Vector2.ZERO)
 	#
 	#node.position = _current_pos
 	#node.modulate = Color.BLACK if _is_purple else Color.MAGENTA
@@ -54,5 +57,5 @@ func _on_timer_timeout() -> void:
 	
 	add_child(node)
 	
-	var new_scale_x: int = randi_range(25, 39)
-	get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).tween_property(node, "scale", Vector2(new_scale_x, new_scale_x), 0.7)
+	var new_scale_x: int = 32
+	get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO).tween_property(node, "scale", Vector2(new_scale_x, new_scale_x), 0.1)
