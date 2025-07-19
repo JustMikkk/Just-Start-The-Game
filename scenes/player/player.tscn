@@ -681,7 +681,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avmva"]
-size = Vector2(48, 14)
+size = Vector2(32, 48)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gx1jg"]
 height = 40.0
@@ -699,27 +699,30 @@ z_index = 20
 z_as_relative = false
 position = Vector2(-3, -5)
 sprite_frames = SubResource("SpriteFrames_007i1")
-animation = &"attack_up"
+animation = &"pogo"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.261169
 flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="ClickArea" parent="AnimatedSprite2D" instance=ExtResource("92_31ki0")]
 position = Vector2(6, -21)
 
-[node name="Slash" type="Area2D" parent="."]
+[node name="Slash" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(3, 5)
 collision_layer = 4
 collision_mask = 32
 
-[node name="Sprite2D" type="Sprite2D" parent="Slash"]
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D/Slash"]
 visible = false
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-44, 0)
-scale = Vector2(32, 14)
+position = Vector2(43, 0)
+scale = Vector2(32, 48)
 texture = ExtResource("18_hf5gj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slash"]
-position = Vector2(-44, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Slash"]
+position = Vector2(43, 0)
 shape = SubResource("RectangleShape2D_avmva")
 disabled = true
 
@@ -739,5 +742,5 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[connection signal="body_entered" from="Slash" to="." method="_on_slash_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Slash" to="." method="_on_slash_body_entered"]
 [connection signal="timeout" from="CollisionDisabledTimer" to="." method="_on_collision_disabled_timer_timeout"]

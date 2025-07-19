@@ -235,10 +235,10 @@ func _get_desktop_id_at_cords(cords: Vector2i) -> String:
 	return _map[cords.y][cords.x]
 
 
-func _get_desktop_cords(name: String) -> Vector2i:
+func _get_desktop_cords(id: String) -> Vector2i:
 	for y in range(_map.size()):
 		for x in range(_map[y].size()):
-			if _map[y][x] == name:
+			if _map[y][x] == id:
 				return Vector2i(x, y)
 	
 	return Vector2i(-1, -1)

@@ -40,6 +40,7 @@ var _lastFloorMsec: float = 0
 var _wasOnFloor := false
 var _lastJumpQueueMsec: int
 var _gravity = START_GRAVITY
+var _attack_direction: Vector2
 
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
@@ -51,6 +52,8 @@ var _tween_tint: Tween
 	set(val):
 		state = val
 		_update_click_are_pos()
+		if state != State.DISABLED:
+			_animated_sprite_2d.play()
 
 @onready var _animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -59,9 +62,9 @@ var _tween_tint: Tween
 @onready var _collision_disabled_timer: Timer = $CollisionDisabledTimer
 @onready var _click_area: ClickArea = $AnimatedSprite2D/ClickArea
 
-@onready var _slash: Area2D = $Slash
-@onready var _slash_sprite_2d: Sprite2D = $Slash/Sprite2D
-@onready var _slash_collision: CollisionShape2D = $Slash/CollisionShape2D
+@onready var _slash: Area2D = $AnimatedSprite2D/Slash
+@onready var _slash_sprite_2d: Sprite2D = $AnimatedSprite2D/Slash/Sprite2D
+@onready var _slash_collision: CollisionShape2D = $AnimatedSprite2D/Slash/CollisionShape2D
 
 
 func _physics_process(delta):
@@ -70,11 +73,10 @@ func _physics_process(delta):
 	#print("velocity", velocity)
 	if state == State.DISABLED: return
 	
-	var direction = Input.get_axis("left", "right")
+	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
 	if is_on_floor():
 		_lastFloorMsec = Time.get_ticks_msec()
-		
 		
 	elif state != State.JUMP and state != State.AIR and state != State.POGO_JUMP and state != State.DEAD and state !=State.ATTACK:
 		state = State.AIR
@@ -88,7 +90,7 @@ func _physics_process(delta):
 			_fall_timer = 0
 		
 		State.POGO_JUMP:
-			_animated_sprite_2d.animation = "jump"
+			_animated_sprite_2d.animation = "pogo"
 			
 			velocity.y = JUMP_VELOCITY * delta
 			state = State.AIR
@@ -131,7 +133,7 @@ func _physics_process(delta):
 			else:
 				velocity.x = 0
 				
-				if direction != 0:
+				if direction.x != 0:
 					state = State.RUN
 			
 				elif is_on_floor() and Input.is_action_just_pressed("down"):
@@ -144,7 +146,7 @@ func _physics_process(delta):
 			
 			_run(direction, delta)
 			
-			if direction == 0:
+			if direction.x == 0:
 				state = State.IDLE
 			elif Input.is_action_just_pressed("jump"): 
 				state = State.JUMP
@@ -176,28 +178,26 @@ func _physics_process(delta):
 					
 		State.ATTACK:
 			
-			
 			velocity.y += _gravity * delta
 			
 			if abs(velocity.y) < AIR_HANG_THRESHOLD:
 				_gravity *= AIR_HANG_MULTIPLIER
 			else:
 				_gravity = START_GRAVITY
-			
 				
 			_fall_timer += delta
 			
-			if Input.get_vector("left", "right", "up", "down").y > 0:
+			if _attack_direction.y > 0:
 				_animated_sprite_2d.animation = "pogo"
-			elif Input.get_vector("left", "right", "up", "down").y == 0:
+			elif _attack_direction.y == 0:
 				_animated_sprite_2d.animation = "attack"
 			else:
 				_animated_sprite_2d.animation = "attack_up"
 			
-			_run(direction, delta)
-			
-			if direction == 0:
-				velocity.x = 0
+			if direction.x == -_attack_direction.x:
+				_run(_attack_direction, delta)
+			else:
+				_run(direction, delta)
 			
 		State.DAMAGED:
 			pass
@@ -207,7 +207,7 @@ func _physics_process(delta):
 			pass
 	
 	if Input.is_action_just_pressed("attack") and state != State.ATTACK:
-		_attack(Input.get_vector("right", "left", "down", "up"))
+		_attack(direction)
 	
 	velocity.y = lerp(_prevVelocity.y, velocity.y, Y_SMOOTHING)
 	velocity.y = min(velocity.y, MAX_FALL_SPEED * delta)
@@ -248,6 +248,7 @@ func is_enabled() -> bool:
 
 
 func take_damage(amount: int, dir_x: int) -> void:
+	if health <= 0: return
 	health -= amount
 	damage_taken.emit()
 	
@@ -294,10 +295,20 @@ func _input(event) -> void:
 
 
 func _attack(dir: Vector2) -> void:
+	state = State.ATTACK
 	(func():
-		state = State.ATTACK
-		_slash.rotation = dir.angle()
-		_slash_sprite_2d.show()
+		_attack_direction = dir
+		
+		var slash_rotation_deg: float = 0
+		
+		if dir.y:
+			slash_rotation_deg = -90 if dir.y < 0 else 90
+		else:
+			slash_rotation_deg = 180
+		
+		_slash.rotation_degrees = slash_rotation_deg
+		
+		#_slash_sprite_2d.show()
 		_slash_collision.disabled = false
 		await get_tree().create_timer(0.2).timeout
 		_slash_collision.disabled = true
@@ -306,30 +317,25 @@ func _attack(dir: Vector2) -> void:
 	).call_deferred()
 	
 
-func _run(direction, delta) -> void:
-	velocity.x = SPEED * direction * delta
-	if not direction == 0:
-		_animated_sprite_2d.scale.x = -1 if direction >= 0 else 1
+func _run(dir, delta) -> void:
+	velocity.x = SPEED * dir.x * delta
+	if not dir.x == 0:
+		_animated_sprite_2d.scale.x = -1 if dir.x >= 0 else 1
 
 
 func _update_click_are_pos() -> void:
+	_click_area.is_enabled = true
 	match state:
 		State.IDLE:
 			_click_area.position = Vector2(5, -22)
-		State.JUMP:
-			_click_area.position = Vector2(-16, -20)
-		State.POGO_JUMP:
-			_click_area.position = Vector2(-16, -20)
-		State.AIR:
-			_click_area.position = Vector2(-16, -20)
-		State.DAMAGED:
-			_click_area.position = Vector2(-16, -20)
 		State.CROUCH:
 			_click_area.position = Vector2(8, 0)
 		State.RUN:
 			_click_area.position = Vector2(6, -21)
-		_:
+		State.DISABLED:
 			_click_area.is_enabled = false
+		_:
+			_click_area.position = Vector2(-16, -20)
 
 
 func _die() -> void:
@@ -357,7 +363,6 @@ func _on_collision_disabled_timer_timeout() -> void:
 func _on_slash_body_entered(body: Node2D) -> void:
 	if body is CardEnemy:
 		if body.global_position.y > global_position.y:
-			print("jump")
 			await get_tree().physics_frame
 			state = State.POGO_JUMP
-		body.take_damage(_slash_damage)
+		body.take_damage(_slash_damage, (body.global_position - global_position).normalized())

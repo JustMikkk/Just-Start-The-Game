@@ -8,11 +8,20 @@ const JUMP_VELOCITY = -400.0
 @export var _health: int = 1
 
 var _dir: int = 1
+var _hit_velocity_x: float
+var _decelleration: float = 1000
+
+var _is_hit: bool = false
 
 @onready var _ray_cast_2d: RayCast2D = $AnimatedSprite2D/RayCast2D
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+	
+	if _is_hit: 
+		velocity.x = _hit_velocity_x * delta
+		move_and_slide()
+		return
 	
 	if not is_on_floor():
 		_animated_sprite_2d.speed_scale = 0
@@ -24,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		_dir *= -1
 		_animated_sprite_2d.scale = Vector2(_dir, 1)
 		
-	velocity.x = SPEED * _dir
+	velocity.x = move_toward(velocity.x, SPEED * _dir, _decelleration * delta)
 
 	move_and_slide()
 
@@ -35,14 +44,22 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 
 
 func _on_jump_timer_timeout() -> void:
-	velocity.y = JUMP_VELOCITY
+	if is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, dir: Vector2) -> void:
+	_hit_velocity_x = dir.x * 10000
+	_is_hit = true
 	_health -= amount
 	_animated_sprite_2d.modulate = Color.RED
+	
+	velocity.y = dir.y * 40000 * get_process_delta_time()
+	print(dir.x)
+	
 	if _health <= 0:
 		queue_free()
 	await get_tree().create_timer(0.1).timeout
+	_is_hit = false
 	_animated_sprite_2d.modulate = Color.WHITE
 	
