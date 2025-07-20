@@ -68,13 +68,19 @@ func _on_mouse_click() -> void:
 
 
 func _on_mouse_enter() -> void:
-	#_taskbar_app_exit_btn.slide_up()
-	pass
+	if _tween_scale:
+		_tween_scale.kill()
+	
+	_tween_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	_tween_scale.tween_property(_icon, "scale", Vector2(1.05, 1.05), 0.7)
 
 
 func _on_mouse_exit() -> void:
-	#_taskbar_app_exit_btn.slide_down()
-	pass
+	if _tween_scale:
+		_tween_scale.kill()
+	
+	_tween_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	_tween_scale.tween_property(_icon, "scale", Vector2.ONE, 0.7)
 	
 
 func _on_bindow_open() -> void:

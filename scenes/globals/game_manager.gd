@@ -1,13 +1,18 @@
 extends Node2D
 
 var can_player_transform: bool = false
-var can_player_attack: bool = false
+
+var has_player_scissors: bool = false
+var has_player_admin: bool = false
+var has_player_firewall: bool = false
+
 
 var player: Player
 var current_desktop: Desktop:
 	get():
 		return desktops_manager._current_desktop
 var game: Game
+var desktops_manager: DesktopsManager
 
 var _cutscenes_played: Dictionary[String, bool] = {
 	"desktop_1": false,
@@ -17,7 +22,6 @@ var _cutscenes_played: Dictionary[String, bool] = {
 	"desktop_5": false,
 }
 
-var desktops_manager: DesktopsManager
 
 
 func _ready() -> void:
@@ -48,3 +52,32 @@ func reset() -> void:
 	player.reset()
 	desktops_manager.reload_desktop()
 	current_desktop.reset()
+
+
+func add_power_up(id: String, global_pos: Vector2, texture: Texture) -> void:
+	var destination: Vector2
+	
+	match id:
+		"scissors":
+			has_player_scissors = true
+			destination = current_desktop.taskbar.scissors.global_position
+		"admin":
+			has_player_admin = true
+			destination = current_desktop.taskbar.admin.global_position
+		"firewall":
+			has_player_firewall = true
+			destination = current_desktop.taskbar.fire_wall.global_position
+	
+	game.transition_player.play_power_up_transition(global_pos, texture, destination)
+	
+
+
+func has_player_power_up(id: String) -> bool:
+	match id:
+		"scissors":
+			return has_player_scissors
+		"admin":
+			return has_player_admin
+		"firewall":
+			return has_player_firewall
+	return false

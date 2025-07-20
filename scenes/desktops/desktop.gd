@@ -10,7 +10,7 @@ var _bindows: Array[Bindow]
 @onready var bg: Sprite2D = $BG
 @onready var world_eater: WorldEater = $WorldEater
 
-@onready var _taskbar: Taskbar = $Taskbar
+@onready var taskbar: Taskbar = $Taskbar
 @onready var _spawn_point: Marker2D = $SpawnPoint
 
 
@@ -27,7 +27,7 @@ func connect_app(app: App) -> void:
 
 
 func _on_app_open(app: App) -> void:
-	_taskbar.create_app(app)
+	taskbar.create_app(app)
 	
 	if app.bindow.z_index == 18: return
 	
@@ -38,7 +38,7 @@ func _on_app_open(app: App) -> void:
 
 
 func _on_app_exit(app: App) -> void:
-	_taskbar.remove_app(app)
+	taskbar.remove_app(app)
 
 
 func reset() -> void:
