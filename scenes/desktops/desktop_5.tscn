@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bue5y3jastl4l"]
+[gd_scene load_steps=12 format=3 uid="uid://bue5y3jastl4l"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_8ouw4"]
 [ext_resource type="Texture2D" uid="uid://dwadueyslrxuy" path="res://assets/graphics/bg/bg_dziewiec.png" id="2_b7ecn"]
+[ext_resource type="PackedScene" uid="uid://do284ggo44wsc" path="res://scenes/bindows/folder_bindow.tscn" id="3_inmh4"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_r0ycs"]
+[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="5_6b8n8"]
+[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="6_tykn8"]
+[ext_resource type="PackedScene" uid="uid://b5mnlats2ivcj" path="res://scenes/bindows/photo_bindow_128.tscn" id="7_wtmtm"]
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="8_71thx"]
+[ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="9_0mtiu"]
+[ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="10_h7ito"]
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="11_m2vx0"]
 
 [node name="Desktop5" instance=ExtResource("1_8ouw4")]
 id_name = "desktop_5"
@@ -9,8 +18,57 @@ id_name = "desktop_5"
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_b7ecn")
 
+[node name="FolderBindow" parent="Bindows" index="0" instance=ExtResource("3_inmh4")]
+position = Vector2(-288, 96)
+_can_be_minimised = false
+_can_be_exited = false
+
+[node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
+z_index = 19
+position = Vector2(64, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_128")
+taskbar_icon = ExtResource("5_6b8n8")
+icon = ExtResource("6_tykn8")
+
+[node name="App" parent="Bindows/FolderBindow/App" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
+z_index = 19
+position = Vector2(-64, 0)
+desktop = NodePath("../../../..")
+bindow = NodePath("../../../PhotoBindow_96")
+taskbar_icon = ExtResource("5_6b8n8")
+icon = ExtResource("6_tykn8")
+
+[node name="PhotoBindow_128" parent="Bindows" index="1" instance=ExtResource("7_wtmtm")]
+position = Vector2(-128, -80)
+
+[node name="PhotoBindow_96" parent="Bindows" index="2" instance=ExtResource("8_71thx")]
+position = Vector2(-384, -112)
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
+position = Vector2(-112, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/FolderBindow")
+taskbar_icon = ExtResource("9_0mtiu")
+icon = ExtResource("10_h7ito")
+_label_text = "big kitty"
+
+[node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("11_m2vx0")]
+position = Vector2(-240, 240)
+_next_positions = Array[Vector2i]([Vector2i(0, 0)])
+
+[node name="Enemies" parent="." index="4"]
+metadata/_edit_lock_ = true
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(0, 240)
+
+[node name="MoveButtons" parent="." index="7"]
+metadata/_edit_lock_ = true
+
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.564706, 0.603922, 0.662745, 1)
+metadata/_edit_lock_ = true
 
 [node name="Left" parent="MoveButtons" index="1"]
 visible = false
