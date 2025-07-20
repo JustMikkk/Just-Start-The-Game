@@ -5,10 +5,7 @@ extends Area2D
 
 func _ready() -> void:
 	if GameManager.has_player_power_up(_power_up_id):
-		hide()
-		(func():
-			$CollisionShape2D
-		).call_deferred()
+		queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:

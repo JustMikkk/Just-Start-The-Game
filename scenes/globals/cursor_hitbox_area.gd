@@ -1,6 +1,6 @@
 extends Entity
 
-@onready var _animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var _animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 
 func _ready() -> void:
 	_health = GameManager.player.health

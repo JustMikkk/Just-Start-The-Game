@@ -72,7 +72,7 @@ func _on_mouse_enter() -> void:
 		_tween_scale.kill()
 	
 	_tween_scale = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	_tween_scale.tween_property(_icon, "scale", Vector2(1.05, 1.05), 0.7)
+	_tween_scale.tween_property(_icon, "scale", Vector2(1.1, 1.1), 0.7)
 
 
 func _on_mouse_exit() -> void:

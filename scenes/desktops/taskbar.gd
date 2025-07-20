@@ -15,6 +15,10 @@ var _counter: int = 0
 @onready var fire_wall: Sprite2D = $PowerUps/FireWall
 
 
+func _ready() -> void:
+	update_power_ups()
+
+
 func create_app(app: App) -> void:
 	if app in _apps: return
 	_apps.append(app)

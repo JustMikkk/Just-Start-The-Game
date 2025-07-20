@@ -6,7 +6,7 @@ extends Entity
 
 @export var _knockback_multiplayers := Vector2(10000, 40000)
 
-var _dir: int = 1
+var dir: int = 1
 var _hit_velocity_x: float
 var _decelleration: float = 1000
 
@@ -28,10 +28,10 @@ func _physics_process(delta: float) -> void:
 		_animated_sprite_2d.speed_scale = 1
 	
 	if not _ray_cast_2d.is_colliding() and is_on_floor():
-		_dir *= -1
-		_animated_sprite_2d.scale = Vector2(_dir, 1)
+		dir *= -1
+		_animated_sprite_2d.scale = Vector2(dir, 1)
 		
-	velocity.x = move_toward(velocity.x, _max_speed * _dir, _decelleration * delta)
+	velocity.x = move_toward(velocity.x, _max_speed * dir, _decelleration * delta)
 
 	move_and_slide()
 

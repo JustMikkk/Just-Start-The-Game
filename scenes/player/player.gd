@@ -276,6 +276,7 @@ func is_enabled() -> bool:
 
 func take_damage(amount: int, dir: Vector2) -> void:
 	if _health <= 0: return
+	AudioManager.play_audio_clip(_audio_clip, global_position)
 	_health -= amount
 	damage_taken.emit()
 	
@@ -338,7 +339,6 @@ func _input(event) -> void:
 
 func _attack(dir: Vector2) -> void:
 	if not GameManager.has_player_scissors: return
-	AudioManager.play_audio_clip(_audio_clip, global_position)
 	
 	state = State.ATTACK
 	(func():
