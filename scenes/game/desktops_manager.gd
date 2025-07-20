@@ -9,14 +9,21 @@ const _desktop_prefabs: Dictionary[String, PackedScene] = {
 	"desktop_4": preload("res://scenes/desktops/desktop_4.tscn"),
 	"desktop_5": preload("res://scenes/desktops/desktop_5.tscn"),
 	"desktop_6": preload("res://scenes/desktops/desktop_6.tscn"),
+	"desktop_7": preload("res://scenes/desktops/desktop_7.tscn"),
+	"desktop_8": preload("res://scenes/desktops/desktop_8.tscn"),
+	"desktop_9": preload("res://scenes/desktops/desktop_9.tscn"),
+	"desktop_10": preload("res://scenes/desktops/desktop_10.tscn"),
+	"desktop_11": preload("res://scenes/desktops/desktop_11.tscn"),
 }
 
 const _map: Array[Array] = [
-	["", 			"", 			"", 			""],
-	["", 			"desktop_3", 	"",				""],
-	["desktop_1",	"desktop_2", 	"desktop_5", 	""],
-	["desktop_6",	"desktop_4", 	"", 			""],
-	["", 			"", 			"", 			""],
+	["", 			"", 			"", 			"", 			"",				""],
+	["", 			"", 			"desktop_7",	"desktop_8", 	"desktop_9", 	""],
+	["desktop_1",	"desktop_2", 	"desktop_3", 	"desktop_11",	"desktop_10",	""],
+	[""			,	"", 			"desktop_4", 	""			,	""			,	""],
+	[""			,	"", 			"desktop_5", 	""			,	""			,	""],
+	[""			,	"", 			"desktop_6", 	""			,	""			,	""],
+	["", 			"", 			"", 			"",				"",				""],
 ]
 
 var current_desktop_id: String = "desktop_1"
@@ -43,11 +50,14 @@ var _reset_hold_threshold: float = 1.5
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug1"):
-		_move_to_desktop("desktop_1")
-	elif Input.is_action_just_pressed("debug2"):
-		_move_to_desktop("desktop_2")
-	
+	if Input.is_action_just_pressed("up"):
+		move_in_direction(Vector2(0, -1), false)
+	if Input.is_action_just_pressed("down"):
+		move_in_direction(Vector2(0, 1), false)
+	if Input.is_action_just_pressed("left"):
+		move_in_direction(Vector2(-1, 0), false)
+	if Input.is_action_just_pressed("right"):
+		move_in_direction(Vector2(1, 0), false)
 	
 	if not GameManager.can_player_transform: return # so the player doesnt reset before the initial cutscene
 	if _is_moving: return

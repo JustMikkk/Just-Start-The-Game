@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://6d35rqg5c6yv"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_kw8ia"]
-[ext_resource type="Texture2D" uid="uid://dyn4vfjhgemx5" path="res://assets/graphics/bg/bg_cinque.png" id="2_0sq12"]
+[ext_resource type="Texture2D" uid="uid://vmbgu4l2bo2r" path="res://assets/graphics/bg/bg_siedem.png" id="2_x36pm"]
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_4uxwu"]
 [ext_resource type="PackedScene" uid="uid://rdqd5vw2hutf" path="res://scenes/enemies/card_enemy.tscn" id="4_06vhp"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="4_relfi"]
@@ -23,7 +23,7 @@ b = Vector2(80, -46)
 id_name = "desktop_2"
 
 [node name="BG" parent="." index="0"]
-texture = ExtResource("2_0sq12")
+texture = ExtResource("2_x36pm")
 
 [node name="AlertBindow" parent="Bindows" index="0" instance=ExtResource("3_4uxwu")]
 position = Vector2(-400, 128)
@@ -111,13 +111,26 @@ _health = 2
 position = Vector2(-400, 0)
 
 [node name="Down" parent="MoveButtons" index="0"]
+visible = false
 is_enabled = false
 
 [node name="Left" parent="MoveButtons" index="1"]
 position = Vector2(-448, -144)
+
+[node name="PointLight2D" parent="MoveButtons/Left" index="3"]
+color = Color(0.886275, 0.937255, 1, 1)
+
+[node name="Up" parent="MoveButtons" index="2"]
+visible = false
+is_enabled = false
+
+[node name="PointLight2D" parent="MoveButtons/Right" index="3"]
+color = Color(0.968627, 0.894118, 0.823529, 1)
 
 [editable path="Bindows/AlertBindow"]
 [editable path="Bindows/AlertBindow/ExitBtn"]
 [editable path="Bindows/AlertBindow/DragArea"]
 [editable path="Enemies/CardEnemy"]
 [editable path="Enemies/CardEnemy4"]
+[editable path="MoveButtons/Left"]
+[editable path="MoveButtons/Right"]

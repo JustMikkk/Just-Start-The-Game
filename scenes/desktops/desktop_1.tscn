@@ -157,7 +157,6 @@ position = Vector2(448, -144)
 
 [node name="Timer" parent="WorldEater" index="0"]
 wait_time = 0.1
-autostart = true
 
 [editable path="MoveButtons/Right"]
 [editable path="WorldEater"]

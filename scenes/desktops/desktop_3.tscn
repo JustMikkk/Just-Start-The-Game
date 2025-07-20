@@ -8,3 +8,17 @@ id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
+
+[node name="PointLight2D" parent="MoveButtons/Down" index="3"]
+color = Color(0.701961, 0.52549, 0.678431, 1)
+
+[node name="PointLight2D" parent="MoveButtons/Up" index="3"]
+color = Color(0.517647, 0.564706, 0.34902, 1)
+
+[node name="PointLight2D" parent="MoveButtons/Right" index="3"]
+color = Color(0.770341, 0.989657, 0, 1)
+
+[editable path="MoveButtons/Down"]
+[editable path="MoveButtons/Left"]
+[editable path="MoveButtons/Up"]
+[editable path="MoveButtons/Right"]

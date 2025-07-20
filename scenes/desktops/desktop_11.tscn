@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbbhpqkalaf8a"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_0g46a"]
+[ext_resource type="Texture2D" uid="uid://yr61hbsrc2hi" path="res://assets/graphics/bg/bg_black.png" id="2_nwj1a"]
+
+[node name="Desktop11" instance=ExtResource("1_0g46a")]
+id_name = "desktop_11"
+
+[node name="BG" parent="." index="0"]
+texture = ExtResource("2_nwj1a")
+
+[node name="Down" parent="MoveButtons" index="0"]
+visible = false
+is_enabled = false
+
+[node name="Up" parent="MoveButtons" index="2"]
+visible = false
+is_enabled = false

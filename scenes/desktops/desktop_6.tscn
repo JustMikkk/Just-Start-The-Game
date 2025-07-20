@@ -1,10 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://bat2tgvlk4cqu"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_ytk1f"]
-[ext_resource type="Texture2D" uid="uid://bqbm2juaa2jps" path="res://assets/graphics/bg/bg_szesc.png" id="2_4drju"]
+[ext_resource type="Texture2D" uid="uid://bsmbhs6st1qin" path="res://assets/graphics/bg/bg_osiem.png" id="2_4drju"]
 
 [node name="Desktop6" instance=ExtResource("1_ytk1f")]
 id_name = "desktop_6"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_4drju")
+
+[node name="Down" parent="MoveButtons" index="0"]
+visible = false
+is_enabled = false
+
+[node name="Left" parent="MoveButtons" index="1"]
+visible = false
+is_enabled = false
+
+[node name="PointLight2D" parent="MoveButtons/Up" index="3"]
+color = Color(0.477917, 0.846562, 1.54018e-06, 1)
+
+[node name="Right" parent="MoveButtons" index="3"]
+visible = false
+is_enabled = false
+
+[editable path="MoveButtons/Up"]

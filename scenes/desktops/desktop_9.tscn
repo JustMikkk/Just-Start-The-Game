@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://desuysb6032qp"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_yttox"]
+[ext_resource type="Texture2D" uid="uid://bqbm2juaa2jps" path="res://assets/graphics/bg/bg_szesc.png" id="2_xqxqa"]
+
+[node name="Desktop9" instance=ExtResource("1_yttox")]
+id_name = "desktop_9"
+
+[node name="BG" parent="." index="0"]
+texture = ExtResource("2_xqxqa")
+
+[node name="PointLight2D" parent="MoveButtons/Down" index="3"]
+color = Color(0.933333, 0.796078, 0.278431, 1)
+
+[node name="PointLight2D" parent="MoveButtons/Left" index="3"]
+color = Color(0.807843, 0.313726, 0.352941, 1)
+
+[node name="Up" parent="MoveButtons" index="2"]
+visible = false
+is_enabled = false
+
+[node name="Right" parent="MoveButtons" index="3"]
+visible = false
+is_enabled = false
+
+[editable path="MoveButtons/Down"]
+[editable path="MoveButtons/Left"]
