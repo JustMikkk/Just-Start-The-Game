@@ -131,7 +131,7 @@ func _physics_process(delta):
 			_run(direction, delta)
 			velocity.x = lerp(_prevVelocity.x, velocity.x, AIR_X_SMOOTHING)
 			
-			if Input.is_action_just_pressed("jump"):
+			if Input.is_action_just_pressed("jump") and velocity.y > 0:
 				if Time.get_ticks_msec() - _lastFloorMsec < COYOTE_TIME:
 					state = State.JUMP
 				else:
