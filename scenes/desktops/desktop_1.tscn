@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=17 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -13,10 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_4owec"]
-a = Vector2(-480, 320)
-b = Vector2(480, 320)
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="12_4ehog"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="13_sicsa"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
 particle_flag_disable_z = true
@@ -38,10 +36,6 @@ _alert_before_leave = NodePath("Bindows/AlertBindow4")
 _alert_after_leave = NodePath("Bindows/AlertBindow5")
 id_name = "desktop_1"
 _cutscene_name = "desktop_1"
-
-[node name="Roof" type="CollisionShape2D" parent="Bounds" index="3"]
-position = Vector2(0, -640)
-shape = SubResource("SegmentShape2D_4owec")
 
 [node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
 position = Vector2(216, 136)
@@ -96,6 +90,11 @@ _wait_interval = 0.03
 [node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
 position = Vector2(144, -176)
 
+[node name="NoteBindow_160_160" parent="Bindows" index="8" instance=ExtResource("2_btg26")]
+position = Vector2(-352, 80)
+_text = "herro everry nyan 
+=^-.-^="
+
 [node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
 position = Vector2(336, 232)
 desktop = NodePath("../..")
@@ -121,6 +120,13 @@ icon = ExtResource("9_kpwh1")
 [node name="GheTameApp" parent="Apps" index="3" node_paths=PackedStringArray("desktop") instance=ExtResource("10_1c540")]
 position = Vector2(-336, -32)
 desktop = NodePath("../..")
+
+[node name="NoteApp" parent="Apps" index="4" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("12_4ehog")]
+position = Vector2(-352, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+taskbar_icon = ExtResource("13_sicsa")
+_label_text = "old_man.txt"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)

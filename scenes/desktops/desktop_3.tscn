@@ -1,13 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=5 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_j3mwq"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_5baar"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
 id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
+
+[node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_j3mwq")]
+position = Vector2(-397, 117)
+
+[node name="NoteBindow_160_161" parent="Bindows" index="1" instance=ExtResource("3_j3mwq")]
+position = Vector2(-117, 41)
+
+[node name="NoteBindow_160_162" parent="Bindows" index="2" instance=ExtResource("3_j3mwq")]
+position = Vector2(210, -6)
+
+[node name="App" parent="Apps" index="0" instance=ExtResource("4_5baar")]
+position = Vector2(-232, 219)
+
+[node name="App2" parent="Apps" index="1" instance=ExtResource("4_5baar")]
+position = Vector2(-157, 220)
+
+[node name="App3" parent="Apps" index="2" instance=ExtResource("4_5baar")]
+position = Vector2(192, 224)
+
+[node name="MoveButtons" parent="." index="7"]
+metadata/_edit_group_ = true
 
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.701961, 0.52549, 0.678431, 1)

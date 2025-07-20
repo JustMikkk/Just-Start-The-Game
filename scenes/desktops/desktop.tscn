@@ -34,6 +34,10 @@ shape = SubResource("SegmentShape2D_advyw")
 [node name="Floor" type="CollisionShape2D" parent="Bounds"]
 shape = SubResource("SegmentShape2D_4owec")
 
+[node name="Ceiling" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, -640)
+shape = SubResource("SegmentShape2D_4owec")
+
 [node name="Bindows" type="Node2D" parent="."]
 
 [node name="Apps" type="Node2D" parent="."]
