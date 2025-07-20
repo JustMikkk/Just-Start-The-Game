@@ -2,6 +2,8 @@ extends Entity
 
 const CARD_ENEMY = preload("res://scenes/enemies/card_enemy.tscn")
 
+@export var _exit_to_enable: Area2D
+
 @onready var _animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
@@ -12,6 +14,7 @@ func _ready() -> void:
 		_animated_sprite_2d.modulate = Color.WHITE
 	)
 	entity_died.connect(func():
+		_exit_to_enable.enable()
 		queue_free()
 	)
 
