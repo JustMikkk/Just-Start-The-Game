@@ -1,3 +1,5 @@
+[gd_scene load_steps=5 format=3 uid="uid://bras2p6rufw1e"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_5baar"]
 [gd_scene load_steps=8 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
@@ -13,6 +15,7 @@ id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
+
 
 [node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_5baar")]
 position = Vector2(-296, 97)

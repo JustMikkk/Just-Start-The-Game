@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func connect_app(app: App) -> void:
 	app.app_opened_signal.connect(_on_app_open)
-	app.app_exitd_signal.connect(_on_app_exit)
+	app.app_exited_signal.connect(_on_app_exit)
 
 
 func _on_app_open(app: App) -> void:

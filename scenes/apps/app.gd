@@ -2,7 +2,7 @@ class_name App
 extends AButton
 
 signal app_opened_signal(icon: App)
-signal app_exitd_signal(icon: App)
+signal app_exited_signal(icon: App)
 
 
 #@export var _is_fullcreen: bool = false
@@ -37,7 +37,7 @@ func _ready() -> void:
 
 
 func _on_bindow_exit() -> void:
-	app_exitd_signal.emit(self)
+	app_exited_signal.emit(self)
 
 
 func _open_bindow() -> void:
