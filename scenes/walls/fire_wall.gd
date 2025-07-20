@@ -4,6 +4,10 @@ extends Area2D
 func _ready() -> void:
 	if GameManager.has_player_firewall:
 		queue_free()
+	
+	GameManager.firewall_equipped.connect(func():
+		queue_free()
+	)
 
 
 func _on_body_entered(body: Node2D) -> void:

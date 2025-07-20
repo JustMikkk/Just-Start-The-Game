@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=18 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="12_4ehog"]
-[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
 
@@ -122,21 +121,6 @@ desktop = NodePath("../..")
 position = Vector2(-384, 224)
 _next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
 _label_text = ""
-
-[node name="FireWall" parent="Enemies" index="0" instance=ExtResource("13_hphji")]
-position = Vector2(96, 240)
-
-[node name="FireWall2" parent="Enemies" index="1" instance=ExtResource("13_hphji")]
-position = Vector2(96, 192)
-
-[node name="FireWall3" parent="Enemies" index="2" instance=ExtResource("13_hphji")]
-position = Vector2(96, 144)
-
-[node name="FireWall4" parent="Enemies" index="3" instance=ExtResource("13_hphji")]
-position = Vector2(96, 96)
-
-[node name="FireWall5" parent="Enemies" index="4" instance=ExtResource("13_hphji")]
-position = Vector2(96, 48)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
