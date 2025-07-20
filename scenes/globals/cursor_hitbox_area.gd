@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func take_damage(amount: int, dir: Vector2) -> void:
+	if CursorManager.is_cursor_hidden(): return
 	GameManager.player.take_damage(amount, dir)
 	
 	_animated_sprite_2d.modulate = Color.RED

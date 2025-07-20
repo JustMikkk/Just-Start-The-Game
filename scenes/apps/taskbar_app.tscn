@@ -16,6 +16,7 @@ height = 40
 
 [node name="TaskbarApp" instance=ExtResource("1_l0xa7")]
 script = ExtResource("1_l16k6")
+is_enabled = null
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

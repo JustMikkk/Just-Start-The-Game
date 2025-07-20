@@ -131,7 +131,7 @@ func _physics_process(delta):
 			_run(direction, delta)
 			velocity.x = lerp(_prevVelocity.x, velocity.x, AIR_X_SMOOTHING)
 			
-			if Input.is_action_just_pressed("jump"):
+			if Input.is_action_just_pressed("jump") and velocity.y > 0:
 				if Time.get_ticks_msec() - _lastFloorMsec < COYOTE_TIME:
 					state = State.JUMP
 				else:
@@ -336,7 +336,7 @@ func _input(event) -> void:
 			global_position.y -= 50 * get_process_delta_time()
 
 func _attack(dir: Vector2) -> void:
-	if not GameManager.can_player_attack: return
+	if not GameManager.has_player_scissors: return
 	AudioManager.play_audio_clip(_audio_clip, global_position)
 	
 	state = State.ATTACK

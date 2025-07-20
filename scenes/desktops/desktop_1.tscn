@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=18 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -13,8 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="12_4ehog"]
 [ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="13_sicsa"]
+=======
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="12_4ehog"]
+[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
+[ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
+>>>>>>> 2f2a58e4e60f7271ffc380aa706eca44b46e7dd2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
 particle_flag_disable_z = true
@@ -90,11 +96,6 @@ _wait_interval = 0.03
 [node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
 position = Vector2(144, -176)
 
-[node name="NoteBindow_160_160" parent="Bindows" index="8" instance=ExtResource("2_btg26")]
-position = Vector2(-352, 80)
-_text = "herro everry nyan 
-=^-.-^="
-
 [node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
 position = Vector2(336, 232)
 desktop = NodePath("../..")
@@ -121,12 +122,9 @@ icon = ExtResource("9_kpwh1")
 position = Vector2(-336, -32)
 desktop = NodePath("../..")
 
-[node name="NoteApp" parent="Apps" index="4" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("12_4ehog")]
-position = Vector2(-352, 224)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/NoteBindow_160_160")
-taskbar_icon = ExtResource("13_sicsa")
-_label_text = "old_man.txt"
+[node name="ConverterApp" parent="Apps" index="4" instance=ExtResource("12_4ehog")]
+position = Vector2(-384, 224)
+_next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
@@ -163,6 +161,11 @@ position = Vector2(448, -144)
 
 [node name="Timer" parent="WorldEater" index="0"]
 wait_time = 0.1
+
+[node name="PowerUp" parent="." index="11" instance=ExtResource("15_sicsa")]
+position = Vector2(-272, 192)
+_power_up_id = "scissors"
+_texture = ExtResource("16_t43jk")
 
 [editable path="MoveButtons/Right"]
 [editable path="WorldEater"]
