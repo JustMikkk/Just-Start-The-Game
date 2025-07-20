@@ -1,5 +1,8 @@
 extends Node2D
 
+signal firewall_equipped
+signal adminwall_equipped
+
 var can_player_transform: bool = false
 
 var has_player_scissors: bool = false
@@ -65,9 +68,11 @@ func add_power_up(id: String, global_pos: Vector2, texture: Texture) -> void:
 		"admin":
 			has_player_admin = true
 			destination = current_desktop.taskbar.admin.global_position
+			adminwall_equipped.emit()
 		"firewall":
 			has_player_firewall = true
 			destination = current_desktop.taskbar.fire_wall.global_position
+			firewall_equipped.emit()
 	
 	game.transition_player.play_power_up_transition(global_pos, texture, destination)
 	

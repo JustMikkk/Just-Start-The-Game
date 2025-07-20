@@ -13,6 +13,7 @@ b = Vector2(96, 2)
 size = Vector2(152, 24)
 
 [node name="FolderBindow" instance=ExtResource("1_1jnot")]
+z_index = 0
 
 [node name="Inside" parent="." index="0"]
 scale = Vector2(1, 1)

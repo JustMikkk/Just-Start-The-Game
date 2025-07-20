@@ -1,10 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm16ve5cvchl4"]
+[gd_scene load_steps=17 format=3 uid="uid://bm16ve5cvchl4"]
 
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_deh3x"]
 [ext_resource type="Script" uid="uid://cc8csofr4lulr" path="res://scenes/bindows/photo_bindow.gd" id="2_r7pc3"]
-[ext_resource type="Texture2D" uid="uid://bkmqbwruj21ee" path="res://assets/graphics/bindows/photo_cat_flower_128.png" id="3_icp61"]
+[ext_resource type="Texture2D" uid="uid://d0dytodfgo5fb" path="res://assets/graphics/cat/IMG20250424125828.jpg" id="3_mg0eo"]
+[ext_resource type="Texture2D" uid="uid://chivt0k54mdsu" path="res://assets/graphics/cat/IMG_20250115_152715.jpg" id="4_01jv1"]
 [ext_resource type="Texture2D" uid="uid://7o4nxs13x2iq" path="res://assets/graphics/bindows/photo_frame_96.png" id="4_f5x0p"]
 [ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="5_ojsq4"]
+[ext_resource type="Texture2D" uid="uid://l1fufmp5sakt" path="res://assets/graphics/cat/IMG_20250130_070546.jpg" id="5_x1hjv"]
+[ext_resource type="Texture2D" uid="uid://b4nsoq6eyl8nt" path="res://assets/graphics/cat/IMG_20250224_060829.jpg" id="6_ht8rd"]
+[ext_resource type="Texture2D" uid="uid://bak8jiyfs4ckh" path="res://assets/graphics/cat/IMG_20250302_222153.jpg" id="7_xvrfo"]
+[ext_resource type="Texture2D" uid="uid://dvkv24arm1tk8" path="res://assets/graphics/cat/IMG_20250314_210800.jpg" id="8_rjhpq"]
+[ext_resource type="Texture2D" uid="uid://do4ysappfvsr0" path="res://assets/graphics/cat/IMG_20250327_215935.jpg" id="9_j2it1"]
+[ext_resource type="Texture2D" uid="uid://bkv37ji2uyq0a" path="res://assets/graphics/cat/IMG_20250327_220001.jpg" id="10_epee4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gpta2"]
 resource_local_to_scene = true
@@ -27,11 +34,12 @@ shadow_color = Color(1, 1, 1, 0)
 [node name="PhotoBindow_96" instance=ExtResource("1_deh3x")]
 script = ExtResource("2_r7pc3")
 _photo_name = ""
+_photos = Array[Texture]([ExtResource("3_mg0eo"), ExtResource("4_01jv1"), ExtResource("5_x1hjv"), ExtResource("6_ht8rd"), ExtResource("7_xvrfo"), ExtResource("8_rjhpq"), ExtResource("9_j2it1"), ExtResource("10_epee4")])
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(9.53674e-07, 4)
-scale = Vector2(0.75, 0.6875)
-texture = ExtResource("3_icp61")
+position = Vector2(0, 6)
+scale = Vector2(1, 1)
+texture = ExtResource("3_mg0eo")
 
 [node name="Frame" parent="." index="1"]
 texture = ExtResource("4_f5x0p")
