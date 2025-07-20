@@ -34,6 +34,8 @@ icon = ExtResource("5_huf8o")
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
 position = Vector2(-112, 240)
+_next_positions = null
+_is_looping = null
 
 [node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
 position = Vector2(-176, 48)
