@@ -10,13 +10,12 @@ size = Vector2(48, 48)
 
 [node name="App" groups=["App"] instance=ExtResource("1_r061u")]
 script = ExtResource("1_oyhgt")
-_is_fullcreen = false
 taskbar_icon = null
 icon = null
 _label_text = ""
 
 [node name="Icon" parent="." index="0"]
-z_index = -2
+z_index = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_r061u")
