@@ -45,6 +45,7 @@ var _wasOnFloor := false
 var _lastJumpQueueMsec: int
 var _gravity = START_GRAVITY
 var _attack_direction: Vector2
+var _attack_timer: float = 0
 
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
@@ -199,6 +200,8 @@ func _physics_process(delta):
 					
 		State.ATTACK:
 			
+			_attack_timer += delta
+			
 			velocity.y += _gravity * delta
 			
 			if abs(velocity.y) < AIR_HANG_THRESHOLD:
@@ -222,6 +225,11 @@ func _physics_process(delta):
 			
 			if Input.is_action_just_pressed("jump") and is_on_floor(): 
 				velocity.y = JUMP_VELOCITY * delta
+			
+			if _attack_timer > 0.3:
+				_slash_collision.disabled = true
+				_slash_sprite_2d.hide()
+				state = State.RUN
 				
 			
 		State.DAMAGED:
@@ -340,6 +348,7 @@ func unfreeze() -> void:
 func _attack(dir: Vector2) -> void:
 	if not GameManager.has_player_scissors: return
 	
+	_attack_timer = 0
 	state = State.ATTACK
 	(func():
 		_attack_direction = dir
@@ -355,10 +364,8 @@ func _attack(dir: Vector2) -> void:
 		
 		#_slash_sprite_2d.show()
 		_slash_collision.disabled = false
-		await get_tree().create_timer(0.2).timeout
-		_slash_collision.disabled = true
-		_slash_sprite_2d.hide()
-		state = State.RUN
+		
+
 	).call_deferred()
 	
 

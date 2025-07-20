@@ -1,7 +1,7 @@
 extends App
 
 var _is_big: bool = false
-
+var _bindow_opened: bool = false
 
 # overrides so it doesnt show up in taskbar and transform
 func _ready() -> void:
@@ -11,6 +11,8 @@ func _ready() -> void:
 
 
 func _open_bindow() -> void:
+	if _bindow_opened: return
+	_bindow_opened = true
 	bindow.open_bindow()
 
 

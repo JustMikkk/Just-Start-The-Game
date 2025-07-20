@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=19 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -7,21 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
 [ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
 [ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
-[ext_resource type="PackedScene" uid="uid://do284ggo44wsc" path="res://scenes/bindows/folder_bindow.tscn" id="6_0ghmy"]
 [ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
-[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="7_jj5cv"]
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
 [ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
-[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="12_4ehog"]
-[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="14_jj5cv"]
-[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="15_7e0qu"]
+[ext_resource type="PackedScene" uid="uid://bgf6tfh5q65" path="res://scenes/walls/admin_wall.tscn" id="12_hphji"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
-[ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="17_7e0qu"]
-[ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="18_d2kye"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
 particle_flag_disable_z = true
@@ -97,22 +92,6 @@ _wait_interval = 0.03
 [node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
 position = Vector2(144, -176)
 
-[node name="FolderBindow" parent="Bindows" index="8" instance=ExtResource("6_0ghmy")]
-position = Vector2(-336, 80)
-
-[node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
-z_index = 1
-position = Vector2(-64, -16)
-desktop = NodePath("../../..")
-bindow = NodePath("../../PhotoBindow_96")
-taskbar_icon = ExtResource("14_jj5cv")
-icon = ExtResource("15_7e0qu")
-_label_text = "cat.png"
-
-[node name="PhotoBindow_96" parent="Bindows" index="9" instance=ExtResource("7_jj5cv")]
-position = Vector2(-176, -32)
-_photo_name = "ninja"
-
 [node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
 position = Vector2(336, 232)
 desktop = NodePath("../..")
@@ -130,27 +109,62 @@ icon = ExtResource("5_gn44y")
 _label_text = "help.txt"
 
 [node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("7_7okfk")]
-position = Vector2(-336, -112)
+position = Vector2(-352, 144)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/AlertBindow")
 icon = ExtResource("9_kpwh1")
 
 [node name="GheTameApp" parent="Apps" index="3" node_paths=PackedStringArray("desktop") instance=ExtResource("10_1c540")]
-position = Vector2(-336, -32)
+position = Vector2(-352, -64)
 desktop = NodePath("../..")
 
-[node name="ConverterApp" parent="Apps" index="4" instance=ExtResource("12_4ehog")]
-position = Vector2(-384, 224)
-_next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
-_label_text = ""
+[node name="AdminWall" parent="Enemies" index="0" instance=ExtResource("12_hphji")]
+position = Vector2(-304, 144)
+is_disabled = true
 
-[node name="App" parent="Apps" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
-position = Vector2(-208, 224)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/FolderBindow")
-taskbar_icon = ExtResource("17_7e0qu")
-icon = ExtResource("18_d2kye")
-_label_text = "kitty"
+[node name="AdminWall3" parent="Enemies" index="1" instance=ExtResource("12_hphji")]
+position = Vector2(-352, 96)
+is_disabled = true
+
+[node name="AdminWall5" parent="Enemies" index="2" instance=ExtResource("12_hphji")]
+position = Vector2(-400, 144)
+is_disabled = true
+
+[node name="AdminWall7" parent="Enemies" index="3" instance=ExtResource("12_hphji")]
+position = Vector2(-352, 192)
+is_disabled = true
+
+[node name="FireWall" parent="Enemies" index="4" instance=ExtResource("13_hphji")]
+position = Vector2(-304, 96)
+is_disabled = true
+
+[node name="FireWall2" parent="Enemies" index="5" instance=ExtResource("13_hphji")]
+position = Vector2(-352, 48)
+is_disabled = true
+
+[node name="FireWall3" parent="Enemies" index="6" instance=ExtResource("13_hphji")]
+position = Vector2(-400, 96)
+is_disabled = true
+
+[node name="FireWall4" parent="Enemies" index="7" instance=ExtResource("13_hphji")]
+position = Vector2(-448, 144)
+is_disabled = true
+
+[node name="FireWall5" parent="Enemies" index="8" instance=ExtResource("13_hphji")]
+position = Vector2(-400, 192)
+is_disabled = true
+
+[node name="FireWall6" parent="Enemies" index="9" instance=ExtResource("13_hphji")]
+position = Vector2(-352, 240)
+is_disabled = true
+
+[node name="FireWall7" parent="Enemies" index="10" instance=ExtResource("13_hphji")]
+position = Vector2(-304, 192)
+is_disabled = true
+
+[node name="FireWall8" parent="Enemies" index="11" instance=ExtResource("13_hphji")]
+position = Vector2(-256, 144)
+is_disabled = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
@@ -167,7 +181,7 @@ process_material = SubResource("ParticleProcessMaterial_pce8l")
 [node name="BindowsDefender" parent="." index="6" instance=ExtResource("9_yfe1b")]
 
 [node name="SpawnPoint" parent="." index="8"]
-position = Vector2(-312, 144)
+position = Vector2(0, 192)
 
 [node name="Down" parent="MoveButtons" index="0"]
 visible = false
@@ -189,7 +203,7 @@ position = Vector2(448, -144)
 wait_time = 0.1
 
 [node name="PowerUp" parent="." index="11" instance=ExtResource("15_sicsa")]
-position = Vector2(-272, 192)
+position = Vector2(64, 144)
 _power_up_id = "scissors"
 _texture = ExtResource("16_t43jk")
 
