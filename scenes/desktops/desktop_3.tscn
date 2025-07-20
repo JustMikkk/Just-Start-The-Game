@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=9 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
+[ext_resource type="Script" uid="uid://dv2dhyi2bw4a0" path="res://scenes/desktops/desktop_3.gd" id="2_6dp2f"]
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_5baar"]
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_wdh0m"]
@@ -9,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_huf8o"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
-id_name = "desktop_3"
+script = ExtResource("2_6dp2f")
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
