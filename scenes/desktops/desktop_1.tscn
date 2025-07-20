@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=22 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="12_4ehog"]
+[ext_resource type="PackedScene" uid="uid://imj3g1vus8y" path="res://scenes/apps/zip_app.tscn" id="13_0ghmy"]
 [ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
+[ext_resource type="Texture2D" uid="uid://c62ortvte27ew" path="res://assets/graphics/apps/taskbar/cmd32.png" id="14_mc5mj"]
+[ext_resource type="Texture2D" uid="uid://uskcgsp0ubef" path="res://assets/graphics/apps/desktop/zip48.png" id="15_jj5cv"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
 
@@ -122,6 +125,14 @@ desktop = NodePath("../..")
 position = Vector2(-384, 224)
 _next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
 _label_text = ""
+
+[node name="ZipApp" parent="Apps" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("13_0ghmy")]
+position = Vector2(-224, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/Bindow")
+taskbar_icon = ExtResource("14_mc5mj")
+icon = ExtResource("15_jj5cv")
+_label_text = "sus.zip"
 
 [node name="FireWall" parent="Enemies" index="0" instance=ExtResource("13_hphji")]
 position = Vector2(96, 240)

@@ -6,6 +6,7 @@ var has_player_scissors: bool = false
 var has_player_admin: bool = false
 var has_player_firewall: bool = false
 
+var is_world_eater_eating: bool = false
 
 var player: Player
 var current_desktop: Desktop:
