@@ -324,17 +324,17 @@ func unfreeze() -> void:
 	state = State.IDLE
 	_click_area.is_enabled = true
 
-
-func _input(event) -> void:
-	if event is InputEventMouseMotion:
-		if event.relative.x > 0:
-			global_position.x += 50 * get_process_delta_time()
-		if event.relative.x < 0:
-			global_position.x -= 50 * get_process_delta_time()
-		if event.relative.y > 0:
-			global_position.y += 50 * get_process_delta_time()
-		if event.relative.y < 0:
-			global_position.y -= 50 * get_process_delta_time()
+#
+#func _input(event) -> void:
+	#if event is InputEventMouseMotion:
+		#if event.relative.x > 0:
+			#global_position.x += 50 * get_process_delta_time()
+		#if event.relative.x < 0:
+			#global_position.x -= 50 * get_process_delta_time()
+		#if event.relative.y > 0:
+			#global_position.y += 50 * get_process_delta_time()
+		#if event.relative.y < 0:
+			#global_position.y -= 50 * get_process_delta_time()
 
 
 func _attack(dir: Vector2) -> void:
