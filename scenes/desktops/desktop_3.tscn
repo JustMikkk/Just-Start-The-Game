@@ -11,6 +11,7 @@
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
 script = ExtResource("2_6dp2f")
+id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
