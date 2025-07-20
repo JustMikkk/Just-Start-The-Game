@@ -102,6 +102,7 @@ func _physics_process(delta):
 			_fall_timer = 0
 			
 		State.POGO_AIR:
+			_attack_timer += delta
 			_fall_timer += delta
 			_animated_sprite_2d.animation = "pogo"
 			
@@ -117,6 +118,11 @@ func _physics_process(delta):
 				_gravity *= AIR_HANG_MULTIPLIER
 			else:
 				_gravity = START_GRAVITY
+			
+			if _attack_timer > 0.15:
+				_slash_collision.disabled = true
+				_slash_sprite_2d.hide()
+				state = State.RUN
 		
 		State.AIR:
 			_fall_timer += delta
@@ -199,9 +205,7 @@ func _physics_process(delta):
 					call_deferred("_disable_collisions")
 					
 		State.ATTACK:
-			
 			_attack_timer += delta
-			
 			velocity.y += _gravity * delta
 			
 			if abs(velocity.y) < AIR_HANG_THRESHOLD:
@@ -226,7 +230,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("jump") and is_on_floor(): 
 				velocity.y = JUMP_VELOCITY * delta
 			
-			if _attack_timer > 0.3:
+			if _attack_timer > 0.15:
 				_slash_collision.disabled = true
 				_slash_sprite_2d.hide()
 				state = State.RUN
@@ -333,16 +337,16 @@ func unfreeze() -> void:
 	_click_area.is_enabled = true
 
 #
-func _input(event) -> void:
-	if event is InputEventMouseMotion and not velocity:
-		if event.relative.x > 0:
-			global_position.x += 50 * get_process_delta_time()
-		if event.relative.x < 0:
-			global_position.x -= 50 * get_process_delta_time()
-		if event.relative.y > 0:
-			global_position.y += 50 * get_process_delta_time()
-		if event.relative.y < 0:
-			global_position.y -= 50 * get_process_delta_time()
+#func _input(event) -> void:
+	#if event is InputEventMouseMotion:
+		#if event.relative.x > 0:
+			#global_position.x += 50 * get_process_delta_time()
+		#if event.relative.x < 0:
+			#global_position.x -= 50 * get_process_delta_time()
+		#if event.relative.y > 0:
+			#global_position.y += 50 * get_process_delta_time()
+		#if event.relative.y < 0:
+			#global_position.y -= 50 * get_process_delta_time()
 
 
 func _attack(dir: Vector2) -> void:

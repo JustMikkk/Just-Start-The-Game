@@ -30,12 +30,13 @@ gravity = Vector3(0, 98, 0)
 scale_min = 5.0
 scale_max = 7.0
 
-[node name="Desktop 1" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave") instance=ExtResource("1_5c2q5")]
+[node name="Desktop 1" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave", "_walls") instance=ExtResource("1_5c2q5")]
 script = ExtResource("2_kpwh1")
 _alert_before_appear = NodePath("Bindows/AlertBindow")
 _alert_after_appear = NodePath("Bindows/AlertBindow2")
 _alert_before_leave = NodePath("Bindows/AlertBindow4")
 _alert_after_leave = NodePath("Bindows/AlertBindow5")
+_walls = [NodePath("Enemies/AdminWall"), NodePath("Enemies/AdminWall3"), NodePath("Enemies/AdminWall5"), NodePath("Enemies/AdminWall7"), NodePath("Enemies/FireWall"), NodePath("Enemies/FireWall2"), NodePath("Enemies/FireWall3"), NodePath("Enemies/FireWall4"), NodePath("Enemies/FireWall5"), NodePath("Enemies/FireWall6"), NodePath("Enemies/FireWall7"), NodePath("Enemies/FireWall8")]
 id_name = "desktop_1"
 _cutscene_name = "desktop_1"
 

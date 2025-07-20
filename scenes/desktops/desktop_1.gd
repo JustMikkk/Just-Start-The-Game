@@ -6,6 +6,7 @@ extends Desktop
 @export var _alert_before_leave: AlertBindow
 @export var _alert_after_leave: AlertBindow
 
+@export var _walls: Array[Area2D]
 
 var _tween_pos: Tween
 
@@ -59,6 +60,9 @@ func _leave() -> void:
 	_tween_pos.tween_interval(0.3)
 	_tween_pos.tween_callback(func():
 		_alert_after_leave.open_bindow()
+		for w in _walls:
+			w.enable()
+			await get_tree().create_timer(0.05).timeout
 	)
 	_tween_pos.tween_interval(4)
 	_tween_pos.tween_property(_bindows_defender, "rotation_degrees", 90, 1)
