@@ -121,8 +121,6 @@ desktop = NodePath("../..")
 [node name="ConverterApp" parent="Apps" index="4" instance=ExtResource("12_4ehog")]
 position = Vector2(-384, 224)
 _next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
-taskbar_icon = null
-icon = null
 _label_text = ""
 
 [node name="FireWall" parent="Enemies" index="0" instance=ExtResource("13_hphji")]
