@@ -1,9 +1,75 @@
-[gd_scene load_steps=3 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=8 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
-[ext_resource type="Texture2D" uid="uid://cy01vanj4ilc4" path="res://assets/graphics/bg/bg_tri.png" id="2_uejpn"]
+[ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_5baar"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_wdh0m"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="5_huf8o"]
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="6_wdh0m"]
+[ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_huf8o"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
+id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_uejpn")
+
+[node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_5baar")]
+position = Vector2(-296, 97)
+_text = "Scissors"
+
+[node name="NoteBindow_160_161" parent="Bindows" index="1" instance=ExtResource("3_5baar")]
+position = Vector2(-80, -128)
+_text = "can be used"
+
+[node name="NoteBindow_160_162" parent="Bindows" index="2" instance=ExtResource("3_5baar")]
+position = Vector2(-384, -128)
+_text = "for cutting!"
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
+position = Vector2(-176, 160)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+icon = ExtResource("5_huf8o")
+
+[node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
+position = Vector2(-112, 240)
+
+[node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
+position = Vector2(-176, 48)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_161")
+icon = ExtResource("5_huf8o")
+
+[node name="App3" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
+position = Vector2(-416, -256)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_162")
+icon = ExtResource("5_huf8o")
+
+[node name="CardEnemyFlying" parent="Enemies" index="0" instance=ExtResource("7_huf8o")]
+position = Vector2(64, 16)
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(-416, 240)
+
+[node name="MoveButtons" parent="." index="7"]
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" parent="MoveButtons/Down" index="3"]
+color = Color(0.701961, 0.52549, 0.678431, 1)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" parent="MoveButtons/Left" index="3"]
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" parent="MoveButtons/Up" index="3"]
+color = Color(0.517647, 0.564706, 0.34902, 1)
+
+[node name="PointLight2D" parent="MoveButtons/Right" index="3"]
+color = Color(0.770341, 0.989657, 0, 1)
+
+[editable path="MoveButtons/Down"]
+[editable path="MoveButtons/Left"]
+[editable path="MoveButtons/Up"]
+[editable path="MoveButtons/Right"]

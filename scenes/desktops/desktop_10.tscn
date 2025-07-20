@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2k13n86lqha"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_vf0tr"]
+[ext_resource type="Texture2D" uid="uid://bw3p5osplgy7p" path="res://assets/graphics/bg/bg_dziesiec.png" id="2_sfx84"]
+
+[node name="Desktop10" instance=ExtResource("1_vf0tr")]
+id_name = "desktop_10"
+
+[node name="BG" parent="." index="0"]
+texture = ExtResource("2_sfx84")
+
+[node name="Down" parent="MoveButtons" index="0"]
+visible = false
+is_enabled = false
+
+[node name="PointLight2D" parent="MoveButtons/Left" index="3"]
+color = Color(0.768627, 0.988235, 0, 1)
+
+[node name="PointLight2D" parent="MoveButtons/Up" index="3"]
+color = Color(0.913413, 0.907501, 0.941851, 1)
+
+[node name="Right" parent="MoveButtons" index="3"]
+visible = false
+is_enabled = false
+
+[editable path="MoveButtons/Left"]
+[editable path="MoveButtons/Up"]

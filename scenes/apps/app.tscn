@@ -1,16 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dslrycch57s88"]
+[gd_scene load_steps=6 format=3 uid="uid://dslrycch57s88"]
 
 [ext_resource type="Script" uid="uid://e81lcn3701xl" path="res://scenes/apps/app.gd" id="1_oyhgt"]
 [ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_r061u"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="3_r061u"]
-[ext_resource type="FontFile" uid="uid://b5riairri341y" path="res://assets/fonts/PixeloidSansBold-PKnYd.ttf" id="4_rbnoo"]
+[ext_resource type="LabelSettings" uid="uid://cisn0xhnbs4vm" path="res://assets/settings/font.tres" id="4_rbnoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r061u"]
 size = Vector2(48, 48)
-
-[sub_resource type="LabelSettings" id="LabelSettings_f5w8h"]
-font = ExtResource("4_rbnoo")
-font_size = 8
 
 [node name="App" groups=["App"] instance=ExtResource("1_r061u")]
 script = ExtResource("1_oyhgt")
@@ -51,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Jajo.txt"
-label_settings = SubResource("LabelSettings_f5w8h")
+label_settings = ExtResource("4_rbnoo")
 horizontal_alignment = 1
 vertical_alignment = 1
 

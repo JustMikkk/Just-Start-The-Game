@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dahhrkxho03g3"]
+
+[ext_resource type="Script" uid="uid://dvvhuh0lqydyx" path="res://scenes/enemies/world_eater.gd" id="1_ib6wj"]
+
+[node name="WorldEater" type="Node2D"]
+script = ExtResource("1_ib6wj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.08
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

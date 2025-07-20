@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsl023t01ihkd"]
+[gd_scene load_steps=14 format=3 uid="uid://dsl023t01ihkd"]
 
 [ext_resource type="Script" uid="uid://d34xs3qbm3iol" path="res://scenes/globals/cursor_manager.gd" id="1_ndr1v"]
 [ext_resource type="Texture2D" uid="uid://cwpqshcnfocad" path="res://assets/graphics/player/transform/the_cursed_one_transform_0001.png" id="2_qxen4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://drh455o78agix" path="res://assets/graphics/player/transform/the_cursed_one_transform_0007.png" id="8_dn4jf"]
 [ext_resource type="Texture2D" uid="uid://di4kqlgxanyfy" path="res://assets/graphics/player/transform/the_cursed_one_transform_0008.png" id="9_33eh4"]
 [ext_resource type="PackedScene" uid="uid://cf58iclp3fedo" path="res://scenes/player/click_area.tscn" id="10_wuutn"]
+[ext_resource type="Script" uid="uid://dl8x5e7clemte" path="res://scenes/globals/cursor_hitbox_area.gd" id="11_sokms"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_74276"]
 animations = [{
@@ -80,6 +81,10 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wuutn"]
+radius = 3.60442
+height = 15.5684
+
 [node name="CursorManager" type="Node2D"]
 script = ExtResource("1_ndr1v")
 
@@ -91,3 +96,18 @@ autoplay = "default"
 
 [node name="ClickArea" parent="AnimatedSprite2D" instance=ExtResource("10_wuutn")]
 position = Vector2(-7, -7)
+
+[node name="CursorHitboxArea" type="CharacterBody2D" parent="AnimatedSprite2D"]
+position = Vector2(-3, 0)
+rotation = -0.432864
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("11_sokms")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/CursorHitboxArea"]
+position = Vector2(0.488295, 1.32724)
+rotation = -0.180149
+shape = SubResource("CapsuleShape2D_wuutn")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

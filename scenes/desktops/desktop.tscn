@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://kpplv6w3th0s"]
+[gd_scene load_steps=8 format=3 uid="uid://kpplv6w3th0s"]
 
 [ext_resource type="Script" uid="uid://dm2ef0jpfealc" path="res://scenes/desktops/desktop.gd" id="1_8i485"]
 [ext_resource type="Texture2D" uid="uid://vgk2yi2n5knh" path="res://assets/graphics/bg/bg1.png" id="2_ciuw6"]
+[ext_resource type="PackedScene" uid="uid://8syplnipfwtd" path="res://scenes/buttons/dir_button.tscn" id="4_u6osu"]
+[ext_resource type="PackedScene" uid="uid://dahhrkxho03g3" path="res://scenes/enemies/world_eater.tscn" id="5_rcjc2"]
 [ext_resource type="PackedScene" uid="uid://bx22tcip152ve" path="res://scenes/desktops/taskbar.tscn" id="6_ve4ha"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_advyw"]
@@ -32,9 +34,38 @@ shape = SubResource("SegmentShape2D_advyw")
 [node name="Floor" type="CollisionShape2D" parent="Bounds"]
 shape = SubResource("SegmentShape2D_4owec")
 
+[node name="Ceiling" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(0, -640)
+shape = SubResource("SegmentShape2D_4owec")
+
 [node name="Bindows" type="Node2D" parent="."]
 
 [node name="Apps" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="Taskbar" parent="." instance=ExtResource("6_ve4ha")]
 position = Vector2(-480, 272)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="MoveButtons" type="Node2D" parent="."]
+
+[node name="Down" parent="MoveButtons" instance=ExtResource("4_u6osu")]
+position = Vector2(0, 288)
+_dir = Vector2i(0, 1)
+
+[node name="Left" parent="MoveButtons" instance=ExtResource("4_u6osu")]
+position = Vector2(-448, 0)
+_dir = Vector2i(-1, 0)
+
+[node name="Up" parent="MoveButtons" instance=ExtResource("4_u6osu")]
+position = Vector2(0, -288)
+_dir = Vector2i(0, -1)
+
+[node name="Right" parent="MoveButtons" instance=ExtResource("4_u6osu")]
+position = Vector2(448, 0)
+_dir = Vector2i(1, 0)
+
+[node name="WorldEater" parent="." instance=ExtResource("5_rcjc2")]
+position = Vector2(-480, 320)

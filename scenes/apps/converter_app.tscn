@@ -65,6 +65,7 @@ size = Vector2(32, 32)
 script = ExtResource("1_85g0e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 19
 sprite_frames = SubResource("SpriteFrames_axkco")
 autoplay = "default"
 frame_progress = 0.789226

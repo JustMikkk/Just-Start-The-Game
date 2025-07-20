@@ -10,6 +10,14 @@ var _counter: int = 0
 
 @onready var _taskbar_app_holder: Node2D = $TaskbarAppHolder
 
+@onready var scissors: Sprite2D = $PowerUps/Scissors
+@onready var admin: Sprite2D = $PowerUps/Admin
+@onready var fire_wall: Sprite2D = $PowerUps/FireWall
+
+
+func _ready() -> void:
+	update_power_ups()
+
 
 func create_app(app: App) -> void:
 	if app in _apps: return
@@ -49,3 +57,12 @@ func remove_app(app: App) -> void:
 				24
 		))
 		_counter += 1
+
+
+func update_power_ups() -> void:
+	if GameManager.has_player_scissors: 
+		scissors.show()
+	if GameManager.has_player_admin: 
+		admin.show()
+	if GameManager.has_player_firewall: 
+		fire_wall.show()

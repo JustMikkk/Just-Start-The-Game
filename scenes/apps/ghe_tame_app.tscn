@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv7ul7dkkk0dy"]
+
+[ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="1_tn1s8"]
+[ext_resource type="Script" uid="uid://cwh5sod4ndq10" path="res://scenes/apps/ghe_tame_app.gd" id="2_l0h0a"]
+
+[node name="GheTameApp" instance=ExtResource("1_tn1s8")]
+script = ExtResource("2_l0h0a")
+_label_text = ""
+
+[node name="Icon" parent="." index="0"]
+rotation = 3.14159
+
+[node name="Label" parent="Control" index="0"]
+text = "Ghe Tame"

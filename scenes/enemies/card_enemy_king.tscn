@@ -1,0 +1,98 @@
+[gd_scene load_steps=19 format=3 uid="uid://cc4b7xqddfi2x"]
+
+[ext_resource type="Texture2D" uid="uid://bwxms0my70alc" path="res://assets/graphics/cards/card_king/card_king_0001.png" id="1_gh88j"]
+[ext_resource type="Script" uid="uid://ddms8ekq08rpb" path="res://scenes/enemies/card_enemy_king.gd" id="1_mtwoc"]
+[ext_resource type="Texture2D" uid="uid://cmy1f6k2c60mm" path="res://assets/graphics/cards/card_king/card_king_0002.png" id="2_mtwoc"]
+[ext_resource type="Texture2D" uid="uid://d042g27hrt5nr" path="res://assets/graphics/cards/card_king/card_king_0003.png" id="3_k4ddh"]
+[ext_resource type="Texture2D" uid="uid://btpisa8b1bux2" path="res://assets/graphics/cards/card_king/card_king_0004.png" id="4_wkri3"]
+[ext_resource type="Texture2D" uid="uid://c3ipirw7vaeao" path="res://assets/graphics/cards/card_king/card_king_0005.png" id="5_vk08w"]
+[ext_resource type="Texture2D" uid="uid://dxckny1tei5mv" path="res://assets/graphics/cards/card_king/card_king_0006.png" id="6_2dyic"]
+[ext_resource type="Texture2D" uid="uid://bvvefgyjfvc0r" path="res://assets/graphics/cards/card_king/card_king_0007.png" id="7_hmspi"]
+[ext_resource type="Texture2D" uid="uid://d021v2bc7d637" path="res://assets/graphics/cards/card_king/card_king_0008.png" id="8_ln2re"]
+[ext_resource type="Texture2D" uid="uid://p3r55kdyx2l3" path="res://assets/graphics/cards/card_king/card_king_0009.png" id="9_mbj2s"]
+[ext_resource type="Texture2D" uid="uid://duiae46rbt22v" path="res://assets/graphics/cards/card_king/card_king_0010.png" id="10_x3opc"]
+[ext_resource type="Texture2D" uid="uid://dwdogdun5hoh4" path="res://assets/graphics/cards/card_king/card_king_0011.png" id="11_lxtg7"]
+[ext_resource type="Texture2D" uid="uid://cvnlkjjwju1x1" path="res://assets/graphics/cards/card_king/card_king_0012.png" id="12_5a235"]
+[ext_resource type="Texture2D" uid="uid://ge7ik2urkaxq" path="res://assets/graphics/cards/card_king/card_king_0013.png" id="13_60jh4"]
+[ext_resource type="Texture2D" uid="uid://c43psnw0rgodt" path="res://assets/graphics/cards/card_king/card_king_0014.png" id="14_ldfw2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh88j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gh88j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mtwoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k4ddh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wkri3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vk08w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2dyic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hmspi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ln2re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mbj2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x3opc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lxtg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5a235")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_60jh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ldfw2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtwoc"]
+size = Vector2(40, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4ddh"]
+size = Vector2(40, 80)
+
+[node name="CardEnemyKing" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 6
+script = ExtResource("1_mtwoc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 19
+sprite_frames = SubResource("SpriteFrames_gh88j")
+autoplay = "default"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mtwoc")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_k4ddh")
+
+[node name="ThrowTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timer_timeout"]

@@ -51,7 +51,7 @@ func _on_area_exited(area: Area2D) -> void:
 	
 	mouse_exit.emit()
 	
-	if _click_area:
+	if _click_area and _click_area.click_area_click.is_connected(_on_click_area_click):
 		_click_area.click_area_click.disconnect(_on_click_area_click)
 	_click_area = null
 

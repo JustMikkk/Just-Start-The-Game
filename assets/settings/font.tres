@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cisn0xhnbs4vm"]
+
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="1_go7wa"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_go7wa")
+shadow_color = Color(1, 1, 1, 0)

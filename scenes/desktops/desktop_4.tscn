@@ -1,9 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpuy36knlslh6"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_rrq6o"]
-[ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_xd3ex"]
+[ext_resource type="Texture2D" uid="uid://cup1dk4oajnps" path="res://assets/graphics/bg/bg_dwa.png" id="2_xd3ex"]
 
 [node name="Desktop4" instance=ExtResource("1_rrq6o")]
+id_name = "desktop_4"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_xd3ex")
+
+[node name="PointLight2D" parent="MoveButtons/Down" index="3"]
+color = Color(0.45098, 0.45098, 0.317647, 1)
+
+[node name="Left" parent="MoveButtons" index="1"]
+visible = false
+is_enabled = false
+
+[node name="PointLight2D" parent="MoveButtons/Up" index="3"]
+color = Color(0.352941, 0.596078, 0.639216, 1)
+
+[node name="Right" parent="MoveButtons" index="3"]
+visible = false
+is_enabled = false
+
+[editable path="MoveButtons/Down"]
+[editable path="MoveButtons/Up"]
