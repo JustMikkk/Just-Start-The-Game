@@ -1,6 +1,7 @@
 extends Node2D
 
 var can_player_transform: bool = false
+var can_player_attack: bool = false
 
 var player: Player
 var current_desktop: Desktop:

@@ -1,3 +1,5 @@
+# the base is from TheCodingKid tutorials 
+
 class_name Player
 extends Entity
 
@@ -335,6 +337,7 @@ func _input(event) -> void:
 
 
 func _attack(dir: Vector2) -> void:
+	if not GameManager.can_player_attack: return
 	AudioManager.play_audio_clip(_audio_clip, global_position)
 	
 	state = State.ATTACK

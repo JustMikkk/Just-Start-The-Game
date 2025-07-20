@@ -18,7 +18,7 @@ func _ready() -> void:
 		Vector2i(-1, 0):
 			rotation_degrees = 90
 	
-	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir):
+	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir) or not is_enabled:
 		hide()
 		(func():
 			$EnterArea/CollisionShape2D.disabled = true
