@@ -21,7 +21,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		global_position = _next_positions[_position_index]
 		_position_index += 1
 		
-		if _position_index -1 == _next_positions.size():
+		if _position_index == _next_positions.size():
 			if _is_looping:
 				_position_index = 0
 			else:
