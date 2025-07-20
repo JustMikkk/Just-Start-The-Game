@@ -20,7 +20,6 @@ func _on_mouse_click() -> void:
 	else:
 		_click_indicator.hide()
 	
-	print("w")
 	GameManager.player.set_enabled(not GameManager.player.is_enabled(), global_position)
 	
 	if _tween_scale:

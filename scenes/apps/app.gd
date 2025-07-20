@@ -51,11 +51,11 @@ func _on_mouse_click() -> void:
 		_click_indicator.show()
 	else:
 		_click_indicator.hide()
-		_open_bindow()
 		
 		if bindow:
 			if not bindow.is_open():
 				GameManager.player.set_enabled(true, global_position)
+		_open_bindow()
 
 
 func _on_mouse_enter() -> void:
