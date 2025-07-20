@@ -33,6 +33,7 @@ bindow = NodePath("../../Bindows/NoteBindow_160_160")
 icon = ExtResource("5_huf8o")
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
+
 position = Vector2(-160, 240)
 _next_positions = Array[Vector2i]([Vector2i(724, 416), Vector2i(320, 560)])
 _is_looping = true

@@ -35,6 +35,9 @@ shape = SubResource("SegmentShape2D_87jer")
 position = Vector2(0, -72)
 shape = SubResource("SegmentShape2D_87jer")
 
+[node name="DragArea" parent="." index="5"]
+is_enabled = false
+
 [node name="CollisionShape2D" parent="DragArea" index="1"]
 position = Vector2(-20, -60)
 shape = SubResource("RectangleShape2D_ffj1q")

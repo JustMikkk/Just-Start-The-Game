@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=19 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -7,18 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
 [ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
 [ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
-[ext_resource type="PackedScene" uid="uid://vq1817t2jedd" path="res://scenes/bindows/photo_bindow.tscn" id="6_mc5mj"]
 [ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
-[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="7_jj5cv"]
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
 [ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="12_4ehog"]
-[ext_resource type="PackedScene" uid="uid://cc4b7xqddfi2x" path="res://scenes/enemies/card_enemy_king.tscn" id="13_hphji"]
-[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="14_jj5cv"]
-[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="15_7e0qu"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
 
@@ -96,14 +92,6 @@ _wait_interval = 0.03
 [node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
 position = Vector2(144, -176)
 
-[node name="PhotoBindow" parent="Bindows" index="8" instance=ExtResource("6_mc5mj")]
-position = Vector2(48, 160)
-_photo_name = "cat.png"
-
-[node name="PhotoBindow_96" parent="Bindows" index="9" instance=ExtResource("7_jj5cv")]
-position = Vector2(-224, 64)
-_photo_name = "cat.png"
-
 [node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
 position = Vector2(336, 232)
 desktop = NodePath("../..")
@@ -133,17 +121,24 @@ desktop = NodePath("../..")
 [node name="ConverterApp" parent="Apps" index="4" instance=ExtResource("12_4ehog")]
 position = Vector2(-384, 224)
 _next_positions = Array[Vector2i]([Vector2i(500, 500), Vector2i(200, 200)])
+taskbar_icon = null
+icon = null
+_label_text = ""
 
-[node name="App" parent="Apps" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
-position = Vector2(-208, 224)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/PhotoBindow")
-taskbar_icon = ExtResource("14_jj5cv")
-icon = ExtResource("15_7e0qu")
-_label_text = "cat.png"
+[node name="FireWall" parent="Enemies" index="0" instance=ExtResource("13_hphji")]
+position = Vector2(96, 240)
 
-[node name="CardEnemyKing" parent="Enemies" index="0" instance=ExtResource("13_hphji")]
-position = Vector2(272, 208)
+[node name="FireWall2" parent="Enemies" index="1" instance=ExtResource("13_hphji")]
+position = Vector2(96, 192)
+
+[node name="FireWall3" parent="Enemies" index="2" instance=ExtResource("13_hphji")]
+position = Vector2(96, 144)
+
+[node name="FireWall4" parent="Enemies" index="3" instance=ExtResource("13_hphji")]
+position = Vector2(96, 96)
+
+[node name="FireWall5" parent="Enemies" index="4" instance=ExtResource("13_hphji")]
+position = Vector2(96, 48)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
