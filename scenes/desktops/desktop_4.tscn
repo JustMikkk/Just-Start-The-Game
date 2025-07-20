@@ -26,7 +26,8 @@ _can_be_minimised = false
 _can_be_exited = false
 
 [node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_rgnvt")]
-z_index = 19
+z_index = 20
+z_as_relative = false
 position = Vector2(64, -16)
 desktop = NodePath("../../..")
 bindow = NodePath("../../PhotoBindow_96")
@@ -35,7 +36,7 @@ icon = ExtResource("6_4xkdq")
 _label_text = "kitten"
 
 [node name="PhotoBindow_96" parent="Bindows" index="1" instance=ExtResource("7_dgg53")]
-position = Vector2(-144, 128)
+position = Vector2(-128, 112)
 _can_be_minimised = false
 _can_be_exited = false
 
@@ -54,7 +55,7 @@ _label_text = "kitty"
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("11_kvnbo")]
 position = Vector2(-240, 240)
-_next_positions = Array[Vector2i]([Vector2i(720, 320)])
+_next_positions = Array[Vector2i]([Vector2i(656, 320)])
 _is_looping = true
 
 [node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_rgnvt")]

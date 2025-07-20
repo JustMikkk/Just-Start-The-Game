@@ -24,26 +24,32 @@ _can_be_minimised = false
 _can_be_exited = false
 
 [node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
-z_index = 19
+z_index = 20
+z_as_relative = false
 position = Vector2(64, -16)
 desktop = NodePath("../../..")
 bindow = NodePath("../../PhotoBindow_128")
 taskbar_icon = ExtResource("5_6b8n8")
 icon = ExtResource("6_tykn8")
 
-[node name="App" parent="Bindows/FolderBindow/App" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
-z_index = 19
-position = Vector2(-64, 0)
-desktop = NodePath("../../../..")
-bindow = NodePath("../../../PhotoBindow_96")
+[node name="App2" parent="Bindows/FolderBindow" index="8" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
+z_index = 20
+z_as_relative = false
+position = Vector2(0, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_96")
 taskbar_icon = ExtResource("5_6b8n8")
 icon = ExtResource("6_tykn8")
 
 [node name="PhotoBindow_128" parent="Bindows" index="1" instance=ExtResource("7_wtmtm")]
 position = Vector2(-128, -80)
+_can_be_minimised = false
+_can_be_exited = false
 
 [node name="PhotoBindow_96" parent="Bindows" index="2" instance=ExtResource("8_71thx")]
 position = Vector2(-384, -112)
+_can_be_minimised = false
+_can_be_exited = false
 
 [node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
 position = Vector2(-112, 224)
@@ -55,7 +61,7 @@ _label_text = "big kitty"
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("11_m2vx0")]
 position = Vector2(-240, 240)
-_next_positions = Array[Vector2i]([Vector2i(0, 0)])
+_next_positions = Array[Vector2i]([Vector2i(560, 448), Vector2i(0, 0)])
 
 [node name="Enemies" parent="." index="4"]
 metadata/_edit_lock_ = true
