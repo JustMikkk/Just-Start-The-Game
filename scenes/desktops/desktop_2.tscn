@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://6d35rqg5c6yv"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_kw8ia"]
+[ext_resource type="Texture2D" uid="uid://vmbgu4l2bo2r" path="res://assets/graphics/bg/bg_siedem.png" id="2_x36pm"]
+[ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_4uxwu"]
+[ext_resource type="PackedScene" uid="uid://rdqd5vw2hutf" path="res://scenes/enemies/card_enemy.tscn" id="4_06vhp"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="4_relfi"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="5_2pc3y"]
+[ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="6_x36pm"]
+[ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="7_wx211"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x36pm"]
+resource_local_to_scene = true
+a = Vector2(-80, 46)
+b = Vector2(80, 46)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wx211"]
+resource_local_to_scene = true
+a = Vector2(-80, -46)
+b = Vector2(80, -46)
+
+[node name="Desktop2" instance=ExtResource("1_kw8ia")]
+id_name = "desktop_2"
+
+[node name="BG" parent="." index="0"]
+texture = ExtResource("2_x36pm")
+
+[node name="AlertBindow" parent="Bindows" index="0" instance=ExtResource("3_4uxwu")]
+position = Vector2(-400, 128)
+_btn_text = ""
+_text = "Have fun!"
+_can_be_exited = false
+current_state = 1
+
+[node name="CollisionShape2D" parent="Bindows/AlertBindow/Bounds" index="0"]
+shape = SubResource("SegmentShape2D_x36pm")
+disabled = false
+
+[node name="CollisionShape2D2" parent="Bindows/AlertBindow/Bounds" index="1"]
+shape = SubResource("SegmentShape2D_wx211")
+disabled = false
+
+[node name="Label" parent="Bindows/AlertBindow/Control" index="0"]
+text = "Have fun!"
+
+[node name="NoteBindow_160_160" parent="Bindows" index="1" instance=ExtResource("4_relfi")]
+position = Vector2(176, -48)
+_text = "You might need more platforms"
+_wait_interval = 0.03
+
+[node name="NoteBindow_160_161" parent="Bindows" index="2" instance=ExtResource("4_relfi")]
+position = Vector2(-128, 64)
+_text = "Taskbar is your safe space!
+
+Hold down action"
+_wait_interval = 0.03
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
+position = Vector2(368, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_161")
+taskbar_icon = ExtResource("6_x36pm")
+icon = ExtResource("7_wx211")
+_label_text = "taskbar.txt"
+
+[node name="App2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
+position = Vector2(-352, 32)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+taskbar_icon = ExtResource("6_x36pm")
+icon = ExtResource("7_wx211")
+_label_text = "help.txt"
+
+[node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
+position = Vector2(-128, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="JumpTimer" parent="Enemies/CardEnemy" index="3"]
+autostart = true
+
+[node name="CardEnemy4" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
+position = Vector2(112, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="JumpTimer" parent="Enemies/CardEnemy4" index="3"]
+autostart = true
+
+[node name="CardEnemy2" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
+position = Vector2(-384, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="CardEnemy5" parent="Enemies" index="3" instance=ExtResource("4_06vhp")]
+position = Vector2(-256, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="CardEnemy3" parent="Enemies" index="4" instance=ExtResource("4_06vhp")]
+position = Vector2(224, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="CardEnemy6" parent="Enemies" index="5" instance=ExtResource("4_06vhp")]
+position = Vector2(336, 240)
+_knockback_multiplayers = Vector2(10000, 30000)
+_health = 2
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(-400, 0)
+
+[node name="Down" parent="MoveButtons" index="0"]
+visible = false
+is_enabled = false
+
+[node name="Left" parent="MoveButtons" index="1"]
+position = Vector2(-448, -144)
+
+[node name="PointLight2D" parent="MoveButtons/Left" index="3"]
+color = Color(0.886275, 0.937255, 1, 1)
+
+[node name="Up" parent="MoveButtons" index="2"]
+visible = false
+is_enabled = false
+
+[node name="PointLight2D" parent="MoveButtons/Right" index="3"]
+color = Color(0.968627, 0.894118, 0.823529, 1)
+
+[editable path="Bindows/AlertBindow"]
+[editable path="Bindows/AlertBindow/ExitBtn"]
+[editable path="Bindows/AlertBindow/DragArea"]
+[editable path="Enemies/CardEnemy"]
+[editable path="Enemies/CardEnemy4"]
+[editable path="MoveButtons/Left"]
+[editable path="MoveButtons/Right"]

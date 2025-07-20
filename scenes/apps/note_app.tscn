@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://e76bgm61nevc"]
+
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="1_x78xg"]
+[ext_resource type="Script" uid="uid://v13h15mad7pa" path="res://scenes/apps/note_app.gd" id="2_h31h4"]
+[ext_resource type="Texture2D" uid="uid://cu5txpftvwa75" path="res://assets/graphics/old_man/idle/old_man_txt_idle_0001.png" id="2_rxa7l"]
+[ext_resource type="Texture2D" uid="uid://rp72eotsu377" path="res://assets/graphics/old_man/idle/old_man_txt_idle_0002.png" id="3_h31h4"]
+[ext_resource type="Texture2D" uid="uid://leyaisyfh7ng" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0008.png" id="4_0ubac"]
+[ext_resource type="Texture2D" uid="uid://dfjdg1j8uoi2k" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0007.png" id="5_dfk6p"]
+[ext_resource type="Texture2D" uid="uid://y7xktdftqiyl" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0006.png" id="6_i0wgi"]
+[ext_resource type="Texture2D" uid="uid://3pukxdug4xqk" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0005.png" id="7_504ta"]
+[ext_resource type="Texture2D" uid="uid://b7ib5cv5ey65d" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0004.png" id="8_n51mv"]
+[ext_resource type="Texture2D" uid="uid://c83oeg2k8e16t" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0003.png" id="9_i608o"]
+[ext_resource type="Texture2D" uid="uid://dv8dduda7l41w" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0002.png" id="10_845q7"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="11_vxic5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qhoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vxic5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0ubac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dfk6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i0wgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_504ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n51mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i608o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_845q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vxic5")
+}],
+"loop": false,
+"name": &"transform_back",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vxic5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_845q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i608o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n51mv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_504ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i0wgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dfk6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ubac")
+}],
+"loop": false,
+"name": &"transform_into",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rxa7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h31h4")
+}],
+"loop": true,
+"name": &"transformed_idle",
+"speed": 5.0
+}]
+
+[node name="NoteApp" instance=ExtResource("1_x78xg")]
+script = ExtResource("2_h31h4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_3qhoq")
+autoplay = "default"

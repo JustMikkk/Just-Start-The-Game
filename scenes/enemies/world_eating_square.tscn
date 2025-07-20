@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbscnucjh55xh"]
+
+[ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="1_su3cn"]
+
+[node name="WorldEatingSquare" type="Sprite2D"]
+z_index = 50
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_su3cn")
+metadata/_edit_group_ = true

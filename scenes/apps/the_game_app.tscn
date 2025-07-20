@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://duttugj4076jd"]
+
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="1_2daua"]
+[ext_resource type="Script" uid="uid://1iynk8u3w2n8" path="res://scenes/apps/the_game_app.gd" id="2_6rm3q"]
+[ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="3_fmbhk"]
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="4_fmbhk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b4euj"]
+line_spacing = 0.0
+font = ExtResource("4_fmbhk")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 0)
+
+[node name="TheGameApp" instance=ExtResource("1_2daua")]
+script = ExtResource("2_6rm3q")
+_label_text = "The Game"
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("3_fmbhk")
+
+[node name="Label" parent="Control" index="0"]
+text = "The Game"
+label_settings = SubResource("LabelSettings_b4euj")
+
+[node name="ScaleTimer" type="Timer" parent="." index="5"]
+autostart = true
+
+[connection signal="timeout" from="ScaleTimer" to="." method="_on_scale_timer_timeout"]

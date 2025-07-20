@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://clytdko2adl73"]
+
+[ext_resource type="Script" uid="uid://pb76k3yibqx6" path="res://scenes/game/desktops_manager.gd" id="1_1ng7t"]
+[ext_resource type="Shader" uid="uid://eh1631d1ufjf" path="res://assets/shaders/blur.gdshader" id="1_cr7d5"]
+[ext_resource type="Texture2D" uid="uid://cup1dk4oajnps" path="res://assets/graphics/bg/bg_dwa.png" id="2_1ng7t"]
+[ext_resource type="Texture2D" uid="uid://vgk2yi2n5knh" path="res://assets/graphics/bg/bg1.png" id="3_e2jfa"]
+[ext_resource type="PackedScene" uid="uid://b1dit03ngtyfr" path="res://scenes/desktops/desktop_1.tscn" id="5_kf1ss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kelw5"]
+shader = ExtResource("1_cr7d5")
+
+[node name="DesktopsManager" type="Node2D" groups=["DesktopsManager"]]
+script = ExtResource("1_1ng7t")
+
+[node name="BlurredBG_Back" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = -100
+material = SubResource("ShaderMaterial_kelw5")
+texture = ExtResource("2_1ng7t")
+
+[node name="BlurredBG_Front" type="Sprite2D" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_kelw5")
+texture = ExtResource("3_e2jfa")
+
+[node name="DesktopsHolder" type="Node2D" parent="."]
+
+[node name="Desktop 1" parent="DesktopsHolder" instance=ExtResource("5_kf1ss")]

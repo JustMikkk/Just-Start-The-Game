@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bb1xd500bwy26"]
 
 [ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_1psdo"]
-[ext_resource type="Script" uid="uid://cb5syvshn173x" path="res://scenes/buttons/taskbar_app_close_btn.gd" id="2_4vde4"]
-[ext_resource type="Texture2D" uid="uid://dmi16bmrgucih" path="res://assets/graphics/ui/taskbar_app_close.png" id="2_d1b6o"]
-[ext_resource type="Texture2D" uid="uid://b5tnb4bqcr8rv" path="res://assets/graphics/ui/close_btn_x32.png" id="4_sdpfy"]
+[ext_resource type="Script" uid="uid://cb5syvshn173x" path="res://scenes/buttons/taskbar_app_exit_btn.gd" id="2_4vde4"]
+[ext_resource type="Texture2D" uid="uid://dmi16bmrgucih" path="res://assets/graphics/ui/taskbar_app_exit.png" id="2_d1b6o"]
+[ext_resource type="Texture2D" uid="uid://b5tnb4bqcr8rv" path="res://assets/graphics/ui/exit_btn_x32.png" id="4_sdpfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdpfy"]
 

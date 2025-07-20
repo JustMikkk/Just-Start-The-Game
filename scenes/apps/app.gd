@@ -2,13 +2,15 @@ class_name App
 extends AButton
 
 signal app_opened_signal(icon: App)
-signal app_closed_signal(icon: App)
+signal app_exited_signal(icon: App)
 
 
-@export var _is_fullcreen: bool = false
+#@export var _is_fullcreen: bool = false
+@export var desktop: Desktop
 @export var bindow: Bindow
 @export var taskbar_icon: Texture
 @export var icon: Texture
+@export var _label_text: String
 
 var is_open: bool = false
 var is_minimised: bool = false
@@ -18,6 +20,7 @@ var _tween_scale: Tween
 @onready var _icon: Sprite2D = $Icon
 @onready var _click_indicator: Sprite2D = $ClickIndicator
 @onready var _double_click_timer: Timer = $DoubleClickTimer
+@onready var _label: Label = $Control/Label
 
 
 func _ready() -> void:
@@ -25,16 +28,19 @@ func _ready() -> void:
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
 	
-	bindow.setup(global_position)
-	bindow.bindow_close_signal.connect(_on_bindow_close)
+	bindow.setup(position)
+	bindow.bindow_exit_signal.connect(_on_bindow_exit)
 	_icon.texture = icon
+	_label.text = _label_text
+	
+	desktop.connect_app(self)
 
 
-func _on_bindow_close() -> void:
-	app_closed_signal.emit(self)
+func _on_bindow_exit() -> void:
+	app_exited_signal.emit(self)
 
 
-func _start_bindow() -> void:
+func _open_bindow() -> void:
 	bindow.open_bindow()
 	app_opened_signal.emit(self)
 
@@ -45,7 +51,7 @@ func _on_mouse_click() -> void:
 		_click_indicator.show()
 	else:
 		_click_indicator.hide()
-		_start_bindow()
+		_open_bindow()
 		
 		GameManager.player.set_enabled(true, global_position)
 		

@@ -1,0 +1,168 @@
+[gd_scene load_steps=17 format=3 uid="uid://b1dit03ngtyfr"]
+
+[ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
+[ext_resource type="Script" uid="uid://c46boeaytgbo3" path="res://scenes/desktops/desktop_1.gd" id="2_kpwh1"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="3_befw0"]
+[ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
+[ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
+[ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
+[ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
+[ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
+[ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
+[ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
+[ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="12_4ehog"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="13_sicsa"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 100, 1)
+angle_min = -331.2
+angle_max = 1.07288e-05
+direction = Vector3(-1, 0, 0)
+initial_velocity_max = 218.81
+gravity = Vector3(0, 98, 0)
+scale_min = 5.0
+scale_max = 7.0
+
+[node name="Desktop 1" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave") instance=ExtResource("1_5c2q5")]
+script = ExtResource("2_kpwh1")
+_alert_before_appear = NodePath("Bindows/AlertBindow")
+_alert_after_appear = NodePath("Bindows/AlertBindow2")
+_alert_before_leave = NodePath("Bindows/AlertBindow4")
+_alert_after_leave = NodePath("Bindows/AlertBindow5")
+id_name = "desktop_1"
+_cutscene_name = "desktop_1"
+
+[node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
+position = Vector2(216, 136)
+_text = "Movement: WSAD / Arrow keys / Left stick
+
+Jump: Space / South BTN
+
+Click: J / Z / Enter / West BTN"
+
+[node name="Help-Bindow" parent="Bindows" index="1" instance=ExtResource("2_btg26")]
+position = Vector2(384, 56)
+_text = "You can jump in and on windows
+
+
+
+
+
+                     :3"
+
+[node name="AlertBindow" parent="Bindows" index="2" instance=ExtResource("3_gn44y")]
+_btn_text = "Open anyway"
+_text = "You can't open this program"
+
+[node name="AlertBindow2" parent="Bindows" index="3" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+_btn_text = "I'll be fine"
+_next_bindow = NodePath("../AlertBindow3")
+_text = "This program probably contains malware!"
+_initial_delay = 0.8
+_wait_interval = 0.03
+
+[node name="AlertBindow3" parent="Bindows" index="4" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+_btn_text = "Chill out"
+_next_bindow = NodePath("../AlertBindow4")
+_text = "IT'S TOO DANGEROUS!"
+_initial_delay = 0.7
+_wait_interval = 0.02
+
+[node name="AlertBindow4" parent="Bindows" index="5" instance=ExtResource("3_gn44y")]
+_btn_text = "Play anyway"
+_text = "I WILL NOT LET YOU BREAK THIS PC!"
+_initial_delay = 0.6
+_wait_interval = 0.01
+
+[node name="AlertBindow5" parent="Bindows" index="6" instance=ExtResource("3_gn44y")]
+position = Vector2(-112, 184)
+_btn_text = "Oh no!"
+_text = "Good luck playing it now 
+     :P"
+_initial_delay = 0.9
+_wait_interval = 0.03
+
+[node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
+position = Vector2(144, -176)
+
+[node name="NoteBindow_160_160" parent="Bindows" index="8" instance=ExtResource("2_btg26")]
+position = Vector2(-352, 80)
+_text = "herro everry nyan 
+=^-.-^="
+
+[node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
+position = Vector2(336, 232)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/Movement-Bindow")
+taskbar_icon = ExtResource("4_btg26")
+icon = ExtResource("5_gn44y")
+_label_text = "movement.txt"
+
+[node name="Help-App" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
+position = Vector2(408, 232)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/Help-Bindow")
+taskbar_icon = ExtResource("4_btg26")
+icon = ExtResource("5_gn44y")
+_label_text = "help.txt"
+
+[node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("7_7okfk")]
+position = Vector2(-336, -112)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/AlertBindow")
+icon = ExtResource("9_kpwh1")
+
+[node name="GheTameApp" parent="Apps" index="3" node_paths=PackedStringArray("desktop") instance=ExtResource("10_1c540")]
+position = Vector2(-336, -32)
+desktop = NodePath("../..")
+
+[node name="NoteApp" parent="Apps" index="4" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("12_4ehog")]
+position = Vector2(-352, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+taskbar_icon = ExtResource("13_sicsa")
+_label_text = "old_man.txt"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
+modulate = Color(0, 0.72549, 0.866667, 0.627451)
+z_index = 10
+position = Vector2(480, -216)
+emitting = false
+amount = 120
+texture = ExtResource("10_qksk2")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pce8l")
+
+[node name="BindowsDefender" parent="." index="6" instance=ExtResource("9_yfe1b")]
+
+[node name="SpawnPoint" parent="." index="8"]
+position = Vector2(-312, 144)
+
+[node name="Down" parent="MoveButtons" index="0"]
+visible = false
+is_enabled = false
+
+[node name="Left" parent="MoveButtons" index="1"]
+visible = false
+is_enabled = false
+
+[node name="Up" parent="MoveButtons" index="2"]
+visible = false
+is_enabled = false
+
+[node name="Right" parent="MoveButtons" index="3"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(448, -144)
+
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.1
+
+[editable path="MoveButtons/Right"]
+[editable path="WorldEater"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://syiymll6rpdr"]
+
+[ext_resource type="PackedScene" uid="uid://cyl4kby6b0jy0" path="res://scenes/buttons/abutton.tscn" id="1_ayowg"]
+[ext_resource type="Texture2D" uid="uid://bcnk8f3skx73s" path="res://assets/graphics/apps/bindows_logo_3hp.png" id="2_jctp4"]
+[ext_resource type="Script" uid="uid://b4ql8qy56mt7o" path="res://scenes/buttons/bindows_button.gd" id="2_lyw3c"]
+[ext_resource type="Texture2D" uid="uid://c153xph10sslf" path="res://assets/graphics/apps/bindows_logo_2hp.png" id="4_2fkc4"]
+[ext_resource type="Texture2D" uid="uid://dd2k3g65lswyf" path="res://assets/graphics/apps/bindows_logo_1hp.png" id="5_of1ih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyw3c"]
+size = Vector2(32, 32)
+
+[node name="BindowsButton" instance=ExtResource("1_ayowg")]
+script = ExtResource("2_lyw3c")
+_logo_3hp = ExtResource("2_jctp4")
+_logo_2hp = ExtResource("4_2fkc4")
+_logo_1hp = ExtResource("5_of1ih")
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("2_jctp4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_lyw3c")

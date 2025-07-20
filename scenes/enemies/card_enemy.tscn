@@ -1,0 +1,146 @@
+[gd_scene load_steps=29 format=3 uid="uid://rdqd5vw2hutf"]
+
+[ext_resource type="Script" uid="uid://y36tsi5k6owm" path="res://scenes/enemies/card_enemy.gd" id="1_b0ijq"]
+[ext_resource type="Texture2D" uid="uid://xgihwd4x004u" path="res://assets/graphics/cards/card_walk/card_walk_0001.png" id="1_svu6n"]
+[ext_resource type="Texture2D" uid="uid://bbr8pw6vihsg6" path="res://assets/graphics/cards/card_walk/card_walk_0002.png" id="2_b0ijq"]
+[ext_resource type="Texture2D" uid="uid://5geubnvnk83k" path="res://assets/graphics/cards/card_walk/card_walk_0003.png" id="3_0wplk"]
+[ext_resource type="Texture2D" uid="uid://b06j48vnv525d" path="res://assets/graphics/cards/card_walk/card_walk_0004.png" id="4_bnpv5"]
+[ext_resource type="Texture2D" uid="uid://cb4ianxykjebv" path="res://assets/graphics/cards/card_walk/card_walk_0005.png" id="5_wlns2"]
+[ext_resource type="Texture2D" uid="uid://c00c5rypjxsjf" path="res://assets/graphics/cards/card_walk/card_walk_0006.png" id="6_vfsn3"]
+[ext_resource type="Texture2D" uid="uid://cy0irlr50kqn5" path="res://assets/graphics/cards/card_walk/card_walk_0007.png" id="7_ihj3m"]
+[ext_resource type="Texture2D" uid="uid://cyqlydlp7bn8q" path="res://assets/graphics/cards/card_walk/card_walk_0008.png" id="8_4x6y7"]
+[ext_resource type="Texture2D" uid="uid://c0sh2mvxdlwcg" path="res://assets/graphics/cards/card_walk/card_walk_0009.png" id="9_b2c12"]
+[ext_resource type="Texture2D" uid="uid://bnv5oll4unng3" path="res://assets/graphics/cards/card_walk/card_walk_0010.png" id="10_os26v"]
+[ext_resource type="Texture2D" uid="uid://mpeslm0sc807" path="res://assets/graphics/cards/card_walk/card_walk_0011.png" id="11_vvmxu"]
+[ext_resource type="Texture2D" uid="uid://lmhi3gjvcfmw" path="res://assets/graphics/cards/card_walk/card_walk_0012.png" id="12_0huec"]
+[ext_resource type="Texture2D" uid="uid://c1plrsvfgj25p" path="res://assets/graphics/cards/card_walk/card_walk_0013.png" id="13_c7k6e"]
+[ext_resource type="Texture2D" uid="uid://ubmajraqsctn" path="res://assets/graphics/cards/card_walk/card_walk_0014.png" id="14_rikph"]
+[ext_resource type="Texture2D" uid="uid://dqpeybrh832rh" path="res://assets/graphics/cards/card_walk/card_walk_0015.png" id="15_00aqh"]
+[ext_resource type="Texture2D" uid="uid://ddpyeg2yfw8rk" path="res://assets/graphics/cards/card_walk/card_walk_0016.png" id="16_80i6l"]
+[ext_resource type="Texture2D" uid="uid://bhnr0vy51yfc4" path="res://assets/graphics/cards/card_walk/card_walk_0017.png" id="17_ab3g3"]
+[ext_resource type="Texture2D" uid="uid://dpvj4pikfi0cw" path="res://assets/graphics/cards/card_walk/card_walk_0018.png" id="18_tfbs8"]
+[ext_resource type="Texture2D" uid="uid://56v8rqeed4nb" path="res://assets/graphics/cards/card_walk/card_walk_0019.png" id="19_3qs35"]
+[ext_resource type="Texture2D" uid="uid://ci53i0wqmid2v" path="res://assets/graphics/cards/card_walk/card_walk_0020.png" id="20_8fe20"]
+[ext_resource type="Texture2D" uid="uid://be6bknnronprg" path="res://assets/graphics/cards/card_walk/card_walk_0021.png" id="21_hokcm"]
+[ext_resource type="Texture2D" uid="uid://5ojqaqrao7r0" path="res://assets/graphics/cards/card_walk/card_walk_0022.png" id="22_rcj5s"]
+[ext_resource type="Texture2D" uid="uid://c33l061k16nkn" path="res://assets/graphics/cards/card_walk/card_walk_0023.png" id="23_w14j2"]
+[ext_resource type="Texture2D" uid="uid://b87fq4pi6jem6" path="res://assets/graphics/cards/card_walk/card_walk_0024.png" id="24_kdhgu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hibx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_svu6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b0ijq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0wplk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bnpv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wlns2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vfsn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ihj3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4x6y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b2c12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_os26v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vvmxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0huec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c7k6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rikph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_00aqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_80i6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ab3g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tfbs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3qs35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8fe20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hokcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rcj5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_w14j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kdhgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svu6n"]
+radius = 12.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svu6n"]
+size = Vector2(20, 32)
+
+[node name="CardEnemy" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 6
+script = ExtResource("1_b0ijq")
+_health = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 19
+sprite_frames = SubResource("SpriteFrames_6hibx")
+autoplay = "default"
+frame_progress = 0.149215
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(14, 24)
+target_position = Vector2(0, 1)
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_svu6n")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_svu6n")
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

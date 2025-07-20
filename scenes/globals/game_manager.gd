@@ -1,20 +1,50 @@
 extends Node2D
 
-
+var can_player_transform: bool = false
+var can_player_attack: bool = false
 
 var player: Player
-var current_desktop: Desktop
+var current_desktop: Desktop:
+	get():
+		return desktops_manager._current_desktop
+var game: Game
+
+var _cutscenes_played: Dictionary[String, bool] = {
+	"desktop_1": false,
+	"desktop_2": false,
+	"desktop_3": false,
+	"desktop_4": false,
+	"desktop_5": false,
+}
+
+var desktops_manager: DesktopsManager
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	current_desktop = get_tree().get_first_node_in_group("Desktop")
+	game = get_tree().get_first_node_in_group("Game")
+	desktops_manager = get_tree().get_first_node_in_group("DesktopsManager")
 
 
-func _physics_process(delta: float) -> void:
-	_debug_commands()
+func get_player_global_pos() -> Vector2:
+	return player.global_position if player.is_enabled() else CursorManager.get_global_pos()
 
 
-func _debug_commands():
-	if Input.is_action_just_released("ui_up"):
-		print("jaja")
-		player.set_enabled(true if player.state == 5 else false, Vector2(480, 320))
+func go_to_desktop(index: int, with_app: bool) -> void:
+	desktops_manager.go_to_desktop(index, with_app)
+
+
+func set_cutscene_played(key: String) -> void:
+	_cutscenes_played[key] = true
+
+
+func was_cutscene_played(key: String) -> bool:
+	return _cutscenes_played[key]
+
+
+func reset() -> void:
+	game.transition_player.play_death_transition()
+	await game.transition_player.ready_for_change
+	player.reset()
+	desktops_manager.reload_desktop()
+	current_desktop.reset()
