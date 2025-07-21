@@ -174,7 +174,7 @@ visible = false
 is_enabled = false
 
 [node name="Timer" parent="WorldEater" index="0"]
-wait_time = 0.5
+wait_time = 0.3
 
 [node name="PhotoBindow_128" parent="." index="9" instance=ExtResource("7_wtmtm")]
 position = Vector2(-144, -64)
