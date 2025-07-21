@@ -52,7 +52,8 @@ func _on_player_damage_taken() -> void:
 		_update_icon
 	)
 	_tween_scale.tween_property(_icon, "scale", Vector2.ONE, 0.15)
-	
+
+
 func _update_icon() -> void:
 	match GameManager.player.health:
 			3:

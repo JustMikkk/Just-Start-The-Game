@@ -13,6 +13,7 @@ b = Vector2(96, 2)
 size = Vector2(152, 24)
 
 [node name="FolderBindow" instance=ExtResource("1_1jnot")]
+z_index = 0
 
 [node name="Inside" parent="." index="0"]
 scale = Vector2(1, 1)
@@ -34,6 +35,9 @@ shape = SubResource("SegmentShape2D_87jer")
 [node name="CollisionShape2D2" parent="Bounds" index="1"]
 position = Vector2(0, -72)
 shape = SubResource("SegmentShape2D_87jer")
+
+[node name="DragArea" parent="." index="5"]
+is_enabled = false
 
 [node name="CollisionShape2D" parent="DragArea" index="1"]
 position = Vector2(-20, -60)

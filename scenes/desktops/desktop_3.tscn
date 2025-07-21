@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=9 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
+[ext_resource type="Script" uid="uid://dv2dhyi2bw4a0" path="res://scenes/desktops/desktop_3.gd" id="2_6dp2f"]
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_5baar"]
 [ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_wdh0m"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_huf8o"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
+script = ExtResource("2_6dp2f")
 id_name = "desktop_3"
 
 [node name="BG" parent="." index="0"]
@@ -34,6 +36,8 @@ icon = ExtResource("5_huf8o")
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
 position = Vector2(-112, 240)
+_next_positions = null
+_is_looping = null
 
 [node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
 position = Vector2(-176, 48)
@@ -65,6 +69,9 @@ metadata/_edit_lock_ = true
 
 [node name="PointLight2D" parent="MoveButtons/Up" index="3"]
 color = Color(0.517647, 0.564706, 0.34902, 1)
+
+[node name="Right" parent="MoveButtons" index="3"]
+position = Vector2(448, 160)
 
 [node name="PointLight2D" parent="MoveButtons/Right" index="3"]
 color = Color(0.770341, 0.989657, 0, 1)

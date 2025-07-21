@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgjsha77tssgk"]
+
+[ext_resource type="Script" uid="uid://b5glef88hhncm" path="res://scenes/walls/fire_wall.gd" id="1_743mp"]
+[ext_resource type="Texture2D" uid="uid://irr0oga1h26p" path="res://assets/graphics/walls/wall_48.png" id="1_cffcl"]
+[ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="1_fubf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cffcl"]
+size = Vector2(48, 48)
+
+[sub_resource type="Gradient" id="Gradient_743mp"]
+offsets = PackedFloat32Array(0, 0.79558, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.796078, 0, 0.203922, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gao11"]
+gradient = SubResource("Gradient_743mp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqitn"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 32.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = 1.07288e-05
+angle_max = 180.0
+spread = 180.0
+initial_velocity_max = 20.0
+scale_min = 3.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_gao11")
+
+[node name="FireWall" type="Area2D"]
+z_index = 30
+collision_layer = 0
+script = ExtResource("1_743mp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cffcl")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cffcl")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 30
+texture = ExtResource("1_fubf3")
+preprocess = 1.0
+process_material = SubResource("ParticleProcessMaterial_pqitn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

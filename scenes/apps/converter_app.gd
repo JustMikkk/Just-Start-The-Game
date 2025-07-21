@@ -1,11 +1,7 @@
 extends Node2D
 
 
-@export var _next_positions: Array[Vector2i]
-@export var _is_looping: bool = false
 
-var _position_index: int = 0
-var _tween_scale: Tween 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is not Player: return

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5mnlats2ivcj"]
+
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_brqn5"]
+[ext_resource type="Script" uid="uid://cc8csofr4lulr" path="res://scenes/bindows/photo_bindow.gd" id="2_mmne8"]
+[ext_resource type="Texture2D" uid="uid://d0dytodfgo5fb" path="res://assets/graphics/cat/IMG20250424125828.jpg" id="3_brqn5"]
+[ext_resource type="Texture2D" uid="uid://cj3h8u6pylr4a" path="res://assets/graphics/bindows/photo_frame_128.png" id="4_6fdl8"]
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="5_chxip"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yap64"]
+resource_local_to_scene = true
+a = Vector2(-64, -29)
+b = Vector2(64, -29)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gpta2"]
+resource_local_to_scene = true
+a = Vector2(-64, 32)
+b = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yap64"]
+size = Vector2(88, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpta2"]
+line_spacing = 0.0
+font = ExtResource("5_chxip")
+shadow_color = Color(1, 1, 1, 0)
+
+[node name="PhotoBindow_128" instance=ExtResource("1_brqn5")]
+script = ExtResource("2_mmne8")
+_photo_name = ""
+_photos = Array[Texture]([])
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 4)
+scale = Vector2(1.395, 1.455)
+texture = ExtResource("3_brqn5")
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("4_6fdl8")
+
+[node name="MinimiseBtn" parent="." index="2"]
+position = Vector2(32, -56)
+
+[node name="ExitBtn" parent="." index="3"]
+position = Vector2(48, -56)
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+shape = SubResource("SegmentShape2D_yap64")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, -94)
+shape = SubResource("SegmentShape2D_gpta2")
+
+[node name="CollisionShape2D" parent="DragArea" index="1"]
+position = Vector2(-20, -56)
+shape = SubResource("RectangleShape2D_yap64")
+
+[node name="Label" type="Label" parent="." index="6"]
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 59.0
+offset_bottom = -41.0
+scale = Vector2(0.695, 0.695)
+text = "cat.png"
+label_settings = SubResource("LabelSettings_gpta2")
+vertical_alignment = 1
+
+[editable path="DragArea"]

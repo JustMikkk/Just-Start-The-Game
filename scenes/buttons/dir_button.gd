@@ -20,9 +20,19 @@ func _ready() -> void:
 	
 	if not GameManager.desktops_manager.can_move_in_direction(_desktop.id_name, _dir) or not is_enabled:
 		hide()
-		(func():
-			$EnterArea/CollisionShape2D.disabled = true
-		).call_deferred()
+		disable()
+
+func disable() -> void:
+	(func():
+		$EnterArea/CollisionShape2D.disabled = true
+	).call_deferred()
+
+
+func enable() -> void:
+	(func():
+		show()
+		$EnterArea/CollisionShape2D.disabled = false
+	).call_deferred()
 
 
 func _on_mouse_click() -> void:

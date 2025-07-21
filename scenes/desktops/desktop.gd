@@ -4,6 +4,7 @@ extends Node2D
 @export var id_name: String
 @export var _cutscene_name: String
 @export var _starting_as_cursor: bool = false
+@export var _world_eater_initial_delay: float = 3
 
 var _bindows: Array[Bindow]
 
@@ -15,6 +16,8 @@ var _bindows: Array[Bindow]
 
 
 func _ready() -> void:
+	if GameManager.is_world_eater_eating:
+		world_eater.start_eating(_world_eater_initial_delay)
 	
 	for bindow in $Bindows.get_children():
 		if bindow is Bindow:
