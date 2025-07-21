@@ -48,6 +48,7 @@ var _wasOnFloor := false
 var _lastJumpQueueMsec: int
 var _gravity = START_GRAVITY
 var _attack_direction: Vector2
+var _attack_timer: float = 0
 
 var _fall_timer: float = 0.0
 var _fall_splash_treshold: float = 1.2
@@ -104,6 +105,7 @@ func _physics_process(delta):
 			_fall_timer = 0
 			
 		State.POGO_AIR:
+			_attack_timer += delta
 			_fall_timer += delta
 			_animated_sprite_2d.animation = "pogo"
 			
@@ -119,6 +121,11 @@ func _physics_process(delta):
 				_gravity *= AIR_HANG_MULTIPLIER
 			else:
 				_gravity = START_GRAVITY
+			
+			if _attack_timer > 0.15:
+				_slash_collision.disabled = true
+				_slash_sprite_2d.hide()
+				state = State.RUN
 		
 		State.AIR:
 			_fall_timer += delta
@@ -204,7 +211,7 @@ func _physics_process(delta):
 					call_deferred("_disable_collisions")
 					
 		State.ATTACK:
-			
+			_attack_timer += delta
 			velocity.y += _gravity * delta
 			
 			if abs(velocity.y) < AIR_HANG_THRESHOLD:
@@ -228,6 +235,11 @@ func _physics_process(delta):
 			
 			if Input.is_action_just_pressed("jump") and is_on_floor(): 
 				velocity.y = JUMP_VELOCITY * delta
+			
+			if _attack_timer > 0.15:
+				_slash_collision.disabled = true
+				_slash_sprite_2d.hide()
+				state = State.RUN
 				
 			
 		State.DAMAGED:
@@ -281,7 +293,8 @@ func is_enabled() -> bool:
 
 
 func take_damage(amount: int, dir: Vector2) -> void:
-	if _health <= 0: return
+	if _health <= 0 or $IFramesTimer.time_left: return
+	$IFramesTimer.start()
 	AudioManager.play_audio_clip(_audio_clip, global_position)
 	_health -= amount
 	damage_taken.emit()
@@ -346,6 +359,7 @@ func unfreeze() -> void:
 func _attack(dir: Vector2) -> void:
 	if not GameManager.has_player_scissors: return
 	
+	_attack_timer = 0
 	state = State.ATTACK
 	(func():
 		_attack_direction = dir
@@ -361,10 +375,8 @@ func _attack(dir: Vector2) -> void:
 		
 		#_slash_sprite_2d.show()
 		_slash_collision.disabled = false
-		await get_tree().create_timer(0.2).timeout
-		_slash_collision.disabled = true
-		_slash_sprite_2d.hide()
-		state = State.RUN
+		
+
 	).call_deferred()
 	
 

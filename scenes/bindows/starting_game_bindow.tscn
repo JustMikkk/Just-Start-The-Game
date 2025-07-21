@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://jk8arhf52th3"]
+
+[ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="1_v1hn2"]
+[ext_resource type="Texture2D" uid="uid://omr4g5tsue62" path="res://assets/graphics/bindows/starting_the_game_192_96.png" id="2_u11ih"]
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="3_g3dlg"]
+[ext_resource type="Texture2D" uid="uid://6hkqixoykt20" path="res://assets/graphics/ui/progress_bar_bg.png" id="4_6t2cf"]
+[ext_resource type="Texture2D" uid="uid://dciel8ck0p2u8" path="res://assets/graphics/ui/progress_bar_frame.png" id="5_5eupa"]
+[ext_resource type="Texture2D" uid="uid://bak5xke4kd8y0" path="res://assets/graphics/ui/progress_bar_fill.png" id="6_espnb"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jqefa"]
+resource_local_to_scene = true
+a = Vector2(-96, 2)
+b = Vector2(96, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6d4y7"]
+line_spacing = 0.0
+font = ExtResource("3_g3dlg")
+shadow_color = Color(1, 1, 1, 0)
+
+[node name="Bindow" instance=ExtResource("1_v1hn2")]
+
+[node name="Inside" parent="." index="0"]
+visible = false
+
+[node name="Frame" parent="." index="1"]
+texture = ExtResource("2_u11ih")
+
+[node name="MinimiseBtn" parent="." index="2"]
+visible = false
+position = Vector2(64, -32)
+
+[node name="ExitBtn" parent="." index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+position = Vector2(0, 46)
+shape = SubResource("SegmentShape2D_jqefa")
+disabled = false
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+position = Vector2(0, -48)
+shape = SubResource("SegmentShape2D_jqefa")
+disabled = false
+
+[node name="DragArea" parent="." index="5"]
+visible = false
+
+[node name="Control" type="Control" parent="." index="6"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -96.0
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="Control" index="0"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 38.0
+scale = Vector2(1.425, 1.425)
+text = "STARTING THE GAME"
+label_settings = SubResource("LabelSettings_6d4y7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" index="1"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 176.0
+offset_bottom = 80.0
+step = 50.0
+texture_under = ExtResource("4_6t2cf")
+texture_over = ExtResource("5_5eupa")
+texture_progress = ExtResource("6_espnb")
+
+[editable path="DragArea"]

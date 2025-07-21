@@ -694,6 +694,7 @@ _audio_clip = ExtResource("2_qxlpa")
 SPEED = 15000
 JUMP_VELOCITY = -40000
 JUMP_CUT_MULTIPLIER = 0.8
+_damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -742,6 +743,10 @@ one_shot = true
 
 [node name="CollisionDisabledTimer" type="Timer" parent="."]
 wait_time = 0.3
+one_shot = true
+
+[node name="IFramesTimer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
