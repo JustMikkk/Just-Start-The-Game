@@ -30,7 +30,7 @@ visible = false
 is_enabled = false
 
 [node name="Right" parent="MoveButtons" index="3"]
-position = Vector2(464, 192)
+position = Vector2(464, 224)
 is_enabled = false
 
 [node name="PointLight2D" parent="MoveButtons/Right" index="3"]

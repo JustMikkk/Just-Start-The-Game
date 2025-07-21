@@ -28,7 +28,7 @@ id_name = "desktop_5"
 texture = ExtResource("2_b7ecn")
 
 [node name="FolderBindow" parent="Bindows" index="0" instance=ExtResource("3_inmh4")]
-position = Vector2(-288, 96)
+position = Vector2(144, 144)
 _can_be_minimised = false
 _can_be_exited = false
 
@@ -63,7 +63,7 @@ _label_text = "big kitty"
 
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("11_m2vx0")]
 position = Vector2(-240, 240)
-_next_positions = Array[Vector2i]([Vector2i(560, 448), Vector2i(0, 0)])
+_next_positions = Array[Vector2i]([Vector2i(560, 352), Vector2i(0, 0)])
 
 [node name="FireWall" parent="Apps" index="2" instance=ExtResource("8_maug2")]
 position = Vector2(-112, -304)
@@ -173,9 +173,13 @@ color = Color(0.447059, 0.27451, 0.482353, 1)
 visible = false
 is_enabled = false
 
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.5
+
 [node name="PhotoBindow_128" parent="." index="9" instance=ExtResource("7_wtmtm")]
 position = Vector2(-144, -64)
 _photos = Array[Texture]([ExtResource("12_7w141"), ExtResource("13_maug2"), ExtResource("14_oq24i"), ExtResource("15_sfx4f"), ExtResource("16_8yetf"), ExtResource("17_sqxao"), ExtResource("18_400s0"), ExtResource("19_8h21m")])
 
 [editable path="MoveButtons/Down"]
 [editable path="MoveButtons/Up"]
+[editable path="WorldEater"]
