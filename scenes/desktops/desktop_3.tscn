@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=12 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
 [ext_resource type="Script" uid="uid://dv2dhyi2bw4a0" path="res://scenes/desktops/desktop_3.gd" id="2_6dp2f"]
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_5baar"]
-[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_wdh0m"]
 [ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="5_huf8o"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="6_wdh0m"]
 [ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_huf8o"]
+[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="9_ecu3c"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="9_vhyl7"]
+[ext_resource type="Texture2D" uid="uid://wxqjnxbxcxkr" path="res://assets/graphics/apps/taskbar/note_icon_32x32.png" id="10_nfqlv"]
+[ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="10_vhyl7"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
 script = ExtResource("2_6dp2f")
@@ -22,34 +25,45 @@ _text = "Scissors"
 
 [node name="NoteBindow_160_161" parent="Bindows" index="1" instance=ExtResource("3_5baar")]
 position = Vector2(-80, -128)
-_text = "can be used"
+_text = "This glitch seems useful..."
 
 [node name="NoteBindow_160_162" parent="Bindows" index="2" instance=ExtResource("3_5baar")]
 position = Vector2(-384, -128)
-_text = "for cutting!"
+_text = "Scissor can be used for cutting! (RMB)"
 
-[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
-position = Vector2(-176, 160)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/NoteBindow_160_160")
-icon = ExtResource("5_huf8o")
+[node name="ConverterApp" parent="Apps" index="0" instance=ExtResource("6_wdh0m")]
+position = Vector2(-160, 240)
+_next_positions = Array[Vector2i]([Vector2i(724, 400), Vector2i(320, 560)])
+_is_looping = true
 
-[node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
-position = Vector2(-112, 240)
-_next_positions = null
-_is_looping = null
-
-[node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
-position = Vector2(-176, 48)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/NoteBindow_160_161")
-icon = ExtResource("5_huf8o")
-
-[node name="App3" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
+[node name="NoteApp2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("9_vhyl7")]
 position = Vector2(-416, -256)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_162")
+taskbar_icon = ExtResource("10_nfqlv")
 icon = ExtResource("5_huf8o")
+_label_text = "scissors.txt"
+
+[node name="NoteApp3" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("9_vhyl7")]
+position = Vector2(-176, 48)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_161")
+taskbar_icon = ExtResource("10_nfqlv")
+icon = ExtResource("5_huf8o")
+_label_text = "the glitch.txt"
+
+[node name="NoteApp4" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("9_vhyl7")]
+position = Vector2(-176, 160)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+taskbar_icon = ExtResource("10_nfqlv")
+icon = ExtResource("5_huf8o")
+_label_text = "scissors.txt"
+
+[node name="PowerUp" parent="Apps" index="4" instance=ExtResource("9_ecu3c")]
+position = Vector2(336, -128)
+_power_up_id = "scissors"
+_texture = ExtResource("10_vhyl7")
 
 [node name="CardEnemyFlying" parent="Enemies" index="0" instance=ExtResource("7_huf8o")]
 position = Vector2(64, 16)

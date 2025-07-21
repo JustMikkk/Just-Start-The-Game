@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4pie2sgsfseh"]
+[gd_scene load_steps=9 format=3 uid="uid://c4pie2sgsfseh"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_wxqpl"]
 [ext_resource type="Texture2D" uid="uid://dyn4vfjhgemx5" path="res://assets/graphics/bg/bg_cinque.png" id="2_wdtai"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="3_r71xg"]
+[ext_resource type="Texture2D" uid="uid://wxqjnxbxcxkr" path="res://assets/graphics/apps/taskbar/note_icon_32x32.png" id="4_os74k"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="5_os74k"]
+[ext_resource type="PackedScene" uid="uid://rdqd5vw2hutf" path="res://scenes/enemies/card_enemy.tscn" id="6_20gt0"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="7_03w1n"]
+[ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_r71xg"]
 
 [node name="Desktop7" instance=ExtResource("1_wxqpl")]
 id_name = "desktop_7"
@@ -9,8 +15,40 @@ id_name = "desktop_7"
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_wdtai")
 
+[node name="NoteApp2" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_r71xg")]
+position = Vector2(0, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../NoteBindow_160_160")
+taskbar_icon = ExtResource("4_os74k")
+icon = ExtResource("5_os74k")
+_label_text = "fight.txt"
+
+[node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("6_20gt0")]
+position = Vector2(-464, 240)
+_health = 3
+
+[node name="CardEnemy2" parent="Enemies" index="1" instance=ExtResource("6_20gt0")]
+position = Vector2(464, 240)
+_health = 3
+
+[node name="CardEnemyFlying" parent="Enemies" index="2" instance=ExtResource("7_r71xg")]
+position = Vector2(-432, -240)
+_health = 2
+
+[node name="CardEnemyFlying3" parent="Enemies" index="3" instance=ExtResource("7_r71xg")]
+position = Vector2(0, 160)
+_health = 2
+
+[node name="CardEnemyFlying2" parent="Enemies" index="4" instance=ExtResource("7_r71xg")]
+position = Vector2(416, -240)
+_health = 2
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(0, 240)
+
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.968627, 0.894118, 0.823529, 1)
+metadata/_edit_lock_ = true
 
 [node name="Left" parent="MoveButtons" index="1"]
 visible = false
@@ -22,6 +60,11 @@ is_enabled = false
 
 [node name="PointLight2D" parent="MoveButtons/Right" index="3"]
 color = Color(0.807843, 0.313726, 0.352941, 1)
+
+[node name="NoteBindow_160_160" parent="." index="9" instance=ExtResource("7_03w1n")]
+position = Vector2(384, 80)
+_text = "Bravo!
+"
 
 [editable path="MoveButtons/Down"]
 [editable path="MoveButtons/Right"]

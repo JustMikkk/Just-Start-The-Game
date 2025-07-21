@@ -21,6 +21,9 @@ enum State {
 }
 
 @export var _audio_clip: AudioStream
+@export var _audio_click: AudioStream
+@export var _audio_slash: AudioStream
+@export var _audio_steps: AudioStream
 
 @export var SPEED = 10400
 @export var JUMP_VELOCITY = -32000
@@ -171,6 +174,9 @@ func _physics_process(delta):
 		
 		State.RUN:
 			_animated_sprite_2d.animation = "run"
+			if not $StepTimer.time_left:
+				AudioManager.play_audio_clip(_audio_steps, global_position)
+				$StepTimer.start()
 			
 			_run(direction, delta)
 			
