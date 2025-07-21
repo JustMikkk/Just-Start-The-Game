@@ -50,14 +50,6 @@ var _reset_hold_threshold: float = 1.5
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_up"):
-		move_in_direction(Vector2(0, -1), false)
-	if Input.is_action_just_pressed("ui_down"):
-		move_in_direction(Vector2(0, 1), false)
-	if Input.is_action_just_pressed("ui_left"):
-		move_in_direction(Vector2(-1, 0), false)
-	if Input.is_action_just_pressed("ui_right"):
-		move_in_direction(Vector2(1, 0), false)
 	
 	if not GameManager.can_player_transform: return # so the player doesnt reset before the initial cutscene
 	if _is_moving: return

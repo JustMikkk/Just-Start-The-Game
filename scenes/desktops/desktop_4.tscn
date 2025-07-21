@@ -1,13 +1,153 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpuy36knlslh6"]
+[gd_scene load_steps=14 format=3 uid="uid://cpuy36knlslh6"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_rrq6o"]
 [ext_resource type="Texture2D" uid="uid://cup1dk4oajnps" path="res://assets/graphics/bg/bg_dwa.png" id="2_xd3ex"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_7m24s"]
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="3_ycn3d"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="4_eauic"]
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="4_t35yi"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="5_p3j4y"]
+[ext_resource type="PackedScene" uid="uid://do284ggo44wsc" path="res://scenes/bindows/folder_bindow.tscn" id="5_rgnvt"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="6_c61n3"]
+[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="7_c61n3"]
+[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="8_4xkdq"]
+[ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="11_dgg53"]
+[ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="12_kvnbo"]
 
 [node name="Desktop4" instance=ExtResource("1_rrq6o")]
 id_name = "desktop_4"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_xd3ex")
+
+[node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_7m24s")]
+position = Vector2(-296, 40)
+_text = "There is nothing you can do."
+_wait_interval = 0.04
+
+[node name="PhotoBindow_96" parent="Bindows" index="1" instance=ExtResource("4_t35yi")]
+position = Vector2(-160, 144)
+_photo_name = "kitty"
+
+[node name="FolderBindow" parent="Bindows" index="2" instance=ExtResource("5_rgnvt")]
+position = Vector2(48, 168)
+
+[node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_c61n3")]
+z_index = 20
+z_as_relative = false
+position = Vector2(-64, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_96")
+taskbar_icon = ExtResource("7_c61n3")
+icon = ExtResource("8_4xkdq")
+_label_text = "cat.png"
+
+[node name="ConverterApp" parent="Apps" index="0" instance=ExtResource("3_ycn3d")]
+position = Vector2(-240, 232)
+_next_positions = Array[Vector2i]([Vector2i(656, 320), Vector2i(656, 320)])
+_is_looping = true
+_label_text = " glitch.exe"
+
+[node name="NoteApp" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_p3j4y")]
+position = Vector2(-160, 232)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+_label_text = "no hope.txt"
+
+[node name="App" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_c61n3")]
+position = Vector2(256, 168)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/FolderBindow")
+taskbar_icon = ExtResource("11_dgg53")
+icon = ExtResource("12_kvnbo")
+_label_text = "kitty"
+
+[node name="FireWall" parent="Enemies" index="0" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -296)
+
+[node name="FireWall2" parent="Enemies" index="1" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -248)
+
+[node name="FireWall3" parent="Enemies" index="2" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -200)
+
+[node name="FireWall4" parent="Enemies" index="3" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -152)
+
+[node name="FireWall5" parent="Enemies" index="4" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -104)
+
+[node name="FireWall6" parent="Enemies" index="5" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -56)
+
+[node name="FireWall7" parent="Enemies" index="6" instance=ExtResource("4_eauic")]
+position = Vector2(-128, -8)
+
+[node name="FireWall8" parent="Enemies" index="7" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 40)
+
+[node name="FireWall9" parent="Enemies" index="8" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 88)
+
+[node name="FireWall10" parent="Enemies" index="9" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 136)
+
+[node name="FireWall11" parent="Enemies" index="10" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 184)
+
+[node name="FireWall12" parent="Enemies" index="11" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 232)
+
+[node name="FireWall13" parent="Enemies" index="12" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 280)
+
+[node name="FireWall14" parent="Enemies" index="13" instance=ExtResource("4_eauic")]
+position = Vector2(-128, 328)
+
+[node name="FireWall15" parent="Enemies" index="14" instance=ExtResource("4_eauic")]
+position = Vector2(104, -296)
+
+[node name="FireWall16" parent="Enemies" index="15" instance=ExtResource("4_eauic")]
+position = Vector2(104, -248)
+
+[node name="FireWall17" parent="Enemies" index="16" instance=ExtResource("4_eauic")]
+position = Vector2(104, -200)
+
+[node name="FireWall18" parent="Enemies" index="17" instance=ExtResource("4_eauic")]
+position = Vector2(104, -152)
+
+[node name="FireWall19" parent="Enemies" index="18" instance=ExtResource("4_eauic")]
+position = Vector2(104, -104)
+
+[node name="FireWall20" parent="Enemies" index="19" instance=ExtResource("4_eauic")]
+position = Vector2(104, -56)
+
+[node name="FireWall21" parent="Enemies" index="20" instance=ExtResource("4_eauic")]
+position = Vector2(104, -8)
+
+[node name="FireWall22" parent="Enemies" index="21" instance=ExtResource("4_eauic")]
+position = Vector2(104, 40)
+
+[node name="FireWall23" parent="Enemies" index="22" instance=ExtResource("4_eauic")]
+position = Vector2(104, 88)
+
+[node name="FireWall24" parent="Enemies" index="23" instance=ExtResource("4_eauic")]
+position = Vector2(104, 136)
+
+[node name="FireWall25" parent="Enemies" index="24" instance=ExtResource("4_eauic")]
+position = Vector2(104, 184)
+
+[node name="FireWall26" parent="Enemies" index="25" instance=ExtResource("4_eauic")]
+position = Vector2(104, 232)
+
+[node name="FireWall27" parent="Enemies" index="26" instance=ExtResource("4_eauic")]
+position = Vector2(104, 280)
+
+[node name="FireWall28" parent="Enemies" index="27" instance=ExtResource("4_eauic")]
+position = Vector2(104, 328)
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(0, 240)
 
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.45098, 0.45098, 0.317647, 1)
@@ -23,5 +163,9 @@ color = Color(0.352941, 0.596078, 0.639216, 1)
 visible = false
 is_enabled = false
 
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.3
+
 [editable path="MoveButtons/Down"]
 [editable path="MoveButtons/Up"]
+[editable path="WorldEater"]

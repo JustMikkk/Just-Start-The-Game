@@ -1,13 +1,158 @@
-[gd_scene load_steps=3 format=3 uid="uid://bue5y3jastl4l"]
+[gd_scene load_steps=21 format=3 uid="uid://bue5y3jastl4l"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_8ouw4"]
 [ext_resource type="Texture2D" uid="uid://dwadueyslrxuy" path="res://assets/graphics/bg/bg_dziewiec.png" id="2_b7ecn"]
+[ext_resource type="PackedScene" uid="uid://do284ggo44wsc" path="res://scenes/bindows/folder_bindow.tscn" id="3_7w141"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="3_nnrp4"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_maug2"]
+[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="5_oq24i"]
+[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="6_sfx4f"]
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="7_8yetf"]
+[ext_resource type="PackedScene" uid="uid://b5mnlats2ivcj" path="res://scenes/bindows/photo_bindow_128.tscn" id="8_sqxao"]
+[ext_resource type="Texture2D" uid="uid://d0dytodfgo5fb" path="res://assets/graphics/cat/IMG20250424125828.jpg" id="9_400s0"]
+[ext_resource type="Texture2D" uid="uid://chivt0k54mdsu" path="res://assets/graphics/cat/IMG_20250115_152715.jpg" id="10_8h21m"]
+[ext_resource type="Texture2D" uid="uid://l1fufmp5sakt" path="res://assets/graphics/cat/IMG_20250130_070546.jpg" id="11_x2gmh"]
+[ext_resource type="Texture2D" uid="uid://b4nsoq6eyl8nt" path="res://assets/graphics/cat/IMG_20250224_060829.jpg" id="12_u70nx"]
+[ext_resource type="Texture2D" uid="uid://bak8jiyfs4ckh" path="res://assets/graphics/cat/IMG_20250302_222153.jpg" id="13_vrxsi"]
+[ext_resource type="Texture2D" uid="uid://dvkv24arm1tk8" path="res://assets/graphics/cat/IMG_20250314_210800.jpg" id="14_rwhjm"]
+[ext_resource type="Texture2D" uid="uid://do4ysappfvsr0" path="res://assets/graphics/cat/IMG_20250327_215935.jpg" id="15_f6c2k"]
+[ext_resource type="Texture2D" uid="uid://bkv37ji2uyq0a" path="res://assets/graphics/cat/IMG_20250327_220001.jpg" id="16_olhxj"]
+[ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="17_eya5e"]
+[ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="18_7h62e"]
+[ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="19_maug2"]
 
 [node name="Desktop5" instance=ExtResource("1_8ouw4")]
 id_name = "desktop_5"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_b7ecn")
+
+[node name="FolderBindow" parent="Bindows" index="0" instance=ExtResource("3_7w141")]
+position = Vector2(136, 168)
+
+[node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_maug2")]
+z_index = 20
+z_as_relative = false
+position = Vector2(-56, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_96")
+taskbar_icon = ExtResource("5_oq24i")
+icon = ExtResource("6_sfx4f")
+_label_text = "cat.jpg"
+
+[node name="App2" parent="Bindows/FolderBindow" index="8" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_maug2")]
+z_index = 20
+z_as_relative = false
+position = Vector2(16, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_128")
+taskbar_icon = ExtResource("5_oq24i")
+icon = ExtResource("6_sfx4f")
+_label_text = "cat.png"
+
+[node name="PhotoBindow_96" parent="Bindows" index="1" instance=ExtResource("7_8yetf")]
+position = Vector2(-384, -96)
+
+[node name="PhotoBindow_128" parent="Bindows" index="2" instance=ExtResource("8_sqxao")]
+position = Vector2(-232, -16)
+_photos = Array[Texture]([ExtResource("9_400s0"), ExtResource("10_8h21m"), ExtResource("11_x2gmh"), ExtResource("12_u70nx"), ExtResource("13_vrxsi"), ExtResource("14_rwhjm"), ExtResource("15_f6c2k"), ExtResource("16_olhxj")])
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_maug2")]
+position = Vector2(-152, 216)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/FolderBindow")
+taskbar_icon = ExtResource("17_eya5e")
+icon = ExtResource("18_7h62e")
+_label_text = "big kitty"
+
+[node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("19_maug2")]
+position = Vector2(-256, 240)
+_next_positions = Array[Vector2i]([Vector2i(560, 352), Vector2i(200, 480)])
+_is_looping = true
+
+[node name="FireWall" parent="Enemies" index="0" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -296)
+
+[node name="FireWall2" parent="Enemies" index="1" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -248)
+
+[node name="FireWall3" parent="Enemies" index="2" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -200)
+
+[node name="FireWall4" parent="Enemies" index="3" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -152)
+
+[node name="FireWall5" parent="Enemies" index="4" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -104)
+
+[node name="FireWall6" parent="Enemies" index="5" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -56)
+
+[node name="FireWall7" parent="Enemies" index="6" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, -8)
+
+[node name="FireWall8" parent="Enemies" index="7" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 40)
+
+[node name="FireWall9" parent="Enemies" index="8" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 88)
+
+[node name="FireWall10" parent="Enemies" index="9" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 136)
+
+[node name="FireWall11" parent="Enemies" index="10" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 184)
+
+[node name="FireWall12" parent="Enemies" index="11" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 232)
+
+[node name="FireWall13" parent="Enemies" index="12" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 280)
+
+[node name="FireWall14" parent="Enemies" index="13" instance=ExtResource("3_nnrp4")]
+position = Vector2(-128, 328)
+
+[node name="FireWall15" parent="Enemies" index="14" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -296)
+
+[node name="FireWall16" parent="Enemies" index="15" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -248)
+
+[node name="FireWall17" parent="Enemies" index="16" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -200)
+
+[node name="FireWall18" parent="Enemies" index="17" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -152)
+
+[node name="FireWall19" parent="Enemies" index="18" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -104)
+
+[node name="FireWall20" parent="Enemies" index="19" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -56)
+
+[node name="FireWall21" parent="Enemies" index="20" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, -8)
+
+[node name="FireWall22" parent="Enemies" index="21" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 40)
+
+[node name="FireWall23" parent="Enemies" index="22" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 88)
+
+[node name="FireWall24" parent="Enemies" index="23" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 136)
+
+[node name="FireWall25" parent="Enemies" index="24" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 184)
+
+[node name="FireWall26" parent="Enemies" index="25" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 232)
+
+[node name="FireWall27" parent="Enemies" index="26" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 280)
+
+[node name="FireWall28" parent="Enemies" index="27" instance=ExtResource("3_nnrp4")]
+position = Vector2(104, 328)
 
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.564706, 0.603922, 0.662745, 1)
@@ -23,5 +168,9 @@ color = Color(0.447059, 0.27451, 0.482353, 1)
 visible = false
 is_enabled = false
 
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.3
+
 [editable path="MoveButtons/Down"]
 [editable path="MoveButtons/Up"]
+[editable path="WorldEater"]

@@ -1,13 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://bat2tgvlk4cqu"]
+[gd_scene load_steps=17 format=3 uid="uid://bat2tgvlk4cqu"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_ytk1f"]
 [ext_resource type="Texture2D" uid="uid://bsmbhs6st1qin" path="res://assets/graphics/bg/bg_osiem.png" id="2_4drju"]
+[ext_resource type="PackedScene" uid="uid://do284ggo44wsc" path="res://scenes/bindows/folder_bindow.tscn" id="3_hjuur"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_0bas7"]
+[ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="5_wxj5s"]
+[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="5_ycyla"]
+[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="6_mvyqa"]
+[ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="6_ycyla"]
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="7_cnalr"]
+[ext_resource type="PackedScene" uid="uid://oxqyg7gt4meu" path="res://scenes/bindows/text_bindow.tscn" id="8_h5fey"]
+[ext_resource type="PackedScene" uid="uid://imj3g1vus8y" path="res://scenes/apps/zip_app.tscn" id="11_ksyfq"]
+[ext_resource type="Texture2D" uid="uid://sgjf7tbu4wwb" path="res://assets/graphics/apps/taskbar/zip32.png" id="12_mc8oc"]
+[ext_resource type="Texture2D" uid="uid://uskcgsp0ubef" path="res://assets/graphics/apps/desktop/zip48.png" id="13_pfnh2"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="14_ksyfq"]
+[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="14_pfnh2"]
+[ext_resource type="Texture2D" uid="uid://csgx46oxjb8ks" path="res://assets/graphics/misc/gasnica.png" id="15_ggfpb"]
 
 [node name="Desktop6" instance=ExtResource("1_ytk1f")]
 id_name = "desktop_6"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_4drju")
+
+[node name="FolderBindow" parent="Bindows" index="0" instance=ExtResource("3_hjuur")]
+position = Vector2(-168, 88)
+
+[node name="App" parent="Bindows/FolderBindow" index="7" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_0bas7")]
+z_index = 20
+z_as_relative = false
+position = Vector2(-64, -16)
+desktop = NodePath("../../..")
+bindow = NodePath("../../PhotoBindow_96")
+taskbar_icon = ExtResource("5_ycyla")
+icon = ExtResource("6_mvyqa")
+_label_text = "cat.gif"
+
+[node name="PhotoBindow_96" parent="Bindows" index="1" instance=ExtResource("7_cnalr")]
+position = Vector2(0, -120)
+
+[node name="TextBindow" parent="Bindows" index="2" instance=ExtResource("8_h5fey")]
+position = Vector2(72, 152)
+_text = "Run!"
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_0bas7")]
+position = Vector2(-312, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/FolderBindow")
+taskbar_icon = ExtResource("5_wxj5s")
+icon = ExtResource("6_ycyla")
+_label_text = "good kitty"
+
+[node name="ZipApp" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("11_ksyfq")]
+position = Vector2(384, 184)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/TextBindow")
+taskbar_icon = ExtResource("12_mc8oc")
+icon = ExtResource("13_pfnh2")
+_label_text = "sus.zip"
+
+[node name="PowerUp" parent="Apps" index="2" instance=ExtResource("14_pfnh2")]
+position = Vector2(208, 240)
+_power_up_id = "firewall"
+_texture = ExtResource("15_ggfpb")
+
+[node name="FireWall" parent="Enemies" index="0" instance=ExtResource("14_ksyfq")]
+position = Vector2(336, 184)
+
+[node name="FireWall2" parent="Enemies" index="1" instance=ExtResource("14_ksyfq")]
+position = Vector2(384, 248)
+
+[node name="FireWall3" parent="Enemies" index="2" instance=ExtResource("14_ksyfq")]
+position = Vector2(384, 136)
+
+[node name="FireWall4" parent="Enemies" index="3" instance=ExtResource("14_ksyfq")]
+position = Vector2(432, 184)
 
 [node name="Down" parent="MoveButtons" index="0"]
 visible = false
@@ -24,4 +91,8 @@ color = Color(0.477917, 0.846562, 1.54018e-06, 1)
 visible = false
 is_enabled = false
 
+[node name="Timer" parent="WorldEater" index="0"]
+wait_time = 0.15
+
 [editable path="MoveButtons/Up"]
+[editable path="WorldEater"]

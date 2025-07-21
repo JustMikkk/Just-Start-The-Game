@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://desuysb6032qp"]
+[gd_scene load_steps=4 format=3 uid="uid://desuysb6032qp"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_yttox"]
 [ext_resource type="Texture2D" uid="uid://bqbm2juaa2jps" path="res://assets/graphics/bg/bg_szesc.png" id="2_xqxqa"]
+[ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="3_oaxif"]
 
 [node name="Desktop9" instance=ExtResource("1_yttox")]
 id_name = "desktop_9"
@@ -9,8 +10,41 @@ id_name = "desktop_9"
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_xqxqa")
 
+[node name="CardEnemyFlying" parent="Enemies" index="0" instance=ExtResource("3_oaxif")]
+position = Vector2(-321, -148)
+
+[node name="CardEnemyFlying2" parent="Enemies" index="1" instance=ExtResource("3_oaxif")]
+position = Vector2(142, -196)
+
+[node name="CardEnemyFlying3" parent="Enemies" index="2" instance=ExtResource("3_oaxif")]
+position = Vector2(366, 28)
+
+[node name="CardEnemyFlying4" parent="Enemies" index="3" instance=ExtResource("3_oaxif")]
+position = Vector2(-103, 111)
+
+[node name="CardEnemyFlying5" parent="Enemies" index="4" instance=ExtResource("3_oaxif")]
+position = Vector2(-116, -97)
+
+[node name="CardEnemyFlying6" parent="Enemies" index="5" instance=ExtResource("3_oaxif")]
+position = Vector2(156, 103)
+
+[node name="CardEnemyFlying7" parent="Enemies" index="6" instance=ExtResource("3_oaxif")]
+position = Vector2(-345, -3)
+
+[node name="CardEnemyFlying8" parent="Enemies" index="7" instance=ExtResource("3_oaxif")]
+position = Vector2(336, -204)
+
+[node name="CardEnemyFlying9" parent="Enemies" index="8" instance=ExtResource("3_oaxif")]
+position = Vector2(-69, -234)
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(-356, 230)
+
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.933333, 0.796078, 0.278431, 1)
+
+[node name="Left" parent="MoveButtons" index="1"]
+position = Vector2(-448, 192)
 
 [node name="PointLight2D" parent="MoveButtons/Left" index="3"]
 color = Color(0.807843, 0.313726, 0.352941, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=20 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -12,14 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
 [ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
-[ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
 [ext_resource type="PackedScene" uid="uid://bgf6tfh5q65" path="res://scenes/walls/admin_wall.tscn" id="12_hphji"]
 [ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
-[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
-[ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
-[ext_resource type="Texture2D" uid="uid://csgx46oxjb8ks" path="res://assets/graphics/misc/gasnica.png" id="20_jj5cv"]
-[ext_resource type="Texture2D" uid="uid://ohowj2e5r81s" path="res://assets/graphics/misc/admin.png" id="21_7e0qu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_u0x7u"]
 resource_local_to_scene = true
@@ -57,7 +52,7 @@ _alert_before_leave = NodePath("Bindows/AlertBindow4")
 _alert_after_leave = NodePath("Bindows/AlertBindow5")
 _alert_second_cutscene = NodePath("Bindows/AlertBindow6-2")
 _alert_last_cutscene = NodePath("Bindows/AlertBindow7-2")
-_walls = []
+_walls = [NodePath("Enemies/AdminWall"), NodePath("Enemies/AdminWall3"), NodePath("Enemies/AdminWall5"), NodePath("Enemies/AdminWall7"), NodePath("Enemies/FireWall"), NodePath("Enemies/FireWall2"), NodePath("Enemies/FireWall3"), NodePath("Enemies/FireWall4"), NodePath("Enemies/FireWall5"), NodePath("Enemies/FireWall6"), NodePath("Enemies/FireWall7"), NodePath("Enemies/FireWall8")]
 id_name = "desktop_1"
 _cutscene_name = "desktop_1"
 
@@ -74,15 +69,15 @@ shape = SubResource("SegmentShape2D_u0x7u")
 step = 1.0
 
 [node name="Movement-Bindow" parent="Bindows" index="1" instance=ExtResource("2_btg26")]
-position = Vector2(216, 136)
+position = Vector2(217, 157)
 _text = "Movement: WSAD / Arrow keys / Left stick
 
 Jump: Space / South BTN
 
-Click: J / Z / Enter / West BTN"
+Click: J / Z / Enter / West BTN / LPM"
 
 [node name="Help-Bindow" parent="Bindows" index="2" instance=ExtResource("2_btg26")]
-position = Vector2(384, 56)
+position = Vector2(385, 79)
 _text = "You can jump in and on windows
 
 
@@ -168,10 +163,6 @@ desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/AlertBindow")
 icon = ExtResource("9_kpwh1")
 
-[node name="GheTameApp" parent="Apps" index="3" node_paths=PackedStringArray("desktop") instance=ExtResource("10_1c540")]
-position = Vector2(-352, -64)
-desktop = NodePath("../..")
-
 [node name="AdminWall" parent="Enemies" index="0" instance=ExtResource("12_hphji")]
 position = Vector2(-304, 144)
 is_disabled = true
@@ -251,25 +242,10 @@ is_enabled = false
 
 [node name="Right" parent="MoveButtons" index="3"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(448, -144)
+position = Vector2(448, -64)
 
 [node name="Timer" parent="WorldEater" index="0"]
 wait_time = 0.1
-
-[node name="PowerUp" parent="." index="11" instance=ExtResource("15_sicsa")]
-position = Vector2(64, 144)
-_power_up_id = "scissors"
-_texture = ExtResource("16_t43jk")
-
-[node name="PowerUp2" parent="." index="12" instance=ExtResource("15_sicsa")]
-position = Vector2(64, 192)
-_power_up_id = "firewall"
-_texture = ExtResource("20_jj5cv")
-
-[node name="PowerUp3" parent="." index="13" instance=ExtResource("15_sicsa")]
-position = Vector2(64, 240)
-_power_up_id = "admin"
-_texture = ExtResource("21_7e0qu")
 
 [editable path="Bindows/StartingGameBindow"]
 [editable path="Bindows/StartingGameBindow/DragArea"]

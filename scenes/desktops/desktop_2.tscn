@@ -71,39 +71,18 @@ taskbar_icon = ExtResource("6_x36pm")
 icon = ExtResource("7_wx211")
 _label_text = "help.txt"
 
-[node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
-position = Vector2(-128, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="JumpTimer" parent="Enemies/CardEnemy" index="3"]
-autostart = true
-
-[node name="CardEnemy4" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
-position = Vector2(112, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="JumpTimer" parent="Enemies/CardEnemy4" index="3"]
-autostart = true
-
-[node name="CardEnemy2" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
+[node name="CardEnemy2" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
 position = Vector2(-384, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
 
-[node name="CardEnemy5" parent="Enemies" index="3" instance=ExtResource("4_06vhp")]
-position = Vector2(-256, 240)
+[node name="CardEnemy4" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
+position = Vector2(-72, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
 
-[node name="CardEnemy3" parent="Enemies" index="4" instance=ExtResource("4_06vhp")]
+[node name="CardEnemy3" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
 position = Vector2(224, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="CardEnemy6" parent="Enemies" index="5" instance=ExtResource("4_06vhp")]
-position = Vector2(336, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
 
@@ -115,7 +94,7 @@ visible = false
 is_enabled = false
 
 [node name="Left" parent="MoveButtons" index="1"]
-position = Vector2(-448, -144)
+position = Vector2(-448, -64)
 
 [node name="PointLight2D" parent="MoveButtons/Left" index="3"]
 color = Color(0.886275, 0.937255, 1, 1)
@@ -130,7 +109,5 @@ color = Color(0.968627, 0.894118, 0.823529, 1)
 [editable path="Bindows/AlertBindow"]
 [editable path="Bindows/AlertBindow/ExitBtn"]
 [editable path="Bindows/AlertBindow/DragArea"]
-[editable path="Enemies/CardEnemy"]
-[editable path="Enemies/CardEnemy4"]
 [editable path="MoveButtons/Left"]
 [editable path="MoveButtons/Right"]

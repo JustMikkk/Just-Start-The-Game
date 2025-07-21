@@ -1,13 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2rrvt2fr5rih"]
+[gd_scene load_steps=4 format=3 uid="uid://c2rrvt2fr5rih"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_aq31b"]
 [ext_resource type="Texture2D" uid="uid://cy01vanj4ilc4" path="res://assets/graphics/bg/bg_tri.png" id="2_dabto"]
+[ext_resource type="PackedScene" uid="uid://cc4b7xqddfi2x" path="res://scenes/enemies/card_enemy_king.tscn" id="3_xodg1"]
 
 [node name="Desktop8" instance=ExtResource("1_aq31b")]
 id_name = "desktop_8"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_dabto")
+
+[node name="CardEnemyKing" parent="Enemies" index="0" node_paths=PackedStringArray("_exit_to_enable") instance=ExtResource("3_xodg1")]
+position = Vector2(392, 216)
+_exit_to_enable = NodePath("../../MoveButtons/Right")
+_health = 10
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(-432, 224)
 
 [node name="Down" parent="MoveButtons" index="0"]
 visible = false
@@ -19,6 +28,9 @@ color = Color(0.647059, 0.666667, 0.654902, 1)
 [node name="Up" parent="MoveButtons" index="2"]
 visible = false
 is_enabled = false
+
+[node name="Right" parent="MoveButtons" index="3"]
+position = Vector2(448, 192)
 
 [node name="PointLight2D" parent="MoveButtons/Right" index="3"]
 color = Color(0.721569, 0.694118, 0.847059, 1)

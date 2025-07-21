@@ -42,8 +42,7 @@ shape = SubResource("RectangleShape2D_cffcl")
 texture = ExtResource("2_pyokn")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 15
+amount = 5
 texture = ExtResource("3_8a060")
 preprocess = 1.0
 process_material = SubResource("ParticleProcessMaterial_pqitn")

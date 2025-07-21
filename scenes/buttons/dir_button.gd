@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func disable() -> void:
 	(func():
+		hide()
 		$EnterArea/CollisionShape2D.disabled = true
 	).call_deferred()
 

@@ -28,8 +28,9 @@ func _ready() -> void:
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
 	
-	bindow.setup(position)
-	bindow.bindow_exit_signal.connect(_on_bindow_exit)
+	if bindow:
+		bindow.setup(position)
+		bindow.bindow_exit_signal.connect(_on_bindow_exit)
 	_icon.texture = icon
 	_label.text = _label_text
 	

@@ -1,13 +1,97 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm2k13n86lqha"]
+[gd_scene load_steps=7 format=3 uid="uid://dm2k13n86lqha"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_vf0tr"]
 [ext_resource type="Texture2D" uid="uid://bw3p5osplgy7p" path="res://assets/graphics/bg/bg_dziesiec.png" id="2_sfx84"]
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="3_v8o1g"]
+[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_4jbtw"]
+[ext_resource type="Texture2D" uid="uid://djd2555toylb8" path="res://assets/graphics/apps/taskbar/photo32.png" id="5_hr6ny"]
+[ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="6_6qagb"]
 
 [node name="Desktop10" instance=ExtResource("1_vf0tr")]
 id_name = "desktop_10"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_sfx84")
+
+[node name="PhotoBindow_96" parent="Bindows" index="0" instance=ExtResource("3_v8o1g")]
+position = Vector2(-64, 216)
+
+[node name="PhotoBindow_97" parent="Bindows" index="1" instance=ExtResource("3_v8o1g")]
+position = Vector2(56, 128)
+
+[node name="PhotoBindow_98" parent="Bindows" index="2" instance=ExtResource("3_v8o1g")]
+position = Vector2(200, 64)
+
+[node name="PhotoBindow_99" parent="Bindows" index="3" instance=ExtResource("3_v8o1g")]
+position = Vector2(328, -40)
+
+[node name="PhotoBindow_100" parent="Bindows" index="4" instance=ExtResource("3_v8o1g")]
+position = Vector2(104, -48)
+
+[node name="PhotoBindow_101" parent="Bindows" index="5" instance=ExtResource("3_v8o1g")]
+position = Vector2(-112, -48)
+
+[node name="PhotoBindow_102" parent="Bindows" index="6" instance=ExtResource("3_v8o1g")]
+position = Vector2(-336, 80)
+
+[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(24, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_96")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(88, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_97")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App3" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(152, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_98")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App4" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(216, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_99")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App5" parent="Apps" index="4" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(280, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_100")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App6" parent="Apps" index="5" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(344, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_101")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="App7" parent="Apps" index="6" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_4jbtw")]
+position = Vector2(408, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/PhotoBindow_102")
+taskbar_icon = ExtResource("5_hr6ny")
+icon = ExtResource("6_6qagb")
+_label_text = "cat.jpg"
+
+[node name="SpawnPoint" parent="." index="6"]
+position = Vector2(-280, 224)
 
 [node name="Down" parent="MoveButtons" index="0"]
 visible = false

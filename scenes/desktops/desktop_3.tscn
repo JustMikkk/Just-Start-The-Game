@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bras2p6rufw1e"]
+[gd_scene load_steps=11 format=3 uid="uid://bras2p6rufw1e"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_6i15i"]
 [ext_resource type="Script" uid="uid://dv2dhyi2bw4a0" path="res://scenes/desktops/desktop_3.gd" id="2_6dp2f"]
 [ext_resource type="Texture2D" uid="uid://cealueimuhhuw" path="res://assets/graphics/bg/bg_quatro.png" id="2_uejpn"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_5baar"]
-[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="4_wdh0m"]
-[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="5_huf8o"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="6_6dp2f"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="6_wdh0m"]
 [ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="7_huf8o"]
+[ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="8_emjjs"]
+[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="9_emjjs"]
+[ext_resource type="PackedScene" uid="uid://bgf6tfh5q65" path="res://scenes/walls/admin_wall.tscn" id="10_ecu3c"]
 
 [node name="Desktop3" instance=ExtResource("1_6i15i")]
 script = ExtResource("2_6dp2f")
@@ -18,41 +20,65 @@ texture = ExtResource("2_uejpn")
 
 [node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_5baar")]
 position = Vector2(-296, 97)
-_text = "Scissors"
+_text = "Try clicking the glitch"
 
 [node name="NoteBindow_160_161" parent="Bindows" index="1" instance=ExtResource("3_5baar")]
 position = Vector2(-80, -128)
-_text = "can be used"
+_text = "Maybe you can drag the windows"
 
 [node name="NoteBindow_160_162" parent="Bindows" index="2" instance=ExtResource("3_5baar")]
-position = Vector2(-384, -128)
-_text = "for cutting!"
+position = Vector2(-376, -128)
+_text = "Scissor can be used for cutting! (RMB) / K"
 
-[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
-position = Vector2(-176, 160)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/NoteBindow_160_160")
-icon = ExtResource("5_huf8o")
-
-[node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("6_wdh0m")]
+[node name="ConverterApp" parent="Apps" index="0" instance=ExtResource("6_wdh0m")]
 position = Vector2(-112, 240)
-_next_positions = null
-_is_looping = null
+_next_positions = Array[Vector2i]([Vector2i(724, 400), Vector2i(320, 560)])
+_is_looping = true
+_label_text = "glitch.exe"
 
-[node name="App2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
-position = Vector2(-176, 48)
-desktop = NodePath("../..")
-bindow = NodePath("../../Bindows/NoteBindow_160_161")
-icon = ExtResource("5_huf8o")
-
-[node name="App3" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_wdh0m")]
+[node name="NoteApp" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_6dp2f")]
 position = Vector2(-416, -256)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_162")
-icon = ExtResource("5_huf8o")
+_label_text = " scissors.txt"
+
+[node name="NoteApp2" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_6dp2f")]
+position = Vector2(-184, 48)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_161")
+_label_text = "drag.txt"
+
+[node name="NoteApp3" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_6dp2f")]
+position = Vector2(-184, 128)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+_label_text = "glitch.txt"
+
+[node name="PowerUp" parent="Apps" index="4" instance=ExtResource("9_emjjs")]
+position = Vector2(312, -120)
+_power_up_id = "scissors"
+_texture = ExtResource("8_emjjs")
 
 [node name="CardEnemyFlying" parent="Enemies" index="0" instance=ExtResource("7_huf8o")]
 position = Vector2(64, 16)
+
+[node name="AdminWall" parent="Enemies" index="1" instance=ExtResource("10_ecu3c")]
+position = Vector2(456, 104)
+
+[node name="AdminWall2" parent="Enemies" index="2" instance=ExtResource("10_ecu3c")]
+position = Vector2(408, 104)
+
+[node name="AdminWall3" parent="Enemies" index="3" instance=ExtResource("10_ecu3c")]
+position = Vector2(360, 152)
+
+[node name="AdminWall4" parent="Enemies" index="4" instance=ExtResource("10_ecu3c")]
+position = Vector2(360, 200)
+
+[node name="AdminWall5" parent="Enemies" index="5" instance=ExtResource("10_ecu3c")]
+position = Vector2(408, 248)
+
+[node name="AdminWall6" parent="Enemies" index="6" instance=ExtResource("10_ecu3c")]
+position = Vector2(456, 248)
 
 [node name="SpawnPoint" parent="." index="6"]
 position = Vector2(-416, 240)

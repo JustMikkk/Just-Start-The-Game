@@ -67,6 +67,7 @@ func _ready() -> void:
 func _appear() -> void:
 	_animated_sprite_2d.play("appear")
 	await _animated_sprite_2d.animation_finished
+	_animated_sprite_2d.play("default")
 	_bindows_defender.enable_collisions(false)
 	
 	_tween_pos = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
@@ -109,6 +110,7 @@ func _leave() -> void:
 	_tween_pos.tween_property(_exit_point_light_2d, "energy", 2, 0.5)
 	_tween_pos.tween_callback(func():
 		_bindows_defender.hide()
+		$"Apps/Movement-App".bindow.open_bindow()
 		GameManager.set_cutscene_played(_cutscene_name)
 	)
 
@@ -169,12 +171,11 @@ func _on_bindows_defender_death() -> void:
 		var virus2: Node2D = VIRUS_BINDOW.instantiate()
 		virus2.global_position = Vector2i(randi_range(48, 980 -48), randi_range(48, 640 - 48))
 		_bindows_holder.add_child(virus2)
-		for i in range(100):
+		for i in range(30):
 			var virus: Node2D = VIRUS_BINDOW.instantiate()
-			virus.global_position = Vector2i(randi_range(48, 980 -48), randi_range(48, 640 - 48))
 			virus.z_index = 50
-			print("new virus", virus.global_position)
 			_bindows_holder.add_child(virus)
+			virus.global_position = Vector2i(randi_range(48, 980 -48), randi_range(48, 640 - 48))
 			await get_tree().create_timer(0.1).timeout
 		await get_tree().create_timer(5).timeout
 		

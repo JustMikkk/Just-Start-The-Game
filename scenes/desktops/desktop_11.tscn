@@ -1,13 +1,130 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbbhpqkalaf8a"]
+[gd_scene load_steps=26 format=3 uid="uid://dbbhpqkalaf8a"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_0g46a"]
 [ext_resource type="Texture2D" uid="uid://6u5t1dsiwh4y" path="res://assets/graphics/bg/bg_spider.png" id="2_nwj1a"]
+[ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="3_0knet"]
+[ext_resource type="PackedScene" uid="uid://bks78yqml4xs6" path="res://scenes/enemies/card_enemy_flying.tscn" id="3_1170u"]
+[ext_resource type="Texture2D" uid="uid://c2xv8mnu2tox4" path="res://assets/graphics/spider/idle/spider_idle_0001.png" id="4_478br"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="4_qqf51"]
+[ext_resource type="Texture2D" uid="uid://di3h048uabr8c" path="res://assets/graphics/spider/idle/spider_idle_0002.png" id="5_0knet"]
+[ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="5_x734s"]
+[ext_resource type="Texture2D" uid="uid://ohowj2e5r81s" path="res://assets/graphics/misc/admin.png" id="6_be1pl"]
+[ext_resource type="Texture2D" uid="uid://b74beecx6stht" path="res://assets/graphics/spider/idle/spider_idle_0003.png" id="6_qqf51"]
+[ext_resource type="Texture2D" uid="uid://b83j2b7jamjpu" path="res://assets/graphics/spider/idle/spider_idle_0004.png" id="7_x734s"]
+[ext_resource type="Texture2D" uid="uid://c1vasgkxgekax" path="res://assets/graphics/spider/idle/spider_idle_0005.png" id="8_be1pl"]
+[ext_resource type="PackedScene" uid="uid://bgf6tfh5q65" path="res://scenes/walls/admin_wall.tscn" id="8_iouve"]
+[ext_resource type="Texture2D" uid="uid://dttdgt1yvmjvf" path="res://assets/graphics/spider/idle/spider_idle_0006.png" id="9_iouve"]
+[ext_resource type="Texture2D" uid="uid://px7q2o70pohv" path="res://assets/graphics/spider/idle/spider_idle_0007.png" id="10_b4hpf"]
+[ext_resource type="Texture2D" uid="uid://cf1veg62c7pa6" path="res://assets/graphics/spider/idle/spider_idle_0008.png" id="11_1bi83"]
+[ext_resource type="Texture2D" uid="uid://bws7lfqaakbix" path="res://assets/graphics/spider/idle/spider_idle_0009.png" id="12_26gax"]
+[ext_resource type="Texture2D" uid="uid://tcvc103qgnru" path="res://assets/graphics/spider/idle/spider_idle_0010.png" id="13_hsi2y"]
+[ext_resource type="Texture2D" uid="uid://ds6mva124byxa" path="res://assets/graphics/spider/idle/spider_idle_0011.png" id="14_sdlao"]
+[ext_resource type="Texture2D" uid="uid://dktsudaksh6tt" path="res://assets/graphics/spider/idle/spider_idle_0012.png" id="15_w5s1f"]
+[ext_resource type="Texture2D" uid="uid://5l77l4dr078a" path="res://assets/graphics/spider/idle/spider_idle_0013.png" id="16_oodox"]
+[ext_resource type="Texture2D" uid="uid://b1t3coart3krs" path="res://assets/graphics/spider/idle/spider_idle_0014.png" id="17_5c46c"]
+[ext_resource type="Texture2D" uid="uid://bl1dthf4e5ae7" path="res://assets/graphics/spider/idle/spider_idle_0015.png" id="18_cle8d"]
+[ext_resource type="Texture2D" uid="uid://c4sgg8t8ixyvx" path="res://assets/graphics/spider/idle/spider_idle_0016.png" id="19_5j0jd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwj1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_478br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0knet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qqf51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x734s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_be1pl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iouve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b4hpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1bi83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_26gax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hsi2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sdlao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_w5s1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_oodox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5c46c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cle8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5j0jd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
 
 [node name="Desktop11" instance=ExtResource("1_0g46a")]
 id_name = "desktop_11"
 
 [node name="BG" parent="." index="0"]
 texture = ExtResource("2_nwj1a")
+
+[node name="NoteBindow_160_160" parent="Bindows" index="0" instance=ExtResource("3_0knet")]
+position = Vector2(-208, -224)
+_text = "I am not harmful
+I am solitare spider!
+Take the admin :3"
+
+[node name="NoteApp" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_qqf51")]
+position = Vector2(320, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/NoteBindow_160_160")
+_label_text = "solitare.txt"
+
+[node name="PowerUp" parent="Apps" index="1" instance=ExtResource("5_x734s")]
+position = Vector2(-200, 232)
+_power_up_id = "admin"
+_texture = ExtResource("6_be1pl")
+
+[node name="CardEnemyFlying" parent="Enemies" index="0" instance=ExtResource("3_1170u")]
+position = Vector2(90, 134)
+_damage = 0
+
+[node name="AdminWall" parent="Enemies" index="1" instance=ExtResource("8_iouve")]
+position = Vector2(-408, 248)
+
+[node name="AdminWall2" parent="Enemies" index="2" instance=ExtResource("8_iouve")]
+position = Vector2(-360, 200)
+
+[node name="AdminWall3" parent="Enemies" index="3" instance=ExtResource("8_iouve")]
+position = Vector2(-360, 152)
+
+[node name="AdminWall4" parent="Enemies" index="4" instance=ExtResource("8_iouve")]
+position = Vector2(-408, 104)
+
+[node name="AdminWall5" parent="Enemies" index="5" instance=ExtResource("8_iouve")]
+position = Vector2(-456, 104)
+
+[node name="AdminWall6" parent="Enemies" index="6" instance=ExtResource("8_iouve")]
+position = Vector2(-456, 248)
 
 [node name="Down" parent="MoveButtons" index="0"]
 visible = false
@@ -19,3 +136,12 @@ position = Vector2(-448, 160)
 [node name="Up" parent="MoveButtons" index="2"]
 visible = false
 is_enabled = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="9"]
+position = Vector2(-391, -194)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nwj1a")
+autoplay = "default"
+frame_progress = 0.21685
+
+[editable path="Enemies/CardEnemyFlying"]

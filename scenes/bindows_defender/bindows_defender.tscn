@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6x67tqfowpnj"]
+[gd_scene load_steps=22 format=3 uid="uid://b6x67tqfowpnj"]
 
 [ext_resource type="Script" uid="uid://dd3g8ototd3fm" path="res://scenes/bindows_defender/bindows_defender.gd" id="1_s26ip"]
 [ext_resource type="Texture2D" uid="uid://7cuqpug6whk4" path="res://assets/graphics/defender/appear/defender_appear_0001.png" id="1_xj1ct"]
@@ -12,12 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://du7swa75ggt2y" path="res://assets/graphics/defender/appear/defender_appear_0009.png" id="9_1vtaj"]
 [ext_resource type="Texture2D" uid="uid://dfl0wd4syd8ll" path="res://assets/graphics/defender/appear/defender_appear_0010.png" id="10_graky"]
 [ext_resource type="Texture2D" uid="uid://cwhlgmoda7p2h" path="res://assets/graphics/defender/appear/defender_appear_0011.png" id="11_gw7q6"]
-[ext_resource type="Texture2D" uid="uid://cxhcm84f6l24s" path="res://assets/graphics/defender/appear/defender_appear_0012.png" id="12_u8yhf"]
-[ext_resource type="Texture2D" uid="uid://cqaqkowx3d6h2" path="res://assets/graphics/defender/appear/defender_appear_0013.png" id="13_rt36b"]
-[ext_resource type="Texture2D" uid="uid://djfh46piliflw" path="res://assets/graphics/defender/appear/defender_appear_0014.png" id="14_d6hw5"]
-[ext_resource type="Texture2D" uid="uid://c1uim2dhgy5rl" path="res://assets/graphics/defender/appear/defender_appear_0015.png" id="15_k1iov"]
-[ext_resource type="Texture2D" uid="uid://bngrmox64704g" path="res://assets/graphics/defender/appear/defender_appear_0016.png" id="16_kvwe5"]
-[ext_resource type="Texture2D" uid="uid://ck234ub2w2j1v" path="res://assets/graphics/defender/appear/defender_appear_0017.png" id="17_6h3um"]
+[ext_resource type="Texture2D" uid="uid://cursslyfgb6pt" path="res://assets/graphics/defender/idle/bindows_front1.png" id="14_xj1ct"]
+[ext_resource type="Texture2D" uid="uid://db1bfir8dv4kq" path="res://assets/graphics/defender/idle/bindows_front2.png" id="15_s26ip"]
+[ext_resource type="Texture2D" uid="uid://b8842gpm2mt40" path="res://assets/graphics/defender/idle/bindows_front3.png" id="16_044f3"]
+[ext_resource type="Texture2D" uid="uid://ml40qtr7uva1" path="res://assets/graphics/defender/idle/bindows_front4.png" id="17_em053"]
 [ext_resource type="Texture2D" uid="uid://b3pa2drkogld7" path="res://assets/graphics/defender/bindows_defender.png" id="19_044f3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lwt2f"]
@@ -57,34 +55,28 @@ animations = [{
 "texture": ExtResource("11_gw7q6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_u8yhf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_rt36b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_d6hw5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_k1iov")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_kvwe5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_6h3um")
-}, {
-"duration": 1.0,
 "texture": ExtResource("19_044f3")
 }],
 "loop": false,
 "name": &"appear",
 "speed": 24.0
 }, {
-"frames": [],
-"loop": false,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xj1ct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s26ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_044f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_em053")
+}],
+"loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xj1ct"]
@@ -102,7 +94,7 @@ script = ExtResource("1_s26ip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lwt2f")
-autoplay = "default"
+animation = &"appear"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

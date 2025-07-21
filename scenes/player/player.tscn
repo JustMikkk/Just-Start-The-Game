@@ -694,7 +694,6 @@ _audio_clip = ExtResource("2_qxlpa")
 SPEED = 15000
 JUMP_VELOCITY = -40000
 JUMP_CUT_MULTIPLIER = 0.8
-_damage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
