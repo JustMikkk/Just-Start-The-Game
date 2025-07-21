@@ -1,12 +1,15 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1pbmxd15535j"]
 
+
 [ext_resource type="PackedScene" uid="uid://clytdko2adl73" path="res://scenes/game/desktops_manager.tscn" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://clwbwtomfh1it" path="res://scenes/game/game.gd" id="1_lfrn8"]
 [ext_resource type="Texture2D" uid="uid://yr61hbsrc2hi" path="res://assets/graphics/bg/bg_black.png" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="4_kelw5"]
+[ext_resource type="AudioStream" uid="uid://3ye0rvrxkkw5" path="res://assets/sounds/Bluezone_BC0301_tiny_gears_small_mechanism_click_003.wav" id="5_4j704"]
 [ext_resource type="Script" uid="uid://dy2d4dc2jqf76" path="res://scenes/game/camera_manager.gd" id="5_lfrn8"]
 [ext_resource type="Script" uid="uid://cfyp3snn2jnd" path="res://scenes/game/transition_player.gd" id="6_5i0tg"]
 [ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="7_87uf6"]
+
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="7_bdhmt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2a8rs"]
@@ -28,6 +31,9 @@ texture = ExtResource("3_kelw5")
 [node name="Player" parent="PlayerHolder" instance=ExtResource("4_kelw5")]
 z_index = 20
 position = Vector2(48, 32)
+_audio_click = ExtResource("5_4j704")
+_audio_slash = ExtResource("6_kp23o")
+_audio_steps = ExtResource("7_4j704")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

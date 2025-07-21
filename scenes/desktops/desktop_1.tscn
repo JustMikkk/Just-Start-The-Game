@@ -1,19 +1,21 @@
 [gd_scene load_steps=25 format=3 uid="uid://b1dit03ngtyfr"]
 
+
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
 [ext_resource type="Script" uid="uid://c46boeaytgbo3" path="res://scenes/desktops/desktop_1.gd" id="2_kpwh1"]
-[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="3_befw0"]
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
 [ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
 [ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
 [ext_resource type="PackedScene" uid="uid://jk8arhf52th3" path="res://scenes/bindows/starting_game_bindow.tscn" id="6_u0x7u"]
+
 [ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
 [ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
 [ext_resource type="PackedScene" uid="uid://b6x67tqfowpnj" path="res://scenes/bindows_defender/bindows_defender.tscn" id="9_yfe1b"]
 [ext_resource type="PackedScene" uid="uid://bv7ul7dkkk0dy" path="res://scenes/apps/ghe_tame_app.tscn" id="10_1c540"]
 [ext_resource type="Texture2D" uid="uid://dnjs8xtxm4el4" path="res://assets/graphics/placeholder/white.jpeg" id="10_qksk2"]
+
 [ext_resource type="PackedScene" uid="uid://bgf6tfh5q65" path="res://scenes/walls/admin_wall.tscn" id="12_hphji"]
 [ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
@@ -35,6 +37,7 @@ b = Vector2(80, 46)
 resource_local_to_scene = true
 a = Vector2(-80, -46)
 b = Vector2(80, -46)
+
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
 particle_flag_disable_z = true
@@ -79,7 +82,7 @@ _text = "Movement: WSAD / Arrow keys / Left stick
 
 Jump: Space / South BTN
 
-Click: J / Z / Enter / West BTN"
+Click: LMB / J / Z / Enter / West BTN"
 
 [node name="Help-Bindow" parent="Bindows" index="2" instance=ExtResource("2_btg26")]
 position = Vector2(384, 56)
@@ -164,6 +167,7 @@ _label_text = "help.txt"
 [node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("_bindow_starting_game", "desktop", "bindow") instance=ExtResource("7_7okfk")]
 position = Vector2(-352, 144)
 _bindow_starting_game = NodePath("../../Bindows/StartingGameBindow")
+
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/AlertBindow")
 icon = ExtResource("9_kpwh1")
@@ -219,6 +223,23 @@ is_disabled = true
 [node name="FireWall8" parent="Enemies" index="11" instance=ExtResource("13_hphji")]
 position = Vector2(-256, 144)
 is_disabled = true
+
+
+[node name="NoteApp" parent="Apps" index="3" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("15_hphji")]
+position = Vector2(320, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/Movement-Bindow")
+taskbar_icon = ExtResource("16_0ghmy")
+icon = ExtResource("17_u0x7u")
+_label_text = "movement.txt"
+
+[node name="NoteApp2" parent="Apps" index="4" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("15_hphji")]
+position = Vector2(400, 224)
+desktop = NodePath("../..")
+bindow = NodePath("../../Bindows/Help-Bindow")
+taskbar_icon = ExtResource("16_0ghmy")
+icon = ExtResource("17_u0x7u")
+_label_text = "help.txt"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 modulate = Color(0, 0.72549, 0.866667, 0.627451)
@@ -276,5 +297,6 @@ _texture = ExtResource("21_7e0qu")
 [editable path="Bindows/AlertBindow7-2"]
 [editable path="Bindows/AlertBindow7-2/ExitBtn"]
 [editable path="Bindows/AlertBindow7-2/DragArea"]
+
 [editable path="MoveButtons/Right"]
 [editable path="WorldEater"]

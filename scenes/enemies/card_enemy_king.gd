@@ -30,10 +30,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_throw_timer_timeout() -> void:
-	var node: CardEnemy = CARD_ENEMY.instantiate()
-	node.dir = -1
+	if get_parent().get_child_count() > 5: return
+	var node
+	var scale
+	if randi_range(0,1)==1:
+		node = CARD_ENEMY.instantiate()
+		node.dir = -1
+		scale = -1
+	else:
+		node = CARD_ENEMY_FLYING.instantiate()
+		scale = 1
 	node.velocity = Vector2(-10, -10)
-	node._health = 1
+	node._health = 2
 	get_parent().add_child(node)
 	node.position = position - Vector2(0, 50)
-	node._animated_sprite_2d.scale.x = -1
+	node._animated_sprite_2d.scale.x = scale

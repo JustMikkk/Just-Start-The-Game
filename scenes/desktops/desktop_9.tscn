@@ -12,6 +12,9 @@ texture = ExtResource("2_xqxqa")
 [node name="PointLight2D" parent="MoveButtons/Down" index="3"]
 color = Color(0.933333, 0.796078, 0.278431, 1)
 
+[node name="Left" parent="MoveButtons" index="1"]
+position = Vector2(-448, 224)
+
 [node name="PointLight2D" parent="MoveButtons/Left" index="3"]
 color = Color(0.807843, 0.313726, 0.352941, 1)
 
