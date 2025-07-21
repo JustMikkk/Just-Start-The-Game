@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8rcwk032ecxs"]
+
+[ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="1_nidi0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_av0tt"]
+resource_local_to_scene = true
+a = Vector2(-48, -45)
+b = Vector2(48, -45)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xkccb"]
+resource_local_to_scene = true
+a = Vector2(-48, 54)
+b = Vector2(48, 54)
+
+[node name="VirusBindow" instance=ExtResource("1_nidi0")]
+_photo_name = "evil kitty"
+current_state = 1
+
+[node name="CollisionShape2D" parent="Bounds" index="0"]
+shape = SubResource("SegmentShape2D_av0tt")
+
+[node name="CollisionShape2D2" parent="Bounds" index="1"]
+shape = SubResource("SegmentShape2D_xkccb")
+
+[editable path="DragArea"]

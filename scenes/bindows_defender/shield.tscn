@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://demakutgmpyvj"]
+
+[ext_resource type="Script" uid="uid://yhotukfy0bd1" path="res://scenes/bindows_defender/shield.gd" id="1_8d46v"]
+[ext_resource type="Texture2D" uid="uid://crwuvahomvnmm" path="res://assets/graphics/defender/shield4.png" id="1_v11wt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8d46v"]
+radius = 48.0
+height = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wff1"]
+radius = 48.0
+
+[node name="Shield" type="CharacterBody2D"]
+z_index = 20
+collision_layer = 32
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_8d46v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v11wt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8d46v")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_4wff1")
+debug_color = Color(0.95597, 0, 0.54041, 0.42)
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

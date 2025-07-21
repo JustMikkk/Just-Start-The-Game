@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsurh3r7ave6w"]
+
+[ext_resource type="Script" uid="uid://dvj7qkpcprb7i" path="res://scenes/bindows_defender/bindows_boss.gd" id="1_c8hr5"]
+[ext_resource type="Texture2D" uid="uid://cursslyfgb6pt" path="res://assets/graphics/defender/idle/bindows_front1.png" id="1_p3dcj"]
+[ext_resource type="Texture2D" uid="uid://db1bfir8dv4kq" path="res://assets/graphics/defender/idle/bindows_front2.png" id="2_c8hr5"]
+[ext_resource type="Texture2D" uid="uid://bg5cv4hbidid2" path="res://assets/graphics/defender/battle_unarmed/bindows_battle1.png" id="2_of750"]
+[ext_resource type="Texture2D" uid="uid://bijstfkqmcmrm" path="res://assets/graphics/defender/battle_unarmed/bindows_battle2.png" id="3_nqb6q"]
+[ext_resource type="Texture2D" uid="uid://b8842gpm2mt40" path="res://assets/graphics/defender/idle/bindows_front3.png" id="3_u2225"]
+[ext_resource type="Texture2D" uid="uid://ml40qtr7uva1" path="res://assets/graphics/defender/idle/bindows_front4.png" id="4_1d600"]
+[ext_resource type="Texture2D" uid="uid://de1kffqm7atfe" path="res://assets/graphics/defender/battle_unarmed/bindows_battle3.png" id="4_f5krq"]
+[ext_resource type="Texture2D" uid="uid://6lfokrtnajn1" path="res://assets/graphics/defender/battle_unarmed/bindows_battle4.png" id="5_puq4v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpvt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_of750")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nqb6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f5krq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_puq4v")
+}],
+"loop": true,
+"name": &"battle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p3dcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c8hr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u2225")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1d600")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_of750"]
+radius = 80.0
+height = 208.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqb6q"]
+height = 57.4959
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5krq"]
+radius = 40.0
+height = 160.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_puq4v"]
+radius = 32.0
+height = 160.0
+
+[node name="BindowsBoss" type="CharacterBody2D"]
+z_index = 20
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_c8hr5")
+_positions = Array[Vector2]([Vector2(368, -208), Vector2(368, 208), Vector2(-368, -208), Vector2(-368, 208), Vector2(368, 208), Vector2(-368, -208), Vector2(-368, 208), Vector2(368, -208), Vector2(368, 208), Vector2(-368, 208)])
+_rotations = Array[float]([60.0, 180.0, 300.0, 180.0, 90.0, -60.0, -180.0, -300.0, -180.0, -90.0])
+_health = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 0)
+sprite_frames = SubResource("SpriteFrames_cpvt2")
+autoplay = "default"
+frame_progress = 0.539743
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_of750")
+debug_color = Color(0, 0.624615, 0.527472, 0.42)
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-40, -72)
+rotation = -0.427855
+shape = SubResource("CapsuleShape2D_nqb6q")
+debug_color = Color(0.984849, 0, 0.33958, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(40, -72)
+rotation = 0.427606
+shape = SubResource("CapsuleShape2D_nqb6q")
+debug_color = Color(0.984849, 0, 0.33958, 0.42)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_f5krq")
+debug_color = Color(0.984849, 0, 0.33958, 0.42)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_puq4v")
+debug_color = Color(0.984849, 0, 0.33958, 0.42)
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]

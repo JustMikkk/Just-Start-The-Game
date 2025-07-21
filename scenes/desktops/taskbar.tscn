@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx22tcip152ve"]
+[gd_scene load_steps=11 format=3 uid="uid://bx22tcip152ve"]
 
 [ext_resource type="Script" uid="uid://bf1ga4mpao1tr" path="res://scenes/desktops/taskbar.gd" id="1_1ivnc"]
 [ext_resource type="Texture2D" uid="uid://bybcft7lcjik8" path="res://assets/graphics/apps/taskbar.png" id="1_mklgl"]
@@ -6,6 +6,8 @@
 [ext_resource type="LabelSettings" uid="uid://cisn0xhnbs4vm" path="res://assets/settings/font.tres" id="4_8gxm7"]
 [ext_resource type="Script" uid="uid://bgnc1fsi1u3y5" path="res://scenes/desktops/timer.gd" id="5_8gxm7"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="6_bc3ye"]
+[ext_resource type="Texture2D" uid="uid://ohowj2e5r81s" path="res://assets/graphics/misc/admin.png" id="7_d86g8"]
+[ext_resource type="Texture2D" uid="uid://csgx46oxjb8ks" path="res://assets/graphics/misc/gasnica.png" id="8_sheli"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4e5aq"]
 a = Vector2(0, 1)
@@ -77,12 +79,12 @@ texture = ExtResource("6_bc3ye")
 visible = false
 position = Vector2(-16, 8)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_bc3ye")
+texture = ExtResource("7_d86g8")
 
 [node name="FireWall" type="Sprite2D" parent="PowerUps"]
 visible = false
 position = Vector2(-56, 8)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_bc3ye")
+texture = ExtResource("8_sheli")
 
 [connection signal="timeout" from="Control/UpdateTimer" to="Control/Label" method="_on_update_timer_timeout"]

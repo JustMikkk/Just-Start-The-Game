@@ -24,6 +24,7 @@ var _cutscenes_played: Dictionary[String, bool] = {
 	"desktop_3": false,
 	"desktop_4": false,
 	"desktop_5": false,
+	"desktop_1_2": false,
 }
 
 

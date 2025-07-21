@@ -1,16 +1,24 @@
 extends App
 
+@export var _bindow_starting_game: Bindow
+
 var _is_big: bool = false
+var _bindow_opened: bool = false
 
 
 # overrides so it doesnt show up in taskbar and transform
 func _ready() -> void:
+	if GameManager.has_player_admin and GameManager.has_player_firewall and GameManager.has_player_scissors:
+		bindow = _bindow_starting_game
+	
 	mouse_click.connect(_on_mouse_click)
 	mouse_enter.connect(_on_mouse_enter)
 	mouse_exit.connect(_on_mouse_exit)
 
 
 func _open_bindow() -> void:
+	if _bindow_opened: return
+	_bindow_opened = true
 	bindow.open_bindow()
 
 
