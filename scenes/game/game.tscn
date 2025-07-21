@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1pbmxd15535j"]
+[gd_scene load_steps=10 format=3 uid="uid://d1pbmxd15535j"]
 
 [ext_resource type="PackedScene" uid="uid://clytdko2adl73" path="res://scenes/game/desktops_manager.tscn" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://clwbwtomfh1it" path="res://scenes/game/game.gd" id="1_lfrn8"]
@@ -6,7 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bakok3goh5mvh" path="res://scenes/player/player.tscn" id="4_kelw5"]
 [ext_resource type="Script" uid="uid://dy2d4dc2jqf76" path="res://scenes/game/camera_manager.gd" id="5_lfrn8"]
 [ext_resource type="Script" uid="uid://cfyp3snn2jnd" path="res://scenes/game/transition_player.gd" id="6_5i0tg"]
+[ext_resource type="FontFile" uid="uid://b2wpnfxceq6xc" path="res://assets/fonts/Born2bSportyFS.otf" id="7_87uf6"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="7_bdhmt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2a8rs"]
+line_spacing = 0.0
+font = ExtResource("7_87uf6")
+shadow_color = Color(1, 1, 1, 0)
 
 [node name="Game" type="Node2D" groups=["Game"]]
 script = ExtResource("1_lfrn8")
@@ -55,6 +61,20 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1e-05)
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="TransitionPlayer/ColorRect"]
+visible = false
+layout_mode = 0
+offset_right = 111.0
+offset_bottom = 74.0
+scale = Vector2(8.66, 8.66)
+text = "Thanks 
+for playing!
+
+~CTRL Games"
+label_settings = SubResource("LabelSettings_2a8rs")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="TransitionPlayer"]
 visible = false

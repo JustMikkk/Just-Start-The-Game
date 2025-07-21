@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1dit03ngtyfr"]
+[gd_scene load_steps=25 format=3 uid="uid://b1dit03ngtyfr"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_5c2q5"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="2_btg26"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_gn44y"]
 [ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="4_btg26"]
 [ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="5_gn44y"]
+[ext_resource type="PackedScene" uid="uid://jk8arhf52th3" path="res://scenes/bindows/starting_game_bindow.tscn" id="6_u0x7u"]
 [ext_resource type="PackedScene" uid="uid://duttugj4076jd" path="res://scenes/apps/the_game_app.tscn" id="7_7okfk"]
 [ext_resource type="PackedScene" uid="uid://d4w8nrc1ewyl" path="res://scenes/bindows/bindow.tscn" id="8_7e0qu"]
 [ext_resource type="Texture2D" uid="uid://v8nod34ij0ht" path="res://assets/graphics/apps/desktop/the_game.png" id="9_kpwh1"]
@@ -17,6 +18,23 @@
 [ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="13_hphji"]
 [ext_resource type="PackedScene" uid="uid://cp413l17vsmdj" path="res://scenes/power_ups/power_up.tscn" id="15_sicsa"]
 [ext_resource type="Texture2D" uid="uid://ox23mvg54rf5" path="res://assets/graphics/misc/cutting_tool/cutting_tool_0001.png" id="16_t43jk"]
+[ext_resource type="Texture2D" uid="uid://csgx46oxjb8ks" path="res://assets/graphics/misc/gasnica.png" id="20_jj5cv"]
+[ext_resource type="Texture2D" uid="uid://ohowj2e5r81s" path="res://assets/graphics/misc/admin.png" id="21_7e0qu"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_u0x7u"]
+resource_local_to_scene = true
+a = Vector2(-96, 2)
+b = Vector2(96, 2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mc5mj"]
+resource_local_to_scene = true
+a = Vector2(-80, 46)
+b = Vector2(80, 46)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jj5cv"]
+resource_local_to_scene = true
+a = Vector2(-80, -46)
+b = Vector2(80, -46)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pce8l"]
 particle_flag_disable_z = true
@@ -30,17 +48,32 @@ gravity = Vector3(0, 98, 0)
 scale_min = 5.0
 scale_max = 7.0
 
-[node name="Desktop 1" node_paths=PackedStringArray("_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave", "_walls") instance=ExtResource("1_5c2q5")]
+[node name="Desktop 1" node_paths=PackedStringArray("_the_game_app", "_alert_before_appear", "_alert_after_appear", "_alert_before_leave", "_alert_after_leave", "_alert_second_cutscene", "_alert_last_cutscene", "_walls") instance=ExtResource("1_5c2q5")]
 script = ExtResource("2_kpwh1")
+_the_game_app = NodePath("Apps/TheGameApp")
 _alert_before_appear = NodePath("Bindows/AlertBindow")
 _alert_after_appear = NodePath("Bindows/AlertBindow2")
 _alert_before_leave = NodePath("Bindows/AlertBindow4")
 _alert_after_leave = NodePath("Bindows/AlertBindow5")
-_walls = [NodePath("Enemies/AdminWall"), NodePath("Enemies/AdminWall3"), NodePath("Enemies/AdminWall5"), NodePath("Enemies/AdminWall7"), NodePath("Enemies/FireWall"), NodePath("Enemies/FireWall2"), NodePath("Enemies/FireWall3"), NodePath("Enemies/FireWall4"), NodePath("Enemies/FireWall5"), NodePath("Enemies/FireWall6"), NodePath("Enemies/FireWall7"), NodePath("Enemies/FireWall8")]
+_alert_second_cutscene = NodePath("Bindows/AlertBindow6-2")
+_alert_last_cutscene = NodePath("Bindows/AlertBindow7-2")
+_walls = []
 id_name = "desktop_1"
 _cutscene_name = "desktop_1"
 
-[node name="Movement-Bindow" parent="Bindows" index="0" instance=ExtResource("2_btg26")]
+[node name="StartingGameBindow" parent="Bindows" index="0" instance=ExtResource("6_u0x7u")]
+position = Vector2(-288, 144)
+
+[node name="CollisionShape2D" parent="Bindows/StartingGameBindow/Bounds" index="0"]
+shape = SubResource("SegmentShape2D_u0x7u")
+
+[node name="CollisionShape2D2" parent="Bindows/StartingGameBindow/Bounds" index="1"]
+shape = SubResource("SegmentShape2D_u0x7u")
+
+[node name="TextureProgressBar" parent="Bindows/StartingGameBindow/Control" index="1"]
+step = 1.0
+
+[node name="Movement-Bindow" parent="Bindows" index="1" instance=ExtResource("2_btg26")]
 position = Vector2(216, 136)
 _text = "Movement: WSAD / Arrow keys / Left stick
 
@@ -48,7 +81,7 @@ Jump: Space / South BTN
 
 Click: J / Z / Enter / West BTN"
 
-[node name="Help-Bindow" parent="Bindows" index="1" instance=ExtResource("2_btg26")]
+[node name="Help-Bindow" parent="Bindows" index="2" instance=ExtResource("2_btg26")]
 position = Vector2(384, 56)
 _text = "You can jump in and on windows
 
@@ -58,31 +91,31 @@ _text = "You can jump in and on windows
 
                      :3"
 
-[node name="AlertBindow" parent="Bindows" index="2" instance=ExtResource("3_gn44y")]
+[node name="AlertBindow" parent="Bindows" index="3" instance=ExtResource("3_gn44y")]
 _btn_text = "Open anyway"
 _text = "You can't open this program"
 
-[node name="AlertBindow2" parent="Bindows" index="3" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+[node name="AlertBindow2" parent="Bindows" index="4" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
 _btn_text = "I'll be fine"
 _next_bindow = NodePath("../AlertBindow3")
 _text = "This program probably contains malware!"
 _initial_delay = 0.8
 _wait_interval = 0.03
 
-[node name="AlertBindow3" parent="Bindows" index="4" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
+[node name="AlertBindow3" parent="Bindows" index="5" node_paths=PackedStringArray("_next_bindow") instance=ExtResource("3_gn44y")]
 _btn_text = "Chill out"
 _next_bindow = NodePath("../AlertBindow4")
 _text = "IT'S TOO DANGEROUS!"
 _initial_delay = 0.7
 _wait_interval = 0.02
 
-[node name="AlertBindow4" parent="Bindows" index="5" instance=ExtResource("3_gn44y")]
+[node name="AlertBindow4" parent="Bindows" index="6" instance=ExtResource("3_gn44y")]
 _btn_text = "Play anyway"
 _text = "I WILL NOT LET YOU BREAK THIS PC!"
 _initial_delay = 0.6
 _wait_interval = 0.01
 
-[node name="AlertBindow5" parent="Bindows" index="6" instance=ExtResource("3_gn44y")]
+[node name="AlertBindow5" parent="Bindows" index="7" instance=ExtResource("3_gn44y")]
 position = Vector2(-112, 184)
 _btn_text = "Oh no!"
 _text = "Good luck playing it now 
@@ -90,8 +123,27 @@ _text = "Good luck playing it now
 _initial_delay = 0.9
 _wait_interval = 0.03
 
-[node name="Bindow" parent="Bindows" index="7" instance=ExtResource("8_7e0qu")]
+[node name="Bindow" parent="Bindows" index="8" instance=ExtResource("8_7e0qu")]
 position = Vector2(144, -176)
+
+[node name="AlertBindow6-2" parent="Bindows" index="9" instance=ExtResource("3_gn44y")]
+position = Vector2(0, 64)
+_btn_text = "Not you again!"
+_text = "NOT ON MY WATCH!"
+
+[node name="AlertBindow7-2" parent="Bindows" index="10" instance=ExtResource("3_gn44y")]
+position = Vector2(384, -64)
+_text = "I ...  was just trying to protect you..."
+_wait_interval = 0.06
+
+[node name="ExitBtn" parent="Bindows/AlertBindow7-2" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="Bindows/AlertBindow7-2/Bounds" index="0"]
+shape = SubResource("SegmentShape2D_mc5mj")
+
+[node name="CollisionShape2D2" parent="Bindows/AlertBindow7-2/Bounds" index="1"]
+shape = SubResource("SegmentShape2D_jj5cv")
 
 [node name="Movement-App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("3_befw0")]
 position = Vector2(336, 232)
@@ -109,8 +161,9 @@ taskbar_icon = ExtResource("4_btg26")
 icon = ExtResource("5_gn44y")
 _label_text = "help.txt"
 
-[node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("7_7okfk")]
+[node name="TheGameApp" parent="Apps" index="2" node_paths=PackedStringArray("_bindow_starting_game", "desktop", "bindow") instance=ExtResource("7_7okfk")]
 position = Vector2(-352, 144)
+_bindow_starting_game = NodePath("../../Bindows/StartingGameBindow")
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/AlertBindow")
 icon = ExtResource("9_kpwh1")
@@ -208,5 +261,20 @@ position = Vector2(64, 144)
 _power_up_id = "scissors"
 _texture = ExtResource("16_t43jk")
 
+[node name="PowerUp2" parent="." index="12" instance=ExtResource("15_sicsa")]
+position = Vector2(64, 192)
+_power_up_id = "firewall"
+_texture = ExtResource("20_jj5cv")
+
+[node name="PowerUp3" parent="." index="13" instance=ExtResource("15_sicsa")]
+position = Vector2(64, 240)
+_power_up_id = "admin"
+_texture = ExtResource("21_7e0qu")
+
+[editable path="Bindows/StartingGameBindow"]
+[editable path="Bindows/StartingGameBindow/DragArea"]
+[editable path="Bindows/AlertBindow7-2"]
+[editable path="Bindows/AlertBindow7-2/ExitBtn"]
+[editable path="Bindows/AlertBindow7-2/DragArea"]
 [editable path="MoveButtons/Right"]
 [editable path="WorldEater"]

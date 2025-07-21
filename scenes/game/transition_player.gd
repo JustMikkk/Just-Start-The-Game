@@ -9,6 +9,7 @@ var _tween_pos: Tween
 
 @onready var _color_rect: ColorRect = $ColorRect
 @onready var _sprite_2d: Sprite2D = $Sprite2D
+@onready var _label: Label = $ColorRect/Label
 
 
 func play_death_transition() -> void:
@@ -35,6 +36,7 @@ func play_power_up_transition(pos: Vector2, texture: Texture, destination: Vecto
 	#Engine.time_scale = 0
 	
 	_sprite_2d.scale = Vector2.ZERO
+	_sprite_2d.texture = texture
 	_sprite_2d.show()
 	_sprite_2d.global_position = pos
 	
@@ -54,4 +56,19 @@ func play_power_up_transition(pos: Vector2, texture: Texture, destination: Vecto
 		#Engine.time_scale = 1
 		GameManager.current_desktop.taskbar.update_power_ups()
 	)
+
+
+func roll_the_courtain() -> void:
+	if _tween_transition:
+		_tween_transition.kill()
+	
+	_label.show()
+	
+	_color_rect.pivot_offset = Vector2.ZERO
+	_color_rect.scale = Vector2(1, 0)
+
+	_tween_transition = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	_tween_transition.tween_property(_color_rect, "scale:y", 1, 1)
+	
+	
 	

@@ -287,7 +287,8 @@ func is_enabled() -> bool:
 
 
 func take_damage(amount: int, dir: Vector2) -> void:
-	if _health <= 0: return
+	if _health <= 0 or $IFramesTimer.time_left: return
+	$IFramesTimer.start()
 	AudioManager.play_audio_clip(_audio_clip, global_position)
 	_health -= amount
 	damage_taken.emit()
