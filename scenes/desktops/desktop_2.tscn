@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://fvjlebevuqtj" path="res://scenes/bindows/alert_bindow.tscn" id="3_4uxwu"]
 [ext_resource type="PackedScene" uid="uid://rdqd5vw2hutf" path="res://scenes/enemies/card_enemy.tscn" id="4_06vhp"]
 [ext_resource type="PackedScene" uid="uid://cpwtvam8e2m3o" path="res://scenes/bindows/note_bindow_160_160.tscn" id="4_relfi"]
-[ext_resource type="PackedScene" uid="uid://dslrycch57s88" path="res://scenes/apps/app.tscn" id="5_2pc3y"]
-[ext_resource type="Texture2D" uid="uid://t76ppdfwndyb" path="res://assets/graphics/apps/taskbar/note32.png" id="6_x36pm"]
-[ext_resource type="Texture2D" uid="uid://bbauuqrxtpotm" path="res://assets/graphics/apps/desktop/note48.png" id="7_wx211"]
+[ext_resource type="PackedScene" uid="uid://e76bgm61nevc" path="res://scenes/apps/note_app.tscn" id="6_x36pm"]
+[ext_resource type="Texture2D" uid="uid://wxqjnxbxcxkr" path="res://assets/graphics/apps/taskbar/note_icon_32x32.png" id="7_wx211"]
+[ext_resource type="Texture2D" uid="uid://cw1tgypxlgbnc" path="res://assets/graphics/old_man/transform/old_man_txt_transform_0001.png" id="8_4058i"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_x36pm"]
 resource_local_to_scene = true
@@ -55,31 +55,23 @@ _text = "Taskbar is your safe space!
 Hold down action"
 _wait_interval = 0.03
 
-[node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
+[node name="NoteApp3" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_x36pm")]
 position = Vector2(368, 224)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_161")
-taskbar_icon = ExtResource("6_x36pm")
-icon = ExtResource("7_wx211")
+taskbar_icon = ExtResource("7_wx211")
+icon = ExtResource("8_4058i")
 _label_text = "taskbar.txt"
 
-[node name="App2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("5_2pc3y")]
+[node name="NoteApp2" parent="Apps" index="1" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("6_x36pm")]
 position = Vector2(-352, 32)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/NoteBindow_160_160")
-taskbar_icon = ExtResource("6_x36pm")
-icon = ExtResource("7_wx211")
-_label_text = "help.txt"
+taskbar_icon = ExtResource("7_wx211")
+icon = ExtResource("8_4058i")
+_label_text = "platform.txt"
 
-[node name="CardEnemy" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
-position = Vector2(-128, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="JumpTimer" parent="Enemies/CardEnemy" index="3"]
-autostart = true
-
-[node name="CardEnemy4" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
+[node name="CardEnemy4" parent="Enemies" index="0" instance=ExtResource("4_06vhp")]
 position = Vector2(112, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
@@ -87,22 +79,12 @@ _health = 2
 [node name="JumpTimer" parent="Enemies/CardEnemy4" index="3"]
 autostart = true
 
-[node name="CardEnemy2" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
-position = Vector2(-384, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="CardEnemy5" parent="Enemies" index="3" instance=ExtResource("4_06vhp")]
+[node name="CardEnemy5" parent="Enemies" index="1" instance=ExtResource("4_06vhp")]
 position = Vector2(-256, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
 
-[node name="CardEnemy3" parent="Enemies" index="4" instance=ExtResource("4_06vhp")]
-position = Vector2(224, 240)
-_knockback_multiplayers = Vector2(10000, 30000)
-_health = 2
-
-[node name="CardEnemy6" parent="Enemies" index="5" instance=ExtResource("4_06vhp")]
+[node name="CardEnemy6" parent="Enemies" index="2" instance=ExtResource("4_06vhp")]
 position = Vector2(336, 240)
 _knockback_multiplayers = Vector2(10000, 30000)
 _health = 2
@@ -130,7 +112,6 @@ color = Color(0.968627, 0.894118, 0.823529, 1)
 [editable path="Bindows/AlertBindow"]
 [editable path="Bindows/AlertBindow/ExitBtn"]
 [editable path="Bindows/AlertBindow/DragArea"]
-[editable path="Enemies/CardEnemy"]
 [editable path="Enemies/CardEnemy4"]
 [editable path="MoveButtons/Left"]
 [editable path="MoveButtons/Right"]

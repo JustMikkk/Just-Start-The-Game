@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bue5y3jastl4l"]
+[gd_scene load_steps=21 format=3 uid="uid://bue5y3jastl4l"]
 
 [ext_resource type="PackedScene" uid="uid://kpplv6w3th0s" path="res://scenes/desktops/desktop.tscn" id="1_8ouw4"]
 [ext_resource type="Texture2D" uid="uid://dwadueyslrxuy" path="res://assets/graphics/bg/bg_dziewiec.png" id="2_b7ecn"]
@@ -8,9 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://dmbfjis2da2gq" path="res://assets/graphics/apps/desktop/photo48.png" id="6_tykn8"]
 [ext_resource type="PackedScene" uid="uid://b5mnlats2ivcj" path="res://scenes/bindows/photo_bindow_128.tscn" id="7_wtmtm"]
 [ext_resource type="PackedScene" uid="uid://bm16ve5cvchl4" path="res://scenes/bindows/photo_bindow_96.tscn" id="8_71thx"]
+[ext_resource type="PackedScene" uid="uid://bgjsha77tssgk" path="res://scenes/walls/fire_wall.tscn" id="8_maug2"]
 [ext_resource type="Texture2D" uid="uid://com3lajxcjqk2" path="res://assets/graphics/apps/taskbar/folder32.png" id="9_0mtiu"]
 [ext_resource type="Texture2D" uid="uid://bng7mp2gbqf87" path="res://assets/graphics/apps/desktop/folder48.png" id="10_h7ito"]
 [ext_resource type="PackedScene" uid="uid://0cw3p6vwofmu" path="res://scenes/apps/converter_app.tscn" id="11_m2vx0"]
+[ext_resource type="Texture2D" uid="uid://d0dytodfgo5fb" path="res://assets/graphics/cat/IMG20250424125828.jpg" id="12_7w141"]
+[ext_resource type="Texture2D" uid="uid://chivt0k54mdsu" path="res://assets/graphics/cat/IMG_20250115_152715.jpg" id="13_maug2"]
+[ext_resource type="Texture2D" uid="uid://l1fufmp5sakt" path="res://assets/graphics/cat/IMG_20250130_070546.jpg" id="14_oq24i"]
+[ext_resource type="Texture2D" uid="uid://b4nsoq6eyl8nt" path="res://assets/graphics/cat/IMG_20250224_060829.jpg" id="15_sfx4f"]
+[ext_resource type="Texture2D" uid="uid://bak8jiyfs4ckh" path="res://assets/graphics/cat/IMG_20250302_222153.jpg" id="16_8yetf"]
+[ext_resource type="Texture2D" uid="uid://dvkv24arm1tk8" path="res://assets/graphics/cat/IMG_20250314_210800.jpg" id="17_sqxao"]
+[ext_resource type="Texture2D" uid="uid://do4ysappfvsr0" path="res://assets/graphics/cat/IMG_20250327_215935.jpg" id="18_400s0"]
+[ext_resource type="Texture2D" uid="uid://bkv37ji2uyq0a" path="res://assets/graphics/cat/IMG_20250327_220001.jpg" id="19_8h21m"]
 
 [node name="Desktop5" instance=ExtResource("1_8ouw4")]
 id_name = "desktop_5"
@@ -28,7 +37,7 @@ z_index = 20
 z_as_relative = false
 position = Vector2(64, -16)
 desktop = NodePath("../../..")
-bindow = NodePath("../../PhotoBindow_128")
+bindow = NodePath("../../../PhotoBindow_128")
 taskbar_icon = ExtResource("5_6b8n8")
 icon = ExtResource("6_tykn8")
 
@@ -41,18 +50,11 @@ bindow = NodePath("../../PhotoBindow_96")
 taskbar_icon = ExtResource("5_6b8n8")
 icon = ExtResource("6_tykn8")
 
-[node name="PhotoBindow_128" parent="Bindows" index="1" instance=ExtResource("7_wtmtm")]
-position = Vector2(-128, -80)
-_can_be_minimised = false
-_can_be_exited = false
-
-[node name="PhotoBindow_96" parent="Bindows" index="2" instance=ExtResource("8_71thx")]
-position = Vector2(-384, -112)
-_can_be_minimised = false
-_can_be_exited = false
+[node name="PhotoBindow_96" parent="Bindows" index="1" instance=ExtResource("8_71thx")]
+position = Vector2(-384, -176)
 
 [node name="App" parent="Apps" index="0" node_paths=PackedStringArray("desktop", "bindow") instance=ExtResource("4_r0ycs")]
-position = Vector2(-112, 224)
+position = Vector2(-128, 224)
 desktop = NodePath("../..")
 bindow = NodePath("../../Bindows/FolderBindow")
 taskbar_icon = ExtResource("9_0mtiu")
@@ -62,6 +64,90 @@ _label_text = "big kitty"
 [node name="ConverterApp" parent="Apps" index="1" instance=ExtResource("11_m2vx0")]
 position = Vector2(-240, 240)
 _next_positions = Array[Vector2i]([Vector2i(560, 448), Vector2i(0, 0)])
+
+[node name="FireWall" parent="Apps" index="2" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -304)
+
+[node name="FireWall2" parent="Apps" index="3" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -256)
+
+[node name="FireWall3" parent="Apps" index="4" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -208)
+
+[node name="FireWall4" parent="Apps" index="5" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -160)
+
+[node name="FireWall5" parent="Apps" index="6" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -112)
+
+[node name="FireWall6" parent="Apps" index="7" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -64)
+
+[node name="FireWall7" parent="Apps" index="8" instance=ExtResource("8_maug2")]
+position = Vector2(-112, -32)
+
+[node name="FireWall8" parent="Apps" index="9" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 16)
+
+[node name="FireWall9" parent="Apps" index="10" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 64)
+
+[node name="FireWall10" parent="Apps" index="11" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 112)
+
+[node name="FireWall11" parent="Apps" index="12" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 160)
+
+[node name="FireWall12" parent="Apps" index="13" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 208)
+
+[node name="FireWall13" parent="Apps" index="14" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 256)
+
+[node name="FireWall14" parent="Apps" index="15" instance=ExtResource("8_maug2")]
+position = Vector2(-112, 304)
+
+[node name="FireWall16" parent="Apps" index="16" instance=ExtResource("8_maug2")]
+position = Vector2(112, -304)
+
+[node name="FireWall18" parent="Apps" index="17" instance=ExtResource("8_maug2")]
+position = Vector2(112, -256)
+
+[node name="FireWall19" parent="Apps" index="18" instance=ExtResource("8_maug2")]
+position = Vector2(112, -208)
+
+[node name="FireWall20" parent="Apps" index="19" instance=ExtResource("8_maug2")]
+position = Vector2(112, -160)
+
+[node name="FireWall21" parent="Apps" index="20" instance=ExtResource("8_maug2")]
+position = Vector2(112, -112)
+
+[node name="FireWall22" parent="Apps" index="21" instance=ExtResource("8_maug2")]
+position = Vector2(112, -64)
+
+[node name="FireWall23" parent="Apps" index="22" instance=ExtResource("8_maug2")]
+position = Vector2(112, -32)
+
+[node name="FireWall24" parent="Apps" index="23" instance=ExtResource("8_maug2")]
+position = Vector2(112, 16)
+
+[node name="FireWall25" parent="Apps" index="24" instance=ExtResource("8_maug2")]
+position = Vector2(112, 64)
+
+[node name="FireWall26" parent="Apps" index="25" instance=ExtResource("8_maug2")]
+position = Vector2(112, 112)
+
+[node name="FireWall27" parent="Apps" index="26" instance=ExtResource("8_maug2")]
+position = Vector2(112, 160)
+
+[node name="FireWall28" parent="Apps" index="27" instance=ExtResource("8_maug2")]
+position = Vector2(112, 208)
+
+[node name="FireWall29" parent="Apps" index="28" instance=ExtResource("8_maug2")]
+position = Vector2(112, 256)
+
+[node name="FireWall30" parent="Apps" index="29" instance=ExtResource("8_maug2")]
+position = Vector2(112, 304)
 
 [node name="Enemies" parent="." index="4"]
 metadata/_edit_lock_ = true
@@ -86,6 +172,10 @@ color = Color(0.447059, 0.27451, 0.482353, 1)
 [node name="Right" parent="MoveButtons" index="3"]
 visible = false
 is_enabled = false
+
+[node name="PhotoBindow_128" parent="." index="9" instance=ExtResource("7_wtmtm")]
+position = Vector2(-144, -64)
+_photos = Array[Texture]([ExtResource("12_7w141"), ExtResource("13_maug2"), ExtResource("14_oq24i"), ExtResource("15_sfx4f"), ExtResource("16_8yetf"), ExtResource("17_sqxao"), ExtResource("18_400s0"), ExtResource("19_8h21m")])
 
 [editable path="MoveButtons/Down"]
 [editable path="MoveButtons/Up"]
